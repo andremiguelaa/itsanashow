@@ -17,11 +17,11 @@ button {
 
 @font-face {
   font-family: 'icomoon';
-  src: url('fonts/icomoon.eot?1tvymh');
-  src: url('fonts/icomoon.eot?1tvymh#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?1tvymh') format('truetype'),
-    url('fonts/icomoon.woff?1tvymh') format('woff'),
-    url('fonts/icomoon.svg?1tvymh#icomoon') format('svg');
+  src: url('fonts/icomoon.eot?i31604');
+  src: url('fonts/icomoon.eot?i31604#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?i31604') format('truetype'),
+    url('fonts/icomoon.woff?i31604') format('woff'),
+    url('fonts/icomoon.svg?i31604#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -43,6 +43,9 @@ button {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cross:before {
+  content: '\ea0f';
+}
 .icon-facebook:before {
   content: '\ea90';
 }
