@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import logo from './assets/logo.svg';
 import video from './assets/video.mp4';
+import showStripe from './assets/show_stripe.svg';
+import showX from './assets/show_x.svg';
 
 import classes from './App.module.scss';
 
@@ -17,17 +19,12 @@ const App = () => {
       </header>
       <section className={classes.video}>
         <video autoPlay loop muted src={video}></video>
-        <button className={classes.scroll} tabIndex="-1">
-          <svg className={classes.arrows}>
-            <path className={classes.a1} d="M0 2 L20 15 L40 2"></path>
-            <path className={classes.a2} d="M0 12 L20 25 L40 12"></path>
-            <path className={classes.a3} d="M0 22 L20 35 L40 22"></path>
-          </svg>
-        </button>
+        <div className={classes.scroll}></div>
       </section>
       <section className={classes.welcome}>
         <h1 className={classes.title}>Welcome!</h1>
-        <p className={classes.slogan}>We're building something new here!</p>
+        <img src={showStripe} alt="line" className={classes.line} />
+        <p className={classes.subtitle}>We're building something new here!</p>
         <p className={classes.description}>
           Meanwhile know us a little more - follow us in our social media
           channels.
@@ -39,7 +36,7 @@ const App = () => {
         <ul className={classes.social}>
           <li className={classes.socialItem}>
             <a
-              href="https://www.linkedin.com/in/anafborges/"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className={classes.socialIcon}
@@ -49,7 +46,7 @@ const App = () => {
           </li>
           <li className={classes.socialItem}>
             <a
-              href="https://www.behance.net/anafborges"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className={classes.socialIcon}
@@ -59,7 +56,7 @@ const App = () => {
           </li>
           <li className={classes.socialItem}>
             <a
-              href="https://www.instagram.com/itsanashow/"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className={classes.socialIcon}
@@ -69,12 +66,12 @@ const App = () => {
           </li>
           <li className={classes.socialItem}>
             <a
-              href="https://www.pinterest.pt/anafborges/"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className={classes.socialIcon}
             >
-              <span className="icon-pinterest2"></span>
+              <span className="icon-facebook"></span>
             </a>
           </li>
         </ul>
@@ -87,13 +84,23 @@ const App = () => {
           Get a quote today!
         </button>
       </section>
-      {modal && (
+      <div
+        className={`${classes.modalWrapper} ${modal ? classes.openModal : ''}`}
+      >
         <section className={classes.modal}>
           <button className={classes.close} onClick={() => setModal(false)}>
-            <span className="icon-cross"></span>
+            <div className={classes.in}>
+              <div className={classes.closeButtonBlock}></div>
+              <div className={classes.closeButtonBlock}></div>
+            </div>
+            <div className={classes.out}>
+              <div className={classes.closeButtonBlock}></div>
+              <div className={classes.closeButtonBlock}></div>
+            </div>
           </button>
           <h1 className={classes.title}>Hello there!</h1>
-          <p className={classes.lead}>Drop us a line</p>
+          <img src={showStripe} alt="line" className={classes.line} />
+          <p className={classes.subtitle}>Drop us a line</p>
           <p className={classes.description}>
             Tell us a bi about yourself or your business.
             <br />
@@ -113,7 +120,7 @@ const App = () => {
             <ul className={classes.social}>
               <li className={classes.socialItem}>
                 <a
-                  href="https://www.linkedin.com/in/anafborges/"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialIcon}
@@ -123,7 +130,7 @@ const App = () => {
               </li>
               <li className={classes.socialItem}>
                 <a
-                  href="https://www.behance.net/anafborges"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialIcon}
@@ -133,7 +140,7 @@ const App = () => {
               </li>
               <li className={classes.socialItem}>
                 <a
-                  href="https://www.instagram.com/itsanashow/"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialIcon}
@@ -143,18 +150,18 @@ const App = () => {
               </li>
               <li className={classes.socialItem}>
                 <a
-                  href="https://www.pinterest.pt/anafborges/"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialIcon}
                 >
-                  <span className="icon-pinterest2"></span>
+                  <span className="icon-facebook"></span>
                 </a>
               </li>
             </ul>
           </div>
         </section>
-      )}
+      </div>
     </>
   );
 };

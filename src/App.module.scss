@@ -1,14 +1,43 @@
+.title {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  font-weight: 300;
+  margin: 0 0 0.875rem;
+}
+
+.line {
+  width: 1.5rem;
+  margin: 0 0 0.3rem;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: 2.1875rem;
+  line-height: 1.15;
+  margin: 0 0 0.6rem;
+}
+
+.description {
+  font-weight: 300;
+  line-height: 1.375;
+  margin: 0;
+}
+
 .cta {
   color: #fff;
-  background-color: #fc12a1;
+  background-color: #fe00ae;
   border: none;
-  padding: 10px 15px;
+  padding: 0.66rem 1.125rem;
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 0.8125rem;
+  letter-spacing: 2px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  outline: 2px solid transparent;
   &:after {
     content: '';
     position: absolute;
@@ -16,11 +45,15 @@
     left: 0;
     width: 500%;
     height: 1000%;
-    background: #34495e;
+    background: #08142d;
     z-index: -1;
     transform-origin: 0% 0%;
     transform: translateX(calc(20%)) translateY(10%) rotate(-45deg);
     transition: transform 0.3s;
+  }
+  &:hover {
+    outline: 2px solid #e4f9fe;
+    transition: outline 0.2s linear;
   }
   &:hover::after {
     transform: translateY(10%) translateX(-25px) rotate(-45deg);
@@ -29,8 +62,8 @@
 
 .header {
   box-sizing: border-box;
-  padding: 30px;
-  position: fixed;
+  padding: 2rem;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -42,139 +75,169 @@
   .cta {
     position: absolute;
     top: 50%;
-    right: 30px;
+    right: 2rem;
     transform: translateY(-50%);
-    color: #fff;
-    background-color: #fc12a1;
-    border: none;
-    padding: 10px 15px;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
+    &:after {
+      background: #294bca;
+    }
   }
 }
 
 .video {
   height: 100vh;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  top: 0;
   video {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
   .scroll {
-    background-color: transparent;
-    border: none;
-    padding: 0;
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
-    .arrows {
-      width: 40px;
-      height: 45px;
-      bottom: 20px;
-      path {
-        stroke: #fff;
-        fill: transparent;
-        stroke-width: 2px;
-        animation: arrow 2s infinite;
-        &.a1 {
-          animation-delay: -1s;
-        }
-        &.a2 {
-          animation-delay: -0.5s;
-        }
-        &.a3 {
-          animation-delay: 0s;
-        }
-      }
-    }
   }
 }
 
-@keyframes arrow {
+@keyframes loading {
   0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 0;
+    height: 0;
   }
   100% {
     opacity: 0;
+    height: 50px;
   }
 }
 
 .welcome {
+  margin-top: 100vh;
   text-align: center;
-  padding: 70px 1rem 270px;
-  .title {
-    text-transform: uppercase;
-    font-size: 1rem;
-    font-weight: 300;
-  }
-  .slogan {
-    font-weight: bold;
-    font-size: 2rem;
-    margin: 0;
-  }
-  .description {
-    font-weight: 300;
-    line-height: 1.5;
-  }
+  padding: 5.125rem 1rem 17.375rem;
+  background-color: #08142d;
+  position: relative;
+  z-index: 1;
   .lead {
     font-weight: bold;
-    font-size: 1.5rem;
-    line-height: 1.3;
-    margin: 2rem;
+    font-size: 1.5625rem;
+    line-height: 1.2;
+    margin: 2.375rem;
   }
 }
 
-.modal {
+.modalWrapper {
   position: fixed;
-  border: 30px solid #2139f8;
-  background-color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   z-index: 100;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  pointer-events: none;
+  transition: clip-path 1s cubic-bezier(0.8, 0, 0.2, 1);
+  clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+  &.openModal {
+    pointer-events: all;
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+  }
+}
+.modal {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  border: 2rem solid #2a34ff;
+  background-color: #e4f9fe;
   text-align: center;
-  color: #0a1527;
+  color: #08142d;
   padding-top: 90px;
   .close {
     position: absolute;
-    top: 30px;
-    right: 30px;
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-    border: none;
+    top: 1.75rem;
+    right: 1.75rem;
     cursor: pointer;
-    color: #2139f8;
-    font-size: 25px;
-  }
-  .title {
-    text-transform: uppercase;
-    font-size: 1rem;
-    font-weight: 300;
-  }
-  .lead {
-    font-weight: bold;
-    font-size: 2rem;
-    margin: 0;
-  }
-  .description {
-    font-weight: 300;
-    line-height: 1.5;
+    display: block;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    > div {
+      position: relative;
+    }
+    .closeButtonBlock {
+      width: 40px;
+      height: 20px;
+      position: relative;
+      overflow: hidden;
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: calc(55% - 4px);
+        display: block;
+        width: 4px;
+        height: 25px;
+        transform-origin: bottom center;
+        background: #2a34ff;
+        transition: all ease-out 280ms;
+      }
+      &:last-of-type {
+        transform: rotate(180deg);
+      }
+    }
+    .in {
+      .closeButtonBlock {
+        &:before {
+          transition-delay: 280ms;
+          transform: translateX(20px) translateY(-20px) rotate(45deg);
+        }
+        &:after {
+          transition-delay: 280ms;
+          transform: translateX(-22px) translateY(-22px) rotate(-45deg);
+        }
+      }
+    }
+    .out {
+      position: absolute;
+      top: 0;
+      left: 0;
+      .closeButtonBlock {
+        &:before {
+          transform: translateX(-5px) translateY(5px) rotate(45deg);
+        }
+        &:after {
+          transform: translateX(5px) translateY(5px) rotate(-45deg);
+        }
+      }
+    }
+    &:hover {
+      .in {
+        .closeButtonBlock {
+          &:before {
+            transform: translateX(-5px) translateY(5px) rotate(45deg);
+          }
+          &:after {
+            transform: translateX(5px) translateY(5px) rotate(-45deg);
+          }
+        }
+      }
+      .out {
+        .closeButtonBlock {
+          &:before {
+            transform: translateX(-20px) translateY(20px) rotate(45deg);
+          }
+          &:after {
+            transform: translateX(20px) translateY(20px) rotate(-45deg);
+          }
+        }
+      }
+    }
   }
   .mail {
     margin: 2rem;
@@ -183,8 +246,10 @@
       font-size: 3rem;
       color: inherit;
       text-decoration: none;
+      transition: color 0.2s linear;
+      cursor: url('./assets/handarc-01.png'), auto;
       &:hover {
-        color: #fc12a1;
+        color: #fe00ae;
         text-decoration: underline;
       }
     }
@@ -207,41 +272,25 @@
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin: 2rem;
+  margin: 2.375rem;
   .socialItem {
     padding: 0 12px;
     .socialIcon {
       display: inline-block;
-      width: 38px;
-      height: 38px;
-      border: 3px solid #2139f8;
+      width: 35px;
+      height: 35px;
+      border: 3px solid #2a34ff;
       text-align: center;
       box-sizing: border-box;
       border-radius: 50%;
-      line-height: 35px;
+      line-height: 32px;
       text-decoration: none;
-      color: #2139f8;
+      color: #2a34ff;
       &:hover {
-        animation: wiggle 1s 1;
+        background-color: #2a34ff;
+        color: #e4f9fe;
+        transition: background-color 0.2s linear, color 0.2s linear;
       }
     }
-  }
-}
-
-@keyframes wiggle {
-  0% {
-    transform: rotate(10deg);
-  }
-  25% {
-    transform: rotate(-10deg);
-  }
-  50% {
-    transform: rotate(20deg);
-  }
-  75% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
   }
 }
