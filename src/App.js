@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
-import logo from './assets/logo.svg';
-import video from './assets/video.mp4';
-import showStripe from './assets/show_stripe.svg';
-import showX from './assets/show_x.svg';
+import logo from 'assets/logo.svg';
+import showStripe from 'assets/show_stripe.svg';
+import Video from 'components/Video';
 
-import classes from './App.module.scss';
+import classes from 'App.module.scss';
 
 const App = () => {
   const [modal, setModal] = useState(false);
@@ -17,10 +16,7 @@ const App = () => {
           Let's Talk!
         </button>
       </header>
-      <section className={classes.video}>
-        <video autoPlay loop muted src={video}></video>
-        <div className={classes.scroll}></div>
-      </section>
+      <Video />
       <section className={classes.welcome}>
         <h1 className={classes.title}>Welcome!</h1>
         <img src={showStripe} alt="line" className={classes.line} />
