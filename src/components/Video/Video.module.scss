@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .video {
   height: 100vh;
   overflow: hidden;
@@ -12,6 +14,28 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  .soon {
+    position: absolute;
+    font-weight: 300;
+    color: #e4f9fe;
+    font-size: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+    white-space: nowrap;
+    bottom: 5vw;
+    .letter {
+      display: inline-block;
+      opacity: 0;
+      position: relative;
+      letter-spacing: 2rem;
+      left: 1rem;
+      @include mobile {
+        letter-spacing: 1rem;
+        left: 0.5rem;
+      }
+    }
   }
   .scrollContainer {
     position: absolute;
