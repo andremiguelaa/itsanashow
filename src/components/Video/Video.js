@@ -14,6 +14,7 @@ const Video = () => {
   return (
     <section className={classes.video} style={{ top: `-${videoScroll}px` }}>
       <video autoPlay loop muted src={video}></video>
+      <div className={`${classes.scroll} ${videoScroll ? classes.hidden : ''}`}></div>
     </section>
   );
 };
