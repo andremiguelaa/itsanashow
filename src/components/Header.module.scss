@@ -1,0 +1,22 @@
+.header {
+  box-sizing: border-box;
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  .logo {
+    width: 200px;
+    max-width: 40vw;
+  }
+  .cta {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    &:after {
+      background: #294bca;
+    }
+  }
+}

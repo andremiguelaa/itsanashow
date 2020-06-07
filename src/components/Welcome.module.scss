@@ -1,0 +1,14 @@
+.welcome {
+  margin-top: 100vh;
+  text-align: center;
+  padding: 5.125rem 1rem 17.375rem;
+  background-color: #08142d;
+  position: relative;
+  z-index: 1;
+  .lead {
+    font-weight: bold;
+    font-size: 1.5625rem;
+    line-height: 1.2;
+    margin: 2.375rem;
+  }
+}
