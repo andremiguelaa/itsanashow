@@ -7,7 +7,7 @@ import classes from './Video.module.scss';
 const Video = () => {
   const [videoScroll, setVideoScroll] = useState(0);
   useScrollPosition(
-    ({ currPos }) => setVideoScroll(currPos.y / 4),
+    ({ currPos }) => setVideoScroll(currPos.y / 3),
     [],
     null,
     true
@@ -16,8 +16,12 @@ const Video = () => {
     <section className={classes.video} style={{ top: `-${videoScroll}px` }}>
       <video autoPlay loop muted src={video} poster={frame}></video>
       <div
-        className={`${classes.scroll} ${videoScroll ? classes.hidden : ''}`}
-      ></div>
+        className={`${classes.scrollContainer} ${
+          videoScroll ? classes.hidden : ''
+        }`}
+      >
+        <div className={classes.scroll}></div>
+      </div>
     </section>
   );
 };

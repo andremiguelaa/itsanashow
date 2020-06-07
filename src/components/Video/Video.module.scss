@@ -13,50 +13,44 @@
     height: 100%;
     object-fit: cover;
   }
-  .scroll {
-    width: 2rem;
-    height: 3rem;
-    border: 2px solid #e4f9fe;
-    border-radius: 60px;
+  .scrollContainer {
     position: absolute;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    transition: opacity 1s linear;
+    transition: opacity 0.5s linear;
     @media (orientation: portrait) {
       display: none;
     }
     &.hidden {
       opacity: 0;
-      transition: opacity 0.5s linear;
     }
-    &::before {
-      content: '';
-      width: 12px;
-      height: 12px;
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #e4f9fe;
-      border-radius: 50%;
-      opacity: 1;
-      animation: wheel 3s infinite;
+    .scroll {
+      position: relative;
+      animation: down 1.5s infinite;
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -0.5rem;
+        width: 1em;
+        height: 1rem;
+        border-left: 2px solid #e4f9fe;
+        border-bottom: 2px solid #e4f9fe;
+        transform: rotate(-45deg);
+      }
     }
   }
 }
 
-@keyframes wheel {
+@keyframes down {
   0% {
-    opacity: 1;
-    top: 10px;
+    transform: translate(0);
   }
-  50% {
-    opacity: 0;
-    top: 1.5rem;
+  20% {
+    transform: translateY(15px);
   }
-  100% {
-    opacity: 0;
-    top: 1.5rem;
+  40% {
+    transform: translate(0);
   }
 }
