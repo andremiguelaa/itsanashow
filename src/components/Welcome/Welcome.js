@@ -11,7 +11,7 @@ const Welcome = ({ setModal }) => (
       <img src={showStripe} alt="line" className="line" />
       <p className="subtitle">We're building something new here!</p>
       <p className="description">
-        Meanwhile know us a little more - follow us in our social media channels.
+        In the meantime, get to know us a bit better and follow us in social media.
         <br />
         If you have any doubt, don't be shy, drop us a line!
         <br />
@@ -19,9 +19,9 @@ const Welcome = ({ setModal }) => (
       </p>
       <Social />
       <p className={classes.lead}>
-        Let the show begin!
-        <br />
         Welcome to itsanashow!
+        <br />
+        Let the fun begin!
       </p>
       <button className="cta" onClick={() => setModal(true)}>
         Get a quote today!

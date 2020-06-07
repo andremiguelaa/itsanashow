@@ -20,7 +20,7 @@ const Modal = ({ modal, setModal }) => (
       <img src={showStripe} alt="line" className="line" />
       <p className="subtitle">Drop us a line</p>
       <p className="description">
-        Tell us a bi about yourself or your business.
+        Tell us a bit about yourself or your business.
         <br />
         We will come back to you asap.
       </p>
