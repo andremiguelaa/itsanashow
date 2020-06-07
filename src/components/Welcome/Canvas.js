@@ -172,7 +172,7 @@ const setup = (canvas) => {
 const reset = (canvas) => {
   hue = colorConfig.baseHue;
   w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
+  h = canvas.height = document.documentElement.clientHeight;
   spikeLength = w * config.widthToSpikeLengthRatio;
   A = w / 2.2;
   B = h / 2.2;
