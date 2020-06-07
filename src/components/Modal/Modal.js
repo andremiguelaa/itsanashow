@@ -1,4 +1,5 @@
 import React from 'react';
+import Social from 'components/Social/Social';
 import showStripe from 'assets/showStripe.svg';
 import classes from './Modal.module.scss';
 
@@ -34,48 +35,7 @@ const Modal = ({ modal, setModal }) => (
       </p>
       <div className={classes.footer}>
         <p className={classes.slogan}>Let's get social!</p>
-        <ul className="social">
-          <li className="socialItem">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="socialIcon"
-            >
-              <span className="icon-linkedin2"></span>
-            </a>
-          </li>
-          <li className="socialItem">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="socialIcon"
-            >
-              <span className="icon-behance"></span>
-            </a>
-          </li>
-          <li className="socialItem">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="socialIcon"
-            >
-              <span className="icon-instagram"></span>
-            </a>
-          </li>
-          <li className="socialItem">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="socialIcon"
-            >
-              <span className="icon-facebook"></span>
-            </a>
-          </li>
-        </ul>
+        <Social />
       </div>
     </section>
   </div>

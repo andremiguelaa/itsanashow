@@ -1,5 +1,6 @@
 import React from 'react';
 import showStripe from 'assets/showStripe.svg';
+import Social from 'components/Social/Social';
 import Canvas from './Canvas';
 import classes from './Welcome.module.scss';
 
@@ -15,48 +16,7 @@ const Welcome = ({ setModal }) => (
       <br />
       Be our partner, be our client, be part of the show.
     </p>
-    <ul className="social">
-      <li className="socialItem">
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="socialIcon"
-        >
-          <span className="icon-linkedin2"></span>
-        </a>
-      </li>
-      <li className="socialItem">
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="socialIcon"
-        >
-          <span className="icon-behance"></span>
-        </a>
-      </li>
-      <li className="socialItem">
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="socialIcon"
-        >
-          <span className="icon-instagram"></span>
-        </a>
-      </li>
-      <li className="socialItem">
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="socialIcon"
-        >
-          <span className="icon-facebook"></span>
-        </a>
-      </li>
-    </ul>
+    <Social />
     <p className={classes.lead}>
       Let the show begin!
       <br />

@@ -1,0 +1,28 @@
+.social {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 2.375rem;
+  .socialItem {
+    padding: 0 12px;
+    .socialIcon {
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      border: 3px solid #2a34ff;
+      text-align: center;
+      box-sizing: border-box;
+      border-radius: 50%;
+      line-height: 32px;
+      text-decoration: none;
+      color: #2a34ff;
+      &:hover {
+        background-color: #2a34ff;
+        color: #e4f9fe;
+        transition: background-color 0.2s linear, color 0.2s linear;
+      }
+    }
+  }
+}
