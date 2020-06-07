@@ -34,8 +34,8 @@
     }
     .close {
       position: absolute;
-      top: 1.75rem;
-      right: 1.75rem;
+      top: 1.5rem;
+      right: 1.5rem;
       cursor: pointer;
       display: block;
       width: 40px;
@@ -44,10 +44,11 @@
       border: none;
       padding: 0;
       background-color: transparent;
+      transform: scale(0.75);
       @include mobile {
         top: 0.5rem;
         right: 0.5rem;
-        transform: scale(0.75);
+        transform: scale(0.5);
       }
       > div {
         position: relative;
