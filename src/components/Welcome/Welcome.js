@@ -1,5 +1,6 @@
 import React from 'react';
-import showStripe from 'assets/show_stripe.svg';
+import showStripe from 'assets/showStripe.svg';
+import Canvas from './Canvas';
 import classes from './Welcome.module.scss';
 
 const Welcome = ({ setModal }) => (
@@ -64,6 +65,7 @@ const Welcome = ({ setModal }) => (
     <button className="cta" onClick={() => setModal(true)}>
       Get a quote today!
     </button>
+    <Canvas />
   </section>
 );
 export default Welcome;

@@ -1,5 +1,5 @@
 import React from 'react';
-import showStripe from 'assets/show_stripe.svg';
+import showStripe from 'assets/showStripe.svg';
 import classes from './Modal.module.scss';
 
 const Modal = ({ modal, setModal }) => (
