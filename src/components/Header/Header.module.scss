@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .header {
   box-sizing: border-box;
   padding: 2rem;
@@ -6,9 +8,22 @@
   left: 0;
   width: 100%;
   z-index: 100;
+  @include mobile {
+    padding: 1rem;
+  }
   .logo {
     width: 200px;
     max-width: 40vw;
+    @include mobile {
+      display: none;
+    }
+  }
+  .miniLogo {
+    width: 46px;
+    display: none;
+    @include mobile {
+      display: block;
+    }
   }
   .cta {
     position: absolute;
@@ -17,6 +32,9 @@
     transform: translateY(-50%);
     &:after {
       background: #294bca;
+    }
+    @include mobile {
+      display: none;
     }
   }
 }

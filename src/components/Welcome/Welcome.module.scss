@@ -1,10 +1,16 @@
 .welcome {
   margin-top: 100vh;
   text-align: center;
-  padding: 5.125rem 1rem 25vw;
+  padding-top: 5.125rem;
   background-color: #08142d;
   position: relative;
   z-index: 1;
+  @media (orientation: portrait) {
+    margin-top: 100vw;
+  }
+  .wrapper {
+    padding: 0 1rem
+  }
   .lead {
     font-weight: bold;
     font-size: 1.5625rem;
@@ -13,9 +19,7 @@
   }
   .canvasWrapper {
     height: 25vw;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative;
     overflow: hidden;
     width: 100%;
     .canvas {

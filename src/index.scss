@@ -1,5 +1,10 @@
+@import 'mixins.scss';
+
 html {
   font-size: 16px;
+  @include mobile {
+    font-size: 13px;
+  }
 }
 
 body {

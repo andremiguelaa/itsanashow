@@ -1,0 +1,7 @@
+$tablet: 768px;
+
+@mixin mobile {
+  @media screen and (max-width: $tablet - 1px) {
+    @content;
+  }
+}

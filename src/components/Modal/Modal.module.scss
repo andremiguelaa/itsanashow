@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .modalWrapper {
     position: fixed;
     top: 50%;
@@ -26,6 +28,9 @@
     text-align: center;
     color: #08142d;
     padding-top: 90px;
+    @include mobile {
+      border: 1rem solid #2a34ff;
+    }
     .close {
       position: absolute;
       top: 1.75rem;
@@ -38,6 +43,11 @@
       border: none;
       padding: 0;
       background-color: transparent;
+      @include mobile {
+        top: 0.5rem;
+        right: 0.5rem;
+        transform: scale(0.75);
+      }
       > div {
         position: relative;
       }
@@ -120,6 +130,9 @@
         text-decoration: none;
         transition: color 0.2s linear;
         cursor: url('./hand.png'), auto;
+        @include mobile {
+          font-size: 1.7rem;
+        }
         &:hover {
           color: #fe00ae;
           text-decoration: underline;
@@ -133,7 +146,7 @@
     }
     .footer {
       position: absolute;
-      bottom: 90px;
+      bottom: 5rem;
       width: 100%;
     }
   }

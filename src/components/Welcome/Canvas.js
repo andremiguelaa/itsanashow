@@ -202,7 +202,7 @@ const clear = () => {
 
 const drawText = () => {
   ctx.save();
-  let fontSize = w * 0.15;
+  let fontSize = w * 0.2;
   ctx.font = 'bold ' + fontSize + 'px Montserrat, Helvetica, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';

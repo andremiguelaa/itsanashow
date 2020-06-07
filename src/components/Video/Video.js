@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import video from 'assets/video.mp4';
+import frame from 'assets/frame.png';
 import classes from './Video.module.scss';
 
 const Video = () => {
@@ -13,8 +14,10 @@ const Video = () => {
   );
   return (
     <section className={classes.video} style={{ top: `-${videoScroll}px` }}>
-      <video autoPlay loop muted src={video}></video>
-      <div className={`${classes.scroll} ${videoScroll ? classes.hidden : ''}`}></div>
+      <video autoPlay loop muted src={video} poster={frame}></video>
+      <div
+        className={`${classes.scroll} ${videoScroll ? classes.hidden : ''}`}
+      ></div>
     </section>
   );
 };
