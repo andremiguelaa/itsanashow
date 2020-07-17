@@ -1,0 +1,135 @@
+@import 'mixins.scss';
+
+.video {
+  height: 50vh;
+  overflow: hidden;
+  video {
+    max-width: 100%;
+  }
+}
+
+.we {
+  background-color: #f2f2f2;
+  color: #08142d;
+  text-align: center;
+  padding: 5.625rem 1rem;
+  .wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  :global(.description) {
+    margin-bottom: 1rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.what {
+  background-color: #08142d;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 5.625rem 1rem;
+  .wrapper {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .services {
+    margin: 3.3rem auto 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    max-width: 1170px;
+    text-align: left;
+    @include tablet {
+      max-width: 585px;
+    }
+    
+    & > li {
+      width: 20%;
+      display: inline-block;
+      vertical-align: top;
+      @include tablet {
+        width: 45%;
+      }
+      @include mobile {
+        width: 100%;
+        text-align: center;
+      }
+      & + li {
+        margin-left: 6.66%;
+        @include tablet {
+          margin-left: 10%;
+          &:nth-child(3n){
+            margin-left: 0;
+          }
+          &:nth-child(n+3){
+            margin-top: 2rem;
+          }
+        }
+        @include mobile {
+          margin-left: 0;
+          &:nth-child(n+1){
+            margin-top: 2rem;
+          }
+        }
+      }
+      .title {
+        font-size: 1.125rem;
+        &::after {
+          content: '';
+          display: block;
+          width: 1rem;
+          height: 2px;
+          background-color: #fe00ae;
+          margin-top: 1rem;
+          @include mobile {
+            margin: 1rem auto 0;
+          }
+        }
+      }
+      .list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        line-height: 2;
+      }
+    }
+  }
+}
+
+.clients{
+  background-color: #f2f2f2;
+  color: #08142d;
+  text-align: center;
+  padding: 5.625rem 1rem;
+  .wrapper {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .logos {
+    margin: 2rem auto 0 ;
+    max-width: 800px;
+    padding: 0;
+    list-style: none;
+    & > li {
+      display: inline-block;
+      vertical-align: middle;
+      width: 33.33%;
+      margin-top: 1.5rem;
+      box-sizing: border-box;
+      padding: 0 1rem;
+      @include mobile {
+        width: 50%;
+      }
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
