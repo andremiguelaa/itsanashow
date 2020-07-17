@@ -22,11 +22,10 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    margin-top: 5rem;
     .canvas {
       position: absolute;
       left: 0;
-      top: 50%;
+      top: 75%;
       transform: translateY(-50%);
       display: block;
     }

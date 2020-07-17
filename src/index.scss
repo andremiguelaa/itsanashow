@@ -118,11 +118,12 @@ body {
     transform: translateX(calc(20%)) translateY(10%) rotate(-45deg);
     transition: transform 0.3s;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     outline: 2px solid #e4f9fe;
     transition: outline 0.2s linear;
-  }
-  &:hover::after {
-    transform: translateY(10%) translateX(-25px) rotate(-45deg);
+    &::after {
+      transform: translateY(10%) translateX(-25px) rotate(-45deg);
+    }
   }
 }

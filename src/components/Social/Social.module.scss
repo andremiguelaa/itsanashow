@@ -18,10 +18,14 @@
       line-height: 31px;
       text-decoration: none;
       color: #2a34ff;
-      &:hover {
+      &:hover,
+      &:focus {
+        transition: background-color 0.2s linear, color 0.2s linear;
         background-color: #2a34ff;
         color: #e4f9fe;
-        transition: background-color 0.2s linear, color 0.2s linear;
+      }
+      &:focus {
+        outline: none;
       }
     }
   }

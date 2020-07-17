@@ -15,7 +15,7 @@ const Welcome = ({ setModal }) => (
         <br />
         If you have any doubt, don't be shy, drop us a line!
         <br />
-        Be our partner, be our client, be part of the show.
+        <strong>Be our partner, be our client, be part of the show.</strong>
       </p>
       <Social />
       <p className={classes.lead}>
