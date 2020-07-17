@@ -1,6 +1,6 @@
 {
-    "name": "itsanashow",
-    "short_name": "itsanashow",
+    "name": "Itsanashow Studio",
+    "short_name": "Itsanashow Studio",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#2a34ff",
-    "background_color": "#2a34ff",
+    "theme_color": "#2139f8",
+    "background_color": "#2139f8",
     "display": "standalone"
 }
