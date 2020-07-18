@@ -27,6 +27,15 @@
       &:focus {
         outline: none;
       }
+      &.inverted {
+        border: 3px solid #e4f9fe;
+        color: #e4f9fe;
+        &:hover,
+        &:focus {
+          background-color: #e4f9fe;
+          color: #2a34ff;
+        }
+      }
     }
   }
 }

@@ -1,20 +1,26 @@
 import React from 'react';
 
+import Video from 'components/Video/Video';
 import Social from 'components/Social/Social';
 
-import video from 'assets/video.mp4';
-import frame from 'assets/frame.png';
+import video from 'assets/us.mp4';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
+
+import novartis from 'assets/clients/novartis.svg';
+import TIpeople from 'assets/clients/TIpeople.svg';
+import gulbenkian from 'assets/clients/gulbenkian.svg';
+import rtp from 'assets/clients/rtp.svg';
+import uniplaces from 'assets/clients/uniplaces.svg';
+import SNS from 'assets/clients/SNS.svg';
+
 import logo from 'assets/logo.svg';
 
 import classes from './Us.module.scss';
 
-const Us = () => (
+const Us = ({ setModal }) => (
   <>
-    <section className={classes.video}>
-      <video autoPlay loop muted src={video} poster={frame}></video>
-    </section>
+    <Video soon={false} scroll={false} video={video} />
     <section className={classes.we}>
       <div className={classes.wrapper}>
         <h1 className="title">Who we are</h1>
@@ -119,37 +125,50 @@ const Us = () => (
       </div>
       <ul className={classes.logos}>
         <li>
-          <img src="http://lorempixel.com/173/30/" alt="logo" />
+          <img width={173} src={novartis} alt="Novartis" />
         </li>
         <li>
-          <img src="http://lorempixel.com/80/42/" alt="logo" />
+          <img width={80} src={TIpeople} alt="TIPeople" />
         </li>
         <li>
-          <img src="http://lorempixel.com/196/29/" alt="logo" />
+          <img width={196} src={gulbenkian} alt="Gulbenkian" />
         </li>
         <li>
-          <img src="http://lorempixel.com/217/20/" alt="logo" />
+          <img width={217} src={rtp} alt="RTP" />
         </li>
         <li>
-          <img src="http://lorempixel.com/126/32/" alt="logo" />
+          <img width={126} src={uniplaces} alt="Uniplaces" />
         </li>
         <li>
-          <img src="http://lorempixel.com/211/32/" alt="logo" />
+          <img width={211} src={SNS} alt="SNS" />
         </li>
       </ul>
     </section>
     <section className={classes.workTogether}>
-      <h1>Let's work together</h1>
+      <h1 className="title">Let's work together</h1>
       <img src={showStripe} alt="line" className="line" />
-      <p className={classes.subtitle}>
+      <p className="subtitle">
         We're always thinking about the future of Animation
       </p>
-      <button>Let's Talk</button>
-      <Social />
+      <button
+        className="cta"
+        onClick={() => {
+          setModal(true);
+        }}
+      >
+        Let's Talk
+      </button>
+      <Social
+        inverted
+        className={classes.social}
+        itemClassName={classes.socialItem}
+      />
     </section>
     <footer>
       <img className={classes.logo} src={logo} alt="logo" />
-      &copy; Itsanashow Creative Studio, Lda 2020. All rights reserved.
+      <span>
+        &copy; Itsanashow Creative Studio, Lda 2020. All rights reserved.
+      </span>
     </footer>
   </>
 );

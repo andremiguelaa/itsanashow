@@ -13,7 +13,7 @@ const App = () => {
       <Header setModal={setModal} />
       <Switch>
         <Route path="/us">
-          <Us />
+          <Us setModal={setModal} />
         </Route>
         <Route path="/">
           <Home setModal={setModal} />

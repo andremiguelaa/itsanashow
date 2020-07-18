@@ -1,14 +1,7 @@
 @import 'mixins.scss';
 
-.video {
-  height: 50vh;
-  overflow: hidden;
-  video {
-    max-width: 100%;
-  }
-}
-
 .we {
+  margin-top: 100vh;
   background-color: #f2f2f2;
   color: #08142d;
   text-align: center;
@@ -46,7 +39,7 @@
     @include tablet {
       max-width: 585px;
     }
-    
+
     & > li {
       width: 20%;
       display: inline-block;
@@ -62,16 +55,16 @@
         margin-left: 6.66%;
         @include tablet {
           margin-left: 10%;
-          &:nth-child(3n){
+          &:nth-child(3n) {
             margin-left: 0;
           }
-          &:nth-child(n+3){
+          &:nth-child(n + 3) {
             margin-top: 2rem;
           }
         }
         @include mobile {
           margin-left: 0;
-          &:nth-child(n+1){
+          &:nth-child(n + 1) {
             margin-top: 2rem;
           }
         }
@@ -102,7 +95,7 @@
   }
 }
 
-.clients{
+.clients {
   background-color: #f2f2f2;
   color: #08142d;
   text-align: center;
@@ -113,7 +106,7 @@
     padding: 0 3rem;
   }
   .logos {
-    margin: 2rem auto 0 ;
+    margin: 2rem auto 0;
     max-width: 800px;
     padding: 0;
     list-style: none;
@@ -130,6 +123,63 @@
       img {
         max-width: 100%;
       }
+    }
+  }
+}
+
+.workTogether {
+  border: 1.5rem solid #fe00ae;
+  background-color: #2139f8;
+  padding: 3.5rem 4.8rem;
+  position: relative;
+  @include mobile {
+    text-align: center;
+    padding: 3.5rem 3rem;
+  }
+  :global(.subtitle) {
+    max-width: 540px;
+    margin-bottom: 3.5rem;
+    @include tablet {
+      max-width: 500px;
+    }
+  }
+  .social {
+    position: absolute;
+    right: 5rem;
+    top: 3.5rem;
+    bottom: 3.5rem;
+    margin: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    @include mobile {
+      position: static;
+      flex-direction: row;
+      margin-top: 5rem;
+      justify-content: center;
+    }
+    .socialItem {
+      padding: 0;
+      @include mobile {
+        padding: 0 0.75rem;
+      }
+    }
+  }
+}
+
+footer {
+  padding: 1.5rem 2rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include mobile {
+    flex-direction: column;
+    text-align: center;
+  }
+  .logo {
+    width: 200px;
+    @include mobile {
+      margin-bottom: 2rem;
     }
   }
 }

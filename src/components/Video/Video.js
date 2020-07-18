@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import anime from 'animejs';
-import video from 'assets/video.mp4';
-import frame from 'assets/frame.png';
 import classes from './Video.module.scss';
 
 const startAnimation = (selector) =>
@@ -16,7 +14,7 @@ const startAnimation = (selector) =>
     loop: true,
   });
 
-const Video = () => {
+const Video = ({ video, frame, soon = true, scroll = true }) => {
   const [videoScroll, setVideoScroll] = useState(0);
   useScrollPosition(
     ({ currPos }) => setVideoScroll(currPos.y / 3),
@@ -29,26 +27,32 @@ const Video = () => {
   }, []);
 
   return (
-    <section className={classes.video} style={{ top: `-${videoScroll}px` }}>
+    <section className={classes.video} style={{ transform: `translateY(-${videoScroll}px` }}>
       <video autoPlay loop muted src={video} poster={frame}></video>
-      <div className={classes.soon}>
-        {'Coming soon'.split('').map((letter, index) => (
-          <div key={`${letter}-${index}`} className={classes.letter}>
-            {letter !== ' ' ? letter : <>&nbsp;</>}
+      {soon && (
+        <>
+          <div className={classes.soon}>
+            {'Coming soon'.split('').map((letter, index) => (
+              <div key={`${letter}-${index}`} className={classes.letter}>
+                {letter !== ' ' ? letter : <>&nbsp;</>}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <link
-        href="https://fonts.googleapis.com/css?family=Unica+One"
-        rel="stylesheet"
-      ></link>
-      <div
-        className={`${classes.scrollContainer} ${
-          videoScroll ? classes.hidden : ''
-        }`}
-      >
-        <div className={classes.scroll}></div>
-      </div>
+          <link
+            href="https://fonts.googleapis.com/css?family=Unica+One"
+            rel="stylesheet"
+          ></link>
+        </>
+      )}
+      {scroll && (
+        <div
+          className={`${classes.scrollContainer} ${
+            videoScroll ? classes.hidden : ''
+          }`}
+        >
+          <div className={classes.scroll}></div>
+        </div>
+      )}
     </section>
   );
 };
