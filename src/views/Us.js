@@ -1,8 +1,13 @@
 import React from 'react';
+
+import Social from 'components/Social/Social';
+
 import video from 'assets/video.mp4';
 import frame from 'assets/frame.png';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
+import logo from 'assets/logo.svg';
+
 import classes from './Us.module.scss';
 
 const Us = () => (
@@ -133,6 +138,19 @@ const Us = () => (
         </li>
       </ul>
     </section>
+    <section className={classes.workTogether}>
+      <h1>Let's work together</h1>
+      <img src={showStripe} alt="line" className="line" />
+      <p className={classes.subtitle}>
+        We're always thinking about the future of Animation
+      </p>
+      <button>Let's Talk</button>
+      <Social />
+    </section>
+    <footer>
+      <img className={classes.logo} src={logo} alt="logo" />
+      &copy; Itsanashow Creative Studio, Lda 2020. All rights reserved.
+    </footer>
   </>
 );
 
