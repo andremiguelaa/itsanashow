@@ -161,6 +161,25 @@
       max-width: 500px;
     }
   }
+  .animation {
+    cursor: url('../assets/question.png'), auto;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      background-color: #fe00ae;
+      width: 100%;
+    }
+    .letter {
+      pointer-events: none;
+      &.changing {
+        opacity: 0.3;
+      }
+    }
+  }
   .social {
     position: absolute;
     right: 5rem;
