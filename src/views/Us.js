@@ -3,9 +3,15 @@ import React from 'react';
 import Video from 'components/Video/Video';
 import Social from 'components/Social/Social';
 
-import video from 'assets/us.mp4';
+import usVideo from 'assets/us.mp4';
+import usFrame from 'assets/usFrame.jpg';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
+
+import video from 'assets/skills/video.svg';
+import brand from 'assets/skills/brand.svg';
+import content from 'assets/skills/content.svg';
+import graphics from 'assets/skills/graphics.svg';
 
 import novartis from 'assets/clients/novartis.svg';
 import TIpeople from 'assets/clients/TIpeople.svg';
@@ -20,7 +26,13 @@ import classes from './Us.module.scss';
 
 const Us = ({ setModal }) => (
   <>
-    <Video soon={false} scroll={false} video={video} />
+    <Video
+      soon={false}
+      scroll={false}
+      video={usVideo}
+      frame={usFrame}
+      className={classes.video}
+    />
     <section className={classes.we}>
       <div className={classes.wrapper}>
         <h1 className="title">Who we are</h1>
@@ -59,7 +71,7 @@ const Us = ({ setModal }) => (
       </div>
       <ul className={classes.services}>
         <li>
-          <img src="" alt="" />
+          <img className={classes.skill} src={video} alt="video" />
           <h1 className={classes.title}>Video</h1>
           <ul className={classes.list}>
             <li>Animation</li>
@@ -74,7 +86,7 @@ const Us = ({ setModal }) => (
           </ul>
         </li>
         <li>
-          <img src="" alt="" />
+          <img className={classes.skill} src={graphics} alt="graphics" />
           <h1 className={classes.title}>Graphics</h1>
           <ul className={classes.list}>
             <li>Style Frames</li>
@@ -89,7 +101,7 @@ const Us = ({ setModal }) => (
           </ul>
         </li>
         <li>
-          <img src="" alt="" />
+          <img className={classes.skill} src={brand} alt="brand" />
           <h1 className={classes.title}>Brand</h1>
           <ul className={classes.list}>
             <li>Brand Development</li>
@@ -102,7 +114,7 @@ const Us = ({ setModal }) => (
           </ul>
         </li>
         <li>
-          <img src="" alt="" />
+          <img className={classes.skill} src={content} alt="content" />
           <h1 className={classes.title}>Content</h1>
           <ul className={classes.list}>
             <li>Script Development</li>

@@ -1,7 +1,17 @@
 @import 'mixins.scss';
 
+.video {
+  height: 40vw;
+  @media (orientation: portrait) {
+    height: 100vw;
+  }
+}
+
 .we {
-  margin-top: 100vh;
+  margin-top: 40vw;
+  @media (orientation: portrait) {
+    margin-top: 100vw;
+  }
   background-color: #f2f2f2;
   color: #08142d;
   text-align: center;
@@ -39,7 +49,6 @@
     @include tablet {
       max-width: 585px;
     }
-
     & > li {
       width: 20%;
       display: inline-block;
@@ -65,9 +74,13 @@
         @include mobile {
           margin-left: 0;
           &:nth-child(n + 1) {
-            margin-top: 2rem;
+            margin-top: 4rem;
           }
         }
+      }
+      .skill {
+        width: 60px;
+        height: 60px;
       }
       .title {
         font-size: 1.125rem;

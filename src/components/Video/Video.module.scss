@@ -11,10 +11,22 @@
   @media (orientation: portrait) {
     height: 100vw;
   }
+  .poster,
   video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  video {
+    @media (hover: none) and (pointer: coarse) {
+      display: none;
+    }
+  }
+  .poster {
+    display: none;
+    @media (hover: none) and (pointer: coarse) {
+      display: block;
+    }
   }
   .soon {
     position: absolute;

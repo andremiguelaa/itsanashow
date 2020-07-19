@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import anime from 'animejs';
+import classnames from 'classnames';
+
 import classes from './Video.module.scss';
 
 const startAnimation = (selector) =>
@@ -14,7 +16,7 @@ const startAnimation = (selector) =>
     loop: true,
   });
 
-const Video = ({ video, frame, soon = true, scroll = true }) => {
+const Video = ({ video, frame, soon = true, scroll = true, className }) => {
   const [videoScroll, setVideoScroll] = useState(0);
   useScrollPosition(
     ({ currPos }) => setVideoScroll(currPos.y / 3),
@@ -27,8 +29,12 @@ const Video = ({ video, frame, soon = true, scroll = true }) => {
   }, []);
 
   return (
-    <section className={classes.video} style={{ transform: `translateY(-${videoScroll}px` }}>
+    <section
+      className={classnames(classes.video, className)}
+      style={{ transform: `translateY(-${videoScroll}px` }}
+    >
       <video autoPlay loop muted src={video} poster={frame}></video>
+      <img className={classes.poster} src={frame} alt="poster"/>
       {soon && (
         <>
           <div className={classes.soon}>
