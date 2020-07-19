@@ -3,8 +3,7 @@ import React from 'react';
 import Video from 'components/Video/Video';
 import Social from 'components/Social/Social';
 
-import usVideo from 'assets/us.mp4';
-import usFrame from 'assets/usFrame.jpg';
+import usFrame from 'assets/us.gif';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
 
@@ -29,7 +28,6 @@ const Us = ({ setModal }) => (
     <Video
       soon={false}
       scroll={false}
-      video={usVideo}
       frame={usFrame}
       className={classes.video}
     />
@@ -74,14 +72,14 @@ const Us = ({ setModal }) => (
           <img className={classes.skill} src={video} alt="video" />
           <h1 className={classes.title}>Video</h1>
           <ul className={classes.list}>
-            <li>Animation</li>
-            <li>2D &amp; 3D</li>
+            <li>2D &amp; 3D Animation</li>
             <li>App Tutorials</li>
             <li>Explainer Videos</li>
             <li>Commercials</li>
             <li>Title Sequences</li>
             <li>Manifesto Videos</li>
-            <li>Social Posts</li>
+            <li>Live-Action Production</li>
+            <li>Social Media</li>
             <li>Gifs</li>
           </ul>
         </li>
@@ -89,9 +87,9 @@ const Us = ({ setModal }) => (
           <img className={classes.skill} src={graphics} alt="graphics" />
           <h1 className={classes.title}>Graphics</h1>
           <ul className={classes.list}>
+            <li>2D &amp; 3D Illustration</li>
             <li>Style Frames</li>
             <li>Storyboarding</li>
-            <li>Illustration</li>
             <li>Infographics</li>
             <li>Iconography</li>
             <li>UI/UX</li>
@@ -104,13 +102,13 @@ const Us = ({ setModal }) => (
           <img className={classes.skill} src={brand} alt="brand" />
           <h1 className={classes.title}>Brand</h1>
           <ul className={classes.list}>
-            <li>Brand Development</li>
+            <li>Brand Strategy</li>
+            <li>Brand Identity</li>
+            <li>Content Strategy</li>
             <li>Logo &amp; ID Systems</li>
             <li>Logo Animation</li>
             <li>Brand Style Guides</li>
             <li>Collateral, Print &amp; Packaging</li>
-            <li>Content Strategy</li>
-            <li>Brand Identity</li>
           </ul>
         </li>
         <li>
@@ -122,7 +120,6 @@ const Us = ({ setModal }) => (
             <li>UX Writing</li>
             <li>Copywriting</li>
             <li>Presentation Design</li>
-            <li>Live-Action Production</li>
             <li>Photography</li>
             <li>Creative Direction</li>
           </ul>

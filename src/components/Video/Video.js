@@ -35,7 +35,7 @@ const Video = ({ video, frame, soon = true, scroll = true, className }) => {
       className={classnames(classes.video, className)}
       style={{ transform: `translateY(-${videoScroll}px` }}
     >
-      {isTouch ? (
+      {isTouch || !video ? (
         <img className={classes.poster} src={frame} alt="poster" />
       ) : (
         <video autoPlay loop muted src={video} poster={frame}></video>
