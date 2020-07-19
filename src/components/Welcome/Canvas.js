@@ -271,9 +271,10 @@ const Canvas = () => {
   useEffect(() => {
     setup(canvas.current);
     draw(1);
+    const canvasElement = canvas.current;
     return (() => {
       window.removeEventListener('resize', reset);
-      canvas.current.removeEventListener('mousemove', mousemove);
+      canvasElement.removeEventListener('mousemove', mousemove);
       window.cancelAnimationFrame(animationId);
     });
   }, []);
