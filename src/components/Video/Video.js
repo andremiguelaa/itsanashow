@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import anime from 'animejs';
 import classnames from 'classnames';
+import isTouchDevice from 'is-touch-device';
 
 import classes from './Video.module.scss';
 
@@ -17,6 +18,7 @@ const startAnimation = (selector) =>
   });
 
 const Video = ({ video, frame, soon = true, scroll = true, className }) => {
+  const isTouch = isTouchDevice();
   const [videoScroll, setVideoScroll] = useState(0);
   useScrollPosition(
     ({ currPos }) => setVideoScroll(currPos.y / 3),
@@ -33,8 +35,11 @@ const Video = ({ video, frame, soon = true, scroll = true, className }) => {
       className={classnames(classes.video, className)}
       style={{ transform: `translateY(-${videoScroll}px` }}
     >
-      <video autoPlay loop muted src={video} poster={frame}></video>
-      <img className={classes.poster} src={frame} alt="poster"/>
+      {isTouch ? (
+        <img className={classes.poster} src={frame} alt="poster" />
+      ) : (
+        <video autoPlay loop muted src={video} poster={frame}></video>
+      )}
       {soon && (
         <>
           <div className={classes.soon}>

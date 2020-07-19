@@ -17,17 +17,6 @@
     height: 100%;
     object-fit: cover;
   }
-  video {
-    @media (hover: none) and (pointer: coarse) {
-      display: none;
-    }
-  }
-  .poster {
-    display: none;
-    @media (hover: none) and (pointer: coarse) {
-      display: block;
-    }
-  }
   .soon {
     position: absolute;
     font-weight: 300;
