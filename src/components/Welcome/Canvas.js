@@ -91,6 +91,8 @@ class Vector {
   }
 }
 
+let animationId;
+
 const config = {
   text: 'welcome',
   widthToSpikeLengthRatio: 0.034,
@@ -190,7 +192,7 @@ const mousemove = (event) => {
 
 const draw = (now) => {
   clear();
-  requestAnimationFrame(draw);
+  animationId = window.requestAnimationFrame(draw);
   updateParticles();
   updatePlanets();
   tick = now / 50;
@@ -269,6 +271,11 @@ const Canvas = () => {
   useEffect(() => {
     setup(canvas.current);
     draw(1);
+    return (() => {
+      window.removeEventListener('resize', reset);
+      canvas.current.removeEventListener('mousemove', mousemove);
+      window.cancelAnimationFrame(animationId);
+    });
   }, []);
   return (
     <div className={classes.canvasWrapper}>
