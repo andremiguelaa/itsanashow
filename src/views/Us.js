@@ -154,19 +154,21 @@ const Us = ({ setModal }) => (
       </ul>
     </section>
     <section className={classes.workTogether}>
-      <h1 className="title">Let's work together</h1>
-      <img src={showStripe} alt="line" className="line" />
-      <p className="subtitle">
-        We're always thinking about the future of Animation
-      </p>
-      <button
-        className="cta"
-        onClick={() => {
-          setModal(true);
-        }}
-      >
-        Let's Talk
-      </button>
+      <div className={classes.content}>
+        <h1 className="title">Let's work together</h1>
+        <img src={showStripe} alt="line" className="line" />
+        <p className="subtitle">
+          We're always thinking about the future of Animation
+        </p>
+        <button
+          className="cta"
+          onClick={() => {
+            setModal(true);
+          }}
+        >
+          Let's Talk
+        </button>
+      </div>
       <Social
         inverted
         className={classes.social}

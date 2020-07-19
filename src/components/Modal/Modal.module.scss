@@ -32,6 +32,19 @@
   @include mobile {
     border: 1rem solid #2a34ff;
   }
+  &::before {
+    content: '';
+    position: absolute;
+    height: 72%;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background-color: #DCF2F9;
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    @include mobile {
+      height: 50%;
+    }
+  }
   .close {
     position: absolute;
     top: 1.5rem;
