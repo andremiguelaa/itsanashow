@@ -41,7 +41,7 @@
     &:last-of-type {
       margin-bottom: 0;
       @include mobile {
-        strong{
+        strong {
           display: block;
         }
       }
@@ -224,10 +224,10 @@
     z-index: 1;
   }
   :global(.subtitle) {
-    max-width: 540px;
+    max-width: 595px;
     margin-bottom: 4.9rem;
     @include tablet {
-      max-width: 500px; 
+      max-width: 500px;
     }
     @include mobile {
       max-width: 280px;
@@ -256,6 +256,11 @@
       pointer-events: none;
       &.changing {
         opacity: 0.3;
+      }
+      &.hidden {
+        opacity: 0;
+        width: 0;
+        display: inline-block;
       }
     }
   }

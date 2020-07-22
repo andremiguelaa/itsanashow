@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useIsVisible } from 'react-is-visible';
 import classnames from 'classnames';
 
@@ -50,15 +50,32 @@ const alpha = [
   'S',
 ];
 
+const wordList = [
+  'Animation',
+  'UX/UI',
+  'Branding',
+  'Storytelling',
+  'Video',
+  'Illustration',
+  'Filmmaking',
+];
+
 const Us = ({ setModal }) => {
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
+  const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
 
-  const animateWord = useCallback(() => {
+  const animateWord = () => {
     if (animatingWord) {
       return;
     }
+    const nextWordIndex = nextAnimationWordIndex;
+    setNextAnimationWordIndex(
+      nextAnimationWordIndex < wordList.length - 1
+        ? nextAnimationWordIndex + 1
+        : 0
+    );
     let element = toAnimateWord.current;
     setAnimatingWord(true);
     const initialWord = element.innerText;
@@ -75,8 +92,12 @@ const Us = ({ setModal }) => {
         }, delay * index + i * delay);
       }
       setTimeout(() => {
-        mixedWord[index] = `<span class="${classnames(classes.letter)}">${
-          initialWord[index]
+        mixedWord[index] = `<span class="${classnames(classes.letter, {
+          [classes.hidden]: !wordList[nextWordIndex].split('')[index],
+        })}">${
+          wordList[nextWordIndex].split('')[index]
+            ? wordList[nextWordIndex].split('')[index]
+            : '&nbsp;'
         }</span>`;
         element.innerHTML = mixedWord.join('');
         if (index === mixedWord.length - 1) {
@@ -84,14 +105,14 @@ const Us = ({ setModal }) => {
         }
       }, delay * index + delay * 6);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toAnimateWord]);
+  };
 
   useEffect(() => {
     if (isToAnimateWordVisible && toAnimateWord) {
       animateWord(toAnimateWord.current);
     }
-  }, [isToAnimateWordVisible, toAnimateWord, animateWord]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isToAnimateWordVisible, toAnimateWord]);
 
   return (
     <>
@@ -107,7 +128,7 @@ const Us = ({ setModal }) => {
           <img src={showStripe} alt="line" className="line" />
           <p className="subtitle">Typical love story here!</p>
           <p className="description">
-            Digital Animator meets Graphic Designer. She loves his moves, he
+            Digital Animator meets Visual Designer. She loves his moves, he
             loves her typography OCD. <strong>And bam!</strong> A match-made in
             digital heaven. Nine years of partnership later (both in life and at
             work) we've decided to bring our own bundle of joy into the world.
@@ -235,7 +256,7 @@ const Us = ({ setModal }) => {
               className={classes.animation}
               onClick={(e) => animateWord()}
             >
-              Animation
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
           </p>
           <button
