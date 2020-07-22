@@ -84,7 +84,7 @@ const Us = ({ setModal }) => {
         }
       }, delay * index + delay * 6);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toAnimateWord]);
 
   useEffect(() => {
@@ -117,7 +117,9 @@ const Us = ({ setModal }) => {
           <p className="description">
             A new, exciting venture with the same unfaltering commitment, the
             same detail-oriented mindset, the same relentless elbow-grease we
-            work into every project. And most important of all...
+            work into every project.
+            <br />
+            And most important of all...
           </p>
           <p className="description">
             The same mad creativity, now <strong>with a kick-ass team!</strong>
@@ -132,7 +134,7 @@ const Us = ({ setModal }) => {
             We love to give shape to beautiful and meaningful stories.
           </p>
           <p className="description">
-            Fast-moving trends require rock-solid core skills.
+            Fast-moving trends require rock-solid core skills.{' '}
             <br />
             Our savoir-faire is broader than you may expect!
           </p>

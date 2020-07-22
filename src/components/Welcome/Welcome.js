@@ -16,7 +16,7 @@ const Welcome = ({ setModal }) => (
         In the meantime, get to know us a bit better and follow us on social
         media.
         <br />
-        If you have any doubt, don't be shy, drop us a line!
+        If you have any doubt, don't be shy, drop us a line!{' '}
         <br />
         <strong>Be our partner, be our client, be part of the show.</strong>
       </p>

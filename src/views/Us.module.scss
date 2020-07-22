@@ -23,11 +23,33 @@
     max-width: 520px;
     margin: 0 auto;
     padding: 0 3rem;
+    @include mobile {
+      padding: 0;
+    }
   }
+
+  :global(.subtitle) {
+    @include mobile {
+      max-width: 250px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
   :global(.description) {
     margin-bottom: 1.2rem;
     &:last-of-type {
       margin-bottom: 0;
+      @include mobile {
+        strong{
+          display: block;
+        }
+      }
+    }
+    @include mobile {
+      max-width: 245px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
@@ -44,7 +66,31 @@
     max-width: 650px;
     margin: 0 auto;
     padding: 0 3rem;
+    @include mobile {
+      padding: 0;
+    }
   }
+
+  :global(.subtitle) {
+    @include mobile {
+      max-width: 290px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  :global(.description) {
+    margin-bottom: 1.2rem;
+    @include mobile {
+      max-width: 245px;
+      margin-left: auto;
+      margin-right: auto;
+      br {
+        display: none;
+      }
+    }
+  }
+
   .services {
     margin: 3.3rem auto 0;
     padding: 0;
@@ -129,7 +175,19 @@
     max-width: 350px;
     margin: 0 auto;
     padding: 0 3rem;
+    @include mobile {
+      padding: 0;
+    }
   }
+
+  :global(.subtitle) {
+    @include mobile {
+      max-width: 290px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
   .logos {
     margin: 2rem auto 0;
     max-width: 800px;
@@ -159,7 +217,7 @@
   position: relative;
   @include mobile {
     text-align: center;
-    padding: 3.5rem 3rem;
+    padding: 3.5rem 1rem;
   }
   .content {
     position: relative;
@@ -169,7 +227,12 @@
     max-width: 540px;
     margin-bottom: 4.9rem;
     @include tablet {
-      max-width: 500px;
+      max-width: 500px; 
+    }
+    @include mobile {
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
   :global(.cta) {
