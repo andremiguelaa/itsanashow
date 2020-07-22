@@ -134,8 +134,7 @@ const Us = ({ setModal }) => {
             We love to give shape to beautiful and meaningful stories.
           </p>
           <p className="description">
-            Fast-moving trends require rock-solid core skills.{' '}
-            <br />
+            Fast-moving trends require rock-solid core skills. <br />
             Our savoir-faire is broader than you may expect!
           </p>
         </div>
@@ -253,6 +252,12 @@ const Us = ({ setModal }) => {
           className={classes.social}
           itemClassName={classes.socialItem}
         />
+        <button
+          className={classes.scroll}
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        ></button>
       </section>
       <footer>
         <img className={classes.logo} src={logo} alt="logo" />

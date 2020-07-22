@@ -294,6 +294,24 @@
       display: none;
     }
   }
+  .scroll {
+    display: none;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 1.5rem;
+    border: none;
+    background-color: transparent;
+    background-image: url('../assets/backtotop.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.75rem;
+    outline: none;
+    @include mobile {
+      display: block;
+    }
+  }
 }
 
 footer {
