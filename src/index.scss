@@ -99,7 +99,8 @@ body {
   color: #f2f2f2;
   border: none;
   background-color: #fe00ae;
-  outline: 3px solid #fe00ae;
+  outline: none;
+  border: 3px solid #fe00ae;
   padding: 0.5rem 1.125rem;
   text-transform: uppercase;
   font-weight: bold;
@@ -124,8 +125,8 @@ body {
   }
   &:hover,
   &:focus {
-    outline: 3px solid #e4f9fe;
-    transition: outline 0.2s linear;
+    border: 3px solid #e4f9fe;
+    transition: border 0.2s linear;
     &::after {
       transform: translateY(10%) translateX(-25px) rotate(-45deg);
     }
@@ -133,7 +134,7 @@ body {
   &.simple {
     background-color: transparent;
     &:hover {
-      outline: 3px solid #f2f2f2;
+      border: 3px solid #f2f2f2;
     }
   }
 }

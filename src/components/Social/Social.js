@@ -31,7 +31,7 @@ const Social = ({ inverted, className, itemClassName }) => (
     </li>
     <li className={classnames(classes.socialItem, itemClassName)}>
       <a
-        href="#"
+        href="https://www.instagram.com/itsanashow.studio/"
         target="_blank"
         rel="noopener noreferrer"
         className={classnames(classes.socialIcon, {
@@ -39,18 +39,6 @@ const Social = ({ inverted, className, itemClassName }) => (
         })}
       >
         <span className="icon-instagram"></span>
-      </a>
-    </li>
-    <li className={classnames(classes.socialItem, itemClassName)}>
-      <a
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={classnames(classes.socialIcon, {
-          [classes.inverted]: inverted,
-        })}
-      >
-        <span className="icon-facebook"></span>
       </a>
     </li>
   </ul>

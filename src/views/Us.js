@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useIsVisible } from 'react-is-visible';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import Video from 'components/Video/Video';
@@ -111,7 +112,7 @@ const Us = ({ setModal }) => {
     if (isToAnimateWordVisible && toAnimateWord) {
       animateWord(toAnimateWord.current);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToAnimateWordVisible, toAnimateWord]);
 
   return (
@@ -281,7 +282,9 @@ const Us = ({ setModal }) => {
         ></button>
       </section>
       <footer>
-        <img className={classes.logo} src={logo} alt="logo" />
+        <Link to="/">
+          <img className={classes.logo} src={logo} alt="logo" />
+        </Link>
         <span>
           &copy; Itsanashow Creative Studio, Lda 2020. All rights reserved.
         </span>

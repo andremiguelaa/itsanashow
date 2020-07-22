@@ -243,17 +243,22 @@
   .animation {
     cursor: url('../assets/question.png'), auto;
     position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 3px;
-      background-color: #fe00ae;
-      width: 100%;
+    display: inline-block;
+    @include tablet {
+      display: block;
     }
     .letter {
       pointer-events: none;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        left: -2px;
+        right: -2px;
+        bottom: 0;
+        height: 3px;
+        background-color: #fe00ae;
+      }
       &.changing {
         opacity: 0.3;
       }
@@ -271,7 +276,7 @@
     bottom: 3.5rem;
     margin: 0;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     z-index: 2;
     @include mobile {
       position: static;
