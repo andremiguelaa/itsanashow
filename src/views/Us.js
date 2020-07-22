@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { useIsVisible } from 'react-is-visible';
 import classnames from 'classnames';
 
@@ -54,10 +54,12 @@ const Us = ({ setModal }) => {
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
-  const animateWord = (element) => {
+
+  const animateWord = useCallback(() => {
     if (animatingWord) {
       return;
     }
+    let element = toAnimateWord.current;
     setAnimatingWord(true);
     const initialWord = element.innerText;
     const mixedWord = initialWord.split('');
@@ -82,12 +84,14 @@ const Us = ({ setModal }) => {
         }
       }, delay * index + delay * 6);
     });
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toAnimateWord]);
+
   useEffect(() => {
     if (isToAnimateWordVisible && toAnimateWord) {
       animateWord(toAnimateWord.current);
     }
-  }, [isToAnimateWordVisible, toAnimateWord]);
+  }, [isToAnimateWordVisible, toAnimateWord, animateWord]);
 
   return (
     <>
@@ -103,7 +107,7 @@ const Us = ({ setModal }) => {
           <img src={showStripe} alt="line" className="line" />
           <p className="subtitle">Typical love story here!</p>
           <p className="description">
-            Motion Animator meets Graphic Designer. She loves his moves, he
+            Digital Animator meets Graphic Designer. She loves his moves, he
             loves her typography OCD. <strong>And bam!</strong> A match-made in
             digital heaven. Nine years of partnership later (both in life and at
             work) we've decided to bring our own bundle of joy into the world.
@@ -194,7 +198,7 @@ const Us = ({ setModal }) => {
       </section>
       <section className={classes.clients}>
         <div className={classes.wrapper}>
-          <h1 className="title">Some select clients</h1>
+          <h1 className="title">Some selected clients</h1>
           <img src={showStripe} alt="line" className="line" />
           <p className="subtitle">Reach goals and keep rocking</p>
         </div>
@@ -228,7 +232,7 @@ const Us = ({ setModal }) => {
             <span
               ref={toAnimateWord}
               className={classes.animation}
-              onClick={(e) => animateWord(e.target)}
+              onClick={(e) => animateWord()}
             >
               Animation
             </span>

@@ -88,13 +88,18 @@ body {
 }
 
 .cta {
+  box-sizing: border-box;
+  vertical-align: top;
+  text-decoration: none;
+  display: inline-block;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   color: #f2f2f2;
-  background-color: #fe00ae;
   border: none;
-  padding: 0.66rem 1.125rem;
+  background-color: #fe00ae;
+  outline: 3px solid #fe00ae;
+  padding: 0.5rem 1.125rem;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.8125rem;
@@ -103,7 +108,6 @@ body {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  outline: 2px solid transparent;
   &:after {
     content: '';
     position: absolute;
@@ -119,10 +123,16 @@ body {
   }
   &:hover,
   &:focus {
-    outline: 2px solid #e4f9fe;
+    outline: 3px solid #e4f9fe;
     transition: outline 0.2s linear;
     &::after {
       transform: translateY(10%) translateX(-25px) rotate(-45deg);
+    }
+  }
+  &.simple {
+    background-color: transparent;
+    &:hover {
+      outline: 3px solid #f2f2f2;
     }
   }
 }

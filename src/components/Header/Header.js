@@ -13,6 +13,7 @@ const Header = ({ setModal }) => {
   useEffect(() => {
     setPage(location.pathname);
     setMobileMenu(false);
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   return (
@@ -35,7 +36,9 @@ const Header = ({ setModal }) => {
             Know Us
           </Link>
           <button
-            className={`cta ${classes.cta}`}
+            className={classnames('cta', classes.cta, {
+              [classes.onUs]: page === '/us',
+            })}
             onClick={() => setModal(true)}
           >
             Let's Talk!

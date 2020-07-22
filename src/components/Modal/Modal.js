@@ -22,7 +22,7 @@ const Modal = ({ modal, setModal }) => (
       <p className="description">
         Tell us a bit about yourself or your business.
         <br />
-        We will come back to you asap.
+        We will get back to you.
       </p>
       <p className={classes.mail}>
         <a

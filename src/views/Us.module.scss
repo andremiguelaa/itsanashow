@@ -9,13 +9,16 @@
 
 .we {
   margin-top: 40vw;
-  @media (orientation: portrait) {
-    margin-top: 100vw;
-  }
   background-color: #f2f2f2;
   color: #08142d;
   text-align: center;
   padding: 4.75rem 1rem;
+  @media (orientation: portrait) {
+    margin-top: 100vw;
+  }
+  @include mobile {
+    padding: 3rem 1rem;
+  }
   .wrapper {
     max-width: 520px;
     margin: 0 auto;
@@ -34,6 +37,9 @@
   color: #f2f2f2;
   text-align: center;
   padding: 4.75rem 1rem 7rem;
+  @include mobile {
+    padding: 3rem 1rem 5rem;
+  }
   .wrapper {
     max-width: 650px;
     margin: 0 auto;
@@ -102,8 +108,10 @@
         padding: 0;
         list-style: none;
         font-size: 0.875rem;
+        letter-spacing: 2px;
         text-transform: uppercase;
         line-height: 2;
+        font-weight: 300;
       }
     }
   }
@@ -114,6 +122,9 @@
   color: #08142d;
   text-align: center;
   padding: 4.75rem 1rem 5.5rem;
+  @include mobile {
+    padding: 3rem 1rem;
+  }
   .wrapper {
     max-width: 350px;
     margin: 0 auto;
@@ -161,11 +172,16 @@
       max-width: 500px;
     }
   }
+  :global(.cta) {
+    &::after {
+      background-color: #2139f8;
+    }
+  }
   .animation {
     cursor: url('../assets/question.png'), auto;
     position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       bottom: 0;

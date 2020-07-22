@@ -90,8 +90,14 @@
       }
     }
     .cta {
+      vertical-align: middle;
       &:after {
-        background: #294bca;
+        background-color: #294bca;
+      }
+      &.onUs {
+        &:after {
+          background-color: #08142d;
+        }
       }
       @include mobile {
         display: none;
@@ -116,6 +122,16 @@
   &.open{
     pointer-events: all;
     clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    height: 50%;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background-color: #F6129E;
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
   }
   .close {
     position: fixed;

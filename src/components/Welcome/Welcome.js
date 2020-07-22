@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import showStripe from 'assets/showStripe.svg';
 import Social from 'components/Social/Social';
 import Canvas from './Canvas';
@@ -11,7 +13,8 @@ const Welcome = ({ setModal }) => (
       <img src={showStripe} alt="line" className="line" />
       <p className="subtitle">We're building something new here!</p>
       <p className="description">
-        In the meantime, get to know us a bit better and follow us in social media.
+        In the meantime, get to know us a bit better and follow us on social
+        media.
         <br />
         If you have any doubt, don't be shy, drop us a line!
         <br />
@@ -23,6 +26,9 @@ const Welcome = ({ setModal }) => (
         <br />
         Let the fun begin!
       </p>
+      <Link className="cta simple" to="/us">
+        Know us
+      </Link>
       <button className="cta" onClick={() => setModal(true)}>
         Get a quote today!
       </button>

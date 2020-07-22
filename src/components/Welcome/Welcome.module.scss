@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .welcome {
   margin-top: 100vh;
   text-align: center;
@@ -6,6 +8,9 @@
   @media (orientation: portrait) {
     margin-top: 100vw;
   }
+  @include mobile {
+    padding-top: 3rem;
+  } 
   .wrapper {
     padding: 0 1rem;
   }
@@ -26,6 +31,22 @@
       top: 75%;
       transform: translateY(-50%);
       display: block;
+    }
+  }
+  :global(.cta) {
+    width: 220px;
+    padding-left: 0;
+    padding-right: 0;
+    @include mobile {
+      display: block;
+      margin: 0 auto;
+    } 
+    & + :global(.cta) {
+      margin-left: 2em;
+      @include mobile {
+        margin-left: auto;
+        margin-top: 2em;
+      }
     }
   }
 }

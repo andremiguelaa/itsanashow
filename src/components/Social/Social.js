@@ -7,7 +7,7 @@ const Social = ({ inverted, className, itemClassName }) => (
   <ul className={classnames(classes.social, className)}>
     <li className={classnames(classes.socialItem, itemClassName)}>
       <a
-        href="#"
+        href="https://www.linkedin.com/company/itsanashow-studio"
         target="_blank"
         rel="noopener noreferrer"
         className={classnames(classes.socialIcon, {
@@ -19,7 +19,7 @@ const Social = ({ inverted, className, itemClassName }) => (
     </li>
     <li className={classnames(classes.socialItem, itemClassName)}>
       <a
-        href="#"
+        href="https://www.behance.net/ItsanashowStudio"
         target="_blank"
         rel="noopener noreferrer"
         className={classnames(classes.socialIcon, {
