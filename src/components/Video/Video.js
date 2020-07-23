@@ -43,7 +43,7 @@ const Video = ({ video, frame, soon = true, scroll = true, className }) => {
       {soon && (
         <>
           <div className={classes.soon}>
-            {'Coming soon'.split('').map((letter, index) => (
+            {'Hello there'.split('').map((letter, index) => (
               <div key={`${letter}-${index}`} className={classes.letter}>
                 {letter !== ' ' ? letter : <>&nbsp;</>}
               </div>

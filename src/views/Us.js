@@ -150,7 +150,7 @@ const Us = ({ setModal }) => {
       </section>
       <section className={classes.what}>
         <div className={classes.wrapper}>
-          <h1 className="title">So what we do?</h1>
+          <h1 className="title">What we do</h1>
           <img src={showStripeAlt} alt="line" className="line" />
           <p className="subtitle">
             We love to give shape to beautiful and meaningful stories.
