@@ -1,6 +1,8 @@
 import React from 'react';
+
 import Social from 'components/Social/Social';
 import showStripe from 'assets/showStripe.svg';
+
 import classes from './Modal.module.scss';
 
 const Modal = ({ modal, setModal }) => (
