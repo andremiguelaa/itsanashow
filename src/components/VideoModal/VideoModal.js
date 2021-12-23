@@ -19,6 +19,8 @@ const VideoModal = () => {
           className={classes.video}
           src={video}
           controls
+          webkit-playsinline
+          playsinline
         ></video>
         <button
           className={classes.close}
