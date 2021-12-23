@@ -17,7 +17,7 @@ const VideoModal = () => {
       },
       false
     );
-  }, [videoRef.current]);
+  }, []);
 
   return (
     <div
