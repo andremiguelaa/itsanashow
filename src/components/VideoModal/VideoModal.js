@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
+import frame from 'assets/xmas.png';
 import video from 'assets/xmas.mp4';
 
 import classes from './VideoModal.module.scss';
@@ -7,6 +8,17 @@ import classes from './VideoModal.module.scss';
 const VideoModal = () => {
   const videoRef = useRef();
   const [videoModal, setVideoModal] = useState(true);
+
+  useEffect(() => {
+    videoRef.current.addEventListener(
+      'ended',
+      () => {
+        setVideoModal(false);
+      },
+      false
+    );
+  }, [videoRef.current]);
+
   return (
     <div
       className={`${classes.modalWrapper} ${
@@ -21,6 +33,7 @@ const VideoModal = () => {
           controls
           webkit-playsinline
           playsinline
+          poster={frame}
         ></video>
         <button
           className={classes.close}
