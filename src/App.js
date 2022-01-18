@@ -5,7 +5,6 @@ import Header from 'components/Header/Header';
 import Home from 'views/Home';
 import Us from 'views/Us';
 import Modal from 'components/Modal/Modal';
-import VideoModal from 'components/VideoModal/VideoModal';
 
 const App = () => {
   const [modal, setModal] = useState(false);
@@ -21,7 +20,6 @@ const App = () => {
         </Route>
       </Switch>
       <Modal modal={modal} setModal={setModal} />
-      <VideoModal />
     </Router>
   );
 };
