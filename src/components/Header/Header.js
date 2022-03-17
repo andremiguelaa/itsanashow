@@ -79,6 +79,7 @@ const Header = ({ setModal }) => {
               className={classnames('cta', classes.cta)}
               href="https://www.figma.com/file/a3zbwa7FUtsrL1oXhhYy5J/itsanashow_desktop_2022?node-id=0%3A1"
               target="_blank"
+              rel="noreferrer"
             >
               Request a quote
             </a>
