@@ -1,12 +1,5 @@
 @import 'mixins.scss';
 
-.video {
-  height: 40vw;
-  @media (orientation: portrait) {
-    height: 100vw;
-  }
-}
-
 .we {
   margin-top: 40vw;
   background-color: #f2f2f2;

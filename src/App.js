@@ -12,11 +12,11 @@ const App = () => {
     <Router>
       <Header setModal={setModal} />
       <Switch>
-        <Route path="/us">
-          <Us setModal={setModal} />
-        </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Home setModal={setModal} />
+        </Route>
+        <Route exact path="/us">
+          <Us setModal={setModal} />
         </Route>
       </Switch>
       <Modal modal={modal} setModal={setModal} />

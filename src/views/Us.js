@@ -3,10 +3,8 @@ import { useIsVisible } from 'react-is-visible';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-import Video from 'components/Video/Video';
 import Social from 'components/Social/Social';
 
-import usFrame from 'assets/us.gif';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
 
@@ -117,12 +115,6 @@ const Us = ({ setModal }) => {
 
   return (
     <>
-      <Video
-        soon={false}
-        scroll={false}
-        frame={usFrame}
-        className={classes.video}
-      />
       <section className={classes.we}>
         <div className={classes.wrapper}>
           <h1 className="title">Who we are</h1>

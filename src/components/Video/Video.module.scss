@@ -16,67 +16,48 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  .soon {
+    background-color: #000;
     position: absolute;
-    font-weight: 300;
-    color: #e4f9fe;
-    font-size: 1.75rem;
-    left: 50%;
-    transform: translateX(-50%);
-    text-transform: uppercase;
-    white-space: nowrap;
-    bottom: 5vw;
-    .letter {
-      display: inline-block;
-      opacity: 0;
-      position: relative;
-      letter-spacing: 2rem;
-      left: 1rem;
-      @include mobile {
-        letter-spacing: 1rem;
-        left: 0.5rem;
-      }
-    }
   }
-  .scrollContainer {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+  video {
     transition: opacity 0.5s linear;
-    @media (orientation: portrait) {
-      display: none;
-    }
-    &.hidden {
+    &.ended {
       opacity: 0;
     }
-    .scroll {
-      position: relative;
-      animation: down 1.5s infinite;
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: -0.5rem;
-        width: 1em;
-        height: 1rem;
-        border-left: 2px solid #e4f9fe;
-        border-bottom: 2px solid #e4f9fe;
-        transform: rotate(-45deg);
+  }
+  .poster {
+    &.end {
+      transition: opacity 0.5s linear;
+      opacity: 0;
+      &.ended {
+        opacity: 1;
       }
     }
   }
-}
-
-@keyframes down {
-  0% {
-    transform: translate(0);
+  .overlay {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #08142D;
+    opacity: 0.5;
   }
-  20% {
-    transform: translateY(15px);
-  }
-  40% {
-    transform: translate(0);
+  .text {
+    position: absolute;
+    z-index: 2;
+    bottom: 6rem;
+    left: 7rem;
+    .lead {
+      font-weight: 500;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.125rem;
+    }
+    .slogan {
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-top: 0;
+      max-width: 700px;
+    }
   }
 }

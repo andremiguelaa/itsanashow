@@ -11,7 +11,7 @@
   @include mobile {
     padding: 1rem;
   }
-  .logoWrapper{
+  .logoWrapper {
     display: block;
     width: 200px;
     @include mobile {
@@ -32,100 +32,40 @@
       }
     }
   }
-  .buttons {
+  .menuButton {
     position: absolute;
     top: 50%;
-    right: 2rem;
     transform: translateY(-50%);
-    .menu {
-      display: none;
-      border: none;
-      color: transparent;
-      width: 2rem;
-      background-color: transparent;
-      border-top: 3px solid #f2f2f2;
-      border-bottom: 3px solid #f2f2f2;
-      height: 1rem;
-      font-size: 0;
-      outline: none;
-      @include mobile {
-        display: block;
-      }
-    }
-    .us {
-      vertical-align: middle;
-      display: inline-block;
-      margin-right: 5rem;
-      height: 2.375rem;
-      line-height: 2.375rem;
-      color: #f2f2f2;
-      text-decoration: none;
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-      color: #f2f2f2;
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 0.8125rem;
-      letter-spacing: 2px;
-      cursor: pointer;
-      position: relative;
-      outline: none;
-      &::before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        width: 0;
-        left: -2rem;
-        top: 50%;
-        height: 5px;
-        background-color: #fe00ae;
-        transition: width 0.2s linear;
-      }
-      &.active,
-      &:hover,
-      &:focus {
-        &::before {
-          width: calc(100% + 4rem);
-        }
-      }
-      @include mobile {
-        display: none;
-      }
-    }
-    .cta {
-      vertical-align: middle;
-      &:after {
-        background-color: #294bca;
-      }
-      &.onUs {
-        &:after {
-          background-color: #08142d;
-        }
-      }
-      @include mobile {
-        display: none;
-      }
-    }
+    right: 2rem;
+    border: none;
+    display: block;
+    cursor: pointer;
+    color: transparent;
+    width: 1.375rem;
+    height: 1rem;
+    background-color: transparent;
+    font-size: 0;
+    outline: none;
+    background-image: url('../../assets/menu.svg');
   }
 }
 
-.mobileMenu{
+.menu {
   position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  color: #f2f2f2;
-  background-color: #fe00ae;
+  color: #08142d;
+  background-color: #f2f2f2;
   font-size: 2.8rem;
   pointer-events: none;
-  transition: clip-path 1s cubic-bezier(0.8, 0, 0.2, 1);
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  &.open{
+  transition: clip-path 0.75s cubic-bezier(0.8, 0, 0.2, 1);
+  clip-path: circle(0% at calc(100% - 2.7rem) 3.6rem);
+  &.open {
     pointer-events: all;
-    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+    clip-path: circle(150% at 100% 0%);;
   }
   &::before {
     content: '';
@@ -134,12 +74,13 @@
     bottom: 0;
     right: 0;
     width: 100%;
-    background-color: #F6129E;
+    background-color: #08142d;
     clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    opacity: 0.02;
   }
   .close {
     position: fixed;
-    top: 1.5rem;
+    top: 2.5rem;
     right: 1.5rem;
     cursor: pointer;
     display: block;
@@ -149,7 +90,7 @@
     border: none;
     padding: 0;
     background-color: transparent;
-    transform: scale(0.75);
+    transform: scale(0.5);
     @include mobile {
       top: 0.5rem;
       right: 0.5rem;
@@ -173,7 +114,7 @@
         width: 4px;
         height: 25px;
         transform-origin: bottom center;
-        background: #f2f2f2;
+        background: #2a34ff;
         transition: all ease-out 280ms;
       }
       &:last-of-type {
@@ -233,11 +174,13 @@
     }
   }
   .links {
-    padding-left: 2rem;
-    padding-top: 8.5rem;
-    & > * {
+    padding-top: 7rem;
+    text-align: center;
+    button,
+    .link {
+      display: inline-block;
       outline: none;
-      display: block;
+      text-align: center;
       border: none;
       text-decoration: none;
       font-size: 2.8rem;
@@ -245,11 +188,33 @@
       font-weight: bold;
       font-family: inherit;
       padding: 0;
-      color: #f2f2f2;
-      margin-bottom: 2rem;
+      color: #08142d;
+      margin-bottom: 0.4rem;
+      transition: color 0.2s linear;
+      &:hover,
       &.active {
-        color: black;
+        color: #fe00ae;
       }
+    }
+    button {
+      cursor: pointer;
+    }
+    .cta {
+      margin-top: 6rem;
+      display: inline-block;
+    }
+  }
+  .social {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    .slogan {
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      font-weight: 300;
+      letter-spacing: 0.125rem;
+      margin-bottom: -1.375rem;
     }
   }
 }
