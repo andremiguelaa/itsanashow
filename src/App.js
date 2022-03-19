@@ -16,7 +16,7 @@ const App = () => {
           <Home setModal={setModal} />
         </Route>
         <Route exact path="/us">
-          <Us setModal={setModal} />
+          <Us />
         </Route>
       </Switch>
       <Modal modal={modal} setModal={setModal} />

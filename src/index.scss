@@ -131,10 +131,10 @@ body {
       transform: translateY(10%) translateX(-25px) rotate(-45deg);
     }
   }
-  &.simple {
-    background-color: transparent;
-    &:hover {
-      border: 3px solid #f2f2f2;
+  &.alt {
+    background-color: #2139f8;
+    &::after {
+      background-color: #FE00AE;
     }
   }
 }

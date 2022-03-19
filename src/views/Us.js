@@ -3,14 +3,12 @@ import { useIsVisible } from 'react-is-visible';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-import Social from 'components/Social/Social';
-
+import teamHero from 'assets/teamHero.jpg';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
 
 import video from 'assets/skills/video.svg';
 import brand from 'assets/skills/brand.svg';
-import content from 'assets/skills/content.svg';
 import graphics from 'assets/skills/graphics.svg';
 
 import novartis from 'assets/clients/novartis.svg';
@@ -59,7 +57,7 @@ const wordList = [
   'Filmmaking',
 ];
 
-const Us = ({ setModal }) => {
+const Us = () => {
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
@@ -116,27 +114,28 @@ const Us = ({ setModal }) => {
   return (
     <>
       <section className={classes.we}>
+        <img src={teamHero} alt="team hero" className={classes.teamHero} />
         <div className={classes.wrapper}>
           <h1 className="title">Who we are</h1>
           <img src={showStripe} alt="line" className="line" />
-          <p className="subtitle">Typical love story here!</p>
+          <p className="subtitle">Catchy title</p>
           <p className="description">
-            Digital Animator meets Visual Designer. She loves his moves, he
-            loves her typography OCD. <strong>And bam!</strong> A match-made in
-            digital heaven. Nine years of partnership later (both in life and at
-            work) we've decided to bring our own bundle of joy into the world.
-            <br />
-            <strong>A freaking studio!</strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id
+            luctus tortor, ut interdum nisi. Suspendisse non turpis in urna
+            volutpat lobortis sed vitae sem. Nullam suscipit feugiat felis vel
+            efficitur. Quisque eleifend scelerisque dolor eu bibendum. Vivamus
+            blandit massa sed dolor iaculis, eu bibendum dui pretium.
           </p>
           <p className="description">
-            A new, exciting venture with the same unfaltering commitment, the
-            same detail-oriented mindset, the same relentless elbow-grease we
-            work into every project.
-            <br />
-            And most important of all...
-          </p>
-          <p className="description">
-            The same mad creativity, now <strong>with a kick-ass team!</strong>
+            Ut in sapien sit amet quam malesuada iaculis ut quis lorem. Fusce
+            viverra pellentesque auctor. Etiam a gravida felis. Mauris
+            porttitor, dolor in euismod egestas, augue risus suscipit massa, ut
+            egestas sapien ante Aliquam erat volutpat. Nullam suscipit
+            pellentesque justo, quis rhoncus purus sollicitudin eget. Integer a
+            lacus vitae quam tristique suscipit in ut erat. Donec dictum commodo
+            sapien ultrices tincidunt. Maecenas ultrices nisi sed mi viverra,
+            vitae egestas mi condimentum. Integer ut odio et elit tincidunt
+            lobortis
           </p>
         </div>
       </section>
@@ -155,26 +154,23 @@ const Us = ({ setModal }) => {
         <ul className={classes.services}>
           <li>
             <img className={classes.skill} src={video} alt="video" />
-            <h1 className={classes.title}>Video</h1>
+            <h1 className={classes.title}>Motion</h1>
             <ul className={classes.list}>
+              <li>Motion Graphics</li>
               <li>2D &amp; 3D Animation</li>
+              <li>Script Development</li>
               <li>App Tutorials</li>
               <li>Explainer Videos</li>
               <li>Commercials</li>
               <li>Title Sequences</li>
               <li>Manifesto Videos</li>
-              <li>Live-Action Production</li>
-              <li>Social Media</li>
-              <li>Gifs</li>
             </ul>
           </li>
           <li>
             <img className={classes.skill} src={graphics} alt="graphics" />
             <h1 className={classes.title}>Graphics</h1>
             <ul className={classes.list}>
-              <li>2D &amp; 3D Illustration</li>
-              <li>Style Frames</li>
-              <li>Storyboarding</li>
+              <li>Illustration</li>
               <li>Infographics</li>
               <li>Iconography</li>
               <li>UI/UX</li>
@@ -187,33 +183,21 @@ const Us = ({ setModal }) => {
             <img className={classes.skill} src={brand} alt="brand" />
             <h1 className={classes.title}>Brand</h1>
             <ul className={classes.list}>
-              <li>Brand Strategy</li>
-              <li>Brand Identity</li>
-              <li>Content Strategy</li>
-              <li>Logo &amp; ID Systems</li>
-              <li>Logo Animation</li>
-              <li>Brand Style Guides</li>
-              <li>Collateral, Print &amp; Packaging</li>
-            </ul>
-          </li>
-          <li>
-            <img className={classes.skill} src={content} alt="content" />
-            <h1 className={classes.title}>Content</h1>
-            <ul className={classes.list}>
-              <li>Script Development</li>
-              <li>Storytelling</li>
-              <li>UX Writing</li>
+              <li>Logo Design</li>
+              <li>Identity Systems</li>
+              <li>Tone of Voice</li>
               <li>Copywriting</li>
+              <li>Brand Guidelines</li>
+              <li>Brand Collateral</li>
+              <li>Logo Animation</li>
               <li>Presentation Design</li>
-              <li>Photography</li>
-              <li>Creative Direction</li>
             </ul>
           </li>
         </ul>
       </section>
       <section className={classes.clients}>
         <div className={classes.wrapper}>
-          <h1 className="title">Some selected clients</h1>
+          <h1 className="title">Some select clients</h1>
           <img src={showStripe} alt="line" className="line" />
           <p className="subtitle">Reach goals and keep rocking</p>
         </div>
@@ -252,26 +236,24 @@ const Us = ({ setModal }) => {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
           </p>
-          <button
-            className="cta"
-            onClick={() => {
-              setModal(true);
-            }}
-          >
-            Let's Talk
-          </button>
+          <div className={classes.quote}>
+            <p>
+              <strong>Request a quote for your project</strong>
+            </p>
+            <p>
+              Fill out the form below and we'll get back to you with more
+              information
+            </p>
+            <a
+              className={classnames('cta', 'alt', classes.cta)}
+              href="https://www.figma.com/file/a3zbwa7FUtsrL1oXhhYy5J/itsanashow_desktop_2022?node-id=0%3A1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Request a quote
+            </a>
+          </div>
         </div>
-        <Social
-          inverted
-          className={classes.social}
-          itemClassName={classes.socialItem}
-        />
-        <button
-          className={classes.scroll}
-          onClick={() => {
-            window.scrollTo(0, 0);
-          }}
-        ></button>
       </section>
       <footer>
         <Link to="/">
