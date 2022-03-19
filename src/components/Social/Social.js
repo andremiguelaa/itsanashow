@@ -3,21 +3,9 @@ import classnames from 'classnames';
 
 import classes from './Social.module.scss';
 
-const Social = ({ inverted, className, itemClassName }) => (
-  <ul className={classnames(classes.social, className)}>
-    <li className={classnames(classes.socialItem, itemClassName)}>
-      <a
-        href="https://www.linkedin.com/company/itsanashow-studio"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={classnames(classes.socialIcon, {
-          [classes.inverted]: inverted,
-        })}
-      >
-        <span className="icon-linkedin2"></span>
-      </a>
-    </li>
-    <li className={classnames(classes.socialItem, itemClassName)}>
+const Social = ({ inverted, position = 'center' }) => (
+  <ul className={classnames(classes.social, classes[position])}>
+    <li className={classnames(classes.socialItem)}>
       <a
         href="https://www.behance.net/ItsanashowStudio"
         target="_blank"
@@ -29,7 +17,31 @@ const Social = ({ inverted, className, itemClassName }) => (
         <span className="icon-behance"></span>
       </a>
     </li>
-    <li className={classnames(classes.socialItem, itemClassName)}>
+    <li className={classnames(classes.socialItem)}>
+      <a
+        href="https://vimeo.com/itsanashowstudio"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classnames(classes.socialIcon, {
+          [classes.inverted]: inverted,
+        })}
+      >
+        <span className="icon-vimeo"></span>
+      </a>
+    </li>
+    <li className={classnames(classes.socialItem)}>
+      <a
+        href="https://www.linkedin.com/company/itsanashow-studio"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classnames(classes.socialIcon, {
+          [classes.inverted]: inverted,
+        })}
+      >
+        <span className="icon-linkedin2"></span>
+      </a>
+    </li>
+    <li className={classnames(classes.socialItem)}>
       <a
         href="https://www.instagram.com/itsanashow.studio/"
         target="_blank"

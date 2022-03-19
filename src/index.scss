@@ -44,12 +44,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-cross:before {
-  content: '\ea0f';
-}
-.icon-facebook:before {
-  content: '\ea90';
-}
 .icon-instagram:before {
   content: '\ea92';
 }
@@ -59,8 +53,8 @@ body {
 .icon-linkedin2:before {
   content: '\eaca';
 }
-.icon-pinterest2:before {
-  content: '\ead2';
+.icon-vimeo:before {
+  content: '\eaa0';
 }
 
 .title {

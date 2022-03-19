@@ -223,6 +223,9 @@
     font-weight: 500;
     font-size: 1rem;
     max-width: 400px;
+    @include mobile {
+      margin: 0 auto;
+    }
     strong {
       font-size: 1.375rem;
     }
@@ -281,28 +284,78 @@
       }
     }
   }
+  .scroll {
+    display: none;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 1.5rem;
+    border: none;
+    background-color: transparent;
+    background-image: url('../assets/backtotop.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.75rem;
+    outline: none;
+    cursor: pointer;
+    @include mobile {
+      display: block;
+    }
+  }
 }
 
 footer {
-  padding: 1.5rem 2rem;
-  font-size: 0.75rem;
+  padding: 2.625rem 4.8rem 2.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include mobile {
-    flex-direction: column;
-    text-align: center;
+  @include tablet {
+    flex-direction: column-reverse;
+    padding: 2.625rem 1rem 2.8rem;
   }
   .logo {
     width: 200px;
-    @include mobile {
-      margin-bottom: 2rem;
+    margin-top: 1.75rem;
+    @include tablet {
+      display: none;
     }
   }
-  span {
-    margin-right: 2.5rem;
-    @include mobile {
-      margin-right: 0;
+  .copyright {
+    font-size: 0.75rem;
+    display: inline-block;
+    @include tablet {
+      text-align: center;
+    }
+  }
+  .links {
+    @include tablet {
+      text-align: center;
+    }
+    .link {
+      color: #fff;
+      text-decoration: none;
+      background-color: transparent;
+      font-size: 1.56rem;
+      font-weight: 700;
+      border: none;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.2s linear;
+      cursor: pointer;
+      &:hover,
+      &.active {
+        color: #fe00ae;
+      }
+      @include mobile {
+        font-size: 1.25rem;
+      }
+    }
+    .cta {
+      margin-top: 3.625rem;
+      @include tablet {
+        display: none;
+      }
     }
   }
 }

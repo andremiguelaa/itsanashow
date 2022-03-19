@@ -3,6 +3,8 @@ import { useIsVisible } from 'react-is-visible';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
+import Social from 'components/Social/Social';
+
 import teamHero from 'assets/teamHero.jpg';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
@@ -57,7 +59,9 @@ const wordList = [
   'Filmmaking',
 ];
 
-const Us = () => {
+const currentYear = new Date().getFullYear();
+
+const Us = ({ setModal }) => {
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
@@ -254,14 +258,56 @@ const Us = () => {
             </a>
           </div>
         </div>
+        <button
+          className={classes.scroll}
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        ></button>
       </section>
       <footer>
-        <Link to="/">
-          <img className={classes.logo} src={logo} alt="logo" />
-        </Link>
-        <span>
-          &copy; Itsanashow Creative Studio, Lda 2020. All rights reserved.
-        </span>
+        <div>
+          <Link to="/">
+            <img className={classes.logo} src={logo} alt="logo" />
+          </Link>
+          <Social inverted position="left" />
+          <span className={classes.copyright}>
+            &copy; Itsanashow Creative Studio, Lda {currentYear}. All rights
+            reserved.
+          </span>
+        </div>
+        <div className={classes.links}>
+          <div>
+            <Link to="/" className={classes.link}>
+              home
+            </Link>
+          </div>
+          <div>
+            <Link to="/us" className={classnames(classes.link, classes.active)}>
+              know us
+            </Link>
+          </div>
+          <div>
+            <button
+              className={classes.link}
+              onClick={() => {
+                setModal(true);
+              }}
+            >
+              contact us
+            </button>
+          </div>
+          <div>
+            <a
+              className={classnames('cta', classes.cta)}
+              href="https://www.figma.com/file/a3zbwa7FUtsrL1oXhhYy5J/itsanashow_desktop_2022?node-id=0%3A1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Request a quote
+            </a>
+          </div>
+        </div>
       </footer>
     </>
   );
