@@ -3,6 +3,7 @@ import { useIsVisible } from 'react-is-visible';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
+import isTouchDevice from 'is-touch-device';
 
 import bubbleTrail from 'utils/bubbleTrail';
 import Social from 'components/Social/Social';
@@ -78,13 +79,15 @@ const Us = ({ setModal }) => {
   const [animatingWord, setAnimatingWord] = useState(false);
   const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
 
-  const { ref: weBall1ref } = useParallax({ speed: 10 });
-  const { ref: weBall2ref } = useParallax({ speed: 20 });
-  const { ref: weBall3ref } = useParallax({ speed: 30 });
+  const isTouch = isTouchDevice();
 
-  const { ref: clientsBall1ref } = useParallax({ speed: 10 });
-  const { ref: clientsBall2ref } = useParallax({ speed: 20 });
-  const { ref: clientsBall3ref } = useParallax({ speed: 30 });
+  const { ref: weBall1ref } = useParallax({ speed: !isTouch ? 10 : 0 });
+  const { ref: weBall2ref } = useParallax({ speed: !isTouch ? 20 : 0 });
+  const { ref: weBall3ref } = useParallax({ speed: !isTouch ? 30 : 0 });
+
+  const { ref: clientsBall1ref } = useParallax({ speed: !isTouch ? 10 : 0 });
+  const { ref: clientsBall2ref } = useParallax({ speed: !isTouch ? 20 : 0 });
+  const { ref: clientsBall3ref } = useParallax({ speed: !isTouch ? 30 : 0 });
 
   const animateWord = () => {
     if (animatingWord) {
@@ -145,7 +148,7 @@ const Us = ({ setModal }) => {
   }, [weSection]);
 
   return (
-    <>
+    <div className={classes.usPage}>
       <section className={classes.hero}>
         <img src={teamHero} alt="team hero" className={classes.teamHero} />
         <img
@@ -272,6 +275,7 @@ const Us = ({ setModal }) => {
           className={classnames(classes.ball, classes.ball3)}
           ref={weBall3ref}
         />
+        <div className={classnames(classes.ball, classes.ball4)} />
       </section>
       <section className={classes.clients}>
         <div className={classes.wrapper}>
@@ -418,7 +422,7 @@ const Us = ({ setModal }) => {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 

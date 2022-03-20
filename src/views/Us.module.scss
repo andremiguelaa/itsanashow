@@ -1,5 +1,9 @@
 @import 'mixins.scss';
 
+.usPage {
+  overflow: hidden;
+}
+
 .hero {
   .teamHero {
     width: 100%;
@@ -119,6 +123,8 @@
     max-width: 650px;
     margin: 0 auto;
     padding: 0 3rem;
+    position: relative;
+    z-index: 1;
     @include mobile {
       padding: 0;
     }
@@ -230,6 +236,20 @@
       height: 8.75rem;
       bottom: 2.5rem;
       left: -2.5rem;
+      @include mobile {
+        top: 48rem;
+        bottom: auto;
+      }
+    }
+    &.ball4 {
+      width: 3.8rem;
+      height: 3.8rem;
+      bottom: 19rem;
+      right: 1.2rem;
+      display: none;
+      @include mobile {
+        display: block;
+      }
     }
   }
 }
@@ -413,18 +433,34 @@
       height: 9.5rem;
       top: -3.75rem;
       right: 12rem;
+      @include tablet {
+        width: 7rem;
+        height: 7rem;
+        top: -1rem;
+        right: 2rem;
+      }
     }
     &.ball2 {
       width: 15.75rem;
       height: 15.75rem;
       top: 14rem;
       right: 26rem;
+      @include tablet {
+        top: 10.5rem;
+        right: -5.5rem;
+      }
     }
     &.ball3 {
       width: 22.75rem;
       height: 22.75rem;
       bottom: -5.625rem;
       right: -1.5rem;
+      @include tablet {
+        width: 7rem;
+        height: 7rem;
+        bottom: -1rem;
+        left: -2rem;
+      }
     }
   }
 }
@@ -439,6 +475,7 @@ footer {
   @include tablet {
     flex-direction: column-reverse;
     padding: 2.625rem 1rem 2.8rem;
+    background-color: #08142d;
   }
   .logo {
     width: 200px;
