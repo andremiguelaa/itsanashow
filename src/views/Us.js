@@ -138,7 +138,7 @@ const Us = ({ setModal }) => {
   }, [isToAnimateWordVisible, toAnimateWord]);
 
   useEffect(() => {
-    if (weSection.current) {
+    if (weSection.current && !isTouch) {
       bubbleTrail.mouseEffects.mouseTrail(weSection.current);
     }
     const node = weSection.current;
