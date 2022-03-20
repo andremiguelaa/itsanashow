@@ -44,7 +44,7 @@ const Modal = ({ modal, setModal }) => (
         <p>
           <a
             className="cta"
-            href="https://www.figma.com/file/a3zbwa7FUtsrL1oXhhYy5J/itsanashow_desktop_2022?node-id=0%3A1"
+            href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
             target="_blank"
             rel="noreferrer"
           >

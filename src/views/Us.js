@@ -250,7 +250,7 @@ const Us = ({ setModal }) => {
             </p>
             <a
               className={classnames('cta', 'alt', classes.cta)}
-              href="https://www.figma.com/file/a3zbwa7FUtsrL1oXhhYy5J/itsanashow_desktop_2022?node-id=0%3A1"
+              href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
               target="_blank"
               rel="noreferrer"
             >
@@ -300,7 +300,7 @@ const Us = ({ setModal }) => {
           <div>
             <a
               className={classnames('cta', classes.cta)}
-              href="https://www.figma.com/file/a3zbwa7FUtsrL1oXhhYy5J/itsanashow_desktop_2022?node-id=0%3A1"
+              href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
               target="_blank"
               rel="noreferrer"
             >
