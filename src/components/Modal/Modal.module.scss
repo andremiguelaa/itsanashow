@@ -18,36 +18,20 @@
 }
 .modal {
   position: absolute;
+  display: flex;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
   box-sizing: border-box;
-  border: 2rem solid #2a34ff;
-  background-color: #e4f9fe;
+  background-color: #f2f2f2;
   text-align: center;
   color: #08142d;
-  padding-top: 90px;
-  @include mobile {
-    border: 1rem solid #2a34ff;
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    height: 72%;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    background-color: #DCF2F9;
-    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-    @include mobile {
-      height: 50%;
-    }
-  }
   .close {
-    position: absolute;
-    top: 1.5rem;
+    position: fixed;
+    z-index: 10;
+    top: 2.5rem;
     right: 1.5rem;
     cursor: pointer;
     display: block;
@@ -57,11 +41,9 @@
     border: none;
     padding: 0;
     background-color: transparent;
-    transform: scale(0.75);
+    transform: scale(0.5);
     @include mobile {
-      top: 0.5rem;
-      right: 0.5rem;
-      transform: scale(0.5);
+      top: 1.25rem;
     }
     > div {
       position: relative;
@@ -140,11 +122,30 @@
       outline: none;
     }
   }
+  .gif {
+    width: 50%;
+    @include tablet {
+      display: none;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .content {
+    padding-top: 8rem;
+    width: 50%;
+    position: relative;
+    @include tablet {
+      width: 100%;
+    }
+  }
   .mail {
-    margin: 2rem;
+    margin: 2rem 0 6.7rem;
     a {
       font-weight: bold;
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: inherit;
       text-decoration: none;
       transition: color 0.2s linear;

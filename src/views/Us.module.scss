@@ -52,6 +52,11 @@
 
 .what {
   background-color: #08142d;
+  background: linear-gradient(
+    180deg,
+    rgba(29, 39, 170, 1) 0%,
+    rgba(8, 20, 45, 1) 100%
+  );
   color: #f2f2f2;
   text-align: center;
   padding: 4.75rem 1rem 7rem;
@@ -259,28 +264,6 @@
         opacity: 0;
         width: 0;
         display: inline-block;
-      }
-    }
-  }
-  .social {
-    position: absolute;
-    right: 5rem;
-    top: 3.5rem;
-    bottom: 3.5rem;
-    margin: 0;
-    flex-direction: column;
-    justify-content: space-evenly;
-    z-index: 2;
-    @include mobile {
-      position: static;
-      flex-direction: row;
-      margin-top: 5rem;
-      justify-content: center;
-    }
-    .socialItem {
-      padding: 0;
-      @include mobile {
-        padding: 0 0.75rem;
       }
     }
   }

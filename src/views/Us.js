@@ -229,7 +229,7 @@ const Us = ({ setModal }) => {
       <section className={classes.workTogether}>
         <div className={classes.content}>
           <h1 className="title">Let's work together</h1>
-          <img src={showStripe} alt="line" className="line" />
+          <img src={showStripeAlt} alt="line" className="line" />
           <p className="subtitle">
             We're always thinking about the future of{' '}
             <span
