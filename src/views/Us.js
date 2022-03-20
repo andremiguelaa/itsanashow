@@ -3,6 +3,8 @@ import { useIsVisible } from 'react-is-visible';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
+import bubbleTrail from 'utils/bubbleTrail';
+
 import Social from 'components/Social/Social';
 
 import teamHero from 'assets/teamHero.jpg';
@@ -64,6 +66,7 @@ const wordList = [
 const currentYear = new Date().getFullYear();
 
 const Us = ({ setModal }) => {
+  const weSection = useRef();
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
@@ -117,6 +120,16 @@ const Us = ({ setModal }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToAnimateWordVisible, toAnimateWord]);
 
+  useEffect(() => {
+    if (weSection.current) {
+      bubbleTrail.mouseEffects.mouseTrail(weSection.current);
+    }
+    const node = weSection.current;
+    return () => {
+      bubbleTrail.mouseEffects.killTrail(node);
+    };
+  }, [weSection]);
+
   return (
     <>
       <section className={classes.hero}>
@@ -132,7 +145,7 @@ const Us = ({ setModal }) => {
           className={classes.teamHeroMobile}
         />
       </section>
-      <section className={classes.we}>
+      <section className={classes.we} ref={weSection}>
         <div className={classes.wrapper}>
           <h1 className="title">Who we are</h1>
           <img src={showStripe} alt="line" className="line" />
