@@ -4,10 +4,10 @@ import classnames from 'classnames';
 
 import Social from 'components/Social/Social';
 import logo from 'assets/logo.svg';
-import miniLogo from 'assets/showIcon.svg';
 import classes from './Header.module.scss';
 
 const Header = ({ setModal }) => {
+  const [loaded, setLoaded] = useState(false);
   const location = useLocation();
   const [page, setPage] = useState();
   const [menu, setMenu] = useState(false);
@@ -17,12 +17,22 @@ const Header = ({ setModal }) => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 2000);
+  }, []);
+
   return (
     <>
       <header className={classes.header}>
-        <Link to="/" className={classes.logoWrapper}>
+        <Link
+          to="/"
+          className={classnames(classes.logoWrapper, {
+            [classes.loaded]: loaded,
+          })}
+        >
           <img className={classes.logo} src={logo} alt="logo" />
-          <img className={classes.miniLogo} src={miniLogo} alt="logo" />
         </Link>
         <button className={classes.menuButton} onClick={() => setMenu(true)}>
           Menu

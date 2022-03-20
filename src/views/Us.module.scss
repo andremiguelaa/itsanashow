@@ -73,6 +73,9 @@
       height: 0.75rem;
       width: 0.75rem;
     }
+    @media (pointer: none) {
+      display: none;
+    }
   }
   .head {
     position: absolute;

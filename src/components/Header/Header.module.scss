@@ -14,22 +14,18 @@
   .logoWrapper {
     display: block;
     width: 200px;
+    transition: width 0.5s linear;
+    &.loaded {
+      width: 46px;
+      overflow: hidden;
+    }
     @include mobile {
       width: 46px;
+      overflow: hidden;
     }
     .logo {
       width: 200px;
       max-width: 40vw;
-      @include mobile {
-        display: none;
-      }
-    }
-    .miniLogo {
-      width: 46px;
-      display: none;
-      @include mobile {
-        display: block;
-      }
     }
   }
   .menuButton {
@@ -63,9 +59,12 @@
   pointer-events: none;
   transition: clip-path 0.75s cubic-bezier(0.8, 0, 0.2, 1);
   clip-path: circle(0% at calc(100% - 2.7rem) 3.6rem);
+  @include mobile {
+    clip-path: circle(0% at calc(100% - 3rem) 3rem);
+  }
   &.open {
     pointer-events: all;
-    clip-path: circle(150% at 100% 0%);;
+    clip-path: circle(150% at 100% 0%);
   }
   &::before {
     content: '';
