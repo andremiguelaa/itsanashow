@@ -6,6 +6,8 @@ import classnames from 'classnames';
 import Social from 'components/Social/Social';
 
 import teamHero from 'assets/teamHero.jpg';
+import teamHero1 from 'assets/teamHero1.jpg';
+import teamHero2 from 'assets/teamHero2.jpg';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
 
@@ -117,8 +119,20 @@ const Us = ({ setModal }) => {
 
   return (
     <>
-      <section className={classes.we}>
+      <section className={classes.hero}>
         <img src={teamHero} alt="team hero" className={classes.teamHero} />
+        <img
+          src={teamHero1}
+          alt="team hero"
+          className={classes.teamHeroMobile}
+        />
+        <img
+          src={teamHero2}
+          alt="team hero"
+          className={classes.teamHeroMobile}
+        />
+      </section>
+      <section className={classes.we}>
         <div className={classes.wrapper}>
           <h1 className="title">Who we are</h1>
           <img src={showStripe} alt="line" className="line" />

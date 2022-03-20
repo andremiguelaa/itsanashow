@@ -1,20 +1,27 @@
 @import 'mixins.scss';
 
+.hero{
+  .teamHero {
+    width: 100%;
+    @include mobile {
+      display: none;
+    }
+  }
+  .teamHeroMobile {
+    width: 100%;
+    display: none;
+    @include mobile {
+      display: block;
+    }
+  }
+}
+
 .we {
+  padding: 3rem 0;
   background-color: #f2f2f2;
   color: #08142d;
   text-align: center;
-  padding: calc(44vw + 4.5rem) 1rem 4.75rem;
   position: relative;
-  @include mobile {
-    padding: calc(44vw + 3rem) 1rem 3rem;
-  }
-  .teamHero {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
   .wrapper {
     max-width: 520px;
     margin: 0 auto;

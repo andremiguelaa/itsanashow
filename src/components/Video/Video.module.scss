@@ -36,7 +36,7 @@
     z-index: 1;
     width: 100%;
     height: 100%;
-    background-color: #08142D;
+    background-color: #08142d;
     opacity: 0.5;
   }
   .text {
@@ -46,6 +46,9 @@
     left: 7rem;
     @include tablet {
       left: 2.5rem;
+    }
+    @include mobile {
+      bottom: 4.5rem;
     }
     .lead {
       font-weight: 500;
