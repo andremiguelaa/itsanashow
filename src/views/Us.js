@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useIsVisible } from 'react-is-visible';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
+import { useParallax } from 'react-scroll-parallax';
 
 import bubbleTrail from 'utils/bubbleTrail';
 import Social from 'components/Social/Social';
@@ -12,6 +13,7 @@ import teamHero2 from 'assets/teamHero2.jpg';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
 import head from 'assets/head.svg';
+import headAlt from 'assets/headAlt.svg';
 
 import video from 'assets/skills/video.svg';
 import brand from 'assets/skills/brand.svg';
@@ -69,10 +71,20 @@ const Us = ({ setModal }) => {
   const weSection = useRef();
   const [headWeScared, setHeadWeScared] = useState(false);
   const scaredHeadTimeout = useRef();
+  const [headAltScared, setHeadAltScared] = useState(false);
+  const scaredHeadAltTimeout = useRef();
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
   const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
+
+  const { ref: weBall1ref } = useParallax({ speed: 10 });
+  const { ref: weBall2ref } = useParallax({ speed: 20 });
+  const { ref: weBall3ref } = useParallax({ speed: 30 });
+
+  const { ref: clientsBall1ref } = useParallax({ speed: 10 });
+  const { ref: clientsBall2ref } = useParallax({ speed: 20 });
+  const { ref: clientsBall3ref } = useParallax({ speed: 30 });
 
   const animateWord = () => {
     if (animatingWord) {
@@ -248,6 +260,18 @@ const Us = ({ setModal }) => {
             </ul>
           </li>
         </ul>
+        <div
+          className={classnames(classes.ball, classes.ball1)}
+          ref={weBall1ref}
+        />
+        <div
+          className={classnames(classes.ball, classes.ball2)}
+          ref={weBall2ref}
+        />
+        <div
+          className={classnames(classes.ball, classes.ball3)}
+          ref={weBall3ref}
+        />
       </section>
       <section className={classes.clients}>
         <div className={classes.wrapper}>
@@ -275,6 +299,29 @@ const Us = ({ setModal }) => {
             <img width={211} src={SNS} alt="SNS" />
           </li>
         </ul>
+        <div
+          className={classes.head}
+          onMouseEnter={() => {
+            if (scaredHeadAltTimeout.current) {
+              clearTimeout(scaredHeadAltTimeout.current);
+              scaredHeadAltTimeout.current = null;
+            }
+            setHeadAltScared(true);
+          }}
+          onMouseLeave={() => {
+            scaredHeadAltTimeout.current = setTimeout(() => {
+              setHeadAltScared(false);
+            }, 250);
+          }}
+        >
+          <img
+            className={classnames({
+              [classes.scared]: headAltScared,
+            })}
+            src={headAlt}
+            alt="head"
+          />
+        </div>
       </section>
       <section className={classes.workTogether}>
         <div className={classes.content}>
@@ -314,6 +361,18 @@ const Us = ({ setModal }) => {
             window.scrollTo(0, 0);
           }}
         ></button>
+        <div
+          className={classnames(classes.ball, classes.ball1)}
+          ref={clientsBall1ref}
+        />
+        <div
+          className={classnames(classes.ball, classes.ball2)}
+          ref={clientsBall2ref}
+        />
+        <div
+          className={classnames(classes.ball, classes.ball3)}
+          ref={clientsBall3ref}
+        />
       </section>
       <footer>
         <div>

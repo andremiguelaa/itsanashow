@@ -84,9 +84,6 @@
     @include tablet {
       left: 2rem;
     }
-    @include mobile {
-      left: 2rem;
-    }
     img {
       vertical-align: top;
       transition: transform 0.5s ease;
@@ -114,6 +111,7 @@
   color: #f2f2f2;
   text-align: center;
   padding: 4.75rem 1rem 7rem;
+  position: relative;
   @include mobile {
     padding: 3rem 1rem 5rem;
   }
@@ -153,6 +151,8 @@
     width: 100%;
     max-width: 1170px;
     text-align: center;
+    position: relative;
+    z-index: 1;
     @include tablet {
       max-width: 585px;
     }
@@ -205,6 +205,33 @@
       }
     }
   }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      rgba(42, 52, 255, 1) 0%,
+      rgba(8, 20, 45, 1) 100%
+    );
+    &.ball1 {
+      width: 14rem;
+      height: 14rem;
+      top: 1.5rem;
+      right: -2rem;
+    }
+    &.ball2 {
+      width: 4.375rem;
+      height: 4.375rem;
+      top: 12.5rem;
+      right: 12.5rem;
+    }
+    &.ball3 {
+      width: 8.75rem;
+      height: 8.75rem;
+      bottom: 2.5rem;
+      left: -2.5rem;
+    }
+  }
 }
 
 .clients {
@@ -212,6 +239,8 @@
   color: #08142d;
   text-align: center;
   padding: 4.75rem 1rem 5.5rem;
+  position: relative;
+  overflow: hidden;
   @include mobile {
     padding: 3rem 1rem;
   }
@@ -250,6 +279,37 @@
       img {
         max-width: 100%;
       }
+    }
+  }
+  .head {
+    position: absolute;
+    top: 0;
+    left: 4rem;
+    @include tablet {
+      left: 2rem;
+    }
+    img {
+      vertical-align: top;
+      transition: transform 0.5s ease;
+      &.scared {
+        transform: translateY(-100%);
+      }
+    }
+  }
+  :global(.trail) {
+    position: absolute;
+    height: 1.375rem;
+    width: 1.375rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjMiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAyMyAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTEuNTExNyIgY3k9IjExLjQ5ODciIHI9IjExLjIxNjciIHRyYW5zZm9ybT0icm90YXRlKDYwLjgyODQgMTEuNTExNyAxMS40OTg3KSIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzUxOV8xNjI5KSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzUxOV8xNjI5IiB4MT0iMjIuOTEyOCIgeTE9IjQ0LjYwOTYiIHgyPSI5LjMyNTExIiB5Mj0iMS4xNDE2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiMyQTM0RkYiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkUwMEFFIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+Cg==);
+    background-size: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    &:global(.small) {
+      height: 0.75rem;
+      width: 0.75rem;
+    }
+    @media (pointer: none) {
+      display: none;
     }
   }
 }
@@ -340,6 +400,33 @@
       display: block;
     }
   }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+      315deg,
+      rgba(42, 52, 255, 1) -70%,
+      rgba(254, 0, 174, 1) 85%
+    );
+    &.ball1 {
+      width: 9.5rem;
+      height: 9.5rem;
+      top: -3.75rem;
+      right: 12rem;
+    }
+    &.ball2 {
+      width: 15.75rem;
+      height: 15.75rem;
+      top: 14rem;
+      right: 26rem;
+    }
+    &.ball3 {
+      width: 22.75rem;
+      height: 22.75rem;
+      bottom: -5.625rem;
+      right: -1.5rem;
+    }
+  }
 }
 
 footer {
@@ -347,6 +434,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  background-color: #08142d;
   @include tablet {
     flex-direction: column-reverse;
     padding: 2.625rem 1rem 2.8rem;
