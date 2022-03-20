@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import bubbleTrail from 'utils/bubbleTrail';
-
 import Social from 'components/Social/Social';
 
 import teamHero from 'assets/teamHero.jpg';
@@ -12,6 +11,7 @@ import teamHero1 from 'assets/teamHero1.jpg';
 import teamHero2 from 'assets/teamHero2.jpg';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
+import head from 'assets/head.svg';
 
 import video from 'assets/skills/video.svg';
 import brand from 'assets/skills/brand.svg';
@@ -67,6 +67,8 @@ const currentYear = new Date().getFullYear();
 
 const Us = ({ setModal }) => {
   const weSection = useRef();
+  const [headWeScared, setHeadWeScared] = useState(false);
+  const scaredHeadTimeout = useRef();
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
@@ -168,6 +170,27 @@ const Us = ({ setModal }) => {
             vitae egestas mi condimentum. Integer ut odio et elit tincidunt
             lobortis
           </p>
+        </div>
+        <div
+          className={classnames(classes.head)}
+          onMouseEnter={() => {
+            if (scaredHeadTimeout.current) {
+              clearTimeout(scaredHeadTimeout.current);
+              scaredHeadTimeout.current = null;
+            }
+            setHeadWeScared(true);
+          }}
+          onMouseLeave={() => {
+            scaredHeadTimeout.current = setTimeout(() => {
+              setHeadWeScared(false);
+            }, 250);
+          }}
+        >
+          <img
+            className={classnames({ [classes.scared]: headWeScared })}
+            src={head}
+            alt="head"
+          />
         </div>
       </section>
       <section className={classes.what}>
