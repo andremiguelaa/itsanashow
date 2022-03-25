@@ -366,7 +366,8 @@ const Us = ({ setModal }) => {
               target="_blank"
               rel="noreferrer"
             >
-              Request a quote
+              <span aria-hidden="true">Request a quote</span>
+              <span>Let's talk!</span>
             </a>
           </div>
         </div>

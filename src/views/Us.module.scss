@@ -368,6 +368,18 @@
   }
   .cta {
     margin-top: 3.25rem;
+    span {
+      display: none;
+      @include tablet {
+        display: block;
+      }
+      + span {
+        display: block;
+        @include tablet {
+          display: none;
+        }
+      }
+    }
   }
   .animation {
     cursor: url('../assets/question.png'), auto;
