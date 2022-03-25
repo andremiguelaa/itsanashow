@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
+import React from 'react';
 import isTouchDevice from 'is-touch-device';
 
 import classes from './Video.module.scss';
 
 const Video = ({ video, frame }) => {
-  const [ended, setEnded] = useState(false);
   const isTouch = isTouchDevice();
 
   return (
@@ -13,24 +11,7 @@ const Video = ({ video, frame }) => {
       {isTouch || !video ? (
         <img className={classes.poster} src={frame} alt="poster" />
       ) : (
-        <>
-          <video
-            className={classnames({ [classes.ended]: ended })}
-            autoPlay
-            muted
-            src={video}
-            onEnded={() => {
-              setEnded(true);
-            }}
-          />
-          <img
-            className={classnames(classes.poster, classes.end, {
-              [classes.ended]: ended,
-            })}
-            src={frame}
-            alt="poster"
-          />
-        </>
+        <video autoPlay loop muted src={video} poster={frame} />
       )}
       <div className={classes.overlay} />
       <div className={classes.text}>

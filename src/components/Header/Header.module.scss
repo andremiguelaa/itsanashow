@@ -11,21 +11,8 @@
   @include mobile {
     padding: 1rem;
   }
-  .logoWrapper {
-    display: block;
-    width: 200px;
-    transition: width 0.5s linear;
-    &.loaded {
-      width: 46px;
-      overflow: hidden;
-    }
-    @include mobile {
-      width: 46px;
-      overflow: hidden;
-    }
-    .logo {
-      width: 200px;
-    }
+  .logo {
+    width: 45px;
   }
   .menuButton {
     position: absolute;

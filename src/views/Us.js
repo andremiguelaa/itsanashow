@@ -81,13 +81,14 @@ const Us = ({ setModal }) => {
 
   const isTouch = isTouchDevice();
 
-  const { ref: weBall1ref } = useParallax({ speed: !isTouch ? 10 : 0 });
-  const { ref: weBall2ref } = useParallax({ speed: !isTouch ? 20 : 0 });
-  const { ref: weBall3ref } = useParallax({ speed: !isTouch ? 30 : 0 });
+  const { ref: weBall1ref } = useParallax({ speed: 10 });
+  const { ref: weBall2ref } = useParallax({ speed: 20 });
+  const { ref: weBall3ref } = useParallax({ speed: 30 });
+  const { ref: weBall4ref } = useParallax({ speed: 40 });
 
-  const { ref: clientsBall1ref } = useParallax({ speed: !isTouch ? 10 : 0 });
-  const { ref: clientsBall2ref } = useParallax({ speed: !isTouch ? 20 : 0 });
-  const { ref: clientsBall3ref } = useParallax({ speed: !isTouch ? 30 : 0 });
+  const { ref: workBall1ref } = useParallax({ speed: 10 });
+  const { ref: workBall2ref } = useParallax({ speed: 20 });
+  const { ref: workBall3ref } = useParallax({ speed: 30 });
 
   const animateWord = () => {
     if (animatingWord) {
@@ -145,7 +146,7 @@ const Us = ({ setModal }) => {
     return () => {
       bubbleTrail.mouseEffects.killTrail(node);
     };
-  }, [weSection]);
+  }, [isTouch, weSection]);
 
   return (
     <div className={classes.usPage}>
@@ -166,24 +167,31 @@ const Us = ({ setModal }) => {
         <div className={classes.wrapper}>
           <h1 className="title">Who we are</h1>
           <img src={showStripe} alt="line" className="line" />
-          <p className="subtitle">Catchy title</p>
+          <p className="subtitle">We are Storytellers!</p>
           <p className="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id
-            luctus tortor, ut interdum nisi. Suspendisse non turpis in urna
-            volutpat lobortis sed vitae sem. Nullam suscipit feugiat felis vel
-            efficitur. Quisque eleifend scelerisque dolor eu bibendum. Vivamus
-            blandit massa sed dolor iaculis, eu bibendum dui pretium.
+            We are a Studio with one vision —{' '}
+            <strong>That storytelling is life.</strong>
+            <b />
+            Our purpose is to help you sculpt your story through meaningful and
+            compelling content for all mediums. And we mean A-L-L! Our core team
+            provides everything to kick off any project.
           </p>
           <p className="description">
-            Ut in sapien sit amet quam malesuada iaculis ut quis lorem. Fusce
-            viverra pellentesque auctor. Etiam a gravida felis. Mauris
-            porttitor, dolor in euismod egestas, augue risus suscipit massa, ut
-            egestas sapien ante Aliquam erat volutpat. Nullam suscipit
-            pellentesque justo, quis rhoncus purus sollicitudin eget. Integer a
-            lacus vitae quam tristique suscipit in ut erat. Donec dictum commodo
-            sapien ultrices tincidunt. Maecenas ultrices nisi sed mi viverra,
-            vitae egestas mi condimentum. Integer ut odio et elit tincidunt
-            lobortis
+            We use our collective experience as a badge of honor. We{' '}
+            <strong>EMBRACE</strong> new challenges, we <strong>SOLVE</strong>{' '}
+            storytelling problems, with an <strong>HUNGER</strong> for learning,
+            we <strong>CREATE</strong> beautiful, emotion-driven projects that{' '}
+            <strong>RESONATE</strong>
+            with our audience and our client's goals and vision. To deliver.
+            Always. An amazing experience that makes people talk about it
+          </p>
+          <p className="description">
+            We believe we can help guide you into a world-building, engaging
+            narrative. One that will bridge your needs with your wants.{' '}
+            <strong>A hero's journey so to speak.</strong>
+          </p>
+          <p className="strong-description">
+            <strong>Join the show! It's a wild one!</strong>
           </p>
         </div>
         <div
@@ -275,7 +283,10 @@ const Us = ({ setModal }) => {
           className={classnames(classes.ball, classes.ball3)}
           ref={weBall3ref}
         />
-        <div className={classnames(classes.ball, classes.ball4)} />
+        <div
+          className={classnames(classes.ball, classes.ball4)}
+          ref={weBall4ref}
+        />
       </section>
       <section className={classes.clients}>
         <div className={classes.wrapper}>
@@ -367,15 +378,15 @@ const Us = ({ setModal }) => {
         ></button>
         <div
           className={classnames(classes.ball, classes.ball1)}
-          ref={clientsBall1ref}
+          ref={workBall1ref}
         />
         <div
           className={classnames(classes.ball, classes.ball2)}
-          ref={clientsBall2ref}
+          ref={workBall2ref}
         />
         <div
           className={classnames(classes.ball, classes.ball3)}
-          ref={clientsBall3ref}
+          ref={workBall3ref}
         />
       </section>
       <footer>

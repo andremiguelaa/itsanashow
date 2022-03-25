@@ -2,7 +2,7 @@ import React from 'react';
 
 import Social from 'components/Social/Social';
 import showStripe from 'assets/showStripe.svg';
-import contacts from 'assets/contacts.gif';
+import contacts from 'assets/contacts.jpg';
 import contactsVideo from 'assets/contacts.mp4';
 
 import classes from './Modal.module.scss';

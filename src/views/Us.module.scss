@@ -399,10 +399,10 @@
     }
   }
   .scroll {
-    display: none;
     position: absolute;
+    z-index: 1;
     bottom: 1rem;
-    right: 1rem;
+    right: 2rem;
     width: 2rem;
     height: 1.5rem;
     border: none;
@@ -413,9 +413,6 @@
     background-size: 1.75rem;
     outline: none;
     cursor: pointer;
-    @include mobile {
-      display: block;
-    }
   }
   .ball {
     position: absolute;
@@ -508,7 +505,7 @@ footer {
         color: #fe00ae;
       }
       @include mobile {
-        font-size: 1.25rem;
+        font-size: 1.55rem;
       }
     }
     .cta {

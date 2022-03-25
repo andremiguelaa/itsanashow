@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
 
 import Social from 'components/Social/Social';
-import logo from 'assets/logo.svg';
+import logo from 'assets/logo.gif';
 import classes from './Header.module.scss';
 
 const Header = ({ setModal }) => {
@@ -26,12 +26,7 @@ const Header = ({ setModal }) => {
   return (
     <>
       <header className={classes.header}>
-        <Link
-          to="/"
-          className={classnames(classes.logoWrapper, {
-            [classes.loaded]: loaded,
-          })}
-        >
+        <Link to="/">
           <img className={classes.logo} src={logo} alt="logo" />
         </Link>
         <button className={classes.menuButton} onClick={() => setMenu(true)}>
