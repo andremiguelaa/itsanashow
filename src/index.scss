@@ -8,6 +8,39 @@ html {
   }
 }
 
+html,
+a,
+button {
+  cursor: none;
+}
+
+.trail {
+  position: absolute;
+  z-index: 998;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #2a34ff -70%, #fe00ae 85%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  .alt-cursor & {
+    background: linear-gradient(45deg, #fe00ae -70%, #2a34ff 85%);
+  }
+  .custom-cursor & {
+    display: none;
+  }
+  + .trail {
+    height: 1.25rem;
+    width: 1.25rem;
+    z-index: 1000;
+    + .trail {
+      z-index: 999;
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -108,7 +141,6 @@ body {
   font-weight: bold;
   font-size: 0.8125rem;
   letter-spacing: 2px;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -136,7 +168,7 @@ body {
   &.alt {
     background-color: #2139f8;
     &::after {
-      background-color: #FE00AE;
+      background-color: #fe00ae;
     }
   }
 }

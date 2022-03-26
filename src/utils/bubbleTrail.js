@@ -1,6 +1,6 @@
 (function (exports) {
   const overallSpeed = 20;
-  const trailLength = 2;
+  const trailLength = 3;
   let trail = []; // Trail of the mouse pointer
   let thresholds = []; // speed changes according to threshold. The closer to pointer, the lower the speed
   let step = 30;
@@ -92,41 +92,47 @@
     var movingNodes = 0;
     for (var len = trail.length, i = 0; i < len; i++) {
       var node = trail[i];
-      var diff = {
-        x: mouse.x - node.x,
-        y: mouse.y - node.y,
-      };
-      var diffSum = Math.abs(diff.x) + Math.abs(diff.y);
-      var xSpeed = (Math.abs(diff.x) / diffSum) * node.speed;
-      var ySpeed = (Math.abs(diff.y) / diffSum) * node.speed;
-      var absX = Math.abs(diff.x);
-      var absY = Math.abs(diff.y);
 
-      if (absX > thresholds[0][0] || absY > thresholds[0][0]) {
-        for (var k = thresholds.length - 1; k > -1; k--) {
-          if (absX > thresholds[k][0]) {
-            if (k === 0) node.x += diff.x > 0 ? 1 : -1;
-            else
-              node.x +=
-                diff.x > 0
-                  ? xSpeed * thresholds[k][1]
-                  : -xSpeed * thresholds[k][1];
-            break;
-          }
-        }
+      if (i === 1) {
+        node.x = mouse.x;
+        node.y = mouse.y;
+      } else {
+        var diff = {
+          x: mouse.x - node.x,
+          y: mouse.y - node.y,
+        };
+        var diffSum = Math.abs(diff.x) + Math.abs(diff.y);
+        var xSpeed = (Math.abs(diff.x) / diffSum) * node.speed;
+        var ySpeed = (Math.abs(diff.y) / diffSum) * node.speed;
+        var absX = Math.abs(diff.x);
+        var absY = Math.abs(diff.y);
 
-        for (k = thresholds.length - 1; k > -1; k--) {
-          if (absY > thresholds[k][0]) {
-            if (k === 0) node.y += diff.y > 0 ? 1 : -1;
-            else
-              node.y +=
-                diff.y > 0
-                  ? ySpeed * thresholds[k][1]
-                  : -ySpeed * thresholds[k][1];
-            break;
+        if (absX > thresholds[0][0] || absY > thresholds[0][0]) {
+          for (var k = thresholds.length - 1; k > -1; k--) {
+            if (absX > thresholds[k][0]) {
+              if (k === 0) node.x += diff.x > 0 ? 1 : -1;
+              else
+                node.x +=
+                  diff.x > 0
+                    ? xSpeed * thresholds[k][1]
+                    : -xSpeed * thresholds[k][1];
+              break;
+            }
           }
+
+          for (k = thresholds.length - 1; k > -1; k--) {
+            if (absY > thresholds[k][0]) {
+              if (k === 0) node.y += diff.y > 0 ? 1 : -1;
+              else
+                node.y +=
+                  diff.y > 0
+                    ? ySpeed * thresholds[k][1]
+                    : -ySpeed * thresholds[k][1];
+              break;
+            }
+          }
+          movingNodes++;
         }
-        movingNodes++;
       }
     }
 
@@ -158,9 +164,6 @@
     for (i = 0; i < trailLength; i++) {
       let node = document.createElement('div');
       node.className = 'trail';
-      if (i < 1) {
-        node.className = 'trail small';
-      }
       node.setAttribute('data-position', i);
       parentNode.appendChild(node);
       trail.push(

@@ -3,9 +3,7 @@ import { useIsVisible } from 'react-is-visible';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
-import isTouchDevice from 'is-touch-device';
 
-import bubbleTrail from 'utils/bubbleTrail';
 import Social from 'components/Social/Social';
 
 import teamHero from 'assets/teamHero.jpg';
@@ -69,7 +67,6 @@ const wordList = [
 const currentYear = new Date().getFullYear();
 
 const Us = ({ setModal }) => {
-  const weSection = useRef();
   const [headWeScared, setHeadWeScared] = useState(false);
   const scaredHeadTimeout = useRef();
   const [headAltScared, setHeadAltScared] = useState(false);
@@ -78,8 +75,6 @@ const Us = ({ setModal }) => {
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
   const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
-
-  const isTouch = isTouchDevice();
 
   const { ref: weBall1ref } = useParallax({ speed: 10 });
   const { ref: weBall2ref } = useParallax({ speed: 20 });
@@ -138,16 +133,6 @@ const Us = ({ setModal }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToAnimateWordVisible, toAnimateWord]);
 
-  useEffect(() => {
-    if (weSection.current && !isTouch) {
-      bubbleTrail.mouseEffects.mouseTrail(weSection.current);
-    }
-    const node = weSection.current;
-    return () => {
-      bubbleTrail.mouseEffects.killTrail(node);
-    };
-  }, [isTouch, weSection]);
-
   return (
     <div className={classes.usPage}>
       <section className={classes.hero}>
@@ -163,7 +148,7 @@ const Us = ({ setModal }) => {
           className={classes.teamHeroMobile}
         />
       </section>
-      <section className={classes.we} ref={weSection}>
+      <section className={classes.we}>
         <div className={classes.wrapper}>
           <h1 className="title">Who we are</h1>
           <img src={showStripe} alt="line" className="line" />
@@ -338,7 +323,15 @@ const Us = ({ setModal }) => {
           />
         </div>
       </section>
-      <section className={classes.workTogether}>
+      <section
+        className={classes.workTogether}
+        onMouseEnter={() => {
+          document.body.classList.add('alt-cursor');
+        }}
+        onMouseLeave={() => {
+          document.body.classList.remove('alt-cursor');
+        }}
+      >
         <div className={classes.content}>
           <h1 className="title">Let's work together</h1>
           <img src={showStripeAlt} alt="line" className="line" />
@@ -347,7 +340,13 @@ const Us = ({ setModal }) => {
             <span
               ref={toAnimateWord}
               className={classes.animation}
-              onClick={(e) => animateWord()}
+              onClick={() => animateWord()}
+              onMouseEnter={() => {
+                document.body.classList.add('custom-cursor');
+              }}
+              onMouseLeave={() => {
+                document.body.classList.remove('custom-cursor');
+              }}
             >
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
