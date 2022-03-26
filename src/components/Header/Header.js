@@ -31,6 +31,9 @@ const Header = ({ setModal }) => {
         </Link>
         <button className={classes.menuButton} onClick={() => setMenu(true)}>
           Menu
+          <div />
+          <div />
+          <div />
         </button>
       </header>
       <nav

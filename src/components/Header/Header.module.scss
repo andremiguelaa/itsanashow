@@ -28,7 +28,31 @@
     background-color: transparent;
     font-size: 0;
     outline: none;
-    background-image: url('../../assets/menu.svg');
+    padding: 0;
+    div {
+      background-color: #e4f9fe;
+      height: 2px;
+      transition: width 0.2s linear;
+      &:nth-child(1),
+      &:nth-child(3) {
+        width: 18px;
+      }
+      &:nth-child(2) {
+        width: 22px;
+        margin: 5px 0;
+      }
+    }
+    &:hover {
+      div {
+        &:nth-child(1),
+        &:nth-child(3) {
+          width: 22px;
+        }
+        &:nth-child(2) {
+          width: 18px;
+        }
+      }
+    }
   }
 }
 
