@@ -11,7 +11,7 @@ const Video = ({ video, frame }) => {
       {isTouch || !video ? (
         <img className={classes.poster} src={frame} alt="poster" />
       ) : (
-        <video autoPlay loop muted src={video} poster={frame} />
+        <video autoPlay loop muted src={video} />
       )}
       <div className={classes.overlay} />
       <div className={classes.text}>
