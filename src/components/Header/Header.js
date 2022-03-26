@@ -7,7 +7,6 @@ import logo from 'assets/logo.gif';
 import classes from './Header.module.scss';
 
 const Header = ({ setModal }) => {
-  const [loaded, setLoaded] = useState(false);
   const location = useLocation();
   const [page, setPage] = useState();
   const [menu, setMenu] = useState(false);
@@ -16,12 +15,6 @@ const Header = ({ setModal }) => {
     setMenu(false);
     window.scrollTo(0, 0);
   }, [location.pathname]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoaded(true);
-    }, 2000);
-  }, []);
 
   return (
     <>
