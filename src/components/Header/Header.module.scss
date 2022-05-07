@@ -5,9 +5,11 @@
   padding: 2rem;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
   width: 100%;
+  max-width: 1440px;
   z-index: 100;
+  transform: translateX(-50%);
   @include mobile {
     padding: 1rem;
   }
@@ -28,6 +30,10 @@
     font-size: 0;
     outline: none;
     padding: 0;
+    display: none;
+    @include tablet {
+      display: block;
+    }
     div {
       background-color: #e4f9fe;
       height: 2px;

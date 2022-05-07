@@ -37,12 +37,6 @@ const Modal = ({ modal, setModal }) => (
             href="mailto:hello@itsanashow.com"
             target="_blank"
             rel="noopener noreferrer"
-            onMouseEnter={() => {
-              document.body.classList.add('custom-cursor');
-            }}
-            onMouseLeave={() => {
-              document.body.classList.remove('custom-cursor');
-            }}
           >
             hello@itsanashow.com
           </a>

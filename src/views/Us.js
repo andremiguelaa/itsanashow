@@ -323,15 +323,7 @@ const Us = ({ setModal }) => {
           />
         </div>
       </section>
-      <section
-        className={classes.workTogether}
-        onMouseEnter={() => {
-          document.body.classList.add('alt-cursor');
-        }}
-        onMouseLeave={() => {
-          document.body.classList.remove('alt-cursor');
-        }}
-      >
+      <section className={classes.workTogether}>
         <div className={classes.content}>
           <h1 className="title">Let's work together</h1>
           <img src={showStripeAlt} alt="line" className="line" />
@@ -341,12 +333,6 @@ const Us = ({ setModal }) => {
               ref={toAnimateWord}
               className={classes.animation}
               onClick={() => animateWord()}
-              onMouseEnter={() => {
-                document.body.classList.add('custom-cursor');
-              }}
-              onMouseLeave={() => {
-                document.body.classList.remove('custom-cursor');
-              }}
             >
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
