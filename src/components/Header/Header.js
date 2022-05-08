@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
 
-import Social from 'components/Social/Social';
 import logo from 'assets/logo.gif';
 import classes from './Header.module.scss';
 
@@ -84,10 +83,6 @@ const Header = ({ setModal }) => {
             >
               Request a quote
             </a>
-          </div>
-          <div className={classes.social}>
-            <p className={classes.slogan}>Let's get social!</p>
-            <Social />
           </div>
         </div>
       </nav>

@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 
-import Social from 'components/Social/Social';
-
 import teamHero from 'assets/teamHero.jpg';
 import teamHero1 from 'assets/teamHero1.jpg';
 import teamHero2 from 'assets/teamHero2.jpg';
@@ -66,7 +64,7 @@ const wordList = [
 
 const currentYear = new Date().getFullYear();
 
-const Us = ({ setModal }) => {
+const Us = () => {
   const [headWeScared, setHeadWeScared] = useState(false);
   const scaredHeadTimeout = useRef();
   const [headAltScared, setHeadAltScared] = useState(false);
@@ -380,7 +378,6 @@ const Us = ({ setModal }) => {
           <Link to="/">
             <img className={classes.logo} src={logo} alt="logo" />
           </Link>
-          <Social inverted position="left" />
           <span className={classes.copyright}>
             &copy; Itsanashow Creative Studio, Lda {currentYear}. All rights
             reserved.
@@ -396,16 +393,6 @@ const Us = ({ setModal }) => {
             <Link to="/us" className={classnames(classes.link, classes.active)}>
               know us
             </Link>
-          </div>
-          <div>
-            <button
-              className={classes.link}
-              onClick={() => {
-                setModal(true);
-              }}
-            >
-              contact us
-            </button>
           </div>
           <div>
             <a

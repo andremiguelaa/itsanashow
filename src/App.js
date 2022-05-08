@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
 import Home from 'views/Home';
 import Us from 'views/Us';
 import Work from 'views/Work';
@@ -17,15 +18,16 @@ const App = () => {
         <Header setModal={setModal} />
         <Switch>
           <Route exact path="/">
-            <Home setModal={setModal} />
+            <Home />
           </Route>
           <Route exact path="/us">
-            <Us setModal={setModal} />
+            <Us />
           </Route>
           <Route path="/work">
-            <Work setModal={setModal} />
+            <Work />
           </Route>
         </Switch>
+        <Footer />
         <Modal modal={modal} setModal={setModal} />
       </Router>
     </ParallaxProvider>
