@@ -47,7 +47,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <hr />
+        <hr className={classes.hr} />
         <div className={classes.contacts}>
           <div className={classes.address}>
             Rua Braamcamp 84 3D
@@ -64,6 +64,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                   href="mailto:hello@itsanashow.com"
+                  className={classes.mail}
                 >
                   hello@itsanashow.com
                 </a>
@@ -74,6 +75,7 @@ const Footer = () => {
                   href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
                   target="_blank"
                   rel="noreferrer"
+                  className={classes.survey}
                 >
                   Let's Talk
                 </a>
@@ -81,6 +83,9 @@ const Footer = () => {
             </dl>
           </div>
         </div>
+        <p className={classes.copyright}>
+          © Itsanashow Creative Studio, Lda 2022. All rights reserved.
+        </p>
       </div>
     </footer>
   );

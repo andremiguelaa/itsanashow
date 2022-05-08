@@ -1,0 +1,112 @@
+.social {
+  padding-top: 4rem;
+  .lead {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 2;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin: 0 0 2.25rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      display: inline-block;
+      & + li {
+        margin-left: 2.2rem;
+      }
+    }
+    a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+}
+
+.hr {
+  border-top: 1px solid #fff;
+  margin: 2.25rem 0;
+}
+
+.contacts {
+  display: flex;
+  justify-content: space-between;
+  .address {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+  .other {
+    dl {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.7;
+      dt {
+        text-transform: uppercase;
+        opacity: 0.5;
+      }
+      dd {
+        margin: 0 0 1rem;
+      }
+    }
+    .mail {
+      color: #fff;
+      text-decoration: none;
+    }
+    .survey {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      position: relative;
+      padding-left: 1.75rem;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        background-image: url('../../assets/arrow.svg');
+        width: 17px;
+        height: 12px;
+        top: 50%;
+        margin-top: -6px;
+        background-size: contain;
+        background-position: center;
+        animation: arrow 1.5s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes arrow {
+  from {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(25%);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.copyright {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 2.6rem 0 5.25rem;
+}
