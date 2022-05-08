@@ -18,15 +18,17 @@ const Header = ({ setModal }) => {
   return (
     <>
       <header className={classes.header}>
-        <Link to="/">
-          <img className={classes.logo} src={logo} alt="logo" />
-        </Link>
-        <button className={classes.menuButton} onClick={() => setMenu(true)}>
-          Menu
-          <div />
-          <div />
-          <div />
-        </button>
+        <div className="wrapper">
+          <Link to="/">
+            <img className={classes.logo} src={logo} alt="logo" />
+          </Link>
+          <button className={classes.menuButton} onClick={() => setMenu(true)}>
+            Menu
+            <div />
+            <div />
+            <div />
+          </button>
+        </div>
       </header>
       <nav
         className={classnames(classes.menu, {
