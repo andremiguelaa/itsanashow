@@ -11,55 +11,78 @@ import classes from './Home.module.scss';
 
 const Home = () => {
   const { data: homepageData } = useRequest({
-    url: 'homepage?populate=*',
-    method: 'GET',
-  });
-
-  const { data: worksData } = useRequest({
-    url: 'works?populate=*',
-    method: 'GET',
-  });
-
-  const { data: tagsData } = useRequest({
-    url: 'tags?populate=*',
-    method: 'GET',
-  });
-
-  const { data: clientsData } = useRequest({
-    url: 'clients?populate=*',
+    url: 'homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*',
     method: 'GET',
   });
 
   const portfolioHighlights = useMemo(() => {
-    if (
-      homepageData?.data?.attributes?.PortfolioHighlights?.length > 0 &&
-      worksData
-    ) {
-      const worksById = keyBy(worksData.data, 'id');
+    if (homepageData?.data?.attributes?.PortfolioHighlights?.length > 0) {
       return homepageData.data.attributes.PortfolioHighlights.map(
-        ({ id }) => worksById[id]
+        ({
+          work: {
+            data: {
+              id,
+              attributes: {
+                Title,
+                Teaser: {
+                  data: {
+                    attributes: { url: Image },
+                  },
+                },
+              },
+            },
+          },
+        }) => ({ id, Title, Image })
       );
     }
     return [];
-  }, [homepageData, worksData]);
+  }, [homepageData]);
 
   const skills = useMemo(() => {
-    if (homepageData?.data?.attributes?.Tags?.length > 0 && tagsData) {
-      const tagsById = keyBy(tagsData.data, 'id');
-      return homepageData.data.attributes.Tags.map(({ id }) => tagsById[id]);
-    }
-    return [];
-  }, [homepageData, tagsData]);
-
-  const clients = useMemo(() => {
-    if (homepageData?.data?.attributes?.Clients?.length > 0 && clientsData) {
-      const clientsById = keyBy(clientsData.data, 'id');
-      return homepageData.data.attributes.Clients.map(
-        ({ id }) => clientsById[id]
+    if (homepageData?.data?.attributes?.Tags?.length > 0) {
+      return homepageData.data.attributes.Tags.map(
+        ({
+          tag: {
+            data: {
+              id,
+              attributes: { Text },
+            },
+          },
+        }) => ({
+          id,
+          Text,
+        })
       );
     }
     return [];
-  }, [homepageData, clientsData]);
+  }, [homepageData]);
+
+  const clients = useMemo(() => {
+    if (homepageData?.data?.attributes?.Clients?.length > 0) {
+      return homepageData.data.attributes.Clients.map(
+        ({
+          client: {
+            data: {
+              id,
+              attributes: {
+                Name,
+                Logo: {
+                  data: {
+                    attributes: { url: Logo },
+                  },
+                },
+              },
+            },
+          },
+        }) => ({
+          id,
+          Name,
+          Logo,
+        })
+      );
+    }
+    return [];
+  }, [homepageData]);
 
   return (
     <>
@@ -82,12 +105,12 @@ const Home = () => {
         </p>
         {portfolioHighlights.length > 0 && (
           <ul className={classes.portfolioHighlights}>
-            {portfolioHighlights.map((portfolioHighlight, index) => (
+            {portfolioHighlights.map((portfolioHighlight) => (
               <li key={portfolioHighlight.id}>
-                <Link to={`/work/${portfolioHighlight.attributes.Title}`}>
+                <Link to={`/work/${portfolioHighlight.Title}`}>
                   <img
-                    src={`${process.env.REACT_APP_API_URL}${portfolioHighlight.attributes.Teaser.data.attributes.url}`}
-                    alt={portfolioHighlight.attributes.Title}
+                    src={`${process.env.REACT_APP_API_URL}${portfolioHighlight.Image}`}
+                    alt={portfolioHighlight.Title}
                   />
                 </Link>
               </li>
@@ -107,7 +130,7 @@ const Home = () => {
         {skills.length > 0 && (
           <ul className={classes.skills}>
             {skills.map((skill) => (
-              <li key={skill.id}>{skill.attributes.Text}</li>
+              <li key={skill.id}>{skill.Text}</li>
             ))}
           </ul>
         )}
@@ -125,8 +148,8 @@ const Home = () => {
             {clients.map((client) => (
               <li key={client.id}>
                 <img
-                  src={`${process.env.REACT_APP_API_URL}${client.attributes.Logo.data.attributes.url}`}
-                  alt={client.attributes.Name}
+                  src={`${process.env.REACT_APP_API_URL}${client.Logo}`}
+                  alt={client.Name}
                 />
               </li>
             ))}
