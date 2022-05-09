@@ -216,8 +216,8 @@ const Home = () => {
         className={classnames(classes.clients, {
           [classes.visible]: isClientsRevealed,
         })}
-        ref={clientsCurtain}
       >
+        <div className={classes.curtainTrigger} ref={clientsCurtain}></div>
         <div className="wrapper">
           <p className={classes.lead}>Some happy clients and partners</p>
           <p className={classes.description}>

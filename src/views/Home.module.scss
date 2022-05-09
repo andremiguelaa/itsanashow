@@ -227,8 +227,13 @@
   padding: 7rem;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   transition: clip-path 1s linear;
+  position: relative;
   &.visible {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .curtainTrigger {
+    position: relative;
+    top: 50vh;
   }
   .lead {
     margin: 0 0 1rem;
