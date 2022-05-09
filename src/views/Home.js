@@ -18,6 +18,8 @@ const Home = () => {
   const { ref: ball2ref } = useParallax({ speed: 20 });
   const { ref: ball3ref } = useParallax({ speed: 30 });
 
+  const [videoFull, setVideoFull] = useState(false);
+
   const [headScared, setHeadScared] = useState(false);
   const scaredHeadTimeout = useRef();
 
@@ -101,13 +103,6 @@ const Home = () => {
   return (
     <>
       <section className={classes.intro}>
-        <div className="wrapper">
-          <p className={classes.lead}>We are Itsanashow</p>
-          <p className={classes.description}>
-            A creative studio who loves to shape beautiful and meaningful
-            stories through motion, design and user experience.
-          </p>
-        </div>
         <div
           className={classnames(classes.ball, classes.ball1)}
           ref={ball1ref}
@@ -120,12 +115,27 @@ const Home = () => {
           className={classnames(classes.ball, classes.ball3)}
           ref={ball3ref}
         />
+        <div className="wrapper">
+          <p className={classes.lead}>We are Itsanashow</p>
+          <p className={classes.description}>
+            A creative studio who loves to shape beautiful and meaningful
+            stories through motion, design and user experience.
+          </p>
+        </div>
       </section>
       <section className={classes.video}>
-        <div className={classes.overlay}>
+        <div className={classes.overlay} onClick={() => setVideoFull(true)}>
           <p className={classes.callout}>Play our reel</p>
         </div>
-        <video src={video} poster={frame} />
+        <video src={video} poster={frame} autoPlay muted loop />
+        {videoFull && (
+          <div
+            className={classes.fullScreenVideo}
+            onClick={() => setVideoFull(false)}
+          >
+            <video src={video} poster={frame} autoPlay loop />
+          </div>
+        )}
       </section>
       <section className={classes.work}>
         <div className={classes.text}>

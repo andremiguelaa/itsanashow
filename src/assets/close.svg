@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="128" height="128" viewBox="0 0 128 128" fill="none" version="1.1" id="svg116" sodipodi:docname="mouse close.svg" inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
+   <metadata id="metadata120">
+      <rdf:RDF>
+         <cc:Work rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="2560" inkscape:window-height="1387" id="namedview118" showgrid="false" inkscape:zoom="4.2909091" inkscape:cx="82.487289" inkscape:cy="76.097459" inkscape:window-x="1680" inkscape:window-y="25" inkscape:window-maximized="1" inkscape:current-layer="g95" />
+   <g id="g95" transform="translate(-0.01271057,-0.11016846)">
+      <circle cx="64.012711" cy="64.110168" fill="#ffffff" id="circle89" r="64" style="stroke-width:0.948148" />
+      <path d="M 58.797897,58.082317 70.175675,69.189968" stroke="#2a34ff" stroke-width="1.8963" stroke-linecap="round" id="path91" />
+      <path d="M 58.933008,69.324984 C 66.338045,61.739799 70.040564,57.947206 70.040564,57.947206" stroke="#2a34ff" stroke-width="1.8963" stroke-linecap="round" id="path93" />
+   </g>
+</svg>
