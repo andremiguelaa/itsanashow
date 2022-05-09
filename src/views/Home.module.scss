@@ -2,17 +2,21 @@
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 14rem 0 11rem;
   position: relative;
-  .lead {
-    margin: 0 0 1rem;
-    font-size: 1.25rem;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-  .description {
-    margin: 0;
-    font-size: 3.75rem;
-    font-weight: 600;
-    line-height: 1.25;
+  .text {
+    position: relative;
+    z-index: 1;
+    .lead {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .description {
+      margin: 0;
+      font-size: 3.75rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
   }
   .ball {
     position: absolute;
@@ -243,7 +247,7 @@
   }
   .curtainTrigger {
     position: relative;
-    top: 50vh;
+    top: 30vh;
   }
   .lead {
     margin: 0 0 1rem;

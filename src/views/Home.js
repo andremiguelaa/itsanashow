@@ -103,6 +103,13 @@ const Home = () => {
   return (
     <>
       <section className={classes.intro}>
+        <div className={classnames('wrapper', classes.text)}>
+          <p className={classes.lead}>We are Itsanashow</p>
+          <p className={classes.description}>
+            A creative studio who loves to shape beautiful and meaningful
+            stories through motion, design and user experience.
+          </p>
+        </div>
         <div
           className={classnames(classes.ball, classes.ball1)}
           ref={ball1ref}
@@ -114,14 +121,7 @@ const Home = () => {
         <div
           className={classnames(classes.ball, classes.ball3)}
           ref={ball3ref}
-        />
-        <div className="wrapper">
-          <p className={classes.lead}>We are Itsanashow</p>
-          <p className={classes.description}>
-            A creative studio who loves to shape beautiful and meaningful
-            stories through motion, design and user experience.
-          </p>
-        </div>
+        />parallax
       </section>
       <section className={classes.video}>
         <div className={classes.overlay} onClick={() => setVideoFull(true)}>
