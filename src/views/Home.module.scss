@@ -1,6 +1,7 @@
 .intro {
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 14rem 0 11rem;
+  position: relative;
   .lead {
     margin: 0 0 1rem;
     font-size: 1.25rem;
@@ -13,10 +14,38 @@
     font-weight: 600;
     line-height: 1.25;
   }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      rgba(42, 52, 255, 1) 0%,
+      rgba(8, 20, 45, 1) 100%
+    );
+    &.ball1 {
+      width: 16.75rem;
+      height: 16.75rem;
+      top: -1rem;
+      right: 6rem;
+    }
+    &.ball2 {
+      width: 5.25rem;
+      height: 5.25rem;
+      top: 15rem;
+      right: 23rem;
+    }
+    &.ball3 {
+      width: 14.375rem;
+      height: 14.375rem;
+      bottom: 3rem;
+      left: -2.5rem;
+    }
+  }
 }
 
 .video {
   position: relative;
+  cursor: url('../assets/play.svg') 64 64, pointer;
   .overlay {
     position: absolute;
     top: 0;
@@ -45,18 +74,35 @@
 .work {
   .text {
     padding: 7rem 0 14rem;
-  }
-  .lead {
-    margin: 0 0 1rem;
-    font-size: 1.25rem;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-  .description {
-    margin: 0;
-    font-size: 3.75rem;
-    font-weight: 600;
-    line-height: 1.25;
+    position: relative;
+    overflow: hidden;
+    .lead {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .description {
+      margin: 0;
+      font-size: 3.75rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .head {
+      position: absolute;
+      bottom: 0;
+      width: 350px;
+      height: 190px;
+      right: 8rem;
+      img {
+        width: 100%;
+        transition: transform 0.5s ease;
+        pointer-events: none;
+        &.scared {
+          transform: translateX(-50vw);
+        }
+      }
+    }
   }
   .portfolioHighlights {
     margin: 0;
@@ -80,6 +126,7 @@
       width: 100%;
       height: 100%;
       display: flex;
+      cursor: url('../assets/view.svg') 64 64, pointer;
       img {
         object-fit: cover;
         width: 100%;
@@ -106,13 +153,31 @@
     position: relative;
     &::before {
       position: absolute;
-      bottom: 0.3rem;
+      bottom: 0;
       content: '';
       display: block;
       height: 1px;
       background-color: #fff;
       width: 1440px;
       right: calc(100% + 3rem);
+    }
+    &::after {
+      position: absolute;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 1px;
+      background-color: #fff;
+      right: 0;
+      width: 100%;
+      transform: scale(0);
+      transition: transform 0.3s linear;
+      transform-origin: 0%;
+    }
+    &:hover {
+      &::after {
+        transform: scale(1);
+      }
     }
   }
   .lead {
@@ -160,6 +225,11 @@
   background-color: #fff;
   color: #08142d;
   padding: 7rem;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: clip-path 1s linear;
+  &.visible {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
   .lead {
     margin: 0 0 1rem;
     font-size: 1.25rem;

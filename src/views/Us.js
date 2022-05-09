@@ -10,7 +10,6 @@ import teamHero2 from 'assets/teamHero2.jpg';
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
 import head from 'assets/head.svg';
-import headAlt from 'assets/headAlt.svg';
 
 import video from 'assets/skills/video.svg';
 import brand from 'assets/skills/brand.svg';
@@ -67,8 +66,6 @@ const currentYear = new Date().getFullYear();
 const Us = () => {
   const [headWeScared, setHeadWeScared] = useState(false);
   const scaredHeadTimeout = useRef();
-  const [headAltScared, setHeadAltScared] = useState(false);
-  const scaredHeadAltTimeout = useRef();
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
@@ -297,29 +294,6 @@ const Us = () => {
             <img width={211} src={SNS} alt="SNS" />
           </li>
         </ul>
-        <div
-          className={classes.head}
-          onMouseEnter={() => {
-            if (scaredHeadAltTimeout.current) {
-              clearTimeout(scaredHeadAltTimeout.current);
-              scaredHeadAltTimeout.current = null;
-            }
-            setHeadAltScared(true);
-          }}
-          onMouseLeave={() => {
-            scaredHeadAltTimeout.current = setTimeout(() => {
-              setHeadAltScared(false);
-            }, 250);
-          }}
-        >
-          <img
-            className={classnames({
-              [classes.scared]: headAltScared,
-            })}
-            src={headAlt}
-            alt="head"
-          />
-        </div>
       </section>
       <section className={classes.workTogether}>
         <div className={classes.content}>

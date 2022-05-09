@@ -1,15 +1,29 @@
-import React, { useMemo } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
+import { useParallax } from 'react-scroll-parallax';
 import Marquee from 'react-fast-marquee';
+import { useInViewport } from 'react-in-viewport';
 
 import useRequest from 'utils/useRequest';
 
 import video from 'assets/video.mp4';
 import frame from 'assets/frame.png';
+import head from 'assets/head.svg';
 
 import classes from './Home.module.scss';
 
 const Home = () => {
+  const { ref: ball1ref } = useParallax({ speed: 10 });
+  const { ref: ball2ref } = useParallax({ speed: 20 });
+  const { ref: ball3ref } = useParallax({ speed: 30 });
+
+  const [headScared, setHeadScared] = useState(false);
+  const scaredHeadTimeout = useRef();
+
+  const clientsCurtain = useRef();
+  const { enterCount: isClientsRevealed } = useInViewport(clientsCurtain);
+
   const { data: homepageData } = useRequest({
     url: 'homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*',
     method: 'GET',
@@ -94,6 +108,18 @@ const Home = () => {
             stories through motion, design and user experience.
           </p>
         </div>
+        <div
+          className={classnames(classes.ball, classes.ball1)}
+          ref={ball1ref}
+        />
+        <div
+          className={classnames(classes.ball, classes.ball2)}
+          ref={ball2ref}
+        />
+        <div
+          className={classnames(classes.ball, classes.ball3)}
+          ref={ball3ref}
+        />
       </section>
       <section className={classes.video}>
         <div className={classes.overlay}>
@@ -109,6 +135,27 @@ const Home = () => {
               We work closely with our clients and partners crafting visual
               solutions and collecting amazing experiences.
             </p>
+          </div>
+          <div
+            className={classnames(classes.head)}
+            onMouseEnter={() => {
+              if (scaredHeadTimeout.current) {
+                clearTimeout(scaredHeadTimeout.current);
+                scaredHeadTimeout.current = null;
+              }
+              setHeadScared(true);
+            }}
+            onMouseLeave={() => {
+              scaredHeadTimeout.current = setTimeout(() => {
+                setHeadScared(false);
+              }, 250);
+            }}
+          >
+            <img
+              className={classnames({ [classes.scared]: headScared })}
+              src={head}
+              alt="head"
+            />
           </div>
         </div>
         {portfolioHighlights.length > 0 && (
@@ -165,7 +212,12 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className={classes.clients}>
+      <section
+        className={classnames(classes.clients, {
+          [classes.visible]: isClientsRevealed,
+        })}
+        ref={clientsCurtain}
+      >
         <div className="wrapper">
           <p className={classes.lead}>Some happy clients and partners</p>
           <p className={classes.description}>
