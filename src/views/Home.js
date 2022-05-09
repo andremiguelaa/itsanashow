@@ -121,7 +121,7 @@ const Home = () => {
         <div
           className={classnames(classes.ball, classes.ball3)}
           ref={ball3ref}
-        />parallax
+        />
       </section>
       <section className={classes.video}>
         <div className={classes.overlay} onClick={() => setVideoFull(true)}>

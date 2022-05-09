@@ -1,0 +1,52 @@
+.intro {
+  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  padding: 14rem 0 11rem;
+  position: relative;
+  .text {
+    position: relative;
+    z-index: 1;
+    .lead {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .description {
+      margin: 0;
+      font-size: 3.75rem;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 1200px;
+      strong{
+        font-weight: 800;
+      }
+    }
+  }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      rgba(42, 52, 255, 1) 0%,
+      rgba(8, 20, 45, 1) 100%
+    );
+    &.ball1 {
+      width: 16.75rem;
+      height: 16.75rem;
+      top: -1rem;
+      right: 6rem;
+    }
+    &.ball2 {
+      width: 5.25rem;
+      height: 5.25rem;
+      top: 15rem;
+      right: 23rem;
+    }
+    &.ball3 {
+      width: 8.75rem;
+      height: 8.75rem;
+      bottom: 3rem;
+      left: 20%;
+    }
+  }
+}
