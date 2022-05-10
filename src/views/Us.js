@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { useIsVisible } from 'react-is-visible';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
+import ScrollContainer from 'react-indiana-drag-scroll';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
-import { useParallax } from 'react-scroll-parallax';
+import { useParallax, Parallax } from 'react-scroll-parallax';
 
 import useRequest from 'utils/useRequest';
+import Markdown from 'components/Markdown/Markdown';
 
 import showStripe from 'assets/showStripe.svg';
 import showStripeAlt from 'assets/showStripeAlt.svg';
@@ -59,8 +60,67 @@ const Us = () => {
     method: 'GET',
   });
 
-  console.log(usData);
+  const { ref: ball1ref } = useParallax({ speed: 10 });
+  const { ref: ball2ref } = useParallax({ speed: 20 });
+  const { ref: ball3ref } = useParallax({ speed: 30 });
 
+  const teamMembers = useMemo(() => {
+    if (usData?.data?.attributes?.Team?.length > 0) {
+      return usData.data.attributes.Team.map(
+        ({
+          id,
+          team_member: {
+            data: {
+              attributes: {
+                MainText,
+                Name,
+                Role,
+                SecondaryText,
+                Photo: {
+                  data: {
+                    attributes: { url: Image },
+                  },
+                },
+              },
+            },
+          },
+        }) => ({ id, MainText, Name, Role, SecondaryText, Image })
+      );
+    }
+    return [];
+  }, [usData]);
+
+  const teamPhotos = useMemo(() => {
+    if (usData?.data?.attributes?.Gallery?.length > 0) {
+      return usData.data.attributes.Gallery.map(
+        ({
+          id,
+          team_photo: {
+            data: {
+              attributes: {
+                Title,
+                Photo: {
+                  data: {
+                    attributes: { url: Image },
+                  },
+                },
+              },
+            },
+          },
+        }) => ({ id, Title, Image })
+      );
+    }
+    return [];
+  }, [usData]);
+
+  const galleryContainer = useRef();
+  const [galleryScrollStatus, setGalleryScrollStatus] = useState(0);
+  const galleryViewPercentage = galleryContainer?.current
+    ? document.documentElement.clientWidth /
+      galleryContainer.current.scrollWidth
+    : 0;
+
+  /*
   const [headWeScared, setHeadWeScared] = useState(false);
   const scaredHeadTimeout = useRef();
 
@@ -69,15 +129,9 @@ const Us = () => {
   const [animatingWord, setAnimatingWord] = useState(false);
   const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
 
-  const { ref: ball1ref } = useParallax({ speed: 10 });
-  const { ref: ball2ref } = useParallax({ speed: 20 });
-  const { ref: ball3ref } = useParallax({ speed: 30 });
-
-  /*
   const { ref: workBall1ref } = useParallax({ speed: 10 });
   const { ref: workBall2ref } = useParallax({ speed: 20 });
   const { ref: workBall3ref } = useParallax({ speed: 30 });
-  */
 
   const animateWord = () => {
     if (animatingWord) {
@@ -126,6 +180,7 @@ const Us = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToAnimateWordVisible, toAnimateWord]);
+  */
 
   return (
     <>
@@ -152,55 +207,95 @@ const Us = () => {
           ref={ball3ref}
         />
       </section>
-      <section className={classes.team}>
-        <ul></ul>
-      </section>
+      {teamMembers.length > 0 && (
+        <section className={classes.team}>
+          <div className="wrapper">
+            <ul className={classes.teamMembers}>
+              {teamMembers.map(
+                ({ id, MainText, Name, Role, SecondaryText, Image }, index) => (
+                  <li key={id} className={classes.teamMember}>
+                    <Parallax
+                      translateY={[0, -(Math.ceil((index + 1) / 2) * 20)]}
+                    >
+                      <p className={classes.role}>{Role}</p>
+                      <p className={classes.name}>{Name}</p>
+                      <p className={classes.mainText}>
+                        <Markdown content={MainText} />
+                      </p>
+                    </Parallax>
+                    <div className={classes.aside}>
+                      <img
+                        className={classes.image}
+                        src={`${process.env.REACT_APP_API_URL}${Image}`}
+                        alt={Name}
+                      />
+                      <p className={classes.secondaryText}>
+                        <Markdown content={SecondaryText} />
+                      </p>
+                    </div>
+                  </li>
+                )
+              )}
+            </ul>
+            <div className={classes.ctaWrapper}>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="mailto:hello@itsanashow.com"
+                className={classes.cta}
+              >
+                Wanna join us?
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+      {teamPhotos.length > 0 && (
+        <section className={classes.gallery}>
+          <ScrollContainer
+            innerRef={galleryContainer}
+            onScroll={() => {
+              if (galleryContainer.current) {
+                setGalleryScrollStatus(
+                  galleryContainer.current.scrollLeft /
+                    (galleryContainer.current.scrollWidth -
+                      document.documentElement.clientWidth)
+                );
+              }
+            }}
+          >
+            <ul className={classes.teamPhotos}>
+              {teamPhotos.map(({ id, Title, Image }) => (
+                <li key={id} className={classes.teamPhoto}>
+                  <img
+                    className={classes.image}
+                    src={`${process.env.REACT_APP_API_URL}${Image}`}
+                    alt={Title}
+                  />
+                </li>
+              ))}
+            </ul>
+          </ScrollContainer>
+          <div className={classes.scrollStatus}>
+            <div
+              className={classes.scrollStatusPusher}
+              style={{ width: `${galleryScrollStatus * 100}%` }}
+            />
+            <div
+              className={classes.scrollStatusBar}
+              style={{ width: `${galleryViewPercentage * 100}%` }}
+            />
+            <div
+              className={classes.scrollStatusPusher}
+              style={{ width: `${(1 - galleryScrollStatus) * 100}%` }}
+            />
+          </div>
+        </section>
+      )}
+
       {/* 
       <div className={classes.usPage}>
-        <section className={classes.hero}>
-          <img src={teamHero} alt="team hero" className={classes.teamHero} />
-          <img
-            src={teamHero1}
-            alt="team hero"
-            className={classes.teamHeroMobile}
-          />
-          <img
-            src={teamHero2}
-            alt="team hero"
-            className={classes.teamHeroMobile}
-          />
-        </section>
         <section className={classes.we}>
-          <div className={classes.wrapper}>
-            <h1 className="title">Who we are</h1>
-            <img src={showStripe} alt="line" className="line" />
-            <p className="subtitle">We are Storytellers!</p>
-            <p className="description">
-              We are a Studio with one vision —{' '}
-              <strong>That storytelling is life.</strong>
-              <b />
-              Our purpose is to help you sculpt your story through meaningful
-              and compelling content for all mediums. And we mean A-L-L! Our
-              core team provides everything to kick off any project.
-            </p>
-            <p className="description">
-              We use our collective experience as a badge of honor. We{' '}
-              <strong>EMBRACE</strong> new challenges, we <strong>SOLVE</strong>{' '}
-              storytelling problems, with an <strong>HUNGER</strong> for
-              learning, we <strong>CREATE</strong> beautiful, emotion-driven
-              projects that <strong>RESONATE</strong>
-              with our audience and our client's goals and vision. To deliver.
-              Always. An amazing experience that makes people talk about it
-            </p>
-            <p className="description">
-              We believe we can help guide you into a world-building, engaging
-              narrative. One that will bridge your needs with your wants.{' '}
-              <strong>A hero's journey so to speak.</strong>
-            </p>
-            <p className="strong-description">
-              <strong>Join the show! It's a wild one!</strong>
-            </p>
-          </div>
           <div
             className={classnames(classes.head)}
             onMouseEnter={() => {
@@ -278,49 +373,6 @@ const Us = () => {
               </ul>
             </li>
           </ul>
-          <div
-            className={classnames(classes.ball, classes.ball1)}
-            ref={weBall1ref}
-          />
-          <div
-            className={classnames(classes.ball, classes.ball2)}
-            ref={weBall2ref}
-          />
-          <div
-            className={classnames(classes.ball, classes.ball3)}
-            ref={weBall3ref}
-          />
-          <div
-            className={classnames(classes.ball, classes.ball4)}
-            ref={weBall4ref}
-          />
-        </section>
-        <section className={classes.clients}>
-          <div className={classes.wrapper}>
-            <h1 className="title">Some select clients</h1>
-            <img src={showStripe} alt="line" className="line" />
-            <p className="subtitle">Reach goals and keep rocking</p>
-          </div>
-          <ul className={classes.logos}>
-            <li>
-              <img width={173} src={novartis} alt="Novartis" />
-            </li>
-            <li>
-              <img width={80} src={TIpeople} alt="TIPeople" />
-            </li>
-            <li>
-              <img width={196} src={gulbenkian} alt="Gulbenkian" />
-            </li>
-            <li>
-              <img width={217} src={rtp} alt="RTP" />
-            </li>
-            <li>
-              <img width={126} src={uniplaces} alt="Uniplaces" />
-            </li>
-            <li>
-              <img width={211} src={SNS} alt="SNS" />
-            </li>
-          </ul>
         </section>
         <section className={classes.workTogether}>
           <div className={classes.content}>
@@ -374,42 +426,6 @@ const Us = () => {
             ref={workBall3ref}
           />
         </section>
-        <footer>
-          <div>
-            <Link to="/">
-              <img className={classes.logo} src={logo} alt="logo" />
-            </Link>
-            <span className={classes.copyright}>
-              &copy; Itsanashow Creative Studio, Lda {currentYear}. All rights
-              reserved.
-            </span>
-          </div>
-          <div className={classes.links}>
-            <div>
-              <Link to="/" className={classes.link}>
-                home
-              </Link>
-            </div>
-            <div>
-              <Link
-                to="/us"
-                className={classnames(classes.link, classes.active)}
-              >
-                know us
-              </Link>
-            </div>
-            <div>
-              <a
-                className={classnames('cta', classes.cta)}
-                href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Request a quote
-              </a>
-            </div>
-          </div>
-        </footer>
       </div>
       */}
     </>
