@@ -198,3 +198,124 @@
     }
   }
 }
+
+.what {
+  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  padding: 7rem 0 0;
+  position: relative;
+  .text {
+    position: relative;
+    z-index: 1;
+    .lead {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .description {
+      margin: 0;
+      font-size: 3.75rem;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 1200px;
+    }
+    .list {
+      list-style: none;
+      margin: 3rem -3rem 0;
+      padding: 0;
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7rem 0;
+        border-bottom: 1px solid #fff;
+        &:last-child {
+          border: none;
+        }
+        img {
+          width: 10%;
+        }
+        .name {
+          margin: 0;
+          box-sizing: border-box;
+          width: 40%;
+          padding: 0 7rem;
+          font-size: 3.75rem;
+          font-weight: 700;
+        }
+        .text {
+          font-size: 1.75rem;
+          font-weight: 400;
+          line-height: 1.25;
+          width: 50%;
+          box-sizing: border-box;
+          padding-right: 2rem;
+        }
+      }
+    }
+    .ctaWrapper {
+      margin: 0 -3rem;
+      padding: 0 0 7rem;
+      text-align: right;
+      overflow: hidden;
+    }
+    .cta {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      &::before {
+        position: absolute;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: #fff;
+        width: 1440px;
+        right: calc(100% + 3rem);
+      }
+      &::after {
+        position: absolute;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: #fff;
+        right: 0;
+        width: 100%;
+        transform: scale(0);
+        transition: transform 0.3s linear;
+        transform-origin: 0%;
+      }
+      &:hover {
+        &::after {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      rgba(42, 52, 255, 1) 0%,
+      rgba(8, 20, 45, 1) 100%
+    );
+    &.ball1 {
+      width: 16.75rem;
+      height: 16.75rem;
+      top: 10rem;
+      right: -2rem;
+    }
+    &.ball2 {
+      width: 8.75rem;
+      height: 8.75rem;
+      top: 5rem;
+      right: 15rem;
+    }
+  }
+}

@@ -1,19 +1,17 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
-import ScrollContainer from 'react-indiana-drag-scroll';
 import { Link } from 'react-router-dom';
+import ScrollContainer from 'react-indiana-drag-scroll';
 import classnames from 'classnames';
 import { useParallax, Parallax } from 'react-scroll-parallax';
 
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
 
-import showStripe from 'assets/showStripe.svg';
-import showStripeAlt from 'assets/showStripeAlt.svg';
-import head from 'assets/head.svg';
-
 import video from 'assets/skills/video.svg';
-import brand from 'assets/skills/brand.svg';
 import graphics from 'assets/skills/graphics.svg';
+import brand from 'assets/skills/brand.svg';
+
+import head from 'assets/head.svg';
 
 import classes from './Us.module.scss';
 
@@ -51,8 +49,6 @@ const wordList = [
   'Illustration',
   'Filmmaking',
 ];
-
-const currentYear = new Date().getFullYear();
 
 const Us = () => {
   const { data: usData } = useRequest({
@@ -119,6 +115,52 @@ const Us = () => {
     ? document.documentElement.clientWidth /
       galleryContainer.current.scrollWidth
     : 0;
+
+  const { ref: weBall1ref } = useParallax({ speed: 10 });
+  const { ref: weBall2ref } = useParallax({ speed: 20 });
+
+  const whatItem1 = useRef();
+  const whatItem2 = useRef();
+  const whatItem3 = useRef();
+
+  const [whatCentered, setWhatCentered] = useState([false, false, false]);
+
+  const listenToScroll = () => {
+    const what1Distance = Math.abs(
+      whatItem1?.current?.getBoundingClientRect().top +
+        whatItem1?.current?.offsetHeight / 2 -
+        window.innerHeight / 2
+    );
+    const what2Distance = Math.abs(
+      whatItem2?.current?.getBoundingClientRect().top +
+        whatItem2?.current?.offsetHeight / 2 -
+        window.innerHeight / 2
+    );
+    const what3Distance = Math.abs(
+      whatItem3?.current?.getBoundingClientRect().top +
+        whatItem3?.current?.offsetHeight / 2 -
+        window.innerHeight / 2
+    );
+    const distanceThreshold = window.innerHeight * 2/3;
+    setWhatCentered([
+      what1Distance < distanceThreshold
+        ? (distanceThreshold - what1Distance) / distanceThreshold
+        : 0,
+      what2Distance < distanceThreshold
+        ? (distanceThreshold - what2Distance) / distanceThreshold
+        : 0,
+      what3Distance < distanceThreshold
+        ? (distanceThreshold - what3Distance) / distanceThreshold
+        : 0,
+    ]);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', listenToScroll);
+    return () => {
+      window.removeEventListener('scroll', listenToScroll);
+    };
+  }, []);
 
   /*
   const [headWeScared, setHeadWeScared] = useState(false);
@@ -292,6 +334,66 @@ const Us = () => {
           </div>
         </section>
       )}
+      <section className={classes.what}>
+        <div className={classnames('wrapper', classes.text)}>
+          <p className={classes.lead}>What we do</p>
+          <p className={classes.description}>
+            We love to give shape to beautiful and meaningful stories.
+          </p>
+          <ul className={classes.list}>
+            <li
+              className={classes.item}
+              ref={whatItem1}
+              style={{ opacity: `${whatCentered[0] * 100}%` }}
+            >
+              <img src={video} alt="Motion" />
+              <p className={classes.name}>Motion</p>
+              <p className={classes.text}>
+                Motion Graphics, 2D &amp; 3D Animation, Script Development, App
+                Tutorials, Explainer Videos, Commercials, Title sequences,
+                Manifesto videos
+              </p>
+            </li>
+            <li
+              className={classes.item}
+              ref={whatItem2}
+              style={{ opacity: `${whatCentered[1] * 100}%` }}
+            >
+              <img src={graphics} alt="Graphics" />
+              <p className={classes.name}>Graphics</p>
+              <p className={classes.text}>
+                Illustration, Infographics, Iconography, UI/UX Web Design, App
+                Design, Wireframing
+              </p>
+            </li>
+            <li
+              className={classes.item}
+              ref={whatItem3}
+              style={{ opacity: `${whatCentered[2] * 100}%` }}
+            >
+              <img src={brand} alt="Branding" />
+              <p className={classes.name}>Branding</p>
+              <p className={classes.text}>
+                Logo Design, Identity Systems, Tone of voice Copywriting, Brand
+                Guidelines, Brand Collateral Logo Animation, Presentation Design
+              </p>
+            </li>
+          </ul>
+          <div className={classes.ctaWrapper}>
+            <Link to="/us" className={classes.cta}>
+              Know our work
+            </Link>
+          </div>
+        </div>
+        <div
+          className={classnames(classes.ball, classes.ball1)}
+          ref={weBall1ref}
+        />
+        <div
+          className={classnames(classes.ball, classes.ball2)}
+          ref={weBall2ref}
+        />
+      </section>
 
       {/* 
       <div className={classes.usPage}>
