@@ -1,3 +1,8 @@
+.footer{
+  position: relative;
+  background-color: #08142d;
+}
+
 .social {
   padding-top: 4rem;
   .lead {
@@ -77,6 +82,7 @@
         position: absolute;
         left: 0;
         background-image: url('../../assets/arrow.svg');
+        background-repeat: no-repeat;
         width: 17px;
         height: 12px;
         top: 50%;

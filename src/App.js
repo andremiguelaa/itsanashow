@@ -16,17 +16,19 @@ const App = () => {
     <ParallaxProvider>
       <Router>
         <Header setModal={setModal} />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/us">
-            <Us />
-          </Route>
-          <Route path="/work">
-            <Work />
-          </Route>
-        </Switch>
+        <main>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/us">
+              <Us />
+            </Route>
+            <Route path="/work">
+              <Work />
+            </Route>
+          </Switch>
+        </main>
         <Footer />
         <Modal modal={modal} setModal={setModal} />
       </Router>

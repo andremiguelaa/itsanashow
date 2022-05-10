@@ -19,17 +19,33 @@ const Header = ({ setModal }) => {
     <>
       <header className={classes.header}>
         <div className="wrapper">
-          <Link to="/">
-            <img className={classes.logo} src={logo} alt="logo" />
-          </Link>
+          <div className={classes.content}>
+            <Link to="/">
+              <img className={classes.logo} src={logo} alt="logo" />
+            </Link>
+            <nav>
+              <Link to="/us">Know us</Link>
+              <button
+                onClick={() => {
+                  setModal(true);
+                  setMenu(false);
+                }}
+              >
+                Contact us
+              </button>
+            </nav>
+          </div>
+          {/* 
           <button className={classes.menuButton} onClick={() => setMenu(true)}>
             Menu
             <div />
             <div />
             <div />
           </button>
+          */}
         </div>
       </header>
+      {/* 
       <nav
         className={classnames(classes.menu, {
           [classes.open]: menu,
@@ -88,6 +104,7 @@ const Header = ({ setModal }) => {
           </div>
         </div>
       </nav>
+      */}
     </>
   );
 };

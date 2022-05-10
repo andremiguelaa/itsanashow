@@ -7827,10 +7827,10 @@ react-indiana-drag-scroll@^2.1.0:
     debounce "^1.2.0"
     easy-bem "^1.1.1"
 
-react-is-visible@^1.1.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-is-visible/-/react-is-visible-1.1.2.tgz#c9476af93948dcb2d5ac0e3edf80188f13ae26c8"
-  integrity sha512-/QiX/OEGIY7JvlUUfgtKKBBDMZU5G2mkJRNVooD/hDvt8zsfMn07HXNT+rY5zAfxIHj/ZUPWy66A1xbXFyLvOg==
+react-is-visible@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-is-visible/-/react-is-visible-1.2.0.tgz#d737ecf6609d31ce4237aeb2e49da2a7454e63cd"
+  integrity sha512-052RH7aHdKrABOBH12wvS2zTAzJ8MnaswPvX2AQGq5wxvD8BnQ5vcnf0cA0cj2g4bjH0+qXz1AIkEL9ZlnN23A==
   dependencies:
     "@babel/runtime" "^7.12.5"
     hoist-non-react-statics "3.3.2"

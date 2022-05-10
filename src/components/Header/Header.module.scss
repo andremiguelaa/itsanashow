@@ -8,12 +8,39 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  @include mobile {
-    padding: 1rem;
+  pointer-events: none;
+  a,
+  button {
+    pointer-events: all;
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .logo {
     width: 60px;
   }
+  nav {
+    button {
+      border: none;
+      background-color: transparent;
+    }
+    a{
+      text-decoration: none;
+    }
+    a,
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1.125rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #FFF;
+      margin-left: 3.8rem;
+    }
+  }
+  /*
   .menuButton {
     position: absolute;
     top: 50%;
@@ -57,8 +84,10 @@
       }
     }
   }
+  */
 }
 
+/*
 .menu {
   position: fixed;
   z-index: 1000;
@@ -211,3 +240,4 @@
     }
   }
 }
+*/

@@ -4,7 +4,7 @@ import classes from './Footer.module.scss';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className={classes.footer}>
       <div className="wrapper">
         <div className={classes.social}>
           <p className={classes.lead}>Don't forget to follow us!</p>

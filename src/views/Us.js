@@ -6,6 +6,7 @@ import { useParallax, Parallax } from 'react-scroll-parallax';
 
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
+import WorkTogether from 'components/WorkTogether/WorkTogether';
 
 import video from 'assets/skills/video.svg';
 import graphics from 'assets/skills/graphics.svg';
@@ -14,41 +15,6 @@ import brand from 'assets/skills/brand.svg';
 import head from 'assets/head.svg';
 
 import classes from './Us.module.scss';
-
-const alpha = [
-  '!',
-  '#',
-  '$',
-  '0',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  'A',
-  'G',
-  'T',
-  'H',
-  'Y',
-  'Z',
-  'X',
-  'W',
-  'O',
-  'K',
-  'Q',
-  'S',
-];
-
-const wordList = [
-  'Animation',
-  'UX/UI',
-  'Branding',
-  'Storytelling',
-  'Video',
-  'Illustration',
-  'Filmmaking',
-];
 
 const Us = () => {
   const { data: usData } = useRequest({
@@ -141,7 +107,7 @@ const Us = () => {
         whatItem3?.current?.offsetHeight / 2 -
         window.innerHeight / 2
     );
-    const distanceThreshold = window.innerHeight * 2/3;
+    const distanceThreshold = (window.innerHeight * 2) / 3;
     setWhatCentered([
       what1Distance < distanceThreshold
         ? (distanceThreshold - what1Distance) / distanceThreshold
@@ -162,67 +128,32 @@ const Us = () => {
     };
   }, []);
 
-  /*
+  const testimonials = useMemo(() => {
+    if (usData?.data?.attributes?.Testimonials?.length > 0) {
+      return usData.data.attributes.Testimonials.map(
+        ({
+          id,
+          testimonial: {
+            data: {
+              attributes: { Name, Role, Text },
+            },
+          },
+        }) => ({ id, Name, Role, Text })
+      );
+    }
+    return [];
+  }, [usData]);
+
   const [headWeScared, setHeadWeScared] = useState(false);
   const scaredHeadTimeout = useRef();
 
-  const toAnimateWord = useRef();
-  const isToAnimateWordVisible = useIsVisible(toAnimateWord);
-  const [animatingWord, setAnimatingWord] = useState(false);
-  const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
-
-  const { ref: workBall1ref } = useParallax({ speed: 10 });
-  const { ref: workBall2ref } = useParallax({ speed: 20 });
-  const { ref: workBall3ref } = useParallax({ speed: 30 });
-
-  const animateWord = () => {
-    if (animatingWord) {
-      return;
-    }
-    const nextWordIndex = nextAnimationWordIndex;
-    setNextAnimationWordIndex(
-      nextAnimationWordIndex < wordList.length - 1
-        ? nextAnimationWordIndex + 1
-        : 0
-    );
-    let element = toAnimateWord.current;
-    setAnimatingWord(true);
-    const initialWord = element.innerText;
-    const mixedWord = initialWord.split('');
-    const delay = 50;
-    mixedWord.forEach((_, index) => {
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          mixedWord[index] = `<span class="${classnames(
-            classes.letter,
-            classes.changing
-          )}">${alpha[Math.floor(Math.random() * alpha.length)]}</span>`;
-          element.innerHTML = mixedWord.join('');
-        }, delay * index + i * delay);
-      }
-      setTimeout(() => {
-        mixedWord[index] = `<span class="${classnames(classes.letter, {
-          [classes.hidden]: !wordList[nextWordIndex].split('')[index],
-        })}">${
-          wordList[nextWordIndex].split('')[index]
-            ? wordList[nextWordIndex].split('')[index]
-            : '&nbsp;'
-        }</span>`;
-        element.innerHTML = mixedWord.join('');
-        if (index === mixedWord.length - 1) {
-          setAnimatingWord(false);
-        }
-      }, delay * index + delay * 6);
-    });
-  };
-
-  useEffect(() => {
-    if (isToAnimateWordVisible && toAnimateWord) {
-      animateWord(toAnimateWord.current);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isToAnimateWordVisible, toAnimateWord]);
-  */
+  const testimonialGalleryContainer = useRef();
+  const [testimonialGalleryScrollStatus, setTestimonialGalleryScrollStatus] =
+    useState(0);
+  const testimonialGalleryViewPercentage = testimonialGalleryContainer?.current
+    ? document.documentElement.clientWidth /
+      testimonialGalleryContainer.current.scrollWidth
+    : 0;
 
   return (
     <>
@@ -394,10 +325,8 @@ const Us = () => {
           ref={weBall2ref}
         />
       </section>
-
-      {/* 
-      <div className={classes.usPage}>
-        <section className={classes.we}>
+      {testimonials.length > 0 && (
+        <section className={classes.testimonials}>
           <div
             className={classnames(classes.head)}
             onMouseEnter={() => {
@@ -419,117 +348,59 @@ const Us = () => {
               alt="head"
             />
           </div>
-        </section>
-        <section className={classes.what}>
-          <div className={classes.wrapper}>
-            <h1 className="title">What we do</h1>
-            <img src={showStripeAlt} alt="line" className="line" />
-            <p className="subtitle">
-              We love to give shape to beautiful and meaningful stories.
-            </p>
-            <p className="description">
-              Fast-moving trends require rock-solid core skills. <br />
-              Our savoir-faire is broader than you may expect!
+          <div className="wrapper">
+            <p className={classes.lead}>We’re so proud of this!</p>
+            <p className={classes.description}>
+              What our clients &amp; partners say about us
             </p>
           </div>
-          <ul className={classes.services}>
-            <li>
-              <img className={classes.skill} src={video} alt="video" />
-              <h1 className={classes.title}>Motion</h1>
+          <div className={classes.testimonialsList}>
+            <ScrollContainer
+              innerRef={testimonialGalleryContainer}
+              onScroll={() => {
+                if (testimonialGalleryContainer.current) {
+                  setTestimonialGalleryScrollStatus(
+                    testimonialGalleryContainer.current.scrollLeft /
+                      (testimonialGalleryContainer.current.scrollWidth -
+                        document.documentElement.clientWidth)
+                  );
+                }
+              }}
+            >
               <ul className={classes.list}>
-                <li>Motion Graphics</li>
-                <li>2D &amp; 3D Animation</li>
-                <li>Script Development</li>
-                <li>App Tutorials</li>
-                <li>Explainer Videos</li>
-                <li>Commercials</li>
-                <li>Title Sequences</li>
-                <li>Manifesto Videos</li>
+                {testimonials.map(({ id, Name, Role, Text }) => (
+                  <li key={id} className={classes.item}>
+                    <div className={classes.content}>
+                      <p className={classes.text}>
+                        <Markdown content={Text} />
+                      </p>
+                      <p className={classes.name}>{Name}</p>
+                      <p className={classes.role}>{Role}</p>
+                    </div>
+                  </li>
+                ))}
               </ul>
-            </li>
-            <li>
-              <img className={classes.skill} src={graphics} alt="graphics" />
-              <h1 className={classes.title}>Graphics</h1>
-              <ul className={classes.list}>
-                <li>Illustration</li>
-                <li>Infographics</li>
-                <li>Iconography</li>
-                <li>UI/UX</li>
-                <li>Web Design</li>
-                <li>App Design</li>
-                <li>Wireframing</li>
-              </ul>
-            </li>
-            <li>
-              <img className={classes.skill} src={brand} alt="brand" />
-              <h1 className={classes.title}>Brand</h1>
-              <ul className={classes.list}>
-                <li>Logo Design</li>
-                <li>Identity Systems</li>
-                <li>Tone of Voice</li>
-                <li>Copywriting</li>
-                <li>Brand Guidelines</li>
-                <li>Brand Collateral</li>
-                <li>Logo Animation</li>
-                <li>Presentation Design</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-        <section className={classes.workTogether}>
-          <div className={classes.content}>
-            <h1 className="title">Let's work together</h1>
-            <img src={showStripeAlt} alt="line" className="line" />
-            <p className="subtitle">
-              We're always thinking about the future of{' '}
-              <span
-                ref={toAnimateWord}
-                className={classes.animation}
-                onClick={() => animateWord()}
-              >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span>
-            </p>
-            <div className={classes.quote}>
-              <p>
-                <strong>Request a quote for your project</strong>
-              </p>
-              <p>
-                Fill out the form below and we'll get back to you with more
-                information
-              </p>
-              <a
-                className={classnames('cta', 'alt', classes.cta)}
-                href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span aria-hidden="true">Request a quote</span>
-                <span>Let's talk!</span>
-              </a>
+            </ScrollContainer>
+            <div className={classes.scrollStatus}>
+              <div
+                className={classes.scrollStatusPusher}
+                style={{ width: `${testimonialGalleryScrollStatus * 100}%` }}
+              />
+              <div
+                className={classes.scrollStatusBar}
+                style={{ width: `${testimonialGalleryViewPercentage * 100}%` }}
+              />
+              <div
+                className={classes.scrollStatusPusher}
+                style={{
+                  width: `${(1 - testimonialGalleryScrollStatus) * 100}%`,
+                }}
+              />
             </div>
           </div>
-          <button
-            className={classes.scroll}
-            onClick={() => {
-              window.scrollTo(0, 0);
-            }}
-          ></button>
-          <div
-            className={classnames(classes.ball, classes.ball1)}
-            ref={workBall1ref}
-          />
-          <div
-            className={classnames(classes.ball, classes.ball2)}
-            ref={workBall2ref}
-          />
-          <div
-            className={classnames(classes.ball, classes.ball3)}
-            ref={workBall3ref}
-          />
         </section>
-      </div>
-      */}
+      )}
+      <WorkTogether />
     </>
   );
 };
