@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import classnames from 'classnames';
 import { useParallax, Parallax } from 'react-scroll-parallax';
+import Lottie from 'react-lottie-player';
 
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
@@ -10,7 +11,7 @@ import WorkTogether from 'components/WorkTogether/WorkTogether';
 
 import video from 'assets/skills/video.svg';
 import graphics from 'assets/skills/graphics.svg';
-import brand from 'assets/skills/brand.svg';
+import brand from 'assets/skills/brand.json';
 
 import head from 'assets/head.svg';
 
@@ -302,7 +303,14 @@ const Us = () => {
               ref={whatItem3}
               style={{ opacity: `${whatCentered[2] * 100}%` }}
             >
-              <img src={brand} alt="Branding" />
+              <div className={classes.img}>
+                <Lottie
+                  loop
+                  animationData={brand}
+                  play
+                  // style={{ width: 150, height: 150 }}
+                />
+              </div>
               <p className={classes.name}>Branding</p>
               <p className={classes.text}>
                 Logo Design, Identity Systems, Tone of voice Copywriting, Brand

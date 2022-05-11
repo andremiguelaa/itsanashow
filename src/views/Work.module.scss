@@ -1,0 +1,144 @@
+.intro {
+  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  padding: 14rem 0 7.5rem;
+  position: relative;
+  .text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    .lead {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .description {
+      margin: 0 auto 5rem;
+      font-size: 3.75rem;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 950px;
+    }
+  }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      rgba(42, 52, 255, 1) 0%,
+      rgba(8, 20, 45, 1) 100%
+    );
+    &.ball1 {
+      width: 16.75rem;
+      height: 16.75rem;
+      top: -1rem;
+      right: 30rem;
+    }
+    &.ball2 {
+      width: 5.25rem;
+      height: 5.25rem;
+      top: 12rem;
+      right: 48rem;
+    }
+    &.ball3 {
+      width: 11rem;
+      height: 11rem;
+      bottom: 6rem;
+      left: -2.5rem;
+    }
+    &.ball4 {
+      width: 11rem;
+      height: 11rem;
+      bottom: 0;
+      right: 5rem;
+    }
+  }
+}
+
+.works {
+  .list {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    list-style: none;
+  }
+  .item {
+    display: inline-block;
+    width: 50%;
+    position: relative;
+    vertical-align: top;
+    a {
+      cursor: url('../assets/view.svg') 64 64, pointer;
+    }
+    img {
+      width: 100%;
+      vertical-align: top;
+      transition: opacity 0.3s linear;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(8, 20, 45, 0) 0%,
+        rgba(8, 20, 45, 0.6) 66.93%
+      );
+    }
+    .text {
+      position: absolute;
+      bottom: 2rem;
+      left: 3rem;
+      right: 3rem;
+      max-width: 650px;
+      pointer-events: none;
+      .name {
+        font-size: 1.55rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin: 0;
+        text-transform: uppercase;
+        color: #fff;
+      }
+      .tags {
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: 1.66;
+        margin: 0;
+        overflow: hidden;
+        color: #fff;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 0;
+        transition: height 0.15s linear;
+      }
+    }
+    &:hover {
+      img {
+        opacity: 0.8;
+      }
+      .text {
+        .tags {
+          height: 1.8675rem;
+        }
+      }
+    }
+  }
+  .seeMore {
+    text-align: center;
+    padding: 3.5rem 0 10rem;
+    .more {
+      color: #fff;
+      font-family: inherit;
+      background-color: transparent;
+      text-transform: uppercase;
+      border: none;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+  }
+}
