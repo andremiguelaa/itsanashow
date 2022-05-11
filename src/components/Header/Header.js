@@ -24,6 +24,7 @@ const Header = ({ setModal }) => {
               <img className={classes.logo} src={logo} alt="logo" />
             </Link>
             <nav>
+              <Link to="/work">Our work</Link>
               <Link to="/us">Know us</Link>
               <button
                 onClick={() => {

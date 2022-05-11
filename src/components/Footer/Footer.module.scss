@@ -1,4 +1,4 @@
-.footer{
+.footer {
   position: relative;
   background-color: #08142d;
 }
@@ -32,6 +32,9 @@
       color: #fff;
       text-transform: uppercase;
       text-decoration: none;
+      &:hover {
+        color: #fe00ae;
+      }
     }
   }
 }
@@ -69,6 +72,9 @@
     .mail {
       color: #fff;
       text-decoration: none;
+      &:hover {
+        color: #fe00ae;
+      }
     }
     .survey {
       color: #fff;
@@ -76,6 +82,9 @@
       text-transform: uppercase;
       position: relative;
       padding-left: 1.75rem;
+      &:hover {
+        color: #fe00ae;
+      }
       &:before {
         content: '';
         display: block;
