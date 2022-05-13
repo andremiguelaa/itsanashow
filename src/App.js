@@ -7,6 +7,7 @@ import Footer from 'components/Footer/Footer';
 import Home from 'views/Home';
 import Us from 'views/Us';
 import Work from 'views/Work';
+import WorkDetail from 'views/WorkDetail';
 import Modal from 'components/Modal/Modal';
 
 const App = () => {
@@ -24,8 +25,11 @@ const App = () => {
             <Route exact path="/us">
               <Us />
             </Route>
-            <Route path="/work">
+            <Route exact path="/work">
               <Work />
+            </Route>
+            <Route exact path="/work/:name">
+              <WorkDetail />
             </Route>
           </Switch>
         </main>
