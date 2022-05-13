@@ -9,8 +9,8 @@ import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
 
-import video from 'assets/skills/video.svg';
-import graphics from 'assets/skills/graphics.svg';
+import motion from 'assets/skills/motion.json';
+import graphics from 'assets/skills/graphics.json';
 import brand from 'assets/skills/brand.json';
 
 import head from 'assets/head.svg';
@@ -278,7 +278,9 @@ const Us = () => {
               ref={whatItem1}
               style={{ opacity: `${whatCentered[0] * 100}%` }}
             >
-              <img src={video} alt="Motion" />
+              <div className={classes.img}>
+                <Lottie loop animationData={motion} play />
+              </div>
               <p className={classes.name}>Motion</p>
               <p className={classes.text}>
                 Motion Graphics, 2D &amp; 3D Animation, Script Development, App
@@ -291,7 +293,9 @@ const Us = () => {
               ref={whatItem2}
               style={{ opacity: `${whatCentered[1] * 100}%` }}
             >
-              <img src={graphics} alt="Graphics" />
+              <div className={classes.img}>
+                <Lottie loop animationData={graphics} play />
+              </div>
               <p className={classes.name}>Graphics</p>
               <p className={classes.text}>
                 Illustration, Infographics, Iconography, UI/UX Web Design, App
@@ -304,12 +308,7 @@ const Us = () => {
               style={{ opacity: `${whatCentered[2] * 100}%` }}
             >
               <div className={classes.img}>
-                <Lottie
-                  loop
-                  animationData={brand}
-                  play
-                  // style={{ width: 150, height: 150 }}
-                />
+                <Lottie loop animationData={brand} play />
               </div>
               <p className={classes.name}>Branding</p>
               <p className={classes.text}>

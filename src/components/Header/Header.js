@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
+import Lottie from 'react-lottie-player';
 
-import logo from 'assets/logo.gif';
+import logo from 'assets/logo.json';
 import classes from './Header.module.scss';
 
 const Header = ({ setModal }) => {
@@ -21,7 +22,9 @@ const Header = ({ setModal }) => {
         <div className="wrapper">
           <div className={classes.content}>
             <Link to="/">
-              <img className={classes.logo} src={logo} alt="logo" />
+              <div className={classes.logo}>
+                <Lottie loop animationData={logo} play />
+              </div>
             </Link>
             <nav>
               <Link to="/work">Our work</Link>
