@@ -1,6 +1,5 @@
 import React from 'react';
 
-import showStripe from 'assets/showStripe.svg';
 import contacts from 'assets/contacts.jpg';
 import contactsVideo from 'assets/contacts.mp4';
 
@@ -22,36 +21,88 @@ const Modal = ({ modal, setModal }) => (
       <div className={classes.gif}>
         <video src={contactsVideo} poster={contacts} autoPlay loop muted />
       </div>
-      <div className={classes.content}>
-        <h1 className="title">Hello there!</h1>
-        <img src={showStripe} alt="line" className="line" />
-        <p className="subtitle">Drop us a line</p>
-        <p className="description">
-          Tell us a bit about yourself or your business.
-          <br />
-          We will get back to you.
-        </p>
-        <p className={classes.mail}>
-          <a
-            href="mailto:hello@itsanashow.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            hello@itsanashow.com
-          </a>
-        </p>
-        <p>
-          <a
-            className="cta"
-            href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Request a quote
-          </a>
-        </p>
-        <div className={classes.footer}>
-          <p className={classes.slogan}>Let's get social!</p>
+      <div className={classes.contentWrapper}>
+        <div className={classes.content}>
+          <p className={classes.salute}>Hello there!</p>
+          <p className={classes.lead}>We'd love to chat!</p>
+          <dl>
+            <dt>General Questions</dt>
+            <dd>
+              <a
+                className={classes.mail}
+                href="mailto:hello@itsanashow.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                hello@itsanashow.com
+              </a>
+            </dd>
+            <dt>New Business Inquires</dt>
+            <dd>
+              <div className={classes.inquires}>
+                Tell us everything about your challenge and we'll get back to
+                you once the bell rings.
+              </div>
+            </dd>
+          </dl>
+          <div>
+            <a
+              href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
+              target="_blank"
+              rel="noreferrer"
+              className={classes.quote}
+            >
+              Request a quote
+            </a>
+          </div>
+          <div className={classes.address}>
+            Rua Bramcamp 84 3D
+            <br />
+            1250-052 Lisboa
+            <br />
+            Portugal
+          </div>
+          <div className={classes.footer}>
+            <p className={classes.slogan}>Let's get social!</p>
+            <ul>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/itsanashow-studio"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/itsanashow.studio/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.behance.net/ItsanashowStudio"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Behance
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://vimeo.com/itsanashowstudio"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Vimeo
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

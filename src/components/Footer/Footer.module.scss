@@ -32,6 +32,7 @@
       color: #fff;
       text-transform: uppercase;
       text-decoration: none;
+      transition: color 0.2s linear;
       &:hover {
         color: #fe00ae;
       }
@@ -72,6 +73,7 @@
     .mail {
       color: #fff;
       text-decoration: none;
+      transition: color 0.2s linear;
       &:hover {
         color: #fe00ae;
       }
@@ -82,6 +84,7 @@
       text-transform: uppercase;
       position: relative;
       padding-left: 1.75rem;
+      transition: color 0.2s linear;
       &:hover {
         color: #fe00ae;
       }
