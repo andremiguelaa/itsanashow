@@ -172,6 +172,7 @@
     padding: 0 0 5rem;
     font-size: 0;
     white-space: nowrap;
+    text-align: center;
     .teamPhoto {
       display: inline-block;
       vertical-align: top;
@@ -365,6 +366,7 @@
     padding: 0 0 5rem 1rem;
     font-size: 0;
     white-space: nowrap;
+    text-align: center;
     .item {
       font-size: 1rem;
       display: inline-block;
@@ -379,7 +381,6 @@
         background-color: rgba(8, 20, 45, 0.05);
         white-space: normal;
         padding: 6rem 3.5rem 10.5rem;
-        text-align: center;
         pointer-events: none;
       }
       .text {

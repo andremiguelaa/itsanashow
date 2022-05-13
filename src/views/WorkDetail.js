@@ -46,11 +46,11 @@ const WorkDetail = () => {
   };
 
   return (
-    <>
+    <div className={classes.workDetailPage}>
       <Link to="/work" className={classes.backLink}>
         Back to work
       </Link>
-      <article>
+      <article className={classes.workDetail}>
         <img
           src={`${process.env.REACT_APP_API_URL}${work.Hero.data.attributes.url}`}
           alt={work.Hero.data.attributes.alternativeText}
@@ -62,7 +62,7 @@ const WorkDetail = () => {
               <h1>{name}</h1>
               <p className={classes.subtitle}>{work.Subtitle}</p>
               {work.Tags?.data?.length > 0 && (
-                <ul>
+                <ul className={classes.tags}>
                   {work.Tags.data.map((tag) => (
                     <li key={tag.id}>{tag.attributes.Text}</li>
                   ))}
@@ -75,7 +75,7 @@ const WorkDetail = () => {
           </div>
         </div>
         {work.ImageGallery?.data?.length > 0 && (
-          <section className={classes.gallery}>
+          <section className={classes.gallerySection}>
             <ScrollContainer
               innerRef={galleryContainer}
               onScroll={() => {
@@ -119,25 +119,28 @@ const WorkDetail = () => {
         <img
           src={`${process.env.REACT_APP_API_URL}${work.BigPicture.data.attributes.url}`}
           alt={work.BigPicture.data.attributes.alternativeText}
-          className={classes.BigPicture}
+          className={classes.bigPicture}
         />
-        <div className={classes.body2}>
-          <Markdown content={work.Body2} />
+        <div className="wrapper">
+          <div className={classes.body2}>
+            <Markdown content={work.Body2} />
+          </div>
         </div>
         {work.VimeoVideo && (
           <iframe
+            title="Vimeo Video"
             src={`https://player.vimeo.com/video/${work.VimeoVideo.split(
               '/'
             ).pop()}`}
             className={classes.vimeoVideo}
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
+            frameBorder="0"
+            allow="fullscreen;"
+            allowFullScreen
           ></iframe>
         )}
         <div className={classes.behance}>
           <p>
-            Find all project details on:
+            <span>Find all project details on:</span>
             <br />
             <a href={work.BehanceLink} target="_blank" rel="noreferrer">
               <img src={behance} alt="behance" />
@@ -146,7 +149,7 @@ const WorkDetail = () => {
         </div>
       </article>
       <WorkTogether />
-    </>
+    </div>
   );
 };
 
