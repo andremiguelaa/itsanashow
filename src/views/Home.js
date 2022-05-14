@@ -28,6 +28,8 @@ const Home = () => {
   const clientsCurtain = useRef();
   const { enterCount: isClientsRevealed } = useInViewport(clientsCurtain);
 
+  console.log(isClientsRevealed);
+
   const headFrame = useRef(headFrameLimits.start);
   const headTimer = useRef();
   const [headFrameState, setHeadFrameState] = useState(headFrameLimits.start);
@@ -153,7 +155,14 @@ const Home = () => {
         <div className={classes.overlay} onClick={() => setVideoFull(true)}>
           <p className={classes.callout}>Play our reel</p>
         </div>
-        <video className={classes.videoMedia} src={video} autoPlay muted loop />
+        <video
+          className={classes.videoMedia}
+          src={video}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
         {videoFull && (
           <div
             className={classes.fullScreenVideo}
@@ -164,6 +173,7 @@ const Home = () => {
               src={video}
               autoPlay
               loop
+              playsInline
             />
           </div>
         )}
@@ -247,8 +257,8 @@ const Home = () => {
         className={classnames(classes.clients, {
           [classes.visible]: isClientsRevealed,
         })}
+        ref={clientsCurtain}
       >
-        <div className={classes.curtainTrigger} ref={clientsCurtain}></div>
         <div className="wrapper">
           <p className={classes.lead}>Some happy clients and partners</p>
           <p className={classes.description}>
