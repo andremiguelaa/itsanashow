@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .intro {
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 14rem 0 7.5rem;
@@ -11,6 +13,9 @@
       font-size: 1.25rem;
       font-weight: 400;
       text-transform: uppercase;
+      @include mobile {
+        font-size: 0.7rem;
+      }
     }
     .description {
       margin: 0 auto 5rem;
@@ -18,6 +23,9 @@
       font-weight: 600;
       line-height: 1.25;
       max-width: 950px;
+      @include mobile {
+        font-size: 1.25rem;
+      }
     }
   }
   .ball {

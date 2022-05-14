@@ -12,6 +12,9 @@
       font-size: 1.25rem;
       font-weight: 400;
       text-transform: uppercase;
+      @include mobile {
+        font-size: 0.7rem;
+      }
     }
     .description {
       margin: 0;
@@ -19,6 +22,9 @@
       font-weight: 600;
       line-height: 1.25;
       max-width: 1200px;
+      @include mobile {
+        font-size: 1.25rem;
+      }
       strong {
         font-weight: 800;
       }
@@ -240,6 +246,9 @@
       font-size: 1.25rem;
       font-weight: 400;
       text-transform: uppercase;
+      @include mobile {
+        font-size: 0.7rem;
+      }
     }
     .description {
       margin: 0;
@@ -247,6 +256,9 @@
       font-weight: 600;
       line-height: 1.25;
       max-width: 1200px;
+      @include mobile {
+        font-size: 1.25rem;
+      }
     }
     .list {
       list-style: none;
@@ -392,6 +404,9 @@
     font-size: 1.25rem;
     font-weight: 400;
     text-transform: uppercase;
+    @include mobile {
+      font-size: 0.7rem;
+    }
   }
   .description {
     margin: 0;
@@ -399,6 +414,9 @@
     font-weight: 600;
     line-height: 1.25;
     max-width: 720px;
+    @include mobile {
+      font-size: 1.25rem;
+    }
   }
   .testimonialsList {
     cursor: url('../assets/drag.svg') 64 64, grab;

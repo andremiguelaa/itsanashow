@@ -10,6 +10,9 @@
   width: 100%;
   z-index: 100;
   pointer-events: none;
+  @include mobile {
+    padding: 1rem 0;
+  }
   a,
   button {
     pointer-events: all;
@@ -21,6 +24,9 @@
   }
   .logo {
     width: 60px;
+    @include mobile {
+      width: 35px;
+    }
   }
   nav {
     @include mobile {
@@ -71,7 +77,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 2rem;
+    right: 1rem;
     border: none;
     display: block;
     color: transparent;

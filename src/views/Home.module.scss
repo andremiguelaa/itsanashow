@@ -1,7 +1,12 @@
+@import 'mixins.scss';
+
 .intro {
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 14rem 0 11rem;
   position: relative;
+  @include mobile {
+    padding: 7rem 0 3rem;
+  }
   .text {
     position: relative;
     z-index: 1;
@@ -10,12 +15,18 @@
       font-size: 1.25rem;
       font-weight: 400;
       text-transform: uppercase;
+      @include mobile {
+        font-size: 0.7rem;
+      }
     }
     .description {
       margin: 0;
       font-size: 3.75rem;
       font-weight: 600;
       line-height: 1.25;
+      @include mobile {
+        font-size: 1.25rem;
+      }
     }
   }
   .ball {
@@ -68,11 +79,19 @@
     text-transform: uppercase;
     pointer-events: none;
     margin: 0;
+    text-align: center;
+    @include tablet {
+      font-size: 1.875rem;
+    }
   }
   video {
     height: 100vh;
     width: 100%;
     object-fit: cover;
+    @include tablet {
+      height: 56vw;
+      min-height: 280px;
+    }
   }
   .fullScreenVideo {
     position: fixed;
@@ -90,17 +109,26 @@
     padding: 7rem 0 14rem;
     position: relative;
     overflow: hidden;
+    @include tablet {
+      padding: 2.25rem 0 5rem;
+    }
     .lead {
       margin: 0 0 1rem;
       font-size: 1.25rem;
       font-weight: 400;
       text-transform: uppercase;
+      @include mobile {
+        font-size: 0.7rem;
+      }
     }
     .description {
       margin: 0;
       font-size: 3.75rem;
       font-weight: 600;
       line-height: 1.25;
+      @include mobile {
+        font-size: 1.25rem;
+      }
     }
     .head {
       position: absolute;
@@ -108,6 +136,12 @@
       width: 350px;
       height: 250px;
       right: 8rem;
+      @include tablet {
+        width: 125px;
+        height: 85px;
+        bottom: 0;
+        right: 1rem;
+      }
       .svg {
         position: absolute;
         opacity: 0;
@@ -126,13 +160,22 @@
       overflow: hidden;
       display: inline-block;
       vertical-align: top;
+      @include mobile {
+        height: 56vw;
+      }
       &:nth-child(1),
       &:nth-child(4) {
         width: 36vw;
+        @include mobile {
+          width: 100%;
+        }
       }
       &:nth-child(2),
       &:nth-child(3) {
         width: calc(100% - 36vw);
+        @include mobile {
+          width: 100%;
+        }
       }
     }
     a {
@@ -155,6 +198,9 @@
     padding: 7rem 0;
     text-align: right;
     overflow: hidden;
+    @include mobile {
+      padding: 2.375rem 0 4.5rem;
+    }
   }
   .cta {
     font-size: 1.25rem;
@@ -164,6 +210,9 @@
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
+    @include mobile {
+      font-size: 0.8rem;
+    }
     &::before {
       position: absolute;
       bottom: 0;
@@ -173,6 +222,10 @@
       background-color: #fff;
       width: 1440px;
       right: calc(100% + 3rem);
+      @include mobile {
+        right: calc(100% + 1rem);
+        bottom: 45%;
+      }
     }
     &::after {
       position: absolute;
@@ -199,6 +252,9 @@
     font-weight: 400;
     text-transform: uppercase;
     text-align: center;
+    @include mobile {
+      font-size: 0.7rem;
+    }
   }
   .description {
     margin: 0 auto 7rem;
@@ -207,6 +263,10 @@
     font-weight: 600;
     line-height: 1.25;
     text-align: center;
+    @include mobile {
+      font-size: 1.25rem;
+      margin-bottom: 5rem;
+    }
   }
   .skillsList {
     color: #2a34ff;
@@ -218,6 +278,9 @@
     padding: 0;
     white-space: nowrap;
     overflow: hidden;
+    @include mobile {
+      font-size: 2rem;
+    }
     li {
       display: inline-block;
       &::before {
@@ -228,7 +291,12 @@
         height: 15px;
         background-color: #2a34ff;
         transform: rotate(45deg);
-        margin: 1.5rem;
+        margin: 0 1.5rem;
+        @include mobile {
+          width: 6px;
+          height: 6px;
+          margin: 0 0.75rem;
+        }
       }
     }
   }
@@ -241,6 +309,9 @@
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   transition: clip-path 1s linear;
   position: relative;
+  @include mobile {
+    padding: 3.25rem 0;
+  }
   &.visible {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
@@ -253,12 +324,18 @@
     font-size: 1.25rem;
     font-weight: 400;
     text-transform: uppercase;
+    @include mobile {
+      font-size: 0.7rem;
+    }
   }
   .description {
     margin: 0;
     font-size: 3.75rem;
     font-weight: 600;
     line-height: 1.25;
+    @include mobile {
+      font-size: 1.25rem;
+    }
   }
   .clientsList {
     margin: 1.25rem 0 0;
@@ -270,11 +347,23 @@
       width: 22.5%;
       text-align: center;
       margin-top: 3.75rem;
+      @include mobile {
+        margin-top: 1.25rem;
+        width: 47.5%;
+      }
       & + li {
         margin-left: 3.33%;
+        @include mobile {
+          margin-left: 5%;
+        }
       }
       &:nth-child(4n-3) {
         margin-left: 0;
+      }
+      &:nth-child(2n+1) {
+        @include mobile {
+          margin-left: 0;
+        }
       }
     }
     img {
