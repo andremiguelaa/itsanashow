@@ -39,14 +39,12 @@ const Header = ({ setModal }) => {
               </button>
             </nav>
           </div>
-          {/* 
           <button className={classes.menuButton} onClick={() => setMenu(true)}>
             Menu
             <div />
             <div />
             <div />
           </button>
-          */}
         </div>
       </header>
       {/* 

@@ -136,7 +136,7 @@
     @include tablet {
       width: 100%;
     }
-    .content{
+    .content {
       width: 100%;
     }
   }
@@ -229,8 +229,9 @@
   .footer {
     margin: 4vh auto 0;
     padding: 1.7rem 0 0;
-    border-top: 1px solid #08142D;
-    max-width: 45rem;
+    border-top: 1px solid #08142d;
+    max-width: 45vw;
+    width: 45rem;
     .slogan {
       margin: 0;
       font-weight: 500;
