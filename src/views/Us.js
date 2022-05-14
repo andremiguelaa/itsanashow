@@ -13,9 +13,14 @@ import motion from 'assets/skills/motion.json';
 import graphics from 'assets/skills/graphics.json';
 import brand from 'assets/skills/brand.json';
 
-import head from 'assets/head.svg';
+import head from 'assets/head.json';
 
 import classes from './Us.module.scss';
+
+const headFrameLimits = {
+  start: 44,
+  end: 61,
+};
 
 const Us = () => {
   const { data: usData } = useRequest({
@@ -145,8 +150,29 @@ const Us = () => {
     return [];
   }, [usData]);
 
-  const [headWeScared, setHeadWeScared] = useState(false);
-  const scaredHeadTimeout = useRef();
+  const headFrame = useRef(headFrameLimits.start);
+  const headTimer = useRef();
+  const [headFrameState, setHeadFrameState] = useState(headFrameLimits.start);
+
+  const numberChange = (direction) => {
+    clearInterval(headTimer.current);
+    headTimer.current = setInterval(() => {
+      if (direction === '+') {
+        if (headFrame.current === headFrameLimits.end) {
+          clearInterval(headTimer.current);
+        } else {
+          headFrame.current = headFrame.current + 1;
+        }
+      } else {
+        if (headFrame.current === headFrameLimits.start) {
+          clearInterval(headTimer.current);
+        } else {
+          headFrame.current = headFrame.current - 1;
+        }
+      }
+      setHeadFrameState(headFrame.current);
+    }, 30);
+  };
 
   const testimonialGalleryContainer = useRef();
   const [testimonialGalleryScrollStatus, setTestimonialGalleryScrollStatus] =
@@ -335,26 +361,17 @@ const Us = () => {
       {testimonials.length > 0 && (
         <section className={classes.testimonials}>
           <div
-            className={classnames(classes.head)}
+            className={classes.head}
             onMouseEnter={() => {
-              if (scaredHeadTimeout.current) {
-                clearTimeout(scaredHeadTimeout.current);
-                scaredHeadTimeout.current = null;
-              }
-              setHeadWeScared(true);
+              numberChange('+');
             }}
             onMouseLeave={() => {
-              scaredHeadTimeout.current = setTimeout(() => {
-                setHeadWeScared(false);
-              }, 250);
+              numberChange('-');
             }}
           >
-            <img
-              className={classnames({ [classes.scared]: headWeScared })}
-              src={head}
-              alt="head"
-            />
+            <Lottie animationData={head} goTo={headFrameState} />
           </div>
+
           <div className="wrapper">
             <p className={classes.lead}>We’re so proud of this!</p>
             <p className={classes.description}>

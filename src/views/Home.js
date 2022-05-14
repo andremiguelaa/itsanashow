@@ -4,14 +4,20 @@ import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import Marquee from 'react-fast-marquee';
 import { useInViewport } from 'react-in-viewport';
+import Lottie from 'react-lottie-player';
 
 import useRequest from 'utils/useRequest';
 
 import video from 'assets/video.mp4';
 import frame from 'assets/frame.png';
-import head from 'assets/head.svg';
+import head from 'assets/head.json';
 
 import classes from './Home.module.scss';
+
+const headFrameLimits = {
+  start: 44,
+  end: 61,
+};
 
 const Home = () => {
   const { ref: ball1ref } = useParallax({ speed: 10 });
@@ -20,11 +26,32 @@ const Home = () => {
 
   const [videoFull, setVideoFull] = useState(false);
 
-  const [headScared, setHeadScared] = useState(false);
-  const scaredHeadTimeout = useRef();
-
   const clientsCurtain = useRef();
   const { enterCount: isClientsRevealed } = useInViewport(clientsCurtain);
+
+  const headFrame = useRef(headFrameLimits.start);
+  const headTimer = useRef();
+  const [headFrameState, setHeadFrameState] = useState(headFrameLimits.start);
+
+  const numberChange = (direction) => {
+    clearInterval(headTimer.current);
+    headTimer.current = setInterval(() => {
+      if (direction === '+') {
+        if (headFrame.current === headFrameLimits.end) {
+          clearInterval(headTimer.current);
+        } else {
+          headFrame.current = headFrame.current + 1;
+        }
+      } else {
+        if (headFrame.current === headFrameLimits.start) {
+          clearInterval(headTimer.current);
+        } else {
+          headFrame.current = headFrame.current - 1;
+        }
+      }
+      setHeadFrameState(headFrame.current);
+    }, 30);
+  };
 
   const { data: homepageData } = useRequest({
     url: 'homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*',
@@ -147,25 +174,15 @@ const Home = () => {
             </p>
           </div>
           <div
-            className={classnames(classes.head)}
+            className={classes.head}
             onMouseEnter={() => {
-              if (scaredHeadTimeout.current) {
-                clearTimeout(scaredHeadTimeout.current);
-                scaredHeadTimeout.current = null;
-              }
-              setHeadScared(true);
+              numberChange('+');
             }}
             onMouseLeave={() => {
-              scaredHeadTimeout.current = setTimeout(() => {
-                setHeadScared(false);
-              }, 250);
+              numberChange('-');
             }}
           >
-            <img
-              className={classnames({ [classes.scared]: headScared })}
-              src={head}
-              alt="head"
-            />
+            <Lottie animationData={head} goTo={headFrameState} />
           </div>
         </div>
         {portfolioHighlights.length > 0 && (
