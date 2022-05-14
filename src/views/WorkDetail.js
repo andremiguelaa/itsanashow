@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
@@ -22,6 +22,35 @@ const WorkDetail = () => {
     method: 'GET',
   });
 
+  const {
+    data: worksData,
+    loading: loadingWorks,
+    error: errorWorks,
+  } = useRequest({
+    url: 'works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D=*',
+    method: 'GET',
+  });
+
+  const currentIndex = useMemo(
+    () =>
+      worksData?.data.attributes.Works.findIndex(
+        (item) => item.work.data[0].attributes.Title === name
+      ),
+    [name, worksData]
+  );
+
+  const previous =
+    currentIndex > 0
+      ? worksData?.data.attributes.Works[currentIndex - 1].work.data[0]
+          .attributes.Title
+      : undefined;
+
+  const next =
+    currentIndex < worksData?.data.attributes.Works.length - 1
+      ? worksData?.data.attributes.Works[currentIndex + 1].work.data[0]
+          .attributes.Title
+      : undefined;
+
   const galleryContainer = useRef();
   const [galleryScrollStatus, setGalleryScrollStatus] = useState(0);
   const galleryViewPercentage = galleryContainer?.current
@@ -33,11 +62,11 @@ const WorkDetail = () => {
     return <>404</>;
   }
 
-  if (error) {
+  if (error || errorWorks) {
     return <>Error</>;
   }
 
-  if (loading || !workData) {
+  if (loading || loadingWorks || !workData || !worksData) {
     return <>Loading</>;
   }
 
@@ -56,23 +85,35 @@ const WorkDetail = () => {
           alt={work.Hero.data.attributes.alternativeText}
           className={classes.hero}
         />
-        <div className="wrapper">
-          <div className={classes.content}>
-            <header className={classes.header}>
-              <h1>{name}</h1>
-              <p className={classes.subtitle}>{work.Subtitle}</p>
-              {work.Tags?.data?.length > 0 && (
-                <ul className={classes.tags}>
-                  {work.Tags.data.map((tag) => (
-                    <li key={tag.id}>{tag.attributes.Text}</li>
-                  ))}
-                </ul>
-              )}
-            </header>
-            <div className={classes.body1}>
-              <Markdown content={work.Body1} />
+        <div className={classes.mainContent}>
+          <div className="wrapper">
+            <div className={classes.content}>
+              <header className={classes.header}>
+                <h1>{name}</h1>
+                <p className={classes.subtitle}>{work.Subtitle}</p>
+                {work.Tags?.data?.length > 0 && (
+                  <ul className={classes.tags}>
+                    {work.Tags.data.map((tag) => (
+                      <li key={tag.id}>{tag.attributes.Text}</li>
+                    ))}
+                  </ul>
+                )}
+              </header>
+              <div className={classes.body1}>
+                <Markdown content={work.Body1} />
+              </div>
             </div>
           </div>
+          {previous && (
+            <Link className={classes.previous} to={previous}>
+              Previous
+            </Link>
+          )}
+          {next && (
+            <Link className={classes.next} to={next}>
+              Next
+            </Link>
+          )}
         </div>
         {work.ImageGallery?.data?.length > 0 && (
           <section className={classes.gallerySection}>
@@ -146,6 +187,16 @@ const WorkDetail = () => {
               <img src={behance} alt="behance" />
             </a>
           </p>
+          {previous && (
+            <Link className={classes.previous} to={previous}>
+              Previous
+            </Link>
+          )}
+          {next && (
+            <Link className={classes.next} to={next}>
+              Next
+            </Link>
+          )}
         </div>
       </article>
       <WorkTogether />
