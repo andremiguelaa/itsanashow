@@ -232,6 +232,9 @@
     border-top: 1px solid #08142d;
     max-width: 45vw;
     width: 45rem;
+    @include tablet {
+      max-width: 90vw;
+    }
     .slogan {
       margin: 0;
       font-weight: 500;

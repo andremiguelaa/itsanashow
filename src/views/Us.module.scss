@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .intro {
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 14rem 0 10rem;
@@ -55,6 +57,9 @@
   padding: 17rem 0 0;
   background-color: #fff;
   color: #08142d;
+  @include tablet {
+    padding: 10rem 0 0;
+  }
   .teamMembers {
     margin: 0;
     padding: 0;
@@ -67,11 +72,9 @@
       font-size: 1rem;
       box-sizing: border-box;
       padding: 0 0 0 20%;
-      &:nth-child(2n) {
-        margin-left: 10%;
-      }
-      &:nth-child(n + 3) {
-        margin-top: 15rem;
+      @include tablet {
+        width: 100%;
+        padding: 0 0 0 33%;
       }
       .role {
         font-size: 0.875rem;
@@ -100,10 +103,18 @@
         top: -1rem;
         left: -4rem;
         width: 52.5%;
+        @include tablet {
+          width: 40%;
+          left: -2rem;
+        }
         .image {
           position: absolute;
           left: 2rem;
           max-width: 85%;
+          @include tablet {
+            max-width: 100%;
+            left: -2rem;
+          }
         }
         .secondaryText {
           position: absolute;
@@ -114,6 +125,23 @@
           letter-spacing: 0.875rem;
           text-transform: uppercase;
           opacity: 0.5;
+          @include tablet {
+            display: none;
+          }
+        }
+      }
+      &:nth-child(2n) {
+        margin-left: 10%;
+        @include tablet {
+          margin-left: 0;
+        }
+      }
+      &:nth-child(n + 3) {
+        margin-top: 15rem;
+      }
+      &:nth-child(n + 2) {
+        @include tablet {
+          margin-top: 10rem;
         }
       }
     }
@@ -224,6 +252,9 @@
       list-style: none;
       margin: 3rem -3rem 0;
       padding: 0;
+      @include tablet {
+        margin: 3rem 0;
+      }
       .item {
         display: flex;
         justify-content: space-between;
@@ -233,9 +264,14 @@
         &:last-child {
           border: none;
         }
-        img,
+        @include tablet {
+          display: block;
+        }
         .img {
           width: 10%;
+          @include tablet {
+            width: 20%;
+          }
         }
         .name {
           margin: 0;
@@ -251,6 +287,10 @@
           box-sizing: border-box;
           padding-right: 2rem;
           padding-left: 3rem;
+          @include tablet {
+            padding-left: 0;
+            width: 100%;
+          }
         }
       }
     }
@@ -259,6 +299,9 @@
       padding: 0 0 7rem;
       text-align: right;
       overflow: hidden;
+      @include tablet {
+        margin: 0;
+      }
     }
     .cta {
       font-size: 1.25rem;
