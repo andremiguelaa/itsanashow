@@ -341,4 +341,14 @@
       }
     }
   }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(150.71deg, #2a34ff 11.33%, #fe00ae 99.05%);
+    width: 11rem;
+    height: 11rem;
+    bottom: 10rem;
+    left: -2rem;
+    z-index: -1;
+  }
 }

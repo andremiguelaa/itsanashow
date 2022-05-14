@@ -104,6 +104,7 @@ const Modal = ({ modal, setModal }) => (
             </ul>
           </div>
         </div>
+        <div className={classes.ball}></div>
       </div>
     </section>
   </div>
