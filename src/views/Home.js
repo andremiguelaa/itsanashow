@@ -9,7 +9,6 @@ import Lottie from 'react-lottie-player';
 import useRequest from 'utils/useRequest';
 
 import video from 'assets/video.mp4';
-import frame from 'assets/frame.png';
 import head from 'assets/head.json';
 
 import classes from './Home.module.scss';
@@ -154,13 +153,18 @@ const Home = () => {
         <div className={classes.overlay} onClick={() => setVideoFull(true)}>
           <p className={classes.callout}>Play our reel</p>
         </div>
-        <video src={video} poster={frame} autoPlay muted loop />
+        <video className={classes.videoMedia} src={video} autoPlay muted loop />
         {videoFull && (
           <div
             className={classes.fullScreenVideo}
             onClick={() => setVideoFull(false)}
           >
-            <video src={video} poster={frame} autoPlay loop />
+            <video
+              className={classes.fullScreenVideoMedia}
+              src={video}
+              autoPlay
+              loop
+            />
           </div>
         )}
       </section>

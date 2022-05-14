@@ -27,6 +27,10 @@
   background-color: #f2f2f2;
   text-align: center;
   color: #08142d;
+  @include mobile {
+    background: linear-gradient(179.94deg, #2a34ff 66.43%, #fe00ae 99.95%);
+    color: #fff;
+  }
   .close {
     position: fixed;
     z-index: 10;
@@ -40,8 +44,20 @@
     padding: 0;
     background-color: transparent;
     cursor: pointer;
+    @include mobile {
+      top: 2em;
+      right: 1.2rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: transparent;
+      background-image: url('../../assets/closeWhite.svg');
+      background-size: contain;
+    }
     > div {
       position: relative;
+      @include mobile {
+        display: none;
+      }
     }
     .closeButtonBlock {
       width: 40px;
@@ -136,8 +152,14 @@
     @include tablet {
       width: 100%;
     }
+    @include mobile {
+      height: calc(100vh - 150px);
+    }
     .content {
       width: 100%;
+      @include mobile {
+        padding-top: 3rem;
+      }
     }
   }
 
@@ -147,11 +169,19 @@
     text-transform: uppercase;
     color: #2a34ff;
     margin: 0;
+    @include mobile {
+      font-size: 0.7rem;
+      color: #00ffe6;
+    }
   }
   .lead {
     font-size: 2.5rem;
     font-weight: 700;
     margin: 1.25rem 0 4vh;
+    @include mobile {
+      font-size: 1.6rem;
+      margin: 0 0 5vh;
+    }
   }
   dl {
     margin: 0;
@@ -161,6 +191,10 @@
       line-height: 3;
       text-transform: uppercase;
       opacity: 0.5;
+      @include mobile {
+        font-size: 0.7rem;
+        line-height: 1.25;
+      }
     }
     dd {
       margin: 0;
@@ -176,6 +210,9 @@
     cursor: url('../../assets/hand.png'), auto;
     display: inline-block;
     margin-bottom: 5vh;
+    @include mobile {
+      font-size: 1rem;
+    }
     &:hover {
       color: #fe00ae;
       text-decoration: underline;
@@ -187,6 +224,9 @@
     opacity: 0.5;
     max-width: 26rem;
     margin: 0 auto;
+    @include mobile {
+      display: none;
+    }
   }
 
   .quote {
@@ -199,6 +239,10 @@
     text-transform: lowercase;
     transition: color 0.2s linear;
     cursor: url('../../assets/hand.png'), auto;
+    @include mobile {
+      font-size: 1rem;
+      margin-top: 0;
+    }
     &:hover {
       color: #fe00ae;
       text-decoration: underline;
@@ -213,6 +257,11 @@
       background-size: contain;
       background-position: center;
       padding-right: 1rem;
+      @include mobile {
+        width: 15px;
+        height: 9px;
+        background-image: url('../../assets/arrow.svg');
+      }
     }
   }
 
@@ -224,6 +273,10 @@
     letter-spacing: 2px;
     opacity: 0.5;
     text-transform: uppercase;
+    @include mobile {
+      font-size: 0.7rem;
+      margin-top: 9vh;
+    }
   }
 
   .footer {
@@ -235,6 +288,15 @@
     @include tablet {
       max-width: 90vw;
     }
+    @include mobile {
+      position: fixed;
+      bottom: 3rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #fff;
+      left: 5vw;
+      text-align: center;
+      color: #fff;
+    }
     .slogan {
       margin: 0;
       font-weight: 500;
@@ -242,15 +304,26 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #2a34ff;
+      @include mobile {
+        font-size: 0.6rem;
+        color: #fff;
+      }
     }
     ul {
       list-style: none;
       padding: 0;
       margin: 2.25rem 0 0;
+      @include mobile {
+        margin: 1.3rem 0 0;
+        font-size: 0;
+      }
       li {
         display: inline-block;
         & + li {
           margin-left: 2.2rem;
+          @include mobile {
+            margin-left: 0.8rem;
+          }
         }
       }
       a {
@@ -261,6 +334,10 @@
         color: inherit;
         text-transform: uppercase;
         text-decoration: none;
+        @include mobile {
+          font-size: 0.6rem;
+          line-height: inherit;
+        }
       }
     }
   }

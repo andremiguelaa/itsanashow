@@ -47,7 +47,6 @@ const Header = ({ setModal }) => {
           </button>
         </div>
       </header>
-      {/* 
       <nav
         className={classnames(classes.menu, {
           [classes.open]: menu,
@@ -83,8 +82,14 @@ const Header = ({ setModal }) => {
             >
               know us
             </Link>
-          </div>
-          <div>
+            <Link
+              to="/work"
+              className={classnames(classes.link, {
+                [classes.active]: page === '/work',
+              })}
+            >
+              our work
+            </Link>
             <button
               onClick={() => {
                 setModal(true);
@@ -94,19 +99,51 @@ const Header = ({ setModal }) => {
               contact us
             </button>
           </div>
-          <div>
-            <a
-              className={classnames('cta', classes.cta)}
-              href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Request a quote
-            </a>
-          </div>
         </div>
+        <div className={classes.footer}>
+          <p className={classes.slogan}>Let's get social!</p>
+          <ul>
+            <li>
+              <a
+                href="https://www.linkedin.com/company/itsanashow-studio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/itsanashow.studio/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.behance.net/ItsanashowStudio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Behance
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://vimeo.com/itsanashowstudio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Vimeo
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className={classnames(classes.ball, classes.ball1)} />
+        <div className={classnames(classes.ball, classes.ball2)} />
       </nav>
-      */}
     </>
   );
 };

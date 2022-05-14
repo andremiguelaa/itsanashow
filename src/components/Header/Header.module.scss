@@ -24,8 +24,10 @@
   }
   .logo {
     width: 60px;
+    height: 60px;
     @include mobile {
       width: 35px;
+      height: 35px;
     }
   }
   nav {
@@ -79,7 +81,6 @@
     transform: translateY(-50%);
     right: 1rem;
     border: none;
-    display: block;
     color: transparent;
     width: 22px;
     height: 16px;
@@ -88,6 +89,7 @@
     outline: none;
     padding: 0;
     display: none;
+    cursor: pointer;
     @include mobile {
       display: block;
     }
@@ -107,7 +109,6 @@
   }
 }
 
-/*
 .menu {
   position: fixed;
   z-index: 1000;
@@ -116,14 +117,11 @@
   bottom: 0;
   right: 0;
   color: #08142d;
-  background-color: #f2f2f2;
-  font-size: 2.8rem;
+  background: linear-gradient(179.94deg, #2a34ff 66.43%, #fe00ae 99.95%);
+  font-size: 2.25rem;
   pointer-events: none;
   transition: clip-path 0.75s cubic-bezier(0.8, 0, 0.2, 1);
-  clip-path: circle(0% at calc(100% - 2.7rem) 3.6rem);
-  @include mobile {
-    clip-path: circle(0% at calc(100% - 3rem) 3rem);
-  }
+  clip-path: circle(0% at calc(100% - 2rem) 2rem);
   &.open {
     pointer-events: all;
     clip-path: circle(150% at 100% 0%);
@@ -141,123 +139,102 @@
   }
   .close {
     position: fixed;
-    top: 2.5rem;
-    right: 1.5rem;
+    cursor: pointer;
+    top: 2em;
+    right: 1.2rem;
     display: block;
-    width: 40px;
-    height: 40px;
+    width: 1.2rem;
+    height: 1.2rem;
     overflow: hidden;
     border: none;
     padding: 0;
     background-color: transparent;
-    transform: scale(0.5);
-    @include mobile {
-      top: 1.25rem;
-    }
-    > div {
-      position: relative;
-    }
-    .closeButtonBlock {
-      width: 40px;
-      height: 20px;
-      position: relative;
-      overflow: hidden;
-      &:before,
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: calc(55% - 4px);
-        display: block;
-        width: 4px;
-        height: 25px;
-        transform-origin: bottom center;
-        background: #2a34ff;
-        transition: all ease-out 280ms;
-      }
-      &:last-of-type {
-        transform: rotate(180deg);
-      }
-    }
-    .in {
-      .closeButtonBlock {
-        &:before {
-          transition-delay: 280ms;
-          transform: translateX(20px) translateY(-20px) rotate(45deg);
-        }
-        &:after {
-          transition-delay: 280ms;
-          transform: translateX(-22px) translateY(-22px) rotate(-45deg);
-        }
-      }
-    }
-    .out {
-      position: absolute;
-      top: 0;
-      left: 0;
-      .closeButtonBlock {
-        &:before {
-          transform: translateX(-5px) translateY(5px) rotate(45deg);
-        }
-        &:after {
-          transform: translateX(5px) translateY(5px) rotate(-45deg);
-        }
-      }
-    }
-    &:hover,
-    &:focus {
-      .in {
-        .closeButtonBlock {
-          &:before {
-            transform: translateX(-5px) translateY(5px) rotate(45deg);
-          }
-          &:after {
-            transform: translateX(5px) translateY(5px) rotate(-45deg);
-          }
-        }
-      }
-      .out {
-        .closeButtonBlock {
-          &:before {
-            transform: translateX(-20px) translateY(20px) rotate(45deg);
-          }
-          &:after {
-            transform: translateX(20px) translateY(20px) rotate(-45deg);
-          }
-        }
-      }
-    }
+    background-image: url('../../assets/closeWhite.svg');
+    background-size: contain;
     &:focus {
       outline: none;
     }
   }
   .links {
-    padding-top: 7rem;
     text-align: center;
+    height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     button,
     .link {
       display: inline-block;
       outline: none;
       text-align: center;
       border: none;
+      cursor: pointer;
       text-decoration: none;
       font-size: 2.8rem;
       background-color: transparent;
       font-weight: bold;
       font-family: inherit;
       padding: 0;
-      color: #08142d;
-      margin-bottom: 0.4rem;
+      color: #fff;
       transition: color 0.2s linear;
       &:hover,
       &.active {
-        color: #fe00ae;
+        color: #00ffe6;
       }
     }
-    .cta {
-      margin-top: 6rem;
-      display: inline-block;
+  }
+  .footer {
+    position: fixed;
+    bottom: 3rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid #fff;
+    width: 90vw;
+    left: 5vw;
+    text-align: center;
+    color: #fff;
+    .slogan {
+      margin: 0;
+      font-weight: 500;
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 1.3rem 0 0;
+      font-size: 0;
+      li {
+        display: inline-block;
+        & + li {
+          margin-left: 0.8rem;
+        }
+      }
+      a {
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: inherit;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+    }
+  }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(337.28deg, #2a34ff 11.54%, #fe00ae 102.75%);
+    &.ball1 {
+      width: 9rem;
+      height: 9rem;
+      top: 2rem;
+      left: -2rem;
+      z-index: -1;
+    }
+    &.ball2 {
+      width: 3.3rem;
+      height: 3.3rem;
+      top: -0.5rem;
+      left: 6.5rem;
     }
   }
 }
-*/
