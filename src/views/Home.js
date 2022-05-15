@@ -28,8 +28,6 @@ const Home = () => {
   const clientsCurtain = useRef();
   const { enterCount: isClientsRevealed } = useInViewport(clientsCurtain);
 
-  console.log(isClientsRevealed);
-
   const headFrame = useRef(headFrameLimits.start);
   const headTimer = useRef();
   const [headFrameState, setHeadFrameState] = useState(headFrameLimits.start);

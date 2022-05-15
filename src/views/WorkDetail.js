@@ -184,7 +184,7 @@ const WorkDetail = () => {
             <span>Find all project details on:</span>
             <br />
             <a href={work.BehanceLink} target="_blank" rel="noreferrer">
-              <img src={behance} alt="behance" />
+              <img src={behance} alt="behance" className={classes.logo} />
             </a>
           </p>
           {previous && (
