@@ -4,10 +4,16 @@
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 14rem 0 7.5rem;
   position: relative;
+  @include mobile {
+    padding: 7rem 0 3rem;
+  }
   .text {
     position: relative;
     z-index: 1;
     text-align: center;
+    @include mobile {
+      text-align: left;
+    }
     .lead {
       margin: 0;
       font-size: 1.25rem;
@@ -25,6 +31,7 @@
       max-width: 950px;
       @include mobile {
         font-size: 1.25rem;
+        margin: 0 auto 2rem;
       }
     }
   }
@@ -41,24 +48,47 @@
       height: 16.75rem;
       top: -1rem;
       right: 30rem;
+      @include mobile {
+        top: 1rem;
+        right: -1rem;
+        width: 8rem;
+        height: 8rem;
+      }
     }
     &.ball2 {
       width: 5.25rem;
       height: 5.25rem;
       top: 12rem;
       right: 48rem;
+      @include mobile {
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 9rem;
+        right: 7rem;
+      }
     }
     &.ball3 {
       width: 11rem;
       height: 11rem;
       bottom: 6rem;
       left: -2.5rem;
+      @include mobile {
+        width: 3.125rem;
+        height: 3.125rem;
+        bottom: -0.75rem;
+        left: auto;
+        right: 1.5rem;
+        z-index: 1;
+      }
     }
     &.ball4 {
       width: 11rem;
       height: 11rem;
       bottom: 0;
       right: 5rem;
+      @include mobile {
+        display: none;
+      }
     }
   }
 }
@@ -75,6 +105,10 @@
     width: 50%;
     position: relative;
     vertical-align: top;
+    @include mobile {
+      width: 100%;
+      height: 56vw;
+    }
     a {
       cursor: url('../assets/view.svg') 64 64, pointer;
     }
@@ -102,6 +136,11 @@
       right: 3rem;
       max-width: 650px;
       pointer-events: none;
+      @include mobile {
+        bottom: 0;
+        left: 1rem;
+        right: 1rem;
+      }
       .name {
         font-size: 1.55rem;
         font-weight: 700;
@@ -109,6 +148,9 @@
         margin: 0;
         text-transform: uppercase;
         color: #fff;
+        @include mobile {
+          font-size: 0.875rem;
+        }
       }
       .tags {
         font-size: 1.125rem;
@@ -121,6 +163,10 @@
         text-overflow: ellipsis;
         height: 0;
         transition: height 0.15s linear;
+        @include mobile {
+          font-size: 0.7rem;
+          height: 1.8675rem;
+        }
       }
     }
     &:hover {
@@ -137,6 +183,9 @@
   .seeMore {
     text-align: center;
     padding: 3.5rem 0 10rem;
+    @include mobile {
+      padding: 2.8rem 0 4.5rem;
+    }
     .more {
       color: #fff;
       font-family: inherit;
@@ -147,6 +196,18 @@
       font-weight: 500;
       letter-spacing: 2px;
       cursor: pointer;
+      @include mobile {
+        font-size: 0.8rem;
+        &::before {
+          content: '';
+          display: block;
+          background-image: url('../assets/down.svg');
+          background-size: contain;
+          height: 15px;
+          width: 10px;
+          margin: 0 auto 0.5rem;
+        }
+      }
     }
   }
 }

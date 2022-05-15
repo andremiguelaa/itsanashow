@@ -112,6 +112,10 @@ const WorkTogether = () => {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </p>
+        <p className={classes.mobileText}>
+          Tell us everything about your challenge and we'll get back to you once
+          the bell rings.
+        </p>
         <a
           className={classes.quote}
           href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"

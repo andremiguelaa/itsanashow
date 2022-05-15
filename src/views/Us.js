@@ -215,7 +215,12 @@ const Us = () => {
                 ({ id, MainText, Name, Role, SecondaryText, Image }, index) => (
                   <li key={id} className={classes.teamMember}>
                     <Parallax
-                      translateY={[0, -(Math.ceil((index + 1) / 2) * 20)]}
+                      translateY={[
+                        0,
+                        window.innerHeight >= 768
+                          ? -(Math.ceil((index + 1) / 2) * 20)
+                          : 0,
+                      ]}
                     >
                       <p className={classes.role}>{Role}</p>
                       <p className={classes.name}>{Name}</p>

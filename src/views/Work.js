@@ -94,7 +94,10 @@ const Work = () => {
                 <li className={classes.item} key={id}>
                   <Link to={`/work/${Title}`}>
                     <Parallax
-                      translateY={[0, index % 2 === 1 ? -20 : 0]}
+                      translateY={[
+                        0,
+                        window.innerHeight >= 768 && index % 2 === 1 ? -20 : 0,
+                      ]}
                       targetElement={scrollRef.current}
                     >
                       <img

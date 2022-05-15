@@ -4,6 +4,9 @@
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 14rem 0 10rem;
   position: relative;
+  @include mobile {
+    padding: 7rem 0 3rem;
+  }
   .text {
     position: relative;
     z-index: 1;
@@ -43,18 +46,36 @@
       height: 16.75rem;
       top: -1rem;
       right: 6rem;
+      @include mobile {
+        top: 1rem;
+        right: -1rem;
+        width: 8rem;
+        height: 8rem;
+      }
     }
     &.ball2 {
       width: 5.25rem;
       height: 5.25rem;
       top: 15rem;
       right: 23rem;
+      @include mobile {
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 9rem;
+        right: 7rem;
+      }
     }
     &.ball3 {
       width: 8.75rem;
       height: 8.75rem;
       bottom: 1rem;
       left: 20%;
+      @include mobile {
+        width: 3.125rem;
+        height: 3.125rem;
+        bottom: 0.25rem;
+        left: 1.5rem;
+      }
     }
   }
 }
@@ -66,10 +87,17 @@
   @include tablet {
     padding: 10rem 0 0;
   }
+  @include mobile {
+    padding: 5rem 0 0;
+  }
   .teamMembers {
     margin: 0;
     padding: 0;
     font-size: 0;
+    @include mobile {
+      max-width: 500px;
+      margin: 0 auto;
+    }
     .teamMember {
       position: relative;
       display: inline-block;
@@ -90,6 +118,9 @@
         opacity: 0.5;
         text-transform: uppercase;
         margin: 0;
+        @include mobile {
+          font-size: 0.5rem;
+        }
       }
       .name {
         font-size: 1.875rem;
@@ -97,12 +128,20 @@
         line-height: 0.8;
         text-transform: uppercase;
         margin: 1.25rem 0 1.75rem;
+        @include mobile {
+          font-size: 0.875rem;
+          margin: 0.5rem 0 0.75rem;
+        }
       }
       .mainText {
         margin: 0;
         font-size: 1.125rem;
         font-weight: 400;
         line-height: 1.33;
+        @include mobile {
+          font-size: 0.7rem;
+          max-width: 300px;
+        }
       }
       .aside {
         position: absolute;
@@ -113,6 +152,10 @@
           width: 40%;
           left: -2rem;
         }
+        @include mobile {
+          left: 0;
+          top: 0;
+        }
         .image {
           position: absolute;
           left: 2rem;
@@ -120,6 +163,9 @@
           @include tablet {
             max-width: 100%;
             left: -2rem;
+          }
+          @include mobile {
+            width: 150px;
           }
         }
         .secondaryText {
@@ -141,6 +187,17 @@
         @include tablet {
           margin-left: 0;
         }
+        @include mobile {
+          padding: 0 33% 0 0;
+          .aside {
+            left: auto;
+            right: 0;
+            .image {
+              left: auto;
+              right: -2rem;
+            }
+          }
+        }
       }
       &:nth-child(n + 3) {
         margin-top: 15rem;
@@ -149,6 +206,9 @@
         @include tablet {
           margin-top: 10rem;
         }
+        @include mobile {
+          margin-top: 5rem;
+        }
       }
     }
   }
@@ -156,6 +216,9 @@
     padding: 7rem 0;
     text-align: right;
     overflow: hidden;
+    @include mobile {
+      padding: 3.125rem 0 4.5rem;
+    }
   }
   .cta {
     font-size: 1.25rem;
@@ -165,6 +228,9 @@
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
+    @include mobile {
+      font-size: 0.8rem;
+    }
     &::before {
       position: absolute;
       bottom: 0;
@@ -174,6 +240,10 @@
       background-color: #08142d;
       width: 1440px;
       right: calc(100% + 3rem);
+      @include mobile {
+        right: calc(100% + 1rem);
+        bottom: 45%;
+      }
     }
     &::after {
       position: absolute;
@@ -199,6 +269,9 @@
 .gallery {
   background-color: #fff;
   padding-bottom: 5rem;
+  @include mobile {
+    padding-bottom: 4rem;
+  }
   cursor: url('../assets/drag.svg') 64 64, grab;
   .teamPhotos {
     margin: 0;
@@ -207,6 +280,9 @@
     font-size: 0;
     white-space: nowrap;
     text-align: center;
+    @include mobile {
+      padding: 0 0 2.375rem;
+    }
     .teamPhoto {
       display: inline-block;
       vertical-align: top;
@@ -238,6 +314,9 @@
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 7rem 0 0;
   position: relative;
+  @include mobile {
+    padding: 4.8rem 0 0;
+  }
   .text {
     position: relative;
     z-index: 1;
@@ -267,6 +346,9 @@
       @include tablet {
         margin: 3rem 0;
       }
+      @include mobile {
+        margin: 0;
+      }
       .item {
         display: flex;
         justify-content: space-between;
@@ -279,10 +361,16 @@
         @include tablet {
           display: block;
         }
+        @include mobile {
+          padding: 4rem 0;
+        }
         .img {
           width: 10%;
           @include tablet {
             width: 20%;
+          }
+          @include mobile {
+            width: 70px;
           }
         }
         .name {
@@ -290,6 +378,9 @@
           box-sizing: border-box;
           font-size: 3.75rem;
           font-weight: 700;
+          @include mobile {
+            font-size: 1.7rem;
+          }
         }
         .text {
           font-size: 1.75rem;
@@ -303,6 +394,9 @@
             padding-left: 0;
             width: 100%;
           }
+          @include mobile {
+            font-size: 0.7rem;
+          }
         }
       }
     }
@@ -314,6 +408,9 @@
       @include tablet {
         margin: 0;
       }
+      @include mobile {
+        padding: 0 0 4.75rem;
+      }
     }
     .cta {
       font-size: 1.25rem;
@@ -323,6 +420,9 @@
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
+      @include mobile {
+        font-size: 0.8rem;
+      }
       &::before {
         position: absolute;
         bottom: 0;
@@ -332,6 +432,10 @@
         background-color: #fff;
         width: 1440px;
         right: calc(100% + 3rem);
+        @include mobile {
+          right: calc(100% + 1rem);
+          bottom: 45%;
+        }
       }
       &::after {
         position: absolute;
@@ -366,12 +470,23 @@
       height: 16.75rem;
       top: 10rem;
       right: -2rem;
+      @include mobile {
+        width: 3.75rem;
+        height: 3.75rem;
+        right: 7rem;
+        top: 5rem;
+      }
     }
     &.ball2 {
       width: 8.75rem;
       height: 8.75rem;
       top: 5rem;
       right: 15rem;
+      @include mobile {
+        width: 7.5rem;
+        height: 7.5rem;
+        right: -1rem;
+      }
     }
   }
 }
@@ -382,6 +497,9 @@
   color: #08142d;
   overflow: hidden;
   position: relative;
+  @include mobile {
+    padding: 6.7rem 0 5.3rem;
+  }
   .head {
     position: absolute;
     top: 1rem;
@@ -390,6 +508,12 @@
     position: absolute;
     width: 350px;
     height: 190px;
+    @include mobile {
+      width: 125px;
+      height: 100px;
+      top: -1rem;
+      right: 0;
+    }
     img {
       width: 100%;
       transition: transform 0.5s ease;
@@ -427,10 +551,17 @@
     font-size: 0;
     white-space: nowrap;
     text-align: center;
+    @include mobile {
+      margin: 3rem 0 0;
+      padding: 0 0 4rem 1rem;
+    }
     .item {
       font-size: 1rem;
       display: inline-block;
       width: 38rem;
+      @include mobile {
+        width: 17rem;
+      }
       &:nth-child(n + 2) {
         padding-left: 1rem;
       }
@@ -442,6 +573,9 @@
         white-space: normal;
         padding: 6rem 3.5rem 10.5rem;
         pointer-events: none;
+        @include mobile {
+          padding: 2.66rem 1.6rem 3.5rem;
+        }
       }
       .text {
         font-family: 'Playfair Display', serif;
@@ -450,12 +584,19 @@
         line-height: 1.6;
         color: #2a34ff;
         margin: 0;
+        @include mobile {
+          font-size: 0.8rem;
+        }
       }
       .name {
         font-size: 1.25rem;
         font-weight: 700;
         line-height: 1.25;
         margin: 4rem 0 0;
+        @include mobile {
+          margin: 3rem 0 0;
+          font-size: 0.7rem;
+        }
       }
       .role {
         font-family: Montserrat;
@@ -463,6 +604,9 @@
         font-weight: 400;
         line-height: 1.4;
         margin: 0;
+        @include mobile {
+          font-size: 0.7rem;
+        }
       }
     }
   }
