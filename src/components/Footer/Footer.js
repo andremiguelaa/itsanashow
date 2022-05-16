@@ -47,7 +47,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <hr className={classes.hr} />
+        <div className={classes.hr} />
         <div className={classes.contacts}>
           <div className={classes.address}>
             Rua Braamcamp 84 3D

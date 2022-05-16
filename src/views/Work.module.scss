@@ -107,7 +107,6 @@
     vertical-align: top;
     @include mobile {
       width: 100%;
-      height: 56vw;
     }
     a {
       cursor: url('../assets/view.svg') 64 64, pointer;
@@ -137,7 +136,7 @@
       max-width: 650px;
       pointer-events: none;
       @include mobile {
-        bottom: 0;
+        bottom: 1rem;
         left: 1rem;
         right: 1rem;
       }
@@ -196,17 +195,17 @@
       font-weight: 500;
       letter-spacing: 2px;
       cursor: pointer;
+      &::before {
+        content: '';
+        display: block;
+        background-image: url('../assets/down.svg');
+        background-size: contain;
+        height: 15px;
+        width: 10px;
+        margin: 0 auto 0.5rem;
+      }
       @include mobile {
         font-size: 0.8rem;
-        &::before {
-          content: '';
-          display: block;
-          background-image: url('../assets/down.svg');
-          background-size: contain;
-          height: 15px;
-          width: 10px;
-          margin: 0 auto 0.5rem;
-        }
       }
     }
   }

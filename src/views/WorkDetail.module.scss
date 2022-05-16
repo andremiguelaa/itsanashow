@@ -190,6 +190,7 @@
       display: inline-block;
       vertical-align: top;
       img {
+        height: 440px;
         @include mobile {
           height: 190px;
         }
@@ -203,6 +204,7 @@
     background-color: #fe00ae4d;
     height: 2px;
     width: 40vw;
+    min-width: 260px;
     margin: 0 auto;
     display: flex;
     .scrollStatusPusher {
@@ -244,7 +246,7 @@
   background-color: #2a34ff;
   color: #fff;
   text-align: center;
-  padding: 3.75rem;
+  padding: 2.5rem;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.2;

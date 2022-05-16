@@ -49,7 +49,7 @@ const Home = () => {
         }
       }
       setHeadFrameState(headFrame.current);
-    }, 30);
+    }, 40);
   };
 
   const { data: homepageData } = useRequest({

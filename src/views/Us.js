@@ -113,7 +113,7 @@ const Us = () => {
         whatItem3?.current?.offsetHeight / 2 -
         window.innerHeight / 2
     );
-    const distanceThreshold = (window.innerHeight * 2) / 3;
+    const distanceThreshold = (window.innerHeight * 2) / 3.5;
     setWhatCentered([
       what1Distance < distanceThreshold
         ? (distanceThreshold - what1Distance) / distanceThreshold
@@ -171,7 +171,7 @@ const Us = () => {
         }
       }
       setHeadFrameState(headFrame.current);
-    }, 30);
+    }, 40);
   };
 
   const testimonialGalleryContainer = useRef();
@@ -349,7 +349,7 @@ const Us = () => {
             </li>
           </ul>
           <div className={classes.ctaWrapper}>
-            <Link to="/us" className={classes.cta}>
+            <Link to="/work" className={classes.cta}>
               Know our work
             </Link>
           </div>

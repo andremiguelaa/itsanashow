@@ -100,6 +100,7 @@
     text-align: center;
     @include tablet {
       font-size: 1.875rem;
+      line-height: 1;
     }
   }
   .videoMedia {
@@ -305,6 +306,7 @@
     overflow: hidden;
     @include mobile {
       font-size: 2rem;
+      line-height: 1.4;
     }
     li {
       display: inline-block;
@@ -352,7 +354,7 @@
   .description {
     margin: 0;
     font-size: 3.75rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.25;
     @include mobile {
       font-size: 1.25rem;
