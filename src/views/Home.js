@@ -71,10 +71,16 @@ const Home = () => {
                     attributes: { url: Image },
                   },
                 },
+                Tags: { data: Tags },
               },
             },
           },
-        }) => ({ id, Title, Image })
+        }) => ({
+          id,
+          Title,
+          Image,
+          Tags: Tags.map(({ attributes: { Text } }) => Text),
+        })
       );
     }
     return [];
@@ -177,7 +183,7 @@ const Home = () => {
         )}
       </section>
       <section className={classes.work}>
-        <div className={classes.text}>
+        <div className={classes.mainText}>
           <div className="wrapper">
             <p className={classes.lead}>Meet our work</p>
             <p className={classes.description}>
@@ -206,6 +212,15 @@ const Home = () => {
                     src={`${process.env.REACT_APP_API_URL}${portfolioHighlight.Image}`}
                     alt={portfolioHighlight.Title}
                   />
+                  <div className={classes.overlay} />
+                  <div className={classes.text}>
+                    <p className={classes.name}>{portfolioHighlight.Title}</p>
+                    {portfolioHighlight.Tags.length > 0 && (
+                      <p className={classes.tags}>
+                        {portfolioHighlight.Tags.join(', ')}
+                      </p>
+                    )}
+                  </div>
                 </Link>
               </li>
             ))}
