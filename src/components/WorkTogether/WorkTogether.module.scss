@@ -18,7 +18,7 @@
     font-weight: 400;
     text-transform: uppercase;
     @include mobile {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
     }
   }
   .description {
@@ -28,7 +28,7 @@
     line-height: 1.25;
     max-width: 1000px;
     @include mobile {
-      font-size: 1.25rem;
+      font-size: 1.35rem;
     }
   }
   .animation {

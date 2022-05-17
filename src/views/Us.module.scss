@@ -16,7 +16,7 @@
       font-weight: 400;
       text-transform: uppercase;
       @include mobile {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
       }
     }
     .description {
@@ -26,7 +26,7 @@
       line-height: 1.25;
       max-width: 1200px;
       @include mobile {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
       }
       strong {
         font-weight: 800;
@@ -335,7 +335,7 @@
       font-weight: 400;
       text-transform: uppercase;
       @include mobile {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
       }
     }
     .description {
@@ -345,7 +345,7 @@
       line-height: 1.25;
       max-width: 1200px;
       @include mobile {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
       }
     }
     .list {
@@ -538,7 +538,7 @@
     font-weight: 400;
     text-transform: uppercase;
     @include mobile {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
     }
   }
   .description {
@@ -548,7 +548,7 @@
     line-height: 1.25;
     max-width: 720px;
     @include mobile {
-      font-size: 1.25rem;
+      font-size: 1.35rem;
     }
   }
   .testimonialsList {

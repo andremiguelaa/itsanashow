@@ -172,7 +172,7 @@ const WorkDetail = () => {
             title="Vimeo Video"
             src={`https://player.vimeo.com/video/${work.VimeoVideo.split(
               '/'
-            ).pop()}`}
+            ).pop()}?title=0&byline=0&portrait=0`}
             className={classes.vimeoVideo}
             frameBorder="0"
             allow="fullscreen;"
