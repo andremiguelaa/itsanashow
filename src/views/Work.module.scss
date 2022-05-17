@@ -105,6 +105,17 @@
     width: 50%;
     position: relative;
     vertical-align: top;
+    &.visible {
+      img {
+        height: 28vw;
+        @include mobile {
+          height: 56vw;
+        }
+      }
+      .text {
+        opacity: 1;
+      }
+    }
     @include mobile {
       width: 100%;
     }
@@ -114,7 +125,8 @@
     img {
       width: 100%;
       vertical-align: top;
-      transition: opacity 0.3s linear;
+      height: 0;
+      transition: height 0.5s linear;
     }
     .overlay {
       position: absolute;
@@ -135,6 +147,10 @@
       right: 3rem;
       max-width: 650px;
       pointer-events: none;
+      opacity: 0;
+      overflow: hidden;
+      max-height: 100%;
+      transition: opacity 1s linear;
       @include mobile {
         bottom: 1rem;
         left: 1rem;

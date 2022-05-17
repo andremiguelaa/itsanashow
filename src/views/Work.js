@@ -91,33 +91,36 @@ const Work = () => {
             style={{ position: 'absolute', top: '100vh' }}
           ></div>
           <ul className={classes.list}>
-            {works
-              .slice(0, worksLimit)
-              .map(({ id, Title, Image, Tags }, index) => (
-                <li className={classes.item} key={id}>
-                  <Link to={`/work/${Title}`}>
-                    <Parallax
-                      translateY={[
-                        0,
-                        window.innerHeight >= 768 && index % 2 === 1 ? -20 : 0,
-                      ]}
-                      targetElement={scrollRef.current}
-                    >
-                      <img
-                        src={`${process.env.REACT_APP_API_URL}${Image}`}
-                        alt={Title}
-                      />
-                      <div className={classes.overlay} />
-                      <div className={classes.text}>
-                        <p className={classes.name}>{Title}</p>
-                        {Tags.length > 0 && (
-                          <p className={classes.tags}>{Tags.join(', ')}</p>
-                        )}
-                      </div>
-                    </Parallax>
-                  </Link>
-                </li>
-              ))}
+            {works.map(({ id, Title, Image, Tags }, index) => (
+              <li
+                className={classnames(classes.item, {
+                  [classes.visible]: worksLimit > index,
+                })}
+                key={id}
+              >
+                <Link to={`/work/${Title}`}>
+                  <Parallax
+                    translateY={[
+                      0,
+                      window.innerWidth >= 768 && index % 2 === 1 ? -20 : 0,
+                    ]}
+                    targetElement={scrollRef.current}
+                  >
+                    <img
+                      src={`${process.env.REACT_APP_API_URL}${Image}`}
+                      alt={Title}
+                    />
+                    <div className={classes.overlay} />
+                    <div className={classes.text}>
+                      <p className={classes.name}>{Title}</p>
+                      {Tags.length > 0 && (
+                        <p className={classes.tags}>{Tags.join(', ')}</p>
+                      )}
+                    </div>
+                  </Parallax>
+                </Link>
+              </li>
+            ))}
           </ul>
           {worksLimit < works.length && (
             <div className={classes.seeMore}>
