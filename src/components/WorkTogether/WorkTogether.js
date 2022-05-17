@@ -2,8 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import { useIsVisible } from 'react-is-visible';
+import isTouchDevice from 'is-touch-device';
 
 import classes from './WorkTogether.module.scss';
+
+const isTouch = isTouchDevice();
 
 const alpha = [
   '!',
@@ -46,9 +49,9 @@ const WorkTogether = () => {
   const [animatingWord, setAnimatingWord] = useState(false);
   const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
 
-  const { ref: workBall1ref } = useParallax({ speed: 10 });
-  const { ref: workBall2ref } = useParallax({ speed: 20 });
-  const { ref: workBall3ref } = useParallax({ speed: 30 });
+  const { ref: workBall1ref } = useParallax({ speed: isTouch ? 5 : 15 });
+  const { ref: workBall2ref } = useParallax({ speed: isTouch ? 10 : 25 });
+  const { ref: workBall3ref } = useParallax({ speed: isTouch ? 15 : 35 });
 
   const animateWord = () => {
     if (animatingWord) {

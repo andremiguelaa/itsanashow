@@ -2,17 +2,20 @@ import React, { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax, Parallax } from 'react-scroll-parallax';
+import isTouchDevice from 'is-touch-device';
 
 import useRequest from 'utils/useRequest';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
 
 import classes from './Work.module.scss';
 
+const isTouch = isTouchDevice();
+
 const Work = () => {
-  const { ref: ball1ref } = useParallax({ speed: 10 });
-  const { ref: ball2ref } = useParallax({ speed: 20 });
-  const { ref: ball3ref } = useParallax({ speed: 30 });
-  const { ref: ball4ref } = useParallax({ speed: 40 });
+  const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
+  const { ref: ball2ref } = useParallax({ speed: isTouch ? 10 : 25 });
+  const { ref: ball3ref } = useParallax({ speed: isTouch ? 15 : 35 });
+  const { ref: ball4ref } = useParallax({ speed: isTouch ? 20 : 45 });
 
   const { data: worksData } = useRequest({
     url: 'works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTags%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTeaser%5D%5Bpopulate%5D=*',

@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import Marquee from 'react-fast-marquee';
 import Lottie from 'react-lottie-player';
+import isTouchDevice from 'is-touch-device';
 
 import useRequest from 'utils/useRequest';
 
@@ -13,15 +14,17 @@ import head from 'assets/head.json';
 
 import classes from './Home.module.scss';
 
+const isTouch = isTouchDevice();
+
 const headFrameLimits = {
   start: 44,
   end: 61,
 };
 
 const Home = () => {
-  const { ref: ball1ref } = useParallax({ speed: 10 });
-  const { ref: ball2ref } = useParallax({ speed: 20 });
-  const { ref: ball3ref } = useParallax({ speed: 30 });
+  const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
+  const { ref: ball2ref } = useParallax({ speed: isTouch ? 10 : 25 });
+  const { ref: ball3ref } = useParallax({ speed: isTouch ? 15 : 35 });
 
   const [videoFull, setVideoFull] = useState(false);
 
