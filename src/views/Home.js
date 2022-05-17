@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import Marquee from 'react-fast-marquee';
-import { useInViewport } from 'react-in-viewport';
 import Lottie from 'react-lottie-player';
 
 import useRequest from 'utils/useRequest';
 
 import video from 'assets/video.mp4';
+import videoSound from 'assets/videoFull.mp4';
 import head from 'assets/head.json';
 
 import classes from './Home.module.scss';
@@ -24,9 +24,6 @@ const Home = () => {
   const { ref: ball3ref } = useParallax({ speed: 30 });
 
   const [videoFull, setVideoFull] = useState(false);
-
-  const clientsCurtain = useRef();
-  const { enterCount: isClientsRevealed } = useInViewport(clientsCurtain);
 
   const headFrame = useRef(headFrameLimits.start);
   const headTimer = useRef();
@@ -168,7 +165,7 @@ const Home = () => {
           >
             <video
               className={classes.fullScreenVideoMedia}
-              src={video}
+              src={videoSound}
               autoPlay
               loop
               playsInline
@@ -251,12 +248,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section
-        className={classnames(classes.clients, {
-          [classes.visible]: isClientsRevealed,
-        })}
-        ref={clientsCurtain}
-      >
+      <section className={classes.clients}>
         <div className="wrapper">
           <p className={classes.lead}>Some happy clients and partners</p>
           <p className={classes.description}>

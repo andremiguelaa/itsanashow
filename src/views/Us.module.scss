@@ -235,7 +235,7 @@
     }
     &::before {
       position: absolute;
-      bottom: 0;
+      bottom: -2px;
       content: '';
       display: block;
       height: 1px;
@@ -249,7 +249,7 @@
     }
     &::after {
       position: absolute;
-      bottom: 0;
+      bottom: -2px;
       content: '';
       display: block;
       height: 1px;
@@ -434,7 +434,7 @@
       }
       &::before {
         position: absolute;
-        bottom: 0;
+        bottom: -2px;
         content: '';
         display: block;
         height: 1px;
@@ -448,7 +448,7 @@
       }
       &::after {
         position: absolute;
-        bottom: 0;
+        bottom: -2px;
         content: '';
         display: block;
         height: 1px;
