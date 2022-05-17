@@ -148,7 +148,7 @@
         text-transform: uppercase;
         color: #fff;
         @include mobile {
-          font-size: 0.875rem;
+          font-size: 0.95rem;
         }
       }
       .tags {
@@ -163,7 +163,7 @@
         height: 0;
         transition: height 0.15s linear;
         @include mobile {
-          font-size: 0.7rem;
+          font-size: 0.8rem;
           height: 1.8675rem;
         }
       }

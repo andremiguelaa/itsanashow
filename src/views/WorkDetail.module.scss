@@ -98,8 +98,9 @@
       font-weight: 700;
       margin: 0;
       line-height: 1.2;
+      text-transform: uppercase;
       @include mobile {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
       }
     }
     .subtitle {
@@ -109,7 +110,7 @@
       line-height: 1.2;
       opacity: 0.5;
       @include mobile {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         max-width: 50%;
       }
     }
@@ -160,7 +161,7 @@
     line-height: 1.45;
     @include mobile {
       width: 100%;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       margin-top: 1.6rem;
     }
     :first-child {
@@ -228,7 +229,7 @@
   margin-left: 15%;
   @include mobile {
     padding: 2.5rem 0;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     margin-left: 0;
   }
   :first-child {
