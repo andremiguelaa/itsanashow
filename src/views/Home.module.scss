@@ -333,14 +333,9 @@
   background-color: #fff;
   color: #08142d;
   padding: 7rem 0;
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  transition: clip-path 1s linear;
   position: relative;
   @include mobile {
     padding: 3.25rem 0;
-  }
-  &.visible {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
   .lead {
     margin: 0 0 1rem;
