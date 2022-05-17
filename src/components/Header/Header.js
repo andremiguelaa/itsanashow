@@ -27,15 +27,19 @@ const Header = ({ setModal }) => {
               </div>
             </Link>
             <nav>
-              <Link to="/work">Our work</Link>
-              <Link to="/us">Know us</Link>
+              <Link to="/work">
+                <span className={classes.text}>Our work</span>
+              </Link>
+              <Link to="/us">
+                <span className={classes.text}>Know us</span>
+              </Link>
               <button
                 onClick={() => {
                   setModal(true);
                   setMenu(false);
                 }}
               >
-                Contact us
+                <span className={classes.text}>Contact us</span>
               </button>
             </nav>
           </div>

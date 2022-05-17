@@ -52,11 +52,15 @@
       color: #fff;
       margin-left: 5rem;
       position: relative;
+      .text{
+        transition: transform 0.2s linear;
+        display: inline-block;
+      }
       &:after {
         content: '';
         opacity: 0;
         position: absolute;
-        right: -1.75rem;
+        right: -1rem;
         background-image: url('../../assets/menuArrow.svg');
         background-repeat: no-repeat;
         width: 17px;
@@ -68,9 +72,12 @@
         transition: all 0.2s linear;
       }
       &:hover {
+        .text{
+          transform: translateX(-0.25rem);
+        }
         &::after {
           opacity: 1;
-          transform: translateX(-25%);
+          transform: translateX(0.25rem);
         }
       }
     }
