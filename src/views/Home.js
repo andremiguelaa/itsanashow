@@ -1,25 +1,19 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import Marquee from 'react-fast-marquee';
-import Lottie from 'react-lottie-player';
 import isTouchDevice from 'is-touch-device';
 
 import useRequest from 'utils/useRequest';
+import Head from 'components/Head/Head';
 
 import video from 'assets/video.mp4';
 import videoSound from 'assets/videoFull.mp4';
-import head from 'assets/head.json';
 
 import classes from './Home.module.scss';
 
 const isTouch = isTouchDevice();
-
-const headFrameLimits = {
-  start: 44,
-  end: 61,
-};
 
 const Home = () => {
   const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
@@ -27,30 +21,6 @@ const Home = () => {
   const { ref: ball3ref } = useParallax({ speed: isTouch ? 15 : 35 });
 
   const [videoFull, setVideoFull] = useState(false);
-
-  const headFrame = useRef(headFrameLimits.start);
-  const headTimer = useRef();
-  const [headFrameState, setHeadFrameState] = useState(headFrameLimits.start);
-
-  const numberChange = (direction) => {
-    clearInterval(headTimer.current);
-    headTimer.current = setInterval(() => {
-      if (direction === '+') {
-        if (headFrame.current === headFrameLimits.end) {
-          clearInterval(headTimer.current);
-        } else {
-          headFrame.current = headFrame.current + 1;
-        }
-      } else {
-        if (headFrame.current === headFrameLimits.start) {
-          clearInterval(headTimer.current);
-        } else {
-          headFrame.current = headFrame.current - 1;
-        }
-      }
-      setHeadFrameState(headFrame.current);
-    }, 40);
-  };
 
   const { data: homepageData } = useRequest({
     url: 'homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*',
@@ -191,17 +161,7 @@ const Home = () => {
               solutions and collecting amazing experiences.
             </p>
           </div>
-          <div
-            className={classes.head}
-            onMouseEnter={() => {
-              numberChange('+');
-            }}
-            onMouseLeave={() => {
-              numberChange('-');
-            }}
-          >
-            <Lottie animationData={head} goTo={headFrameState} />
-          </div>
+          <Head className={classes.head} />
         </div>
         {portfolioHighlights.length > 0 && (
           <ul className={classes.portfolioHighlights}>

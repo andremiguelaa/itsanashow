@@ -13,17 +13,11 @@ import WorkTogether from 'components/WorkTogether/WorkTogether';
 import motion from 'assets/skills/motion.json';
 import graphics from 'assets/skills/graphics.json';
 import brand from 'assets/skills/brand.json';
-
-import head from 'assets/head.json';
+import Head from 'components/Head/Head';
 
 import classes from './Us.module.scss';
 
 const isTouch = isTouchDevice();
-
-const headFrameLimits = {
-  start: 44,
-  end: 61,
-};
 
 const Us = () => {
   const { data: usData } = useRequest({
@@ -152,30 +146,6 @@ const Us = () => {
     }
     return [];
   }, [usData]);
-
-  const headFrame = useRef(headFrameLimits.start);
-  const headTimer = useRef();
-  const [headFrameState, setHeadFrameState] = useState(headFrameLimits.start);
-
-  const numberChange = (direction) => {
-    clearInterval(headTimer.current);
-    headTimer.current = setInterval(() => {
-      if (direction === '+') {
-        if (headFrame.current === headFrameLimits.end) {
-          clearInterval(headTimer.current);
-        } else {
-          headFrame.current = headFrame.current + 1;
-        }
-      } else {
-        if (headFrame.current === headFrameLimits.start) {
-          clearInterval(headTimer.current);
-        } else {
-          headFrame.current = headFrame.current - 1;
-        }
-      }
-      setHeadFrameState(headFrame.current);
-    }, 40);
-  };
 
   const testimonialGalleryContainer = useRef();
   const [testimonialGalleryScrollStatus, setTestimonialGalleryScrollStatus] =
@@ -368,18 +338,7 @@ const Us = () => {
       </section>
       {testimonials.length > 0 && (
         <section className={classes.testimonials}>
-          <div
-            className={classes.head}
-            onMouseEnter={() => {
-              numberChange('+');
-            }}
-            onMouseLeave={() => {
-              numberChange('-');
-            }}
-          >
-            <Lottie animationData={head} goTo={headFrameState} />
-          </div>
-
+          <Head className={classes.head} />
           <div className="wrapper">
             <p className={classes.lead}>We’re so proud of this!</p>
             <p className={classes.description}>
