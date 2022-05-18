@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Modal from 'components/Modal/Modal';
-
-import Main from './Main';
+import Home from 'views/Home';
+import Us from 'views/Us';
+import Work from 'views/Work';
+import WorkDetail from 'views/WorkDetail';
 
 const App = () => {
   const [modal, setModal] = useState(false);
@@ -14,7 +16,20 @@ const App = () => {
     <ParallaxProvider>
       <Router>
         <Header setModal={setModal} />
-        <Main />
+        <main>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/us">
+            <Us />
+          </Route>
+          <Route exact path="/work">
+            <Work />
+          </Route>
+          <Route exact path="/work/:name">
+            <WorkDetail />
+          </Route>
+        </main>
         <Footer />
         <Modal modal={modal} setModal={setModal} />
       </Router>
