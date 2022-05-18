@@ -10,15 +10,33 @@ const Header = ({ setModal }) => {
   const location = useLocation();
   const [page, setPage] = useState();
   const [menu, setMenu] = useState(false);
+
   useEffect(() => {
     setPage(location.pathname);
     setMenu(false);
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  const [defaultHeader, setDefaultHeader] = useState(true);
+
+  const listenToScroll = () => {
+    setDefaultHeader(window.scrollY < window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', listenToScroll);
+    return () => {
+      window.removeEventListener('scroll', listenToScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header className={classes.header}>
+      <header
+        className={classnames(classes.header, {
+          [classes.defaultHeader]: defaultHeader,
+        })}
+      >
         <div className="wrapper">
           <div className={classes.content}>
             <Link to="/">

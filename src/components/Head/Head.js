@@ -6,7 +6,6 @@ import head from 'assets/head.json';
 
 const headFrameLimits = {
   start: 0,
-  // middle1: 32,
   middle: 44,
   end: 61,
 };

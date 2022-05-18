@@ -10,6 +10,9 @@
   width: 100%;
   z-index: 100;
   pointer-events: none;
+  &.defaultHeader {
+    mix-blend-mode: normal;
+  }
   @include mobile {
     padding: 1rem 0;
   }
@@ -52,7 +55,7 @@
       color: #fff;
       margin-left: 5rem;
       position: relative;
-      .text{
+      .text {
         transition: transform 0.2s linear;
         display: inline-block;
       }
@@ -72,7 +75,7 @@
         transition: all 0.2s linear;
       }
       &:hover {
-        .text{
+        .text {
           transform: translateX(-0.25rem);
         }
         &::after {

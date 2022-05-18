@@ -12,7 +12,6 @@ import Modal from 'components/Modal/Modal';
 
 const App = () => {
   const [modal, setModal] = useState(false);
-
   return (
     <ParallaxProvider>
       <Router>
