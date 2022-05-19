@@ -1,8 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import { useIsVisible } from 'react-is-visible';
 import isTouchDevice from 'is-touch-device';
+
+import AppContext from 'AppContext';
 
 import classes from './WorkTogether.module.scss';
 
@@ -44,6 +46,8 @@ const wordList = [
 ];
 
 const WorkTogether = () => {
+  const { setCursorType } = useContext(AppContext);
+
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
@@ -111,6 +115,12 @@ const WorkTogether = () => {
             ref={toAnimateWord}
             className={classes.animation}
             onClick={() => animateWord()}
+            onMouseEnter={() => {
+              setCursorType('none');
+            }}
+            onMouseLeave={() => {
+              setCursorType('default');
+            }}
           >
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>

@@ -1,9 +1,10 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax, Parallax } from 'react-scroll-parallax';
 import isTouchDevice from 'is-touch-device';
 
+import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
 
@@ -12,6 +13,8 @@ import classes from './Work.module.scss';
 const isTouch = isTouchDevice();
 
 const Work = () => {
+  const { setCursorType } = useContext(AppContext);
+
   const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
   const { ref: ball2ref } = useParallax({ speed: isTouch ? 10 : 25 });
   const { ref: ball3ref } = useParallax({ speed: isTouch ? 15 : 35 });
@@ -98,7 +101,15 @@ const Work = () => {
                 })}
                 key={id}
               >
-                <Link to={`/work/${Title}`}>
+                <Link
+                  to={`/work/${Title}`}
+                  onMouseEnter={() => {
+                    setCursorType('view');
+                  }}
+                  onMouseLeave={() => {
+                    setCursorType('default');
+                  }}
+                >
                   <Parallax
                     translateY={[
                       0,

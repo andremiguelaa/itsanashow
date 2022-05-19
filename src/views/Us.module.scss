@@ -274,7 +274,9 @@
   @include mobile {
     padding-bottom: 4rem;
   }
-  cursor: url('../assets/drag.svg') 64 64, grab;
+  & > div {
+    cursor: none;
+  }
   .teamPhotos {
     margin: 0;
     list-style: none;
@@ -550,9 +552,6 @@
     @include mobile {
       font-size: 1.35rem;
     }
-  }
-  .testimonialsList {
-    cursor: url('../assets/drag.svg') 64 64, grab;
   }
   .list {
     margin: 7rem 0 0;

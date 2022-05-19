@@ -1,7 +1,8 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
+import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
@@ -11,6 +12,8 @@ import behance from 'assets/behance.svg';
 import classes from './WorkDetail.module.scss';
 
 const WorkDetail = () => {
+  const { setCursorType } = useContext(AppContext);
+
   const { name } = useParams();
 
   const {
@@ -117,43 +120,58 @@ const WorkDetail = () => {
         </div>
         {work.ImageGallery?.data?.length > 0 && (
           <section className={classes.gallerySection}>
-            <ScrollContainer
-              innerRef={galleryContainer}
-              onScroll={() => {
-                if (galleryContainer.current) {
-                  setGalleryScrollStatus(
-                    galleryContainer.current.scrollLeft /
-                      (galleryContainer.current.scrollWidth -
-                        document.documentElement.clientWidth)
-                  );
-                }
+            <div
+              onMouseEnter={() => {
+                setCursorType('drag');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+              onMouseDown={() => {
+                setCursorType('dragging');
+              }}
+              onMouseUp={() => {
+                setCursorType('drag');
               }}
             >
-              <ul className={classes.gallery}>
-                {work.ImageGallery.data.map((image) => (
-                  <li key={image.id} className={classes.imageItem}>
-                    <img
-                      className={classes.image}
-                      src={`${process.env.REACT_APP_API_URL}${image.attributes.url}`}
-                      alt={image.attributes.alternativeText}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </ScrollContainer>
-            <div className={classes.scrollStatus}>
-              <div
-                className={classes.scrollStatusPusher}
-                style={{ width: `${galleryScrollStatus * 100}%` }}
-              />
-              <div
-                className={classes.scrollStatusBar}
-                style={{ width: `${galleryViewPercentage * 100}%` }}
-              />
-              <div
-                className={classes.scrollStatusPusher}
-                style={{ width: `${(1 - galleryScrollStatus) * 100}%` }}
-              />
+              <ScrollContainer
+                innerRef={galleryContainer}
+                onScroll={() => {
+                  if (galleryContainer.current) {
+                    setGalleryScrollStatus(
+                      galleryContainer.current.scrollLeft /
+                        (galleryContainer.current.scrollWidth -
+                          document.documentElement.clientWidth)
+                    );
+                  }
+                }}
+              >
+                <ul className={classes.gallery}>
+                  {work.ImageGallery.data.map((image) => (
+                    <li key={image.id} className={classes.imageItem}>
+                      <img
+                        className={classes.image}
+                        src={`${process.env.REACT_APP_API_URL}${image.attributes.url}`}
+                        alt={image.attributes.alternativeText}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </ScrollContainer>
+              <div className={classes.scrollStatus}>
+                <div
+                  className={classes.scrollStatusPusher}
+                  style={{ width: `${galleryScrollStatus * 100}%` }}
+                />
+                <div
+                  className={classes.scrollStatusBar}
+                  style={{ width: `${galleryViewPercentage * 100}%` }}
+                />
+                <div
+                  className={classes.scrollStatusPusher}
+                  style={{ width: `${(1 - galleryScrollStatus) * 100}%` }}
+                />
+              </div>
             </div>
           </section>
         )}

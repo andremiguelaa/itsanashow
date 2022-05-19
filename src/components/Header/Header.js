@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
 import Lottie from 'react-lottie-player';
 
+import { AppContext } from 'AppContext';
 import logo from 'assets/logo.json';
 import classes from './Header.module.scss';
 
-const Header = ({ setModal }) => {
+const Header = () => {
+  const { setModal } = useContext(AppContext);
+
   const location = useLocation();
   const [page, setPage] = useState();
   const [menu, setMenu] = useState(false);

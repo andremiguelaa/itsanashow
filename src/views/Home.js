@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import Marquee from 'react-fast-marquee';
 import isTouchDevice from 'is-touch-device';
 
+import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import Head from 'components/Head/Head';
 
@@ -16,6 +17,8 @@ import classes from './Home.module.scss';
 const isTouch = isTouchDevice();
 
 const Home = () => {
+  const { setCursorType } = useContext(AppContext);
+
   const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
   const { ref: ball2ref } = useParallax({ speed: isTouch ? 10 : 25 });
   const { ref: ball3ref } = useParallax({ speed: isTouch ? 15 : 35 });
@@ -126,7 +129,16 @@ const Home = () => {
         />
       </section>
       <section className={classes.video}>
-        <div className={classes.overlay} onClick={() => setVideoFull(true)}>
+        <div
+          className={classes.overlay}
+          onClick={() => setVideoFull(true)}
+          onMouseEnter={() => {
+            setCursorType('video');
+          }}
+          onMouseLeave={() => {
+            setCursorType('default');
+          }}
+        >
           <p className={classes.callout}>Play our reel</p>
         </div>
         <video
@@ -140,7 +152,16 @@ const Home = () => {
         {videoFull && (
           <div
             className={classes.fullScreenVideo}
-            onClick={() => setVideoFull(false)}
+            onClick={() => {
+              setVideoFull(false);
+              setCursorType('default');
+            }}
+            onMouseEnter={() => {
+              setCursorType('close');
+            }}
+            onMouseLeave={() => {
+              setCursorType('default');
+            }}
           >
             <video
               className={classes.fullScreenVideoMedia}
@@ -167,7 +188,15 @@ const Home = () => {
           <ul className={classes.portfolioHighlights}>
             {portfolioHighlights.map((portfolioHighlight) => (
               <li key={portfolioHighlight.id}>
-                <Link to={`/work/${portfolioHighlight.Title}`}>
+                <Link
+                  to={`/work/${portfolioHighlight.Title}`}
+                  onMouseEnter={() => {
+                    setCursorType('view');
+                  }}
+                  onMouseLeave={() => {
+                    setCursorType('default');
+                  }}
+                >
                   <img
                     src={`${process.env.REACT_APP_API_URL}${portfolioHighlight.Image}`}
                     alt={portfolioHighlight.Title}

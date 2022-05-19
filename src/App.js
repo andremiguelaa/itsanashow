@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
+import AppContext from './AppContext';
+
+import Cursor from 'components/Cursor/Cursor';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Modal from 'components/Modal/Modal';
@@ -12,28 +15,39 @@ import WorkDetail from 'views/WorkDetail';
 
 const App = () => {
   const [modal, setModal] = useState(false);
+  const [cursorType, setCursorType] = useState('default');
   return (
-    <ParallaxProvider>
-      <Router>
-        <Header setModal={setModal} />
-        <main>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/us">
-            <Us />
-          </Route>
-          <Route exact path="/work">
-            <Work />
-          </Route>
-          <Route exact path="/work/:name">
-            <WorkDetail />
-          </Route>
-        </main>
-        <Footer />
-        <Modal modal={modal} setModal={setModal} />
-      </Router>
-    </ParallaxProvider>
+    <AppContext.Provider
+      value={{
+        modal,
+        setModal,
+        cursorType,
+        setCursorType,
+      }}
+    >
+      <Cursor />
+      <ParallaxProvider>
+        <Router>
+          <Header />
+          <main>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/us">
+              <Us />
+            </Route>
+            <Route exact path="/work">
+              <Work />
+            </Route>
+            <Route exact path="/work/:name">
+              <WorkDetail />
+            </Route>
+          </main>
+          <Footer />
+          <Modal />
+        </Router>
+      </ParallaxProvider>
+    </AppContext.Provider>
   );
 };
 

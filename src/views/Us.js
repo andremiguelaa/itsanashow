@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useMemo } from 'react';
+import React, { useRef, useState, useEffect, useMemo, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import classnames from 'classnames';
@@ -6,6 +6,7 @@ import { useParallax, Parallax } from 'react-scroll-parallax';
 import Lottie from 'react-lottie-player';
 import isTouchDevice from 'is-touch-device';
 
+import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
@@ -20,6 +21,8 @@ import classes from './Us.module.scss';
 const isTouch = isTouchDevice();
 
 const Us = () => {
+  const { setCursorType } = useContext(AppContext);
+
   const { data: usData } = useRequest({
     url: 'know-us-page?populate%5BTeam%5D%5Bpopulate%5D%5Bteam_member%5D%5Bpopulate%5D=*&populate%5BGallery%5D%5Bpopulate%5D%5Bteam_photo%5D%5Bpopulate%5D=*&populate%5BTestimonials%5D%5Bpopulate%5D=*',
     method: 'GET',
@@ -230,43 +233,58 @@ const Us = () => {
       )}
       {teamPhotos.length > 0 && (
         <section className={classes.gallery}>
-          <ScrollContainer
-            innerRef={galleryContainer}
-            onScroll={() => {
-              if (galleryContainer.current) {
-                setGalleryScrollStatus(
-                  galleryContainer.current.scrollLeft /
-                    (galleryContainer.current.scrollWidth -
-                      document.documentElement.clientWidth)
-                );
-              }
+          <div
+            onMouseEnter={() => {
+              setCursorType('drag');
+            }}
+            onMouseLeave={() => {
+              setCursorType('default');
+            }}
+            onMouseDown={() => {
+              setCursorType('dragging');
+            }}
+            onMouseUp={() => {
+              setCursorType('drag');
             }}
           >
-            <ul className={classes.teamPhotos}>
-              {teamPhotos.map(({ id, Title, Image }) => (
-                <li key={id} className={classes.teamPhoto}>
-                  <img
-                    className={classes.image}
-                    src={`${process.env.REACT_APP_API_URL}${Image}`}
-                    alt={Title}
-                  />
-                </li>
-              ))}
-            </ul>
-          </ScrollContainer>
-          <div className={classes.scrollStatus}>
-            <div
-              className={classes.scrollStatusPusher}
-              style={{ width: `${galleryScrollStatus * 100}%` }}
-            />
-            <div
-              className={classes.scrollStatusBar}
-              style={{ width: `${galleryViewPercentage * 100}%` }}
-            />
-            <div
-              className={classes.scrollStatusPusher}
-              style={{ width: `${(1 - galleryScrollStatus) * 100}%` }}
-            />
+            <ScrollContainer
+              innerRef={galleryContainer}
+              onScroll={() => {
+                if (galleryContainer.current) {
+                  setGalleryScrollStatus(
+                    galleryContainer.current.scrollLeft /
+                      (galleryContainer.current.scrollWidth -
+                        document.documentElement.clientWidth)
+                  );
+                }
+              }}
+            >
+              <ul className={classes.teamPhotos}>
+                {teamPhotos.map(({ id, Title, Image }) => (
+                  <li key={id} className={classes.teamPhoto}>
+                    <img
+                      className={classes.image}
+                      src={`${process.env.REACT_APP_API_URL}${Image}`}
+                      alt={Title}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </ScrollContainer>
+            <div className={classes.scrollStatus}>
+              <div
+                className={classes.scrollStatusPusher}
+                style={{ width: `${galleryScrollStatus * 100}%` }}
+              />
+              <div
+                className={classes.scrollStatusBar}
+                style={{ width: `${galleryViewPercentage * 100}%` }}
+              />
+              <div
+                className={classes.scrollStatusPusher}
+                style={{ width: `${(1 - galleryScrollStatus) * 100}%` }}
+              />
+            </div>
           </div>
         </section>
       )}
@@ -345,7 +363,20 @@ const Us = () => {
               What our clients &amp; partners say about us
             </p>
           </div>
-          <div className={classes.testimonialsList}>
+          <div
+            onMouseEnter={() => {
+              setCursorType('drag');
+            }}
+            onMouseLeave={() => {
+              setCursorType('default');
+            }}
+            onMouseDown={() => {
+              setCursorType('dragging');
+            }}
+            onMouseUp={() => {
+              setCursorType('drag');
+            }}
+          >
             <ScrollContainer
               innerRef={testimonialGalleryContainer}
               onScroll={() => {
@@ -372,6 +403,7 @@ const Us = () => {
                 ))}
               </ul>
             </ScrollContainer>
+
             <div className={classes.scrollStatus}>
               <div
                 className={classes.scrollStatusPusher}
