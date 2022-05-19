@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classnames from 'classnames';
+import isTouchDevice from 'is-touch-device';
 
 import AppContext from 'AppContext';
 
 import classes from './Cursor.module.scss';
+
+const isTouch = isTouchDevice();
 
 const Cursor = () => {
   const { cursorType } = useContext(AppContext);
@@ -25,6 +28,10 @@ const Cursor = () => {
       document.removeEventListener('mousemove', handleMousemove);
     };
   }, []);
+
+  if (isTouch) {
+    return null;
+  }
 
   return (
     <div
