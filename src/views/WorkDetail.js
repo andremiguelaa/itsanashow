@@ -78,10 +78,7 @@ const WorkDetail = () => {
   };
 
   return (
-    <div className={classes.workDetailPage}>
-      <Link to="/work" className={classes.backLink}>
-        Back to work
-      </Link>
+    <>
       <article className={classes.workDetail}>
         <img
           src={`${process.env.REACT_APP_API_URL}${work.Hero.data.attributes.url}`}
@@ -218,7 +215,7 @@ const WorkDetail = () => {
         </div>
       </article>
       <WorkTogether />
-    </div>
+    </>
   );
 };
 

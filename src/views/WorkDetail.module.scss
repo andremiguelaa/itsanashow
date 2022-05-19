@@ -1,32 +1,5 @@
 @import 'mixins.scss';
 
-.workDetailPage {
-  position: relative;
-  z-index: 1000;
-}
-
-.backLink {
-  position: absolute;
-  top: 3.5rem;
-  left: 3.5rem;
-  color: #2a34ff;
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  background-image: url('../assets/arrow3.svg');
-  background-repeat: no-repeat;
-  background-position: left center;
-  padding-left: 2rem;
-  @include mobile {
-    font-size: 0;
-    width: 13px;
-    height: 9px;
-    background-size: contain;
-    left: 1rem;
-    top: 1rem;
-  }
-}
-
 .workDetail {
   background-color: #fff;
   color: #08142d;
