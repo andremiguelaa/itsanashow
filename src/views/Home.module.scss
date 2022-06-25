@@ -24,6 +24,7 @@
       font-size: 3.5rem;
       font-weight: 600;
       line-height: 1.25;
+      max-width: 1200px;
       @include mobile {
         font-size: 1.35rem;
       }
@@ -152,6 +153,7 @@
       font-size: 3.5rem;
       font-weight: 600;
       line-height: 1.25;
+      max-width: 1200px;
       @include mobile {
         font-size: 1.35rem;
       }
@@ -411,6 +413,7 @@
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.25;
+    max-width: 1200px;
     @include mobile {
       font-size: 1.35rem;
     }
