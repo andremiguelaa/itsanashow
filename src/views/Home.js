@@ -270,8 +270,7 @@ const Home = () => {
                 <InView
                   as="li"
                   key={client.id}
-                  onChange={(InView, entry) => {
-                    console.log(InView, entry);
+                  onChange={(InView) => {
                     setLogosVisibility((prev) => ({
                       ...prev,
                       [client.id]: InView,

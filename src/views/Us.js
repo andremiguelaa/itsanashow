@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { useParallax, Parallax } from 'react-scroll-parallax';
 import Lottie from 'react-lottie-player';
 import isTouchDevice from 'is-touch-device';
+import { InView } from 'react-intersection-observer';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
@@ -31,6 +32,8 @@ const Us = () => {
   const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
   const { ref: ball2ref } = useParallax({ speed: isTouch ? 10 : 25 });
   const { ref: ball3ref } = useParallax({ speed: isTouch ? 15 : 35 });
+
+  const [teamMemberVisibility, setTeamMemberVisibility] = useState({});
 
   const teamMembers = useMemo(() => {
     if (usData?.data?.attributes?.Team?.length > 0) {
@@ -189,21 +192,26 @@ const Us = () => {
             <ul className={classes.teamMembers}>
               {teamMembers.map(
                 ({ id, MainText, Name, Role, SecondaryText, Image }, index) => (
-                  <li key={id} className={classes.teamMember}>
-                    <Parallax
-                      translateY={[
-                        0,
-                        window.innerHeight >= 768
-                          ? -(Math.ceil((index + 1) / 2) * 20)
-                          : 0,
-                      ]}
-                    >
-                      <p className={classes.role}>{Role}</p>
-                      <p className={classes.name}>{Name}</p>
-                      <p className={classes.mainText}>
-                        <Markdown content={MainText} />
-                      </p>
-                    </Parallax>
+                  <InView
+                    as="li"
+                    className={classnames(classes.teamMember, {
+                      [classes.visible]: teamMemberVisibility[id],
+                      [classes.delayIn]: index % 2 !== 0,
+                    })}
+                    key={id}
+                    onChange={(InView) => {
+                      setTeamMemberVisibility((prev) => ({
+                        ...prev,
+                        [id]: InView,
+                      }));
+                    }}
+                  >
+                    <p className={classes.role}>{Role}</p>
+                    <p className={classes.name}>{Name}</p>
+                    <p className={classes.mainText}>
+                      <Markdown content={MainText} />
+                    </p>
+
                     <div className={classes.aside}>
                       <img
                         className={classes.image}
@@ -214,7 +222,7 @@ const Us = () => {
                         <Markdown content={SecondaryText} />
                       </p>
                     </div>
-                  </li>
+                  </InView>
                 )
               )}
             </ul>
