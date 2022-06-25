@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect, useMemo, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import classnames from 'classnames';
-import { useParallax, Parallax } from 'react-scroll-parallax';
+import { useParallax } from 'react-scroll-parallax';
 import Lottie from 'react-lottie-player';
 import isTouchDevice from 'is-touch-device';
 import { InView } from 'react-intersection-observer';
