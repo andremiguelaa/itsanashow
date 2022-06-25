@@ -108,7 +108,7 @@
       padding: 0 0 0 20%;
       opacity: 0;
       transform: translateY(100px);
-      transition: all 0.5s linear;
+      transition: all 0.7s cubic-bezier(0, 0, 0.2, 1);
       transition-delay: 0;
       &.visible {
         opacity: 1;
