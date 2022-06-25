@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import Marquee from 'react-fast-marquee';
 import isTouchDevice from 'is-touch-device';
+import { InView } from 'react-intersection-observer';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
@@ -29,6 +30,8 @@ const Home = () => {
     url: 'homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*',
     method: 'GET',
   });
+
+  const [logosVisibility, setLogosVisibility] = useState({});
 
   const portfolioHighlights = useMemo(() => {
     if (homepageData?.data?.attributes?.PortfolioHighlights?.length > 0) {
@@ -264,12 +267,25 @@ const Home = () => {
           {clients.length > 0 && (
             <ul className={classes.clientsList}>
               {clients.map((client) => (
-                <li key={client.id}>
+                <InView
+                  as="li"
+                  key={client.id}
+                  onChange={(InView, entry) => {
+                    console.log(InView, entry);
+                    setLogosVisibility((prev) => ({
+                      ...prev,
+                      [client.id]: InView,
+                    }));
+                  }}
+                >
                   <img
                     src={`${process.env.REACT_APP_API_URL}${client.Logo}`}
                     alt={client.Name}
+                    className={classnames({
+                      [classes.visible]: logosVisibility[client.id],
+                    })}
                   />
-                </li>
+                </InView>
               ))}
             </ul>
           )}

@@ -446,6 +446,13 @@
     }
     img {
       max-width: 100%;
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.5s linear;
+      &.visible {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+      }
     }
   }
 }
