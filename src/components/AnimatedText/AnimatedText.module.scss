@@ -1,0 +1,10 @@
+.word{
+  opacity: 0;
+  transform: translateY(20%);
+  transition: all 0.3s cubic-bezier(.55,.06,.68,.19);
+  display: inline-block;
+  &.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

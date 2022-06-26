@@ -9,6 +9,7 @@ import { InView } from 'react-intersection-observer';
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import Head from 'components/Head/Head';
+import AnimatedText from 'components/AnimatedText/AnimatedText';
 
 import video from 'assets/video.mp4';
 import videoSound from 'assets/videoFull.mp4';
@@ -112,10 +113,14 @@ const Home = () => {
     <>
       <section className={classes.intro}>
         <div className={classnames('wrapper', classes.text)}>
-          <p className={classes.lead}>We are Itsanashow</p>
+          <p className={classes.lead}>
+            <AnimatedText>We are Itsanashow</AnimatedText>
+          </p>
           <p className={classes.description}>
-            A creative studio who loves to shape beautiful and meaningful
-            stories through motion, design and user experience.
+            <AnimatedText delay={300}>
+              A creative studio who loves to shape beautiful and meaningful
+              stories through motion, design and user experience.
+            </AnimatedText>
           </p>
         </div>
         <div
@@ -179,10 +184,14 @@ const Home = () => {
       <section className={classes.work}>
         <div className={classes.mainText}>
           <div className="wrapper">
-            <p className={classes.lead}>Meet our work</p>
+            <p className={classes.lead}>
+              <AnimatedText>Meet our work</AnimatedText>
+            </p>
             <p className={classes.description}>
-              We work closely with our clients and partners crafting visual
-              solutions and collecting amazing experiences.
+              <AnimatedText delay={300}>
+                We work closely with our clients and partners crafting visual
+                solutions and collecting amazing experiences.
+              </AnimatedText>
             </p>
           </div>
           <Head className={classes.head} />
@@ -226,10 +235,14 @@ const Home = () => {
               Wanna see more?
             </Link>
           </div>
-          <p className={classes.lead}>So what we do?</p>
+          <p className={classes.lead}>
+            <AnimatedText>So what we do?</AnimatedText>
+          </p>
           <p className={classes.description}>
-            Fast-moving trends require rock-solid core skills. Our savoir-faire
-            is broader than you may expect!
+            <AnimatedText delay={400}>
+              Fast-moving trends require rock-solid core skills. Our
+              savoir-faire is broader than you may expect!
+            </AnimatedText>
           </p>
         </div>
         {skills.length > 0 && (
@@ -260,9 +273,13 @@ const Home = () => {
       </section>
       <section className={classes.clients}>
         <div className="wrapper">
-          <p className={classes.lead}>Some happy clients and partners</p>
+          <p className={classes.lead}>
+            <AnimatedText>Some happy clients and partners</AnimatedText>
+          </p>
           <p className={classes.description}>
-            Reach goals and keep rocking is our mojo!
+            <AnimatedText delay={500}>
+              Reach goals and keep rocking is our mojo!
+            </AnimatedText>
           </p>
           {clients.length > 0 && (
             <ul className={classes.clientsList}>
@@ -271,10 +288,12 @@ const Home = () => {
                   as="li"
                   key={client.id}
                   onChange={(InView) => {
-                    setLogosVisibility((prev) => ({
-                      ...prev,
-                      [client.id]: InView,
-                    }));
+                    if (InView) {
+                      setLogosVisibility((prev) => ({
+                        ...prev,
+                        [client.id]: true,
+                      }));
+                    }
                   }}
                 >
                   <img
