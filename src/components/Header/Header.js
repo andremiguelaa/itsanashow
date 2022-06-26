@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
 import Lottie from 'react-lottie-player';
@@ -7,7 +7,7 @@ import { AppContext } from 'AppContext';
 import logo from 'assets/logo.json';
 import classes from './Header.module.scss';
 
-const Header = () => {
+const Header = ({ scrollContainer }) => {
   const { setModal } = useContext(AppContext);
 
   const location = useLocation();
@@ -17,21 +17,24 @@ const Header = () => {
   useEffect(() => {
     setPage(location.pathname);
     setMenu(false);
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      scrollContainer.scrollTo(0, 0);
+    }, 1000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   const [defaultHeader, setDefaultHeader] = useState(true);
 
-  const listenToScroll = () => {
-    setDefaultHeader(window.scrollY < window.innerHeight);
-  };
+  const listenToScroll = useCallback(() => {
+    setDefaultHeader(scrollContainer.scrollTop < window.innerHeight);
+  }, [scrollContainer]);
 
   useEffect(() => {
-    window.addEventListener('scroll', listenToScroll);
+    scrollContainer.addEventListener('scroll', listenToScroll);
     return () => {
-      window.removeEventListener('scroll', listenToScroll);
+      scrollContainer.removeEventListener('scroll', listenToScroll);
     };
-  }, []);
+  }, [scrollContainer, listenToScroll]);
 
   return (
     <>

@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+  height: 100vh;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  transition: opacity 0.5s linear;
+
+  &:global(.fade-enter) {
+    opacity: 0;
+  }
+  &:global(.fade-enter-done) {
+    opacity: 1;
+  }
+  &:global(.fade-exit) {
+    opacity: 0;
+  }
+}

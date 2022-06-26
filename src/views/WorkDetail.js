@@ -90,7 +90,9 @@ const WorkDetail = () => {
             <div className={classes.content}>
               <header className={classes.header}>
                 <h1>{name}</h1>
-                <p className={classes.subtitle}>{work.Subtitle}</p>
+                <p className={classes.subtitle}>
+                  <Markdown content={work.Subtitle} />
+                </p>
                 {work.Tags?.data?.length > 0 && (
                   <ul className={classes.tags}>
                     {work.Tags.data.map((tag) => (

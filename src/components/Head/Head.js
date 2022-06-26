@@ -30,6 +30,13 @@ const Head = ({ className }) => {
     }, 40);
   };
 
+  useEffect(
+    () => () => {
+      clearInterval(headTimer.current);
+    },
+    []
+  );
+
   useEffect(() => {
     if (inView) {
       numberChange(headFrameLimits.start, headFrameLimits.middle);

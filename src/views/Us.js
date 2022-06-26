@@ -21,7 +21,7 @@ import classes from './Us.module.scss';
 
 const isTouch = isTouchDevice();
 
-const Us = () => {
+const Us = ({ scrollContainer }) => {
   const { setCursorType } = useContext(AppContext);
 
   const { data: usData } = useRequest({
@@ -131,11 +131,11 @@ const Us = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', listenToScroll);
+    scrollContainer.addEventListener('scroll', listenToScroll);
     return () => {
-      window.removeEventListener('scroll', listenToScroll);
+      scrollContainer.removeEventListener('scroll', listenToScroll);
     };
-  }, []);
+  }, [scrollContainer]);
 
   const testimonials = useMemo(() => {
     if (usData?.data?.attributes?.Testimonials?.length > 0) {
