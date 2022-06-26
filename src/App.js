@@ -9,6 +9,7 @@ import AppBody from 'AppBody';
 const App = () => {
   const [modal, setModal] = useState(false);
   const [cursorType, setCursorType] = useState('default');
+  const [textAnimationAvailable, setTextAnimationAvailable] = useState(true);
   return (
     <AppContext.Provider
       value={{
@@ -16,6 +17,8 @@ const App = () => {
         setModal,
         cursorType,
         setCursorType,
+        textAnimationAvailable,
+        setTextAnimationAvailable,
       }}
     >
       <Cursor />

@@ -14,7 +14,7 @@ import logo from 'assets/logo.json';
 import classes from './Header.module.scss';
 
 const Header = ({ scrollContainer, transitionDuration }) => {
-  const { setModal } = useContext(AppContext);
+  const { setModal, setTextAnimationAvailable } = useContext(AppContext);
 
   const location = useLocation();
   const [page, setPage] = useState();
@@ -26,8 +26,10 @@ const Header = ({ scrollContainer, transitionDuration }) => {
     setPage(location.pathname);
     setMenu(false);
     if (!firstLoad.current) {
+      setTextAnimationAvailable(false);
       setTimeout(() => {
         scrollContainer.scrollTo(0, 0);
+        setTextAnimationAvailable(true);
       }, transitionDuration);
     } else {
       firstLoad.current = false;

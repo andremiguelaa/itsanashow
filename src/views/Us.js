@@ -6,6 +6,7 @@ import { useParallax } from 'react-scroll-parallax';
 import Lottie from 'react-lottie-player';
 import isTouchDevice from 'is-touch-device';
 import { InView } from 'react-intersection-observer';
+import AnimatedText from 'components/AnimatedText/AnimatedText';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
@@ -165,12 +166,18 @@ const Us = ({ scrollContainer }) => {
     <>
       <section className={classes.intro}>
         <div className={classnames('wrapper', classes.text)}>
-          <p className={classes.lead}>Who we are</p>
+          <p className={classes.lead}>
+            <AnimatedText>Who we are</AnimatedText>
+          </p>
           <p className={classes.description}>
-            <strong>Storytelling is life.</strong>
+            <strong>
+              <AnimatedText delay={150}>Storytelling is life.</AnimatedText>
+            </strong>
             <br />
-            Embrace challenges with an open heart, creative hunger and a passion
-            for overcoming obstacles as a team.
+            <AnimatedText delay={300}>
+              Embrace challenges with an open heart, creative hunger and a
+              passion for overcoming obstacles as a team.
+            </AnimatedText>
           </p>
         </div>
         <div
@@ -298,9 +305,13 @@ const Us = ({ scrollContainer }) => {
       )}
       <section className={classes.what}>
         <div className={classnames('wrapper', classes.text)}>
-          <p className={classes.lead}>What we do</p>
+          <p className={classes.lead}>
+            <AnimatedText>What we do</AnimatedText>
+          </p>
           <p className={classes.description}>
-            We love to give shape to beautiful and meaningful stories.
+            <AnimatedText delay={150}>
+              We love to give shape to beautiful and meaningful stories.
+            </AnimatedText>
           </p>
           <ul className={classes.list}>
             <li
@@ -366,9 +377,13 @@ const Us = ({ scrollContainer }) => {
         <section className={classes.testimonials}>
           <Head className={classes.head} />
           <div className="wrapper">
-            <p className={classes.lead}>We’re so proud of this!</p>
+            <p className={classes.lead}>
+              <AnimatedText>We’re so proud of this!</AnimatedText>
+            </p>
             <p className={classes.description}>
-              What our clients &amp; partners say about us
+              <AnimatedText delay={250}>
+                What our clients &amp; partners say about us
+              </AnimatedText>
             </p>
           </div>
           <div

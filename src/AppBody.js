@@ -119,7 +119,7 @@ const AppBody = () => {
           }}
         >
           <div
-            className={classes.content}
+            className={classnames(classes.content)}
             ref={ref}
             style={{ animationDuration: `${transitionDuration}ms` }}
           >

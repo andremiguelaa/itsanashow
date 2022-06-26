@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { useParallax, Parallax } from 'react-scroll-parallax';
 import isTouchDevice from 'is-touch-device';
+import AnimatedText from 'components/AnimatedText/AnimatedText';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
@@ -65,10 +66,14 @@ const Work = () => {
       <section className={classes.intro}>
         <div className={classnames('wrapper', classes.text)}>
           <p className={classes.description}>
-            We believe we can help guide you into a world-building, engaging
-            narrative.
+            <AnimatedText>
+              We believe we can help guide you into a world-building, engaging
+              narrative.
+            </AnimatedText>
           </p>
-          <p className={classes.lead}>Let the show begin!</p>
+          <p className={classes.lead}>
+            <AnimatedText delay={600}>Let the show begin!</AnimatedText>
+          </p>
         </div>
         <div
           className={classnames(classes.ball, classes.ball1)}
