@@ -117,7 +117,7 @@ const Home = () => {
             <AnimatedText>We are Itsanashow</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={300}>
+            <AnimatedText delay={150}>
               A creative studio who loves to shape beautiful and meaningful
               stories through motion, design and user experience.
             </AnimatedText>
@@ -188,7 +188,7 @@ const Home = () => {
               <AnimatedText>Meet our work</AnimatedText>
             </p>
             <p className={classes.description}>
-              <AnimatedText delay={300}>
+              <AnimatedText delay={150}>
                 We work closely with our clients and partners crafting visual
                 solutions and collecting amazing experiences.
               </AnimatedText>
@@ -239,7 +239,7 @@ const Home = () => {
             <AnimatedText>So what we do?</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={400}>
+            <AnimatedText delay={200}>
               Fast-moving trends require rock-solid core skills. Our
               savoir-faire is broader than you may expect!
             </AnimatedText>
@@ -277,7 +277,7 @@ const Home = () => {
             <AnimatedText>Some happy clients and partners</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={500}>
+            <AnimatedText delay={250}>
               Reach goals and keep rocking is our mojo!
             </AnimatedText>
           </p>
