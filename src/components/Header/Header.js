@@ -7,7 +7,7 @@ import { AppContext } from 'AppContext';
 import logo from 'assets/logo.json';
 import classes from './Header.module.scss';
 
-const Header = ({ scrollContainer }) => {
+const Header = ({ scrollContainer, transitionDuration }) => {
   const { setModal } = useContext(AppContext);
 
   const location = useLocation();
@@ -19,9 +19,9 @@ const Header = ({ scrollContainer }) => {
     setMenu(false);
     setTimeout(() => {
       scrollContainer.scrollTo(0, 0);
-    }, 1000);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname]);
+    }, transitionDuration);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, transitionDuration]);
 
   const [defaultHeader, setDefaultHeader] = useState(true);
 
