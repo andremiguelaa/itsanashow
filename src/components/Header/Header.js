@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  useRef,
+} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
 import Lottie from 'react-lottie-player';
@@ -14,12 +20,18 @@ const Header = ({ scrollContainer, transitionDuration }) => {
   const [page, setPage] = useState();
   const [menu, setMenu] = useState(false);
 
+  const firstLoad = useRef(true);
+
   useEffect(() => {
     setPage(location.pathname);
     setMenu(false);
-    setTimeout(() => {
-      scrollContainer.scrollTo(0, 0);
-    }, transitionDuration);
+    if (!firstLoad.current) {
+      setTimeout(() => {
+        scrollContainer.scrollTo(0, 0);
+      }, transitionDuration);
+    } else {
+      firstLoad.current = false;
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname, transitionDuration]);
 

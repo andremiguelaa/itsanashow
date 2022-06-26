@@ -99,6 +99,12 @@ const AppBody = () => {
           {getSentence(location.pathname)}
         </div>
       </div>
+      {scrollEl && (
+        <Header
+          scrollContainer={scrollEl}
+          transitionDuration={transitionDuration}
+        />
+      )}
       <TransitionGroup>
         <CSSTransition
           key={location.pathname}
@@ -117,12 +123,6 @@ const AppBody = () => {
             ref={ref}
             style={{ animationDuration: `${transitionDuration}ms` }}
           >
-            {scrollEl && (
-              <Header
-                scrollContainer={scrollEl}
-                transitionDuration={transitionDuration}
-              />
-            )}
             <main>
               <Switch location={location}>
                 <Route exact path="/">
