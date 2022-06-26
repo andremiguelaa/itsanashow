@@ -148,10 +148,10 @@ const AppBody = () => {
               </Switch>
             </main>
             <Footer />
-            <Modal />
           </div>
         </CSSTransition>
       </TransitionGroup>
+      <Modal />
     </div>
   );
 };
