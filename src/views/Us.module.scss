@@ -567,8 +567,8 @@
   .list {
     margin: 7rem 0 0;
     padding: 0 0 5rem 1rem;
-    font-size: 0;
-    white-space: nowrap;
+    display: flex;
+    align-items: stretch;
     text-align: center;
     @include mobile {
       margin: 3rem 0 0;
@@ -576,7 +576,8 @@
     }
     .item {
       font-size: 1rem;
-      display: inline-block;
+      flex-shrink: 0;
+      list-style: none;
       width: 38rem;
       @include mobile {
         width: 17rem;
@@ -589,9 +590,10 @@
       }
       .content {
         background-color: rgba(8, 20, 45, 0.05);
-        white-space: normal;
         padding: 6rem 3.5rem 10.5rem;
         pointer-events: none;
+        height: 100%;
+        box-sizing: border-box;
         @include mobile {
           padding: 2.66rem 1.6rem 3.5rem;
         }
