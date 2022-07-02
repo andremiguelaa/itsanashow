@@ -11,6 +11,7 @@ import Home from 'views/Home';
 import Us from 'views/Us';
 import Work from 'views/Work';
 import WorkDetail from 'views/WorkDetail';
+import Policy from 'views/Policy';
 
 import classes from './AppBody.module.scss';
 
@@ -46,6 +47,14 @@ const getSentence = (pathname) => {
           Look at me
           <br />
           All together now
+        </>
+      );
+    case '/privacy-policy':
+      return (
+        <>
+          Let me tell you how it will be
+          <br />
+          There's one for you, nineteen for me
         </>
       );
     default:
@@ -143,6 +152,11 @@ const AppBody = () => {
                 <Route exact path="/work/:name">
                   <ParallaxWrapper scrollContainer={scrollEl}>
                     <WorkDetail />
+                  </ParallaxWrapper>
+                </Route>
+                <Route exact path="/privacy-policy">
+                  <ParallaxWrapper scrollContainer={scrollEl}>
+                    <Policy />
                   </ParallaxWrapper>
                 </Route>
               </Switch>

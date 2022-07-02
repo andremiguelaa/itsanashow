@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './Footer.module.scss';
 
@@ -81,6 +82,9 @@ const Footer = () => {
                 </a>
               </dd>
             </dl>
+            <Link to="/privacy-policy" className={classes.privacy}>
+              Privacy Policy
+            </Link>
           </div>
         </div>
         <p className={classes.copyright}>
