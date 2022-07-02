@@ -1,0 +1,99 @@
+@import 'mixins.scss';
+
+.content {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #00ffe6;
+  z-index: 1900;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #08142d;
+  img {
+    @include mobile {
+      width: 200px;
+    }
+  }
+  .oops {
+    color: #6f27fa;
+    font-size: 3.75rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0;
+    @include mobile {
+      font-size: 2.5rem;
+    }
+  }
+  .miss {
+    color: #6f27fa;
+    font-size: 3.125rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0;
+    @include mobile {
+      font-size: 2rem;
+    }
+  }
+  .message {
+    font-size: 1.375rem;
+    line-height: 1.45;
+    max-width: 700px;
+    margin: 1rem auto 0;
+    @include mobile {
+      font-size: 1rem;
+      max-width: 300px;
+    }
+  }
+  .link {
+    display: inline-block;
+    margin-top: 5rem;
+    color: #6f27fa;
+    font-weight: 600;
+    font-size: 1.875rem;
+    text-decoration: none;
+    position: relative;
+    padding-left: 3.5rem;
+    @include mobile {
+      font-size: 1.2rem;
+      padding-left: 2.5rem;
+      margin-top: 2rem;
+    }
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      background-image: url('../assets/arrow6.svg');
+      background-repeat: no-repeat;
+      width: 38px;
+      height: 24px;
+      top: 50%;
+      margin-top: -12px;
+      background-size: contain;
+      background-position: center;
+      animation: arrow 1.5s linear infinite;
+      @include mobile {
+        width: 25px;
+        height: 16px;
+        margin-top: -8px;
+      }
+    }
+  }
+}
+
+@keyframes arrow {
+  from {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(25%);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}

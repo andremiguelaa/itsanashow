@@ -12,6 +12,7 @@ import Us from 'views/Us';
 import Work from 'views/Work';
 import WorkDetail from 'views/WorkDetail';
 import Policy from 'views/Policy';
+import NoMatch from 'views/NoMatch';
 
 import classes from './AppBody.module.scss';
 
@@ -158,6 +159,9 @@ const AppBody = () => {
                   <ParallaxWrapper scrollContainer={scrollEl}>
                     <Policy />
                   </ParallaxWrapper>
+                </Route>
+                <Route>
+                  <NoMatch />
                 </Route>
               </Switch>
             </main>
