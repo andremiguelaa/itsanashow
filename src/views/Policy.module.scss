@@ -112,4 +112,13 @@
     font-weight: 700;
     text-transform: uppercase;
   }
+  .inlineButton {
+    font-family: inherit;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    font-size: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

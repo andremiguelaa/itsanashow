@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { useParallax } from 'react-scroll-parallax';
 import isTouchDevice from 'is-touch-device';
 
+import { AppContext } from 'AppContext';
 import AnimatedText from 'components/AnimatedText/AnimatedText';
 
 import classes from './Policy.module.scss';
@@ -10,6 +11,8 @@ import classes from './Policy.module.scss';
 const isTouch = isTouchDevice();
 
 const Privacy = () => {
+  const { setModal } = useContext(AppContext);
+
   const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
   const { ref: ball2ref } = useParallax({ speed: isTouch ? 10 : 25 });
 
@@ -139,9 +142,18 @@ const Privacy = () => {
               </li>
             </ul>
             <p>
-              Please Contact us if you need details about the specific legal
-              ground we are relying on to process your personal data where more
-              than one ground has been set out in the table below.
+              Please{' '}
+              <button
+                className={classes.inlineButton}
+                onClick={() => {
+                  setModal(true);
+                }}
+              >
+                Contact us
+              </button>{' '}
+              if you need details about the specific legal ground we are relying
+              on to process your personal data where more than one ground has
+              been set out in the table below.
             </p>
             <h1>Cookie Policy</h1>
             <p>

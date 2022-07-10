@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .wrapper {
   position: relative;
   height: 100vh;
@@ -67,6 +69,33 @@
     font-size: 2.5rem;
     font-weight: 600;
     opacity: 0;
+    @include mobile {
+      font-size: 1.125rem;
+    }
+    .sentenceWrapperWork {
+      @include mobile {
+        margin: 0 auto;
+        max-width: 230px;
+      }
+    }
+    .sentenceWrapperUs {
+      @include mobile {
+        margin: 0 auto;
+        max-width: 250px;
+      }
+    }
+    strong {
+      font-weight: 800;
+      font-size: 3.125rem;
+      @include mobile {
+        font-size: 1.375rem;
+      }
+    }
+    .hiddenMobile {
+      @include mobile {
+        display: none;
+      }
+    }
   }
   .transitionPaneFirst {
     background-color: #fe00ae;

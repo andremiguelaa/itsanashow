@@ -23,49 +23,52 @@ const getSentence = (pathname) => {
     case '/':
       return (
         <>
-          We're on our way home
+          Hug, you're back!
           <br />
-          We're going home
+          <strong>
+            Once upon a time...
+            <br />
+            🤓
+          </strong>
         </>
       );
     case '/work':
       return (
-        <>
-          It's been a hard day's night
+        <div className={classes.sentenceWrapperWork}>
+          Join us onto new, exciting projects.
           <br />
-          And I've been workin' like a dog
-        </>
+          <strong>
+            Together, we can <br />
+            make marvels! 🌟
+          </strong>
+        </div>
       );
     case '/us':
       return (
-        <>
-          Sail the ship
-          <br />
-          Chop the tree
-          <br />
-          Skip the rope
-          <br />
-          Look at me
-          <br />
-          All together now
-        </>
+        <div className={classes.sentenceWrapperUs}>
+          <strong>
+            Every adventure needs their wizards,
+            <br />
+            they make the magic go “boom!”
+            <br className={classes.hiddenMobile} />
+            🔮
+          </strong>
+        </div>
       );
     case '/privacy-policy':
       return (
         <>
-          Let me tell you how it will be
+          <strong>We hold your back.</strong>
           <br />
-          There's one for you, nineteen for me
+          Trust us! 🤝
         </>
       );
     default:
       return (
         <>
-          You gave me the word, I finally heard
+          Are you curious for more?
           <br />
-          I'm doing the best that I can
-          <br />
-          I've got to admit it's getting better{' '}
+          <strong>Awesome! ✨</strong>
         </>
       );
   }
