@@ -1,20 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import classnames from 'classnames';
-import { useParallax } from 'react-scroll-parallax';
-import isTouchDevice from 'is-touch-device';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
 import { AppContext } from 'AppContext';
 import AnimatedText from 'components/AnimatedText/AnimatedText';
 
 import classes from './Policy.module.scss';
 
-const isTouch = isTouchDevice();
-
 const Privacy = () => {
-  const { setModal } = useContext(AppContext);
+  const { setModal, scrollElement } = useContext(AppContext);
 
-  const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
-  const { ref: ball2ref } = useParallax({ speed: isTouch ? 10 : 25 });
+  const scrollRef = useRef();
+
+  const ball1ref = useRef();
+  const ball2ref = useRef();
 
   return (
     <>
@@ -33,14 +32,23 @@ const Privacy = () => {
             </AnimatedText>
           </p>
         </div>
-        <div
-          className={classnames(classes.ball, classes.ball1)}
-          ref={ball1ref}
-        />
-        <div
-          className={classnames(classes.ball, classes.ball2)}
-          ref={ball2ref}
-        />
+        <div ref={scrollRef} style={{ position: 'absolute', top: '100vh' }} />
+        <ParallaxProvider scrollContainer={scrollElement}>
+          <Parallax
+            className={classnames(classes.ball, classes.ball1)}
+            translateY={[0, window.innerWidth >= 768 ? -100 : -50]}
+            targetElement={scrollRef.current}
+          >
+            <div ref={ball1ref} />
+          </Parallax>
+          <Parallax
+            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            targetElement={scrollRef.current}
+            className={classnames(classes.ball, classes.ball2)}
+          >
+            <div ref={ball2ref} />
+          </Parallax>
+        </ParallaxProvider>
       </section>
       <section className={classes.content}>
         <div className={classnames('wrapper', classes.wrapper)}>

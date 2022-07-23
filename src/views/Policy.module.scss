@@ -44,7 +44,7 @@
         rgba(8, 20, 45, 1) 80%
       );
       @include mobile {
-        bottom: -1rem;
+        bottom: 1rem;
         right: 5rem;
         width: 8rem;
         height: 8rem;
@@ -63,7 +63,7 @@
       @include mobile {
         width: 3.5rem;
         height: 3.5rem;
-        bottom: -3rem;
+        bottom: -1rem;
         right: 12rem;
       }
     }

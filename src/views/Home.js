@@ -1,9 +1,8 @@
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo, useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
-import { useParallax } from 'react-scroll-parallax';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import Marquee from 'react-fast-marquee';
-import isTouchDevice from 'is-touch-device';
 import { InView } from 'react-intersection-observer';
 
 import AppContext from 'AppContext';
@@ -16,14 +15,14 @@ import videoSound from 'assets/videoFull.mp4';
 
 import classes from './Home.module.scss';
 
-const isTouch = isTouchDevice();
-
 const Home = () => {
-  const { setCursorType } = useContext(AppContext);
+  const { setCursorType, scrollElement } = useContext(AppContext);
 
-  const { ref: ball1ref } = useParallax({ speed: isTouch ? 5 : 15 });
-  const { ref: ball2ref } = useParallax({ speed: isTouch ? 10 : 25 });
-  const { ref: ball3ref } = useParallax({ speed: isTouch ? 15 : 35 });
+  const scrollRef = useRef();
+
+  const ball1ref = useRef();
+  const ball2ref = useRef();
+  const ball3ref = useRef();
 
   const [videoFull, setVideoFull] = useState(false);
 
@@ -123,18 +122,30 @@ const Home = () => {
             </AnimatedText>
           </p>
         </div>
-        <div
-          className={classnames(classes.ball, classes.ball1)}
-          ref={ball1ref}
-        />
-        <div
-          className={classnames(classes.ball, classes.ball2)}
-          ref={ball2ref}
-        />
-        <div
-          className={classnames(classes.ball, classes.ball3)}
-          ref={ball3ref}
-        />
+        <div ref={scrollRef} style={{ position: 'absolute', top: '100vh' }} />
+        <ParallaxProvider scrollContainer={scrollElement}>
+          <Parallax
+            className={classnames(classes.ball, classes.ball1)}
+            translateY={[0, window.innerWidth >= 768 ? -100 : -50]}
+            targetElement={scrollRef.current}
+          >
+            <div ref={ball1ref} />
+          </Parallax>
+          <Parallax
+            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            targetElement={scrollRef.current}
+            className={classnames(classes.ball, classes.ball2)}
+          >
+            <div ref={ball2ref} />
+          </Parallax>
+          <Parallax
+            translateY={[0, window.innerWidth >= 768 ? -300 : -150]}
+            targetElement={scrollRef.current}
+            className={classnames(classes.ball, classes.ball3)}
+          >
+            <div ref={ball3ref} />
+          </Parallax>
+        </ParallaxProvider>
       </section>
       <section className={classes.video}>
         <div

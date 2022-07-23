@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classnames from 'classnames';
 
+import { AppContext } from 'AppContext';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Modal from 'components/Modal/Modal';
-import ParallaxWrapper from 'components/ParallaxWrapper/ParallaxWrapper';
 import Home from 'views/Home';
 import Us from 'views/Us';
 import Work from 'views/Work';
@@ -84,12 +84,12 @@ const getSentence = ({ pathname, state }) => {
 };
 
 const AppBody = () => {
+  const { setScrollElement } = useContext(AppContext);
   const location = useLocation();
   const ref = useRef();
-  const [scrollEl, setScrollElement] = useState(null);
   useEffect(() => {
     setScrollElement(ref.current);
-  }, [ref]);
+  }, [ref, setScrollElement]);
   const [transitionPaneVisible, setTransitionPaneVisible] = useState(false);
 
   return (
@@ -121,22 +121,19 @@ const AppBody = () => {
           {getSentence(location)}
         </div>
       </div>
-      {scrollEl && (
-        <Header
-          scrollContainer={scrollEl}
-          transitionDuration={transitionDuration * 0.75}
-        />
-      )}
+      <Header transitionDuration={transitionDuration} />
       <TransitionGroup>
         <CSSTransition
           key={location.pathname}
           classNames="fade"
           timeout={transitionDuration}
+          onEntering={(node) => {
+            setScrollElement(node);
+          }}
           onExit={() => {
             setTransitionPaneVisible(true);
           }}
           onExited={() => {
-            setScrollElement(ref.current);
             setTransitionPaneVisible(false);
           }}
         >
@@ -148,29 +145,19 @@ const AppBody = () => {
             <main>
               <Switch location={location}>
                 <Route exact path="/">
-                  <ParallaxWrapper scrollContainer={scrollEl}>
-                    <Home />
-                  </ParallaxWrapper>
+                  <Home />
                 </Route>
                 <Route exact path="/us">
-                  <ParallaxWrapper scrollContainer={scrollEl}>
-                    {scrollEl && <Us scrollContainer={scrollEl} />}
-                  </ParallaxWrapper>
+                  <Us />
                 </Route>
                 <Route exact path="/work">
-                  <ParallaxWrapper scrollContainer={scrollEl}>
-                    <Work />
-                  </ParallaxWrapper>
+                  <Work />
                 </Route>
                 <Route exact path="/work/:name">
-                  <ParallaxWrapper scrollContainer={scrollEl}>
-                    <WorkDetail />
-                  </ParallaxWrapper>
+                  <WorkDetail />
                 </Route>
                 <Route exact path="/privacy-policy">
-                  <ParallaxWrapper scrollContainer={scrollEl}>
-                    <Policy />
-                  </ParallaxWrapper>
+                  <Policy />
                 </Route>
                 <Route>
                   <NoMatch />

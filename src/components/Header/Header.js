@@ -13,8 +13,8 @@ import { AppContext } from 'AppContext';
 import logo from 'assets/logo.json';
 import classes from './Header.module.scss';
 
-const Header = ({ scrollContainer, transitionDuration }) => {
-  const { setModal, setTextAnimationAvailable, setCursorType } =
+const Header = ({ transitionDuration }) => {
+  const { setModal, setTextAnimationAvailable, setCursorType, scrollElement } =
     useContext(AppContext);
 
   const location = useLocation();
@@ -29,9 +29,8 @@ const Header = ({ scrollContainer, transitionDuration }) => {
     if (!firstLoad.current) {
       setTextAnimationAvailable(false);
       setTimeout(() => {
-        scrollContainer.scrollTo(0, 0);
         setTextAnimationAvailable(true);
-      }, transitionDuration);
+      }, transitionDuration * 0.75);
     } else {
       firstLoad.current = false;
     }
@@ -41,15 +40,19 @@ const Header = ({ scrollContainer, transitionDuration }) => {
   const [defaultHeader, setDefaultHeader] = useState(true);
 
   const listenToScroll = useCallback(() => {
-    setDefaultHeader(scrollContainer.scrollTop < window.innerHeight);
-  }, [scrollContainer]);
+    setDefaultHeader(scrollElement.scrollTop < window.innerHeight);
+  }, [scrollElement]);
 
   useEffect(() => {
-    scrollContainer.addEventListener('scroll', listenToScroll);
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', listenToScroll);
+    }
     return () => {
-      scrollContainer.removeEventListener('scroll', listenToScroll);
+      if (scrollElement) {
+        scrollElement.removeEventListener('scroll', listenToScroll);
+      }
     };
-  }, [scrollContainer, listenToScroll]);
+  }, [scrollElement, listenToScroll]);
 
   return (
     <>

@@ -10,6 +10,7 @@ const App = () => {
   const [modal, setModal] = useState(false);
   const [cursorType, setCursorType] = useState('default');
   const [textAnimationAvailable, setTextAnimationAvailable] = useState(true);
+  const [scrollElement, setScrollElement] = useState(null);
   return (
     <AppContext.Provider
       value={{
@@ -19,6 +20,8 @@ const App = () => {
         setCursorType,
         textAnimationAvailable,
         setTextAnimationAvailable,
+        scrollElement,
+        setScrollElement,
       }}
     >
       <Cursor />

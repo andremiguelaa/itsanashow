@@ -132,25 +132,25 @@
     &.ball2 {
       width: 15.6rem;
       height: 15.6rem;
-      top: 10rem;
+      top: 20rem;
       left: 5%;
       @include mobile {
         width: 12.5rem;
         height: 12.5rem;
         left: auto;
         right: -2rem;
-        top: 5rem;
+        top: 20rem;
       }
     }
     &.ball3 {
       width: 22.6rem;
       height: 22.6rem;
-      bottom: -2rem;
+      bottom: -40rem;
       right: 7.5%;
       @include mobile {
         width: 5.6rem;
         height: 5.6rem;
-        bottom: 4rem;
+        bottom: -4rem;
         right: auto;
         left: 2em;
       }
