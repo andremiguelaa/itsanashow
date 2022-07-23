@@ -111,6 +111,9 @@
         transform: translateY(100px);
         transition: all 0.7s cubic-bezier(0, 0, 0.2, 1);
         transition-delay: 0;
+        @include tablet {
+          padding: 0 0 0 33%;
+        }
         &.visible {
           opacity: 1;
           transform: translateY(0) translateZ(0);
@@ -121,7 +124,6 @@
       }
       @include tablet {
         width: 100%;
-        padding: 0 0 0 33%;
       }
       .role {
         font-size: 0.875rem;
@@ -131,7 +133,6 @@
         opacity: 0.5;
         text-transform: uppercase;
         margin: 0;
-        white-space: nowrap;
         @include mobile {
           font-size: 0.5rem;
         }
@@ -176,7 +177,6 @@
           left: 2rem;
           max-width: 85%;
           @include tablet {
-            max-width: 100%;
             left: -2rem;
           }
           @include mobile {
@@ -201,17 +201,6 @@
         margin-left: 10%;
         @include tablet {
           margin-left: 0;
-        }
-        @include mobile {
-          padding: 0 33% 0 0;
-          .aside {
-            left: auto;
-            right: 0;
-            .image {
-              left: auto;
-              right: -2rem;
-            }
-          }
         }
       }
       &:nth-child(n + 3) {
