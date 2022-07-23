@@ -29,6 +29,7 @@ const Header = ({ transitionDuration }) => {
     if (!firstLoad.current) {
       setTextAnimationAvailable(false);
       setTimeout(() => {
+        window.scrollTo(0,0);
         setTextAnimationAvailable(true);
       }, transitionDuration * 0.75);
     } else {
