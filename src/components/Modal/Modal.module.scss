@@ -2,10 +2,9 @@
 
 .modalWrapper {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
   overflow: hidden;
   z-index: 100;
   pointer-events: none;
@@ -19,10 +18,9 @@
 .modal {
   position: absolute;
   display: flex;
-  height: 100vh;
+  top: 0;
+  bottom: 0;
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
   box-sizing: border-box;
   background-color: #f2f2f2;
   text-align: center;
@@ -170,7 +168,7 @@
     color: #2a34ff;
     margin: 0;
     @include mobile {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       color: #00ffe6;
     }
   }
@@ -192,7 +190,7 @@
       text-transform: uppercase;
       opacity: 0.5;
       @include mobile {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         line-height: 1.25;
       }
     }
@@ -274,7 +272,7 @@
     opacity: 0.5;
     text-transform: uppercase;
     @include mobile {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       margin-top: 9vh;
     }
   }
@@ -290,7 +288,7 @@
     }
     @include mobile {
       position: fixed;
-      bottom: 3rem;
+      bottom: 2rem;
       padding-top: 1.6rem;
       border-top: 1px solid #fff;
       left: 5vw;
@@ -300,12 +298,12 @@
     .slogan {
       margin: 0;
       font-weight: 500;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #2a34ff;
       @include mobile {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         color: #fff;
       }
     }
