@@ -99,22 +99,24 @@
       margin: 0 auto;
     }
     .teamMember {
-      position: relative;
       display: inline-block;
       vertical-align: top;
       width: 45%;
       font-size: 1rem;
-      box-sizing: border-box;
-      padding: 0 0 0 20%;
-      opacity: 0;
-      transform: translateY(100px);
-      transition: all 0.7s cubic-bezier(0, 0, 0.2, 1);
-      transition-delay: 0;
-      &.visible {
-        opacity: 1;
-        transform: translateY(0) translateZ(0);
-        &.delayIn {
-          transition-delay: 250ms;
+      .teamMemberContent {
+        position: relative;
+        padding: 0 0 0 44.5%;
+        box-sizing: border-box;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.7s cubic-bezier(0, 0, 0.2, 1);
+        transition-delay: 0;
+        &.visible {
+          opacity: 1;
+          transform: translateY(0) translateZ(0);
+          &.delayIn {
+            transition-delay: 250ms;
+          }
         }
       }
       @include tablet {

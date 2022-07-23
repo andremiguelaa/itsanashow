@@ -216,37 +216,41 @@ const Us = () => {
             <ul className={classes.teamMembers}>
               {teamMembers.map(
                 ({ id, MainText, Name, Role, SecondaryText, Image }, index) => (
-                  <InView
-                    as="li"
-                    className={classnames(classes.teamMember, {
-                      [classes.visible]: teamMemberVisibility[id],
-                      [classes.delayIn]: index % 2 !== 0,
-                    })}
-                    key={id}
-                    onChange={(InView) => {
-                      setTeamMemberVisibility((prev) => ({
-                        ...prev,
-                        [id]: InView,
-                      }));
-                    }}
-                  >
-                    <p className={classes.role}>{Role}</p>
-                    <p className={classes.name}>{Name}</p>
-                    <p className={classes.mainText}>
-                      <Markdown content={MainText} />
-                    </p>
+                  <li key={id} className={classes.teamMember}>
+                    <InView
+                      onChange={(InView) => {
+                        console.log(InView);
+                        setTeamMemberVisibility((prev) => ({
+                          ...prev,
+                          [id]: InView,
+                        }));
+                      }}
+                    >
+                      <div
+                        className={classnames(classes.teamMemberContent, {
+                          [classes.visible]: teamMemberVisibility[id],
+                          [classes.delayIn]: index % 2 !== 0,
+                        })}
+                      >
+                        <p className={classes.role}>{Role}</p>
+                        <p className={classes.name}>{Name}</p>
+                        <p className={classes.mainText}>
+                          <Markdown content={MainText} />
+                        </p>
 
-                    <div className={classes.aside}>
-                      <img
-                        className={classes.image}
-                        src={`${process.env.REACT_APP_API_URL}${Image}`}
-                        alt={Name}
-                      />
-                      <p className={classes.secondaryText}>
-                        <Markdown content={SecondaryText} />
-                      </p>
-                    </div>
-                  </InView>
+                        <div className={classes.aside}>
+                          <img
+                            className={classes.image}
+                            src={`${process.env.REACT_APP_API_URL}${Image}`}
+                            alt={Name}
+                          />
+                          <p className={classes.secondaryText}>
+                            <Markdown content={SecondaryText} />
+                          </p>
+                        </div>
+                      </div>
+                    </InView>
+                  </li>
                 )
               )}
             </ul>
