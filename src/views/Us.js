@@ -239,6 +239,12 @@ const Us = ({ scrollContainer }) => {
                 rel="noreferrer"
                 href="mailto:hello@itsanashow.com"
                 className={classes.cta}
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
               >
                 Wanna join us?
               </a>
@@ -354,12 +360,22 @@ const Us = ({ scrollContainer }) => {
               <p className={classes.name}>Branding</p>
               <p className={classes.text}>
                 Logo Design, Identity Systems, Tone of voice, Copywriting, Brand
-                Guidelines, Brand Collateral, Logo Animation, Presentation Design
+                Guidelines, Brand Collateral, Logo Animation, Presentation
+                Design
               </p>
             </li>
           </ul>
           <div className={classes.ctaWrapper}>
-            <Link to="/work" className={classes.cta}>
+            <Link
+              to="/work"
+              className={classes.cta}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               Know our work
             </Link>
           </div>

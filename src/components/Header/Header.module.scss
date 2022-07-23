@@ -74,6 +74,7 @@
         background-position: center;
         transition: all 0.2s linear;
       }
+      &.active,
       &:hover {
         .text {
           transform: translateX(-0.25rem);

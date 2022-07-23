@@ -107,7 +107,10 @@ const Work = () => {
                 key={id}
               >
                 <Link
-                  to={`/work/${Title}`}
+                  to={{
+                    pathname: `/work/${Title}`,
+                    state: { origin: 'work' },
+                  }}
                   onMouseEnter={() => {
                     setCursorType('view');
                   }}
@@ -144,6 +147,12 @@ const Work = () => {
                 className={classes.more}
                 onClick={() => {
                   setWorksLimit((prev) => prev + 6);
+                }}
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
                 }}
               >
                 Let me see more

@@ -18,7 +18,7 @@ import classes from './AppBody.module.scss';
 
 const transitionDuration = 4000;
 
-const getSentence = (pathname) => {
+const getSentence = ({ pathname, state }) => {
   switch (pathname) {
     case '/':
       return (
@@ -64,6 +64,15 @@ const getSentence = (pathname) => {
         </>
       );
     default:
+      if (state?.origin === 'work' && pathname.includes('/work/')) {
+        return (
+          <>
+            <strong>Limitless imagination</strong>
+            <br />
+            is the way to go! 🦄
+          </>
+        );
+      }
       return (
         <>
           Are you curious for more?
@@ -109,7 +118,7 @@ const AppBody = () => {
           className={classes.transitionPaneSentence}
           style={{ animationDuration: `${parseInt(transitionDuration)}ms` }}
         >
-          {getSentence(location.pathname)}
+          {getSentence(location)}
         </div>
       </div>
       {scrollEl && (

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import AppContext from 'AppContext';
 
 import classes from './Footer.module.scss';
 
 const Footer = () => {
+  const { setCursorType } = useContext(AppContext);
   return (
     <footer className={classes.footer}>
       <div className="wrapper">
@@ -15,6 +18,12 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/itsanashow-studio"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
               >
                 LinkedIn
               </a>
@@ -24,6 +33,12 @@ const Footer = () => {
                 href="https://www.instagram.com/itsanashow.studio/"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
               >
                 Instagram
               </a>
@@ -33,6 +48,12 @@ const Footer = () => {
                 href="https://www.behance.net/ItsanashowStudio"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
               >
                 Behance
               </a>
@@ -42,6 +63,12 @@ const Footer = () => {
                 href="https://vimeo.com/itsanashowstudio"
                 target="_blank"
                 rel="noreferrer"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
               >
                 Vimeo
               </a>
@@ -66,6 +93,12 @@ const Footer = () => {
                   rel="noreferrer"
                   href="mailto:hello@itsanashow.com"
                   className={classes.mail}
+                  onMouseEnter={() => {
+                    setCursorType('bigger');
+                  }}
+                  onMouseLeave={() => {
+                    setCursorType('default');
+                  }}
                 >
                   hello@itsanashow.com
                 </a>
@@ -77,12 +110,27 @@ const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                   className={classes.survey}
+                  onMouseEnter={() => {
+                    setCursorType('bigger');
+                  }}
+                  onMouseLeave={() => {
+                    setCursorType('default');
+                  }}
                 >
                   Let's Talk
                 </a>
               </dd>
             </dl>
-            <Link to="/privacy-policy" className={classes.privacy}>
+            <Link
+              to="/privacy-policy"
+              className={classes.privacy}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               Privacy Policy
             </Link>
           </div>

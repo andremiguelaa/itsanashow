@@ -134,6 +134,12 @@ const WorkTogether = () => {
           href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
           target="_blank"
           rel="noreferrer"
+          onMouseEnter={() => {
+            setCursorType('bigger');
+          }}
+          onMouseLeave={() => {
+            setCursorType('default');
+          }}
         >
           <span>Request a quote</span>
         </a>

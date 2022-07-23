@@ -231,7 +231,16 @@ const Home = () => {
       <section className={classes.skills}>
         <div className="wrapper">
           <div className={classes.ctaWrapper}>
-            <Link to="/work" className={classes.cta}>
+            <Link
+              to="/work"
+              className={classes.cta}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               Wanna see more?
             </Link>
           </div>
@@ -265,7 +274,16 @@ const Home = () => {
         )}
         <div className="wrapper">
           <div className={classes.ctaWrapper}>
-            <Link to="/us" className={classes.cta}>
+            <Link
+              to="/us"
+              className={classes.cta}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               Get to know us!
             </Link>
           </div>

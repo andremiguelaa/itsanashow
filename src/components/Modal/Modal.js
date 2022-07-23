@@ -88,6 +88,12 @@ const Modal = () => {
                     href="https://www.linkedin.com/company/itsanashow-studio"
                     target="_blank"
                     rel="noreferrer"
+                    onMouseEnter={() => {
+                      setCursorType('bigger');
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType('default');
+                    }}
                   >
                     LinkedIn
                   </a>
@@ -97,6 +103,12 @@ const Modal = () => {
                     href="https://www.instagram.com/itsanashow.studio/"
                     target="_blank"
                     rel="noreferrer"
+                    onMouseEnter={() => {
+                      setCursorType('bigger');
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType('default');
+                    }}
                   >
                     Instagram
                   </a>
@@ -106,6 +118,12 @@ const Modal = () => {
                     href="https://www.behance.net/ItsanashowStudio"
                     target="_blank"
                     rel="noreferrer"
+                    onMouseEnter={() => {
+                      setCursorType('bigger');
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType('default');
+                    }}
                   >
                     Behance
                   </a>
@@ -115,6 +133,12 @@ const Modal = () => {
                     href="https://vimeo.com/itsanashowstudio"
                     target="_blank"
                     rel="noreferrer"
+                    onMouseEnter={() => {
+                      setCursorType('bigger');
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType('default');
+                    }}
                   >
                     Vimeo
                   </a>

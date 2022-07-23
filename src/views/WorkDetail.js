@@ -107,12 +107,30 @@ const WorkDetail = () => {
             </div>
           </div>
           {previous && (
-            <Link className={classes.previous} to={previous}>
+            <Link
+              className={classes.previous}
+              to={previous}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               Previous
             </Link>
           )}
           {next && (
-            <Link className={classes.next} to={next}>
+            <Link
+              className={classes.next}
+              to={next}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               Next
             </Link>
           )}
@@ -200,17 +218,45 @@ const WorkDetail = () => {
           <p>
             <span>Find all project details on:</span>
             <br />
-            <a href={work.BehanceLink} target="_blank" rel="noreferrer">
+            <a
+              href={work.BehanceLink}
+              target="_blank"
+              rel="noreferrer"
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               <img src={behance} alt="behance" className={classes.logo} />
             </a>
           </p>
           {previous && (
-            <Link className={classes.previous} to={previous}>
+            <Link
+              className={classes.previous}
+              to={previous}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               Previous
             </Link>
           )}
           {next && (
-            <Link className={classes.next} to={next}>
+            <Link
+              className={classes.next}
+              to={next}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               Next
             </Link>
           )}

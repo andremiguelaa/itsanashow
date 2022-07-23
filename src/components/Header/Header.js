@@ -14,7 +14,8 @@ import logo from 'assets/logo.json';
 import classes from './Header.module.scss';
 
 const Header = ({ scrollContainer, transitionDuration }) => {
-  const { setModal, setTextAnimationAvailable } = useContext(AppContext);
+  const { setModal, setTextAnimationAvailable, setCursorType } =
+    useContext(AppContext);
 
   const location = useLocation();
   const [page, setPage] = useState();
@@ -59,22 +60,54 @@ const Header = ({ scrollContainer, transitionDuration }) => {
       >
         <div className="wrapper">
           <div className={classes.content}>
-            <Link to="/">
+            <Link
+              to="/"
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
               <div className={classes.logo}>
                 <Lottie loop animationData={logo} play />
               </div>
             </Link>
             <nav>
-              <Link to="/work">
+              <Link
+                to="/work"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
+                className={classnames({ [classes.active]: page === '/work' })}
+              >
                 <span className={classes.text}>Our work</span>
               </Link>
-              <Link to="/us">
+              <Link
+                to="/us"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
+                className={classnames({ [classes.active]: page === '/us' })}
+              >
                 <span className={classes.text}>Know us</span>
               </Link>
               <button
                 onClick={() => {
                   setModal(true);
                   setMenu(false);
+                }}
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
                 }}
               >
                 <span className={classes.text}>Contact us</span>
