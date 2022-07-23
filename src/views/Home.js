@@ -119,7 +119,7 @@ const Home = () => {
           <p className={classes.description}>
             <AnimatedText delay={150}>
               A creative studio who loves to shape beautiful and meaningful
-              stories through motion, design and user experience.
+              stories through animation, design and user experience.
             </AnimatedText>
           </p>
         </div>

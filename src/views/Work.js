@@ -59,7 +59,7 @@ const Work = () => {
 
   const scrollRef = useRef();
 
-  const [worksLimit, setWorksLimit] = useState(4);
+  const [worksLimit, setWorksLimit] = useState(6);
 
   return (
     <>
@@ -143,7 +143,7 @@ const Work = () => {
               <button
                 className={classes.more}
                 onClick={() => {
-                  setWorksLimit((prev) => prev + 4);
+                  setWorksLimit((prev) => prev + 6);
                 }}
               >
                 Let me see more

@@ -23,7 +23,7 @@ const getSentence = (pathname) => {
     case '/':
       return (
         <>
-          Hug, you're back!
+          YEAH, you're back!
           <br />
           <strong>
             Once upon a time...
@@ -58,7 +58,7 @@ const getSentence = (pathname) => {
     case '/privacy-policy':
       return (
         <>
-          <strong>We hold your back.</strong>
+          <strong>We have your back.</strong>
           <br />
           Trust us! 🤝
         </>
@@ -115,7 +115,7 @@ const AppBody = () => {
       {scrollEl && (
         <Header
           scrollContainer={scrollEl}
-          transitionDuration={transitionDuration}
+          transitionDuration={transitionDuration * 0.75}
         />
       )}
       <TransitionGroup>

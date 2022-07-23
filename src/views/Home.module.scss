@@ -27,6 +27,7 @@
       max-width: 1250px;
       @include mobile {
         font-size: 1.35rem;
+        max-width: 305px;
       }
     }
   }
@@ -450,11 +451,11 @@
     img {
       max-width: 100%;
       opacity: 0;
-      transform: translateY(100px);
+      transform: translateY(100px) scale(0.85);
       transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
       &.visible {
         opacity: 1;
-        transform: translateY(0) translateZ(0);
+        transform: translateY(0) translateZ(0) scale(0.85);
       }
     }
   }

@@ -322,7 +322,7 @@ const Us = ({ scrollContainer }) => {
               <div className={classes.img}>
                 <Lottie loop animationData={motion} play />
               </div>
-              <p className={classes.name}>Motion</p>
+              <p className={classes.name}>Animation</p>
               <p className={classes.text}>
                 Motion Graphics, 2D &amp; 3D Animation, Script Development, App
                 Tutorials, Explainer Videos, Commercials, Title sequences,
@@ -339,7 +339,7 @@ const Us = ({ scrollContainer }) => {
               </div>
               <p className={classes.name}>Graphics</p>
               <p className={classes.text}>
-                Illustration, Infographics, Iconography, UI/UX Web Design, App
+                Illustration, Infographics, Iconography, UI/UX, Web Design, App
                 Design, Wireframing
               </p>
             </li>
@@ -353,8 +353,8 @@ const Us = ({ scrollContainer }) => {
               </div>
               <p className={classes.name}>Branding</p>
               <p className={classes.text}>
-                Logo Design, Identity Systems, Tone of voice Copywriting, Brand
-                Guidelines, Brand Collateral Logo Animation, Presentation Design
+                Logo Design, Identity Systems, Tone of voice, Copywriting, Brand
+                Guidelines, Brand Collateral, Logo Animation, Presentation Design
               </p>
             </li>
           </ul>
