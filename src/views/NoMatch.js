@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Lottie from 'react-lottie-player';
 
-import nest from '../assets/nest.svg';
+import nest from 'assets/nest.json';
 
 import classes from './NoMatch.module.scss';
 
@@ -9,7 +10,9 @@ const NoMatch = () => {
   return (
     <div className={classes.content}>
       <div>
-        <img src={nest} alt="nest" />
+        <div className={classes.animation}>
+          <Lottie animationData={nest} play loop />
+        </div>
         <p className={classes.oops}>Oopsie! </p>
         <p className={classes.miss}>Something’s missing…</p>
         <p className={classes.message}>
