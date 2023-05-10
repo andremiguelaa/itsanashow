@@ -395,10 +395,10 @@
 .clients {
   background-color: #fff;
   color: #08142d;
-  padding: 7rem 0;
+  padding: 0 0 7rem;
   position: relative;
   @include mobile {
-    padding: 3.25rem 0;
+    padding: 0 0 3.25rem;
   }
   .lead {
     margin: 0 0 1rem;

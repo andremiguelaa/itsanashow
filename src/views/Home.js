@@ -8,6 +8,7 @@ import { InView } from 'react-intersection-observer';
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import Head from 'components/Head/Head';
+import Testimonials from 'components/Testimonials/Testimonials';
 import AnimatedText from 'components/AnimatedText/AnimatedText';
 
 import video from 'assets/video.mp4';
@@ -300,6 +301,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Testimonials />
       <section className={classes.clients}>
         <div className="wrapper">
           <p className={classes.lead}>

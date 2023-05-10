@@ -73,6 +73,21 @@ const Footer = () => {
                 Vimeo
               </a>
             </li>
+            <li>
+              <a
+                href="https://dribbble.com/itsanashow_studio"
+                target="_blank"
+                rel="noreferrer"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
+              >
+                Dribble
+              </a>
+            </li>
           </ul>
         </div>
         <div className={classes.hr} />

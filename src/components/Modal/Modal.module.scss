@@ -133,7 +133,7 @@
   }
   .gif {
     width: 50%;
-    @include tablet {
+    @include smallDesktop {
       display: none;
     }
     video {
@@ -147,7 +147,7 @@
     text-align: center;
     display: flex;
     align-items: center;
-    @include tablet {
+    @include smallDesktop {
       width: 100%;
     }
     @include mobile {
@@ -283,7 +283,7 @@
     border-top: 1px solid #08142d;
     max-width: 45vw;
     width: 45rem;
-    @include tablet {
+    @include smallDesktop {
       max-width: 90vw;
     }
     @include mobile {
@@ -312,11 +312,18 @@
       padding: 0;
       margin: 2.25rem 0 0;
       @include mobile {
-        margin: 1.3rem 0 0;
+        margin: 1.3rem 0 -1rem;
         font-size: 0;
+      }
+      @include smallPhone {
+        max-width: 250px;
+        margin: 1.3rem auto -1rem;
       }
       li {
         display: inline-block;
+        @include mobile {
+          padding-bottom: 1rem;
+        }
         & + li {
           margin-left: 2.2rem;
           @include mobile {
