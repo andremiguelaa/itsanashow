@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect, useMemo, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import classnames from 'classnames';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import Lottie from 'react-lottie-player';
@@ -21,6 +23,19 @@ import classes from './Us.module.scss';
 
 const Us = () => {
   const { setCursorType, scrollElement } = useContext(AppContext);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    centerMode: false,
+    variableWidth: true,
+    touchThreshold: 100,
+    beforeChange: (_, next) => {
+      setCurrentSlide(next);
+    },
+  };
 
   const { data: usData } = useRequest({
     url: 'know-us-page?populate%5BTeam%5D%5Bpopulate%5D%5Bteam_member%5D%5Bpopulate%5D=*&populate%5BGallery%5D%5Bpopulate%5D%5Bteam_photo%5D%5Bpopulate%5D=*&populate%5BTestimonials%5D%5Bpopulate%5D=*',
@@ -83,13 +98,6 @@ const Us = () => {
     }
     return [];
   }, [usData]);
-
-  const galleryContainer = useRef();
-  const [galleryScrollStatus, setGalleryScrollStatus] = useState(0);
-  const galleryViewPercentage = galleryContainer?.current
-    ? document.documentElement.clientWidth /
-      galleryContainer.current.scrollWidth
-    : 0;
 
   const scrollWeRef = useRef();
 
@@ -251,58 +259,44 @@ const Us = () => {
       )}
       {teamPhotos.length > 0 && (
         <section className={classes.gallery}>
-          <div
-            onMouseEnter={() => {
-              setCursorType('drag');
-            }}
-            onMouseLeave={() => {
-              setCursorType('default');
-            }}
-            onMouseDown={() => {
-              setCursorType('dragging');
-            }}
-            onMouseUp={() => {
-              setCursorType('drag');
-            }}
-          >
-            <ScrollContainer
-              innerRef={galleryContainer}
-              onScroll={() => {
-                if (galleryContainer.current) {
-                  setGalleryScrollStatus(
-                    galleryContainer.current.scrollLeft /
-                      (galleryContainer.current.scrollWidth -
-                        document.documentElement.clientWidth)
-                  );
-                }
+          <div className={classes.teamPhotos}>
+            <div
+              onMouseEnter={() => {
+                setCursorType('drag');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+              onMouseDown={() => {
+                setCursorType('dragging');
+              }}
+              onMouseUp={() => {
+                setCursorType('drag');
               }}
             >
-              <ul className={classes.teamPhotos}>
+              <Slider {...settings}>
                 {teamPhotos.map(({ id, Title, Image }) => (
-                  <li key={id} className={classes.teamPhoto}>
-                    <img
-                      className={classes.image}
-                      src={`${process.env.REACT_APP_API_URL}${Image}`}
-                      alt={Title}
-                    />
-                  </li>
+                  <div key={id}>
+                    <div key={id} className={classes.teamPhoto}>
+                      <img
+                        className={classes.image}
+                        src={`${process.env.REACT_APP_API_URL}${Image}`}
+                        alt={Title}
+                      />
+                    </div>
+                  </div>
                 ))}
-              </ul>
-            </ScrollContainer>
-            <div className={classes.scrollStatus}>
-              <div
-                className={classes.scrollStatusPusher}
-                style={{ width: `${galleryScrollStatus * 100}%` }}
-              />
-              <div
-                className={classes.scrollStatusBar}
-                style={{ width: `${galleryViewPercentage * 100}%` }}
-              />
-              <div
-                className={classes.scrollStatusPusher}
-                style={{ width: `${(1 - galleryScrollStatus) * 100}%` }}
-              />
+              </Slider>
             </div>
+          </div>
+          <div className={classes.scrollStatus}>
+            <div
+              className={classes.scrollStatusBar}
+              style={{
+                width: `${100 / teamPhotos.length}%`,
+                transform: `translateX(${currentSlide * 100}%)`,
+              }}
+            />
           </div>
         </section>
       )}

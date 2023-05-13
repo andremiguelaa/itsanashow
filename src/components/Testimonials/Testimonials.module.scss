@@ -53,68 +53,62 @@
   }
   .list {
     margin: 7rem 0 0;
-    padding: 0 0 5rem 1rem;
-    display: flex;
-    align-items: stretch;
+    padding: 0 0 5rem 0;
     text-align: center;
     @include mobile {
       margin: 3rem 0 0;
-      padding: 0 0 4rem 1rem;
+      padding: 0 0 4rem 0;
     }
-    .item {
-      font-size: 1rem;
-      flex-shrink: 0;
-      list-style: none;
-      width: 38rem;
+  }
+  .item {
+    font-size: 1rem;
+    flex-shrink: 0;
+    list-style: none;
+    width: 38rem;
+    padding-left: 1rem;
+    height: 100%;
+    @include mobile {
+      width: 17rem;
+    }
+    .content {
+      background-color: rgba(8, 20, 45, 0.05);
+      padding: 6rem 3.5rem 10.5rem;
+      pointer-events: none;
+      height: 100%;
+      box-sizing: border-box;
       @include mobile {
-        width: 17rem;
+        padding: 2.66rem 1.6rem 3.5rem;
       }
-      &:nth-child(n + 2) {
-        padding-left: 1rem;
+    }
+    .text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 500;
+      line-height: 1.6;
+      color: #2a34ff;
+      margin: 0;
+      @include mobile {
+        font-size: 0.8rem;
       }
-      &:last-child {
-        border-right: 1rem solid #fff;
+    }
+    .name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 4rem 0 0;
+      @include mobile {
+        margin: 3rem 0 0;
+        font-size: 0.7rem;
       }
-      .content {
-        background-color: rgba(8, 20, 45, 0.05);
-        padding: 6rem 3.5rem 10.5rem;
-        pointer-events: none;
-        height: 100%;
-        box-sizing: border-box;
-        @include mobile {
-          padding: 2.66rem 1.6rem 3.5rem;
-        }
-      }
-      .text {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.75rem;
-        font-weight: 500;
-        line-height: 1.6;
-        color: #2a34ff;
-        margin: 0;
-        @include mobile {
-          font-size: 0.8rem;
-        }
-      }
-      .name {
-        font-size: 1.25rem;
-        font-weight: 700;
-        line-height: 1.25;
-        margin: 4rem 0 0;
-        @include mobile {
-          margin: 3rem 0 0;
-          font-size: 0.7rem;
-        }
-      }
-      .role {
-        font-family: Montserrat;
-        font-size: 1.125rem;
-        font-weight: 400;
-        line-height: 1.4;
-        margin: 0;
-        @include mobile {
-          font-size: 0.7rem;
-        }
+    }
+    .role {
+      font-family: Montserrat;
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.4;
+      margin: 0;
+      @include mobile {
+        font-size: 0.7rem;
       }
     }
   }
@@ -124,15 +118,12 @@
     width: 40vw;
     margin: 0 auto;
     display: flex;
-    .scrollStatusPusher {
-      background-color: transparent;
-      height: 2px;
-    }
     .scrollStatusBar {
       background-color: #fe00ae;
       height: 2px;
       flex-shrink: 0;
       flex-grow: 0;
+      transition: transform 0.2s linear;
     }
   }
 }

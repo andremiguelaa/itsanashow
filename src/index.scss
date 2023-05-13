@@ -33,3 +33,15 @@ main {
     padding: 0 1rem;
   }
 }
+
+.slick-track {
+  display: flex !important;
+}
+
+.slick-slide {
+  height: inherit !important;
+  display: flex !important;
+  & > * > * {
+    height: 100%;
+  }
+}

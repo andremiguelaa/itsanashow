@@ -1,6 +1,8 @@
-import React, { useRef, useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
@@ -13,6 +15,19 @@ import classes from './WorkDetail.module.scss';
 
 const WorkDetail = () => {
   const { setCursorType } = useContext(AppContext);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    centerMode: false,
+    variableWidth: true,
+    touchThreshold: 100,
+    beforeChange: (_, next) => {
+      setCurrentSlide(next);
+    },
+  };
 
   const { name } = useParams();
 
@@ -53,13 +68,6 @@ const WorkDetail = () => {
       ? worksData?.data.attributes.Works[currentIndex + 1].work.data[0]
           .attributes.Title
       : undefined;
-
-  const galleryContainer = useRef();
-  const [galleryScrollStatus, setGalleryScrollStatus] = useState(0);
-  const galleryViewPercentage = galleryContainer?.current
-    ? document.documentElement.clientWidth /
-      galleryContainer.current.scrollWidth
-    : 0;
 
   if (!loading && workData?.data?.length === 0) {
     return <>404</>;
@@ -137,58 +145,44 @@ const WorkDetail = () => {
         </div>
         {work.ImageGallery?.data?.length > 0 && (
           <section className={classes.gallerySection}>
-            <div
-              onMouseEnter={() => {
-                setCursorType('drag');
-              }}
-              onMouseLeave={() => {
-                setCursorType('default');
-              }}
-              onMouseDown={() => {
-                setCursorType('dragging');
-              }}
-              onMouseUp={() => {
-                setCursorType('drag');
-              }}
-            >
-              <ScrollContainer
-                innerRef={galleryContainer}
-                onScroll={() => {
-                  if (galleryContainer.current) {
-                    setGalleryScrollStatus(
-                      galleryContainer.current.scrollLeft /
-                        (galleryContainer.current.scrollWidth -
-                          document.documentElement.clientWidth)
-                    );
-                  }
+            <div className={classes.gallery}>
+              <div
+                onMouseEnter={() => {
+                  setCursorType('drag');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
+                onMouseDown={() => {
+                  setCursorType('dragging');
+                }}
+                onMouseUp={() => {
+                  setCursorType('drag');
                 }}
               >
-                <ul className={classes.gallery}>
+                <Slider {...settings}>
                   {work.ImageGallery.data.map((image) => (
-                    <li key={image.id} className={classes.imageItem}>
-                      <img
-                        className={classes.image}
-                        src={`${process.env.REACT_APP_API_URL}${image.attributes.url}`}
-                        alt={image.attributes.alternativeText}
-                      />
-                    </li>
+                    <div key={image.id}>
+                      <div className={classes.imageItem}>
+                        <img
+                          className={classes.image}
+                          src={`${process.env.REACT_APP_API_URL}${image.attributes.url}`}
+                          alt={image.attributes.alternativeText}
+                        />
+                      </div>
+                    </div>
                   ))}
-                </ul>
-              </ScrollContainer>
-              <div className={classes.scrollStatus}>
-                <div
-                  className={classes.scrollStatusPusher}
-                  style={{ width: `${galleryScrollStatus * 100}%` }}
-                />
-                <div
-                  className={classes.scrollStatusBar}
-                  style={{ width: `${galleryViewPercentage * 100}%` }}
-                />
-                <div
-                  className={classes.scrollStatusPusher}
-                  style={{ width: `${(1 - galleryScrollStatus) * 100}%` }}
-                />
+                </Slider>
               </div>
+            </div>
+            <div className={classes.scrollStatus}>
+              <div
+                className={classes.scrollStatusBar}
+                style={{
+                  width: `${100 / work.ImageGallery?.data?.length}%`,
+                  transform: `translateX(${currentSlide * 100}%)`,
+                }}
+              />
             </div>
           </section>
         )}
