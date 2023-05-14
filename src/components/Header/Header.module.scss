@@ -213,13 +213,15 @@
     ul {
       list-style: none;
       padding: 0;
-      margin: 1.3rem 0 0;
+      margin: 1.3rem auto 1rem;
       font-size: 0;
+      @include smallPhone {
+        max-width: 250px;
+      }
       li {
         display: inline-block;
-        & + li {
-          margin-left: 0.8rem;
-        }
+        margin: 0 0.4rem;
+        padding-bottom: 1rem;
       }
       a {
         font-size: 0.6rem;
