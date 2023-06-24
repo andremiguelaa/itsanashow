@@ -202,6 +202,19 @@
         @include tablet {
           margin-left: 0;
         }
+        @include mobile {
+          .teamMemberContent{
+            padding: 0 33% 0 0;
+          }
+          .aside {
+            left: auto;
+            right: 0;
+            .image{
+              right: -2rem;
+              left: auto;
+            }
+          }
+        }
       }
       &:nth-child(n + 3) {
         margin-top: 15rem;
