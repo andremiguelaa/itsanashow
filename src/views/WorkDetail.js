@@ -8,6 +8,8 @@ import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
+import NoMatch from 'views/NoMatch';
+import Error from 'views/Error';
 
 import behance from 'assets/behance.svg';
 
@@ -70,15 +72,15 @@ const WorkDetail = () => {
       : undefined;
 
   if (!loading && workData?.data?.length === 0) {
-    return <>404</>;
+    return <NoMatch />;
   }
 
   if (error || errorWorks) {
-    return <>Error</>;
+    return <Error />;
   }
 
   if (loading || loadingWorks || !workData || !worksData) {
-    return <>Loading</>;
+    return null;
   }
 
   const work = {
