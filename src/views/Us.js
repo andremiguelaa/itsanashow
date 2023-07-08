@@ -13,6 +13,7 @@ import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
+// import Instagram from 'components/Instagram/Instagram';
 import Testimonials from 'components/Testimonials/Testimonials';
 
 import motion from 'assets/skills/motion.json';
@@ -390,6 +391,7 @@ const Us = () => {
         </ParallaxProvider>
       </section>
       <Testimonials />
+      {/*<Instagram />*/}´
       <WorkTogether />
     </>
   );
