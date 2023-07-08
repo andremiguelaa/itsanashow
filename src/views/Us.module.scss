@@ -1,349 +1,516 @@
 @import 'mixins.scss';
 
-.video {
-  height: 40vw;
-  @media (orientation: portrait) {
-    height: 100vw;
+.intro {
+  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  padding: 14rem 0 10rem;
+  position: relative;
+  @include mobile {
+    padding: 7rem 0 3rem;
+  }
+  .text {
+    position: relative;
+    z-index: 1;
+    .lead {
+      margin: 0 0 1rem;
+      font-size: 1.15rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      @include mobile {
+        font-size: 0.8rem;
+      }
+    }
+    .description {
+      margin: 0;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 1250px;
+      @include mobile {
+        font-size: 1.35rem;
+      }
+      strong {
+        font-weight: 800;
+      }
+    }
+  }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      rgba(42, 52, 255, 1) 0%,
+      rgba(8, 20, 45, 1) 100%
+    );
+    &.ball1 {
+      width: 16.75rem;
+      height: 16.75rem;
+      top: -1rem;
+      right: 6rem;
+      @include mobile {
+        top: 1rem;
+        right: -1rem;
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+    &.ball2 {
+      width: 5.25rem;
+      height: 5.25rem;
+      top: 15rem;
+      right: 23rem;
+      @include mobile {
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 9rem;
+        right: 7rem;
+      }
+    }
+    &.ball3 {
+      width: 8.75rem;
+      height: 8.75rem;
+      bottom: 1rem;
+      left: 20%;
+      @include mobile {
+        width: 3.125rem;
+        height: 3.125rem;
+        bottom: 0.25rem;
+        left: 1.5rem;
+      }
+    }
   }
 }
 
-.we {
-  margin-top: 40vw;
-  background-color: #f2f2f2;
+.team {
+  padding: 17rem 0 0;
+  background-color: #fff;
   color: #08142d;
-  text-align: center;
-  padding: 4.75rem 1rem;
-  @media (orientation: portrait) {
-    margin-top: 100vw;
+  @include tablet {
+    padding: 10rem 0 0;
   }
   @include mobile {
-    padding: 3rem 1rem;
+    padding: 5rem 0 0;
   }
-  .wrapper {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 3rem;
+  .teamMembers {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
     @include mobile {
-      padding: 0;
+      max-width: 500px;
+      margin: 0 auto;
     }
-  }
-
-  :global(.subtitle) {
-    @include mobile {
-      max-width: 250px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-
-  :global(.description) {
-    margin-bottom: 1.2rem;
-    &:last-of-type {
-      margin-bottom: 0;
-      @include mobile {
-        strong {
-          display: block;
+    .teamMember {
+      display: inline-block;
+      vertical-align: top;
+      width: 45%;
+      font-size: 1rem;
+      .teamMemberContent {
+        position: relative;
+        padding: 0 0 0 44.5%;
+        box-sizing: border-box;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.7s cubic-bezier(0, 0, 0.2, 1);
+        transition-delay: 0;
+        @include tablet {
+          padding: 0 0 0 33%;
+        }
+        &.visible {
+          opacity: 1;
+          transform: translateY(0) translateZ(0);
+          &.delayIn {
+            transition-delay: 250ms;
+          }
+        }
+      }
+      @include tablet {
+        width: 100%;
+      }
+      .role {
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.3;
+        letter-spacing: 2px;
+        opacity: 0.5;
+        text-transform: uppercase;
+        margin: 0;
+        @include mobile {
+          font-size: 0.5rem;
+        }
+      }
+      .name {
+        font-size: 1.875rem;
+        font-weight: 700;
+        line-height: 0.8;
+        text-transform: uppercase;
+        margin: 1.25rem 0 1.75rem;
+        @include mobile {
+          font-size: 0.875rem;
+          margin: 0.5rem 0 0.75rem;
+        }
+      }
+      .mainText {
+        margin: 0;
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: 1.33;
+        @include mobile {
+          font-size: 0.8rem;
+          line-height: 1.36;
+          max-width: 300px;
+        }
+      }
+      .aside {
+        position: absolute;
+        top: -1rem;
+        left: -4rem;
+        width: 52.5%;
+        @include tablet {
+          width: 40%;
+          left: -2rem;
+        }
+        @include mobile {
+          left: 0;
+          top: 0;
+        }
+        .image {
+          position: absolute;
+          left: 2rem;
+          max-width: 85%;
+          @include tablet {
+            left: -2rem;
+          }
+          @include mobile {
+            width: 150px;
+          }
+        }
+        .secondaryText {
+          position: absolute;
+          top: -8rem;
+          font-size: 0.8125rem;
+          font-weight: 400;
+          line-height: 2.7;
+          letter-spacing: 0.875rem;
+          text-transform: uppercase;
+          opacity: 0.5;
+          @include tablet {
+            display: none;
+          }
+        }
+      }
+      &:nth-child(2n) {
+        margin-left: 10%;
+        @include tablet {
+          margin-left: 0;
+        }
+        @include mobile {
+          .teamMemberContent{
+            padding: 0 33% 0 0;
+          }
+          .aside {
+            left: auto;
+            right: 0;
+            .image{
+              right: -2rem;
+              left: auto;
+            }
+          }
+        }
+      }
+      &:nth-child(n + 3) {
+        margin-top: 15rem;
+      }
+      &:nth-child(n + 2) {
+        @include tablet {
+          margin-top: 10rem;
+        }
+        @include mobile {
+          margin-top: 5rem;
         }
       }
     }
+  }
+  .ctaWrapper {
+    padding: 7rem 0;
+    text-align: right;
+    overflow: hidden;
     @include mobile {
-      max-width: 245px;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 3.125rem 0 4.5rem;
+    }
+  }
+  .cta {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #08142d;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    @include mobile {
+      font-size: 0.8rem;
+    }
+    &::before {
+      position: absolute;
+      bottom: -2px;
+      content: '';
+      display: block;
+      height: 1px;
+      background-color: #08142d;
+      width: 1440px;
+      right: calc(100% + 3rem);
+      @include mobile {
+        right: calc(100% + 1rem);
+        bottom: 45%;
+      }
+    }
+    &::after {
+      position: absolute;
+      bottom: -2px;
+      content: '';
+      display: block;
+      height: 1px;
+      background-color: #08142d;
+      right: 0;
+      width: 100%;
+      transform: scale(0);
+      transition: transform 0.3s linear;
+      transform-origin: 0%;
+    }
+    &:hover {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.gallery {
+  background-color: #fff;
+  padding-bottom: 5rem;
+  @include mobile {
+    padding-bottom: 4rem;
+  }
+  & > div {
+    cursor: none;
+  }
+  .teamPhotos {
+    margin: 0;
+    list-style: none;
+    padding: 0 0 5rem;
+    font-size: 0;
+    white-space: nowrap;
+    text-align: center;
+    @include mobile {
+      padding: 0 0 2.375rem;
+    }
+    .teamPhoto {
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 1rem;
+      img {
+        height: 440px;
+        @include mobile {
+          height: 190px;
+        }
+      }
+      &:nth-child(n + 2) {
+        margin-left: 1rem;
+      }
+    }
+  }
+  .scrollStatus {
+    background-color: #fe00ae4d;
+    height: 2px;
+    width: 40vw;
+    min-width: 260px;
+    margin: 0 auto;
+    display: flex;
+    .scrollStatusBar {
+      background-color: #fe00ae;
+      height: 2px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      transition: transform 0.2s linear;
     }
   }
 }
 
 .what {
-  background-color: #08142d;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 4.75rem 1rem 7rem;
-  @include mobile {
-    padding: 3rem 1rem 5rem;
-  }
-  .wrapper {
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 0 3rem;
-    @include mobile {
-      padding: 0;
-    }
-  }
-
-  :global(.subtitle) {
-    @include mobile {
-      max-width: 290px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-
-  :global(.description) {
-    margin-bottom: 1.2rem;
-    @include mobile {
-      max-width: 245px;
-      margin-left: auto;
-      margin-right: auto;
-      br {
-        display: none;
-      }
-    }
-  }
-
-  .services {
-    margin: 3.3rem auto 0;
-    padding: 0;
-    list-style: none;
-    width: 100%;
-    max-width: 1170px;
-    text-align: left;
-    @include tablet {
-      max-width: 585px;
-    }
-    & > li {
-      width: 20%;
-      display: inline-block;
-      vertical-align: top;
-      @include tablet {
-        width: 45%;
-      }
-      @include mobile {
-        width: 100%;
-        text-align: center;
-      }
-      & + li {
-        margin-left: 6.66%;
-        @include tablet {
-          margin-left: 10%;
-          &:nth-child(3n) {
-            margin-left: 0;
-          }
-          &:nth-child(n + 3) {
-            margin-top: 2rem;
-          }
-        }
-        @include mobile {
-          margin-left: 0;
-          &:nth-child(n + 1) {
-            margin-top: 4rem;
-          }
-        }
-      }
-      .skill {
-        width: 60px;
-        height: 60px;
-      }
-      .title {
-        font-size: 1.125rem;
-        margin: 1.3rem 0 0.6rem;
-        &::after {
-          content: '';
-          display: block;
-          width: 1rem;
-          height: 2px;
-          background-color: #fe00ae;
-          margin-top: 0.9rem;
-          @include mobile {
-            margin: 1rem auto 0;
-          }
-        }
-      }
-      .list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        font-size: 0.875rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        line-height: 2;
-        font-weight: 300;
-      }
-    }
-  }
-}
-
-.clients {
-  background-color: #f2f2f2;
-  color: #08142d;
-  text-align: center;
-  padding: 4.75rem 1rem 5.5rem;
-  @include mobile {
-    padding: 3rem 1rem;
-  }
-  .wrapper {
-    max-width: 350px;
-    margin: 0 auto;
-    padding: 0 3rem;
-    @include mobile {
-      padding: 0;
-    }
-  }
-
-  :global(.subtitle) {
-    @include mobile {
-      max-width: 290px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-
-  .logos {
-    margin: 2rem auto 0;
-    max-width: 800px;
-    padding: 0;
-    list-style: none;
-    & > li {
-      display: inline-block;
-      vertical-align: middle;
-      width: 33.33%;
-      margin-top: 3rem;
-      box-sizing: border-box;
-      padding: 0 1rem;
-      @include mobile {
-        width: 50%;
-      }
-      img {
-        max-width: 100%;
-      }
-    }
-  }
-}
-
-.workTogether {
-  border: 1.5rem solid #fe00ae;
-  background-color: #2139f8;
-  padding: 4rem 4.8rem;
+  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  padding: 7rem 0 0;
   position: relative;
   @include mobile {
-    text-align: center;
-    padding: 3.5rem 1rem;
+    padding: 4.8rem 0 0;
   }
-  .content {
+  .text {
     position: relative;
     z-index: 1;
-  }
-  :global(.subtitle) {
-    max-width: 595px;
-    margin-bottom: 4.9rem;
-    @include tablet {
-      max-width: 500px;
-    }
-    @include mobile {
-      max-width: 280px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-  :global(.cta) {
-    &::after {
-      background-color: #2139f8;
-    }
-  }
-  .animation {
-    cursor: url('../assets/question.png'), auto;
-    position: relative;
-    display: inline-block;
-    @include tablet {
-      display: block;
-    }
-    .letter {
-      pointer-events: none;
-      position: relative;
-      &::after {
-        content: '';
-        position: absolute;
-        left: -2px;
-        right: -2px;
-        bottom: 0;
-        height: 3px;
-        background-color: #fe00ae;
-      }
-      &.changing {
-        opacity: 0.3;
-      }
-      &.hidden {
-        opacity: 0;
-        width: 0;
-        display: inline-block;
-      }
-    }
-  }
-  .social {
-    position: absolute;
-    right: 5rem;
-    top: 3.5rem;
-    bottom: 3.5rem;
-    margin: 0;
-    flex-direction: column;
-    justify-content: space-evenly;
-    z-index: 2;
-    @include mobile {
-      position: static;
-      flex-direction: row;
-      margin-top: 5rem;
-      justify-content: center;
-    }
-    .socialItem {
-      padding: 0;
+    .lead {
+      margin: 0 0 1rem;
+      font-size: 1.15rem;
+      font-weight: 400;
+      text-transform: uppercase;
       @include mobile {
-        padding: 0 0.75rem;
+        font-size: 0.8rem;
+      }
+    }
+    .description {
+      margin: 0;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 1100px;
+      @include mobile {
+        font-size: 1.35rem;
+      }
+    }
+    .list {
+      list-style: none;
+      margin: 3rem 0 0;
+      padding: 0;
+      @include tablet {
+        margin: 3rem 0;
+      }
+      @include mobile {
+        margin: 0;
+      }
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7rem 0;
+        border-bottom: 1px solid #fff;
+        &:last-child {
+          border: none;
+        }
+        @include tablet {
+          display: block;
+        }
+        @include mobile {
+          padding: 4rem 0;
+        }
+        .img {
+          width: 10%;
+          @include tablet {
+            width: 20%;
+          }
+          @include mobile {
+            width: 70px;
+          }
+        }
+        .name {
+          margin: 0;
+          box-sizing: border-box;
+          font-size: 3.75rem;
+          font-weight: 700;
+          @include mobile {
+            font-size: 1.7rem;
+          }
+        }
+        .text {
+          font-size: 1.75rem;
+          font-weight: 400;
+          line-height: 1.25;
+          width: 55%;
+          box-sizing: border-box;
+          padding-right: 2rem;
+          padding-left: 3rem;
+          @include tablet {
+            padding-left: 0;
+            width: 100%;
+          }
+          @include mobile {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+    .ctaWrapper {
+      margin: 0;
+      padding: 0 0 7rem;
+      text-align: right;
+      overflow: hidden;
+      @include tablet {
+        margin: 0;
+      }
+      @include mobile {
+        padding: 0 0 4.75rem;
+      }
+    }
+    .cta {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      @include mobile {
+        font-size: 0.8rem;
+      }
+      &::before {
+        position: absolute;
+        bottom: -2px;
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: #fff;
+        width: 1440px;
+        right: calc(100% + 3rem);
+        @include mobile {
+          right: calc(100% + 1rem);
+          bottom: 45%;
+        }
+      }
+      &::after {
+        position: absolute;
+        bottom: -2px;
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: #fff;
+        right: 0;
+        width: 100%;
+        transform: scale(0);
+        transition: transform 0.3s linear;
+        transform-origin: 0%;
+      }
+      &:hover {
+        &::after {
+          transform: scale(1);
+        }
       }
     }
   }
-  &::before {
-    content: '';
+  .ball {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 84%;
-    background-color: #2038ee;
-    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-    @include tablet {
-      display: none;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      rgba(42, 52, 255, 1) 0%,
+      rgba(8, 20, 45, 1) 100%
+    );
+    &.ball1 {
+      width: 16.75rem;
+      height: 16.75rem;
+      top: 10rem;
+      right: -2rem;
+      @include mobile {
+        width: 3.75rem;
+        height: 3.75rem;
+        right: 7rem;
+        top: 5rem;
+      }
     }
-  }
-  .scroll {
-    display: none;
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    width: 2rem;
-    height: 1.5rem;
-    border: none;
-    background-color: transparent;
-    background-image: url('../assets/backtotop.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 1.75rem;
-    outline: none;
-    @include mobile {
-      display: block;
-    }
-  }
-}
-
-footer {
-  padding: 1.5rem 2rem;
-  font-size: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @include mobile {
-    flex-direction: column;
-    text-align: center;
-  }
-  .logo {
-    width: 200px;
-    @include mobile {
-      margin-bottom: 2rem;
-    }
-  }
-  span {
-    margin-right: 2.5rem;
-    @include mobile {
-      margin-right: 0;
+    &.ball2 {
+      width: 8.75rem;
+      height: 8.75rem;
+      top: 5rem;
+      right: 15rem;
+      @include mobile {
+        width: 7.5rem;
+        height: 7.5rem;
+        right: -1rem;
+      }
     }
   }
 }

@@ -1,294 +1,398 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { useIsVisible } from 'react-is-visible';
+import React, { useRef, useState, useEffect, useMemo, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import classnames from 'classnames';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+import Lottie from 'react-lottie-player';
+import { InView } from 'react-intersection-observer';
+import AnimatedText from 'components/AnimatedText/AnimatedText';
 
-import Video from 'components/Video/Video';
-import Social from 'components/Social/Social';
+import AppContext from 'AppContext';
+import useRequest from 'utils/useRequest';
+import Markdown from 'components/Markdown/Markdown';
+import WorkTogether from 'components/WorkTogether/WorkTogether';
+// import Instagram from 'components/Instagram/Instagram';
+import Testimonials from 'components/Testimonials/Testimonials';
 
-import usFrame from 'assets/us.gif';
-import showStripe from 'assets/showStripe.svg';
-import showStripeAlt from 'assets/showStripeAlt.svg';
-
-import video from 'assets/skills/video.svg';
-import brand from 'assets/skills/brand.svg';
-import content from 'assets/skills/content.svg';
-import graphics from 'assets/skills/graphics.svg';
-
-import novartis from 'assets/clients/novartis.svg';
-import TIpeople from 'assets/clients/TIpeople.svg';
-import gulbenkian from 'assets/clients/gulbenkian.svg';
-import rtp from 'assets/clients/rtp.svg';
-import uniplaces from 'assets/clients/uniplaces.svg';
-import SNS from 'assets/clients/SNS.svg';
-
-import logo from 'assets/logo.svg';
+import motion from 'assets/skills/motion.json';
+import graphics from 'assets/skills/graphics.json';
+import brand from 'assets/skills/brand.json';
 
 import classes from './Us.module.scss';
 
-const alpha = [
-  '!',
-  '#',
-  '$',
-  '0',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  'A',
-  'G',
-  'T',
-  'H',
-  'Y',
-  'Z',
-  'X',
-  'W',
-  'O',
-  'K',
-  'Q',
-  'S',
-];
+const Us = () => {
+  const { setCursorType, scrollElement } = useContext(AppContext);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-const wordList = [
-  'Animation',
-  'UX/UI',
-  'Branding',
-  'Storytelling',
-  'Video',
-  'Illustration',
-  'Filmmaking',
-];
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    centerMode: false,
+    variableWidth: true,
+    touchThreshold: 100,
+    beforeChange: (_, next) => {
+      setCurrentSlide(next);
+    },
+  };
 
-const Us = ({ setModal }) => {
-  const toAnimateWord = useRef();
-  const isToAnimateWordVisible = useIsVisible(toAnimateWord);
-  const [animatingWord, setAnimatingWord] = useState(false);
-  const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
+  const { data: usData } = useRequest({
+    url: 'know-us-page?populate%5BTeam%5D%5Bpopulate%5D%5Bteam_member%5D%5Bpopulate%5D=*&populate%5BGallery%5D%5Bpopulate%5D%5Bteam_photo%5D%5Bpopulate%5D=*&populate%5BTestimonials%5D%5Bpopulate%5D=*',
+    method: 'GET',
+  });
 
-  const animateWord = () => {
-    if (animatingWord) {
-      return;
+  const scrollRef = useRef();
+
+  const ball1ref = useRef();
+  const ball2ref = useRef();
+  const ball3ref = useRef();
+
+  const [teamMemberVisibility, setTeamMemberVisibility] = useState({});
+
+  const teamMembers = useMemo(() => {
+    if (usData?.data?.attributes?.Team?.length > 0) {
+      return usData.data.attributes.Team.map(
+        ({
+          id,
+          team_member: {
+            data: {
+              attributes: {
+                MainText,
+                Name,
+                Role,
+                SecondaryText,
+                Photo: {
+                  data: {
+                    attributes: { url: Image },
+                  },
+                },
+              },
+            },
+          },
+        }) => ({ id, MainText, Name, Role, SecondaryText, Image })
+      );
     }
-    const nextWordIndex = nextAnimationWordIndex;
-    setNextAnimationWordIndex(
-      nextAnimationWordIndex < wordList.length - 1
-        ? nextAnimationWordIndex + 1
-        : 0
+    return [];
+  }, [usData]);
+
+  const teamPhotos = useMemo(() => {
+    if (usData?.data?.attributes?.Gallery?.length > 0) {
+      return usData.data.attributes.Gallery.map(
+        ({
+          id,
+          team_photo: {
+            data: {
+              attributes: {
+                Title,
+                Photo: {
+                  data: {
+                    attributes: { url: Image },
+                  },
+                },
+              },
+            },
+          },
+        }) => ({ id, Title, Image })
+      );
+    }
+    return [];
+  }, [usData]);
+
+  const scrollWeRef = useRef();
+
+  const weBall1ref = useRef();
+  const weBall2ref = useRef();
+
+  const whatItem1 = useRef();
+  const whatItem2 = useRef();
+  const whatItem3 = useRef();
+
+  const [whatCentered, setWhatCentered] = useState([false, false, false]);
+
+  const listenToScroll = () => {
+    const what1Distance = Math.abs(
+      whatItem1?.current?.getBoundingClientRect().top +
+        whatItem1?.current?.offsetHeight / 2 -
+        window.innerHeight / 2
     );
-    let element = toAnimateWord.current;
-    setAnimatingWord(true);
-    const initialWord = element.innerText;
-    const mixedWord = initialWord.split('');
-    const delay = 50;
-    mixedWord.forEach((_, index) => {
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          mixedWord[index] = `<span class="${classnames(
-            classes.letter,
-            classes.changing
-          )}">${alpha[Math.floor(Math.random() * alpha.length)]}</span>`;
-          element.innerHTML = mixedWord.join('');
-        }, delay * index + i * delay);
-      }
-      setTimeout(() => {
-        mixedWord[index] = `<span class="${classnames(classes.letter, {
-          [classes.hidden]: !wordList[nextWordIndex].split('')[index],
-        })}">${
-          wordList[nextWordIndex].split('')[index]
-            ? wordList[nextWordIndex].split('')[index]
-            : '&nbsp;'
-        }</span>`;
-        element.innerHTML = mixedWord.join('');
-        if (index === mixedWord.length - 1) {
-          setAnimatingWord(false);
-        }
-      }, delay * index + delay * 6);
-    });
+    const what2Distance = Math.abs(
+      whatItem2?.current?.getBoundingClientRect().top +
+        whatItem2?.current?.offsetHeight / 2 -
+        window.innerHeight / 2
+    );
+    const what3Distance = Math.abs(
+      whatItem3?.current?.getBoundingClientRect().top +
+        whatItem3?.current?.offsetHeight / 2 -
+        window.innerHeight / 2
+    );
+    const distanceThreshold = (window.innerHeight * 2) / 3.5;
+    setWhatCentered([
+      what1Distance < distanceThreshold
+        ? (distanceThreshold - what1Distance) / distanceThreshold
+        : 0,
+      what2Distance < distanceThreshold
+        ? (distanceThreshold - what2Distance) / distanceThreshold
+        : 0,
+      what3Distance < distanceThreshold
+        ? (distanceThreshold - what3Distance) / distanceThreshold
+        : 0,
+    ]);
   };
 
   useEffect(() => {
-    if (isToAnimateWordVisible && toAnimateWord) {
-      animateWord(toAnimateWord.current);
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', listenToScroll);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isToAnimateWordVisible, toAnimateWord]);
+    return () => {
+      if (scrollElement) {
+        scrollElement.removeEventListener('scroll', listenToScroll);
+      }
+    };
+  }, [scrollElement]);
 
   return (
     <>
-      <Video
-        soon={false}
-        scroll={false}
-        frame={usFrame}
-        className={classes.video}
-      />
-      <section className={classes.we}>
-        <div className={classes.wrapper}>
-          <h1 className="title">Who we are</h1>
-          <img src={showStripe} alt="line" className="line" />
-          <p className="subtitle">Typical love story here!</p>
-          <p className="description">
-            Digital Animator meets Visual Designer. She loves his moves, he
-            loves her typography OCD. <strong>And bam!</strong> A match-made in
-            digital heaven. Nine years of partnership later (both in life and at
-            work) we've decided to bring our own bundle of joy into the world.
+      <section className={classes.intro}>
+        <div className={classnames('wrapper', classes.text)}>
+          <p className={classes.lead}>
+            <AnimatedText>Who we are</AnimatedText>
+          </p>
+          <p className={classes.description}>
+            <strong>
+              <AnimatedText delay={150}>Storytelling is life.</AnimatedText>
+            </strong>
             <br />
-            <strong>A freaking studio!</strong>
-          </p>
-          <p className="description">
-            A new, exciting venture with the same unfaltering commitment, the
-            same detail-oriented mindset, the same relentless elbow-grease we
-            work into every project.
-            <br />
-            And most important of all...
-          </p>
-          <p className="description">
-            The same mad creativity, now <strong>with a kick-ass team!</strong>
+            <AnimatedText delay={300}>
+              Embrace challenges with an open heart, creative hunger and a
+              passion for overcoming obstacles as a team.
+            </AnimatedText>
           </p>
         </div>
-      </section>
-      <section className={classes.what}>
-        <div className={classes.wrapper}>
-          <h1 className="title">What we do</h1>
-          <img src={showStripeAlt} alt="line" className="line" />
-          <p className="subtitle">
-            We love to give shape to beautiful and meaningful stories.
-          </p>
-          <p className="description">
-            Fast-moving trends require rock-solid core skills. <br />
-            Our savoir-faire is broader than you may expect!
-          </p>
-        </div>
-        <ul className={classes.services}>
-          <li>
-            <img className={classes.skill} src={video} alt="video" />
-            <h1 className={classes.title}>Video</h1>
-            <ul className={classes.list}>
-              <li>2D &amp; 3D Animation</li>
-              <li>App Tutorials</li>
-              <li>Explainer Videos</li>
-              <li>Commercials</li>
-              <li>Title Sequences</li>
-              <li>Manifesto Videos</li>
-              <li>Live-Action Production</li>
-              <li>Social Media</li>
-              <li>Gifs</li>
-            </ul>
-          </li>
-          <li>
-            <img className={classes.skill} src={graphics} alt="graphics" />
-            <h1 className={classes.title}>Graphics</h1>
-            <ul className={classes.list}>
-              <li>2D &amp; 3D Illustration</li>
-              <li>Style Frames</li>
-              <li>Storyboarding</li>
-              <li>Infographics</li>
-              <li>Iconography</li>
-              <li>UI/UX</li>
-              <li>Web Design</li>
-              <li>App Design</li>
-              <li>Wireframing</li>
-            </ul>
-          </li>
-          <li>
-            <img className={classes.skill} src={brand} alt="brand" />
-            <h1 className={classes.title}>Brand</h1>
-            <ul className={classes.list}>
-              <li>Brand Strategy</li>
-              <li>Brand Identity</li>
-              <li>Content Strategy</li>
-              <li>Logo &amp; ID Systems</li>
-              <li>Logo Animation</li>
-              <li>Brand Style Guides</li>
-              <li>Collateral, Print &amp; Packaging</li>
-            </ul>
-          </li>
-          <li>
-            <img className={classes.skill} src={content} alt="content" />
-            <h1 className={classes.title}>Content</h1>
-            <ul className={classes.list}>
-              <li>Script Development</li>
-              <li>Storytelling</li>
-              <li>UX Writing</li>
-              <li>Copywriting</li>
-              <li>Presentation Design</li>
-              <li>Photography</li>
-              <li>Creative Direction</li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-      <section className={classes.clients}>
-        <div className={classes.wrapper}>
-          <h1 className="title">Some selected clients</h1>
-          <img src={showStripe} alt="line" className="line" />
-          <p className="subtitle">Reach goals and keep rocking</p>
-        </div>
-        <ul className={classes.logos}>
-          <li>
-            <img width={173} src={novartis} alt="Novartis" />
-          </li>
-          <li>
-            <img width={80} src={TIpeople} alt="TIPeople" />
-          </li>
-          <li>
-            <img width={196} src={gulbenkian} alt="Gulbenkian" />
-          </li>
-          <li>
-            <img width={217} src={rtp} alt="RTP" />
-          </li>
-          <li>
-            <img width={126} src={uniplaces} alt="Uniplaces" />
-          </li>
-          <li>
-            <img width={211} src={SNS} alt="SNS" />
-          </li>
-        </ul>
-      </section>
-      <section className={classes.workTogether}>
-        <div className={classes.content}>
-          <h1 className="title">Let's work together</h1>
-          <img src={showStripe} alt="line" className="line" />
-          <p className="subtitle">
-            We're always thinking about the future of{' '}
-            <span
-              ref={toAnimateWord}
-              className={classes.animation}
-              onClick={(e) => animateWord()}
-            >
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </span>
-          </p>
-          <button
-            className="cta"
-            onClick={() => {
-              setModal(true);
-            }}
+        <div ref={scrollRef} style={{ position: 'absolute', top: '100vh' }} />
+        <ParallaxProvider scrollContainer={scrollElement}>
+          <Parallax
+            className={classnames(classes.ball, classes.ball1)}
+            translateY={[0, window.innerWidth >= 768 ? -100 : -50]}
+            targetElement={scrollRef.current}
           >
-            Let's Talk
-          </button>
-        </div>
-        <Social
-          inverted
-          className={classes.social}
-          itemClassName={classes.socialItem}
-        />
-        <button
-          className={classes.scroll}
-          onClick={() => {
-            window.scrollTo(0, 0);
-          }}
-        ></button>
+            <div ref={ball1ref} />
+          </Parallax>
+          <Parallax
+            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            targetElement={scrollRef.current}
+            className={classnames(classes.ball, classes.ball2)}
+          >
+            <div ref={ball2ref} />
+          </Parallax>
+          <Parallax
+            translateY={[0, window.innerWidth >= 768 ? -300 : -150]}
+            targetElement={scrollRef.current}
+            className={classnames(classes.ball, classes.ball3)}
+          >
+            <div ref={ball3ref} />
+          </Parallax>
+        </ParallaxProvider>
       </section>
-      <footer>
-        <Link to="/">
-          <img className={classes.logo} src={logo} alt="logo" />
-        </Link>
-        <span>
-          &copy; Itsanashow Creative Studio, Lda 2020. All rights reserved.
-        </span>
-      </footer>
+      {teamMembers.length > 0 && (
+        <section className={classes.team}>
+          <div className="wrapper">
+            <ul className={classes.teamMembers}>
+              {teamMembers.map(
+                ({ id, MainText, Name, Role, SecondaryText, Image }, index) => (
+                  <li key={id} className={classes.teamMember}>
+                    <InView
+                      onChange={(InView) => {
+                        console.log(InView);
+                        setTeamMemberVisibility((prev) => ({
+                          ...prev,
+                          [id]: InView,
+                        }));
+                      }}
+                    >
+                      <div
+                        className={classnames(classes.teamMemberContent, {
+                          [classes.visible]: teamMemberVisibility[id],
+                          [classes.delayIn]: index % 2 !== 0,
+                        })}
+                      >
+                        <p className={classes.role}>{Role}</p>
+                        <p className={classes.name}>{Name}</p>
+                        <p className={classes.mainText}>
+                          <Markdown content={MainText} />
+                        </p>
+
+                        <div className={classes.aside}>
+                          <img
+                            className={classes.image}
+                            src={`${process.env.REACT_APP_API_URL}${Image}`}
+                            alt={Name}
+                          />
+                          <p className={classes.secondaryText}>
+                            <Markdown content={SecondaryText} />
+                          </p>
+                        </div>
+                      </div>
+                    </InView>
+                  </li>
+                )
+              )}
+            </ul>
+            <div className={classes.ctaWrapper}>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="mailto:hello@itsanashow.com"
+                className={classes.cta}
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
+              >
+                Wanna join us?
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+      {teamPhotos.length > 0 && (
+        <section className={classes.gallery}>
+          <div className={classes.teamPhotos}>
+            <div
+              onMouseEnter={() => {
+                setCursorType('drag');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+              onMouseDown={() => {
+                setCursorType('dragging');
+              }}
+              onMouseUp={() => {
+                setCursorType('drag');
+              }}
+            >
+              <Slider {...settings}>
+                {teamPhotos.map(({ id, Title, Image }) => (
+                  <div key={id}>
+                    <div key={id} className={classes.teamPhoto}>
+                      <img
+                        className={classes.image}
+                        src={`${process.env.REACT_APP_API_URL}${Image}`}
+                        alt={Title}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </div>
+          <div className={classes.scrollStatus}>
+            <div
+              className={classes.scrollStatusBar}
+              style={{
+                width: `${100 / teamPhotos.length}%`,
+                transform: `translateX(${currentSlide * 100}%)`,
+              }}
+            />
+          </div>
+        </section>
+      )}
+      <section className={classes.what}>
+        <div className={classnames('wrapper', classes.text)}>
+          <p className={classes.lead}>
+            <AnimatedText>What we do</AnimatedText>
+          </p>
+          <p className={classes.description}>
+            <AnimatedText delay={150}>
+              We love to give shape to beautiful and meaningful stories.
+            </AnimatedText>
+          </p>
+          <ul className={classes.list}>
+            <li
+              className={classes.item}
+              ref={whatItem1}
+              style={{ opacity: `${whatCentered[0] * 100}%` }}
+            >
+              <div className={classes.img}>
+                <Lottie loop animationData={motion} play />
+              </div>
+              <p className={classes.name}>Animation</p>
+              <p className={classes.text}>
+                Motion Graphics, 2D &amp; 3D Animation, Script Development, App
+                Tutorials, Explainer Videos, Commercials, Title sequences,
+                Manifesto videos
+              </p>
+            </li>
+            <li
+              className={classes.item}
+              ref={whatItem2}
+              style={{ opacity: `${whatCentered[1] * 100}%` }}
+            >
+              <div className={classes.img}>
+                <Lottie loop animationData={graphics} play />
+              </div>
+              <p className={classes.name}>Graphics</p>
+              <p className={classes.text}>
+                Illustration, Infographics, Iconography, UI/UX, Web Design, App
+                Design, Wireframing
+              </p>
+            </li>
+            <li
+              className={classes.item}
+              ref={whatItem3}
+              style={{ opacity: `${whatCentered[2] * 100}%` }}
+            >
+              <div className={classes.img}>
+                <Lottie loop animationData={brand} play />
+              </div>
+              <p className={classes.name}>Branding</p>
+              <p className={classes.text}>
+                Logo Design, Identity Systems, Tone of voice, Copywriting, Brand
+                Guidelines, Brand Collateral, Logo Animation, Presentation
+                Design
+              </p>
+            </li>
+          </ul>
+          <div className={classes.ctaWrapper}>
+            <Link
+              to="/work"
+              className={classes.cta}
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
+              Know our work
+            </Link>
+          </div>
+        </div>
+        <div ref={scrollWeRef} style={{ position: 'absolute', top: '50vh' }} />
+        <ParallaxProvider scrollContainer={scrollElement}>
+          <Parallax
+            className={classnames(classes.ball, classes.ball1)}
+            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            targetElement={scrollWeRef.current}
+          >
+            <div ref={weBall1ref} />
+          </Parallax>
+          <Parallax
+            className={classnames(classes.ball, classes.ball2)}
+            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            targetElement={scrollWeRef.current}
+          >
+            <div ref={weBall2ref} />
+          </Parallax>
+        </ParallaxProvider>
+      </section>
+      <Testimonials />
+      {/*<Instagram />*/}´
+      <WorkTogether />
     </>
   );
 };

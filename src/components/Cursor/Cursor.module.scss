@@ -1,0 +1,115 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  pointer-events: none;
+  transition: all 0.2s linear;
+  transition-property: width, height, background-color, margin;
+}
+
+.default {
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+  border-radius: 50%;
+  background-color: #fff;
+  mix-blend-mode: difference;
+}
+
+.bigger {
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+  border-radius: 50%;
+  background-color: #fff;
+  mix-blend-mode: difference;
+}
+
+.none {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+}
+
+.drag {
+  width: 128px;
+  height: 128px;
+  background-color: #2a34ff;
+  margin-left: -64px;
+  margin-top: -64px;
+  border-radius: 50%;
+  &:after {
+    content: 'Drag me';
+    white-space: nowrap;
+    display: block;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.dragging {
+  width: 100px;
+  height: 100px;
+  background-color: #fe00ae;
+  margin-left: -50px;
+  margin-top: -50px;
+  border-radius: 50%;
+  &:after {
+    content: 'Dragging';
+    white-space: nowrap;
+    display: block;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.view {
+  width: 128px;
+  height: 128px;
+  background-color: #fff;
+  margin-left: -64px;
+  margin-top: -64px;
+  border-radius: 50%;
+  &:after {
+    content: 'View Me';
+    white-space: nowrap;
+    display: block;
+    color: #2a34ff;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.video{
+  width: 128px;
+  height: 128px;
+  background-color: #fff;
+  margin-left: -64px;
+  margin-top: -64px;
+  border-radius: 50%;
+  background-image: url('../../assets/play.svg');
+  background-position: center;
+}
+
+.close{
+  width: 128px;
+  height: 128px;
+  background-color: #fff;
+  margin-left: -64px;
+  margin-top: -64px;
+  border-radius: 50%;
+  background-image: url('../../assets/close.svg');
+  background-position: center;
+}

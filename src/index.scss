@@ -2,10 +2,6 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
-  @include mobile {
-    font-size: 13px;
-  }
 }
 
 body {
@@ -17,124 +13,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #08142d;
   color: #e4f9fe;
+  overflow-x: hidden;
 }
 
-@font-face {
-  font-family: 'icomoon';
-  src: url('fonts/icomoon.eot?i31604');
-  src: url('fonts/icomoon.eot?i31604#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?i31604') format('truetype'),
-    url('fonts/icomoon.woff?i31604') format('woff'),
-    url('fonts/icomoon.svg?i31604#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-
-[class^='icon-'],
-[class*=' icon-'] {
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-cross:before {
-  content: '\ea0f';
-}
-.icon-facebook:before {
-  content: '\ea90';
-}
-.icon-instagram:before {
-  content: '\ea92';
-}
-.icon-behance:before {
-  content: '\eaa8';
-}
-.icon-linkedin2:before {
-  content: '\eaca';
-}
-.icon-pinterest2:before {
-  content: '\ead2';
-}
-
-.title {
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  letter-spacing: 2px;
-  font-weight: 300;
-  margin: 0 0 0.6rem;
-}
-
-.line {
-  width: 1.5rem;
-}
-
-.subtitle {
-  font-weight: bold;
-  font-size: 2.1875rem;
-  line-height: 1.15;
-  margin: 0 0 0.35rem;
-}
-
-.description {
-  font-weight: 300;
-  line-height: 1.3;
-  margin: 0;
-}
-
-.cta {
-  box-sizing: border-box;
-  vertical-align: top;
-  text-decoration: none;
-  display: inline-block;
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
-  color: #f2f2f2;
-  border: none;
-  background-color: #fe00ae;
-  outline: none;
-  border: 3px solid #fe00ae;
-  padding: 0.5rem 1.125rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8125rem;
-  letter-spacing: 2px;
-  cursor: pointer;
-  position: relative;
+main {
   overflow: hidden;
-  z-index: 1;
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 500%;
-    height: 1000%;
-    background: #08142d;
-    z-index: -1;
-    transform-origin: 0% 0%;
-    transform: translateX(calc(20%)) translateY(10%) rotate(-45deg);
-    transition: transform 0.3s;
+}
+
+.wrapper {
+  max-width: 2000px;
+  width: 100%;
+  padding: 0 5rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  @include tablet {
+    padding: 0 2rem;
   }
-  &:hover,
-  &:focus {
-    border: 3px solid #e4f9fe;
-    transition: border 0.2s linear;
-    &::after {
-      transform: translateY(10%) translateX(-25px) rotate(-45deg);
-    }
+  @include mobile {
+    padding: 0 1rem;
   }
-  &.simple {
-    background-color: transparent;
-    &:hover {
-      border: 3px solid #f2f2f2;
-    }
+}
+
+.slick-track {
+  display: flex !important;
+}
+
+.slick-slide {
+  height: inherit !important;
+  display: flex !important;
+  & > * > * {
+    height: 100%;
   }
 }

@@ -2,10 +2,9 @@
 
 .modalWrapper {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
   overflow: hidden;
   z-index: 100;
   pointer-events: none;
@@ -18,38 +17,23 @@
 }
 .modal {
   position: absolute;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  display: flex;
+  top: 0;
+  bottom: 0;
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
   box-sizing: border-box;
-  border: 2rem solid #2a34ff;
-  background-color: #e4f9fe;
+  background-color: #f2f2f2;
   text-align: center;
   color: #08142d;
-  padding-top: 90px;
   @include mobile {
-    border: 1rem solid #2a34ff;
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    height: 72%;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    background-color: #DCF2F9;
-    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-    @include mobile {
-      height: 50%;
-    }
+    background: linear-gradient(179.94deg, #2a34ff 66.43%, #fe00ae 99.95%);
+    color: #fff;
   }
   .close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    cursor: pointer;
+    position: fixed;
+    z-index: 10;
+    top: 3rem;
+    right: 3rem;
     display: block;
     width: 40px;
     height: 40px;
@@ -57,14 +41,21 @@
     border: none;
     padding: 0;
     background-color: transparent;
-    transform: scale(0.75);
+    cursor: pointer;
     @include mobile {
-      top: 0.5rem;
-      right: 0.5rem;
-      transform: scale(0.5);
+      top: 2em;
+      right: 1.2rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: transparent;
+      background-image: url('../../assets/closeWhite.svg');
+      background-size: contain;
     }
     > div {
       position: relative;
+      @include mobile {
+        display: none;
+      }
     }
     .closeButtonBlock {
       width: 40px;
@@ -81,7 +72,7 @@
         width: 4px;
         height: 25px;
         transform-origin: bottom center;
-        background: #2a34ff;
+        background: #fe00ae;
         transition: all ease-out 280ms;
       }
       &:last-of-type {
@@ -140,32 +131,229 @@
       outline: none;
     }
   }
-  .mail {
-    margin: 2rem;
-    a {
-      font-weight: bold;
-      font-size: 3rem;
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s linear;
-      cursor: url('../../assets/hand.png'), auto;
+  .gif {
+    width: 50%;
+    @include smallDesktop {
+      display: none;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .contentWrapper {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    @include smallDesktop {
+      width: 100%;
+    }
+    @include mobile {
+      height: calc(100vh - 150px);
+    }
+    .content {
+      width: 100%;
       @include mobile {
-        font-size: 1.7rem;
-      }
-      &:hover {
-        color: #fe00ae;
-        text-decoration: underline;
+        padding-top: 3rem;
       }
     }
   }
-  .slogan {
+
+  .salute {
+    font-weight: 400;
+    font-size: 1.25rem;
     text-transform: uppercase;
-    font-size: 1rem;
-    font-weight: 300;
+    color: #2a34ff;
+    margin: 0;
+    @include mobile {
+      font-size: 0.8rem;
+      color: #00ffe6;
+    }
   }
+  .lead {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1.25rem 0 4vh;
+    @include mobile {
+      font-size: 1.6rem;
+      margin: 0 0 5vh;
+    }
+  }
+  dl {
+    margin: 0;
+    dt {
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 3;
+      text-transform: uppercase;
+      opacity: 0.5;
+      @include mobile {
+        font-size: 0.8rem;
+        line-height: 1.25;
+      }
+    }
+    dd {
+      margin: 0;
+    }
+  }
+
+  .mail {
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s linear;
+    cursor: url('../../assets/hand.png'), auto;
+    display: inline-block;
+    margin-bottom: 5vh;
+    @include mobile {
+      font-size: 1rem;
+    }
+    &:hover {
+      color: #fe00ae;
+      text-decoration: underline;
+    }
+  }
+  .inquires {
+    font-size: 1.125rem;
+    font-weight: 500;
+    opacity: 0.5;
+    max-width: 26rem;
+    margin: 0 auto;
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .quote {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    text-transform: lowercase;
+    transition: color 0.2s linear;
+    cursor: url('../../assets/hand.png'), auto;
+    @include mobile {
+      font-size: 1rem;
+      margin-top: 0;
+    }
+    &:hover {
+      color: #fe00ae;
+      text-decoration: underline;
+    }
+    &:before {
+      content: '';
+      display: inline-block;
+      background-image: url('../../assets/arrow4.svg');
+      background-repeat: no-repeat;
+      width: 24px;
+      height: 16px;
+      background-size: contain;
+      background-position: center;
+      padding-right: 1rem;
+      @include mobile {
+        width: 15px;
+        height: 9px;
+        background-image: url('../../assets/arrow.svg');
+      }
+    }
+  }
+
+  .address {
+    margin-top: 4.5vh;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    text-transform: uppercase;
+    @include mobile {
+      font-size: 0.8rem;
+      margin-top: 9vh;
+    }
+  }
+
   .footer {
+    margin: 4vh auto 0;
+    padding: 1.7rem 0 0;
+    border-top: 1px solid #08142d;
+    max-width: 45vw;
+    width: 45rem;
+    @include smallDesktop {
+      max-width: 90vw;
+    }
+    @include mobile {
+      position: fixed;
+      bottom: 2rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #fff;
+      left: 5vw;
+      text-align: center;
+      color: #fff;
+    }
+    .slogan {
+      margin: 0;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #2a34ff;
+      @include mobile {
+        font-size: 0.7rem;
+        color: #fff;
+      }
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 2.25rem 0 0;
+      @include mobile {
+        margin: 1.3rem 0 -1rem;
+        font-size: 0;
+      }
+      @include smallPhone {
+        max-width: 250px;
+        margin: 1.3rem auto -1rem;
+      }
+      li {
+        display: inline-block;
+        @include mobile {
+          padding-bottom: 1rem;
+        }
+        & + li {
+          margin-left: 2.2rem;
+          @include mobile {
+            margin-left: 0.8rem;
+          }
+        }
+      }
+      a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.7;
+        letter-spacing: 2px;
+        color: inherit;
+        text-transform: uppercase;
+        text-decoration: none;
+        @include mobile {
+          font-size: 0.6rem;
+          line-height: inherit;
+        }
+      }
+    }
+  }
+  .ball {
     position: absolute;
-    bottom: 5rem;
-    width: 100%;
+    border-radius: 50%;
+    background: linear-gradient(150.71deg, #2a34ff 11.33%, #fe00ae 99.05%);
+    width: 11rem;
+    height: 11rem;
+    bottom: 10rem;
+    left: -2rem;
+    z-index: -1;
   }
 }

@@ -1,0 +1,222 @@
+@import 'mixins.scss';
+
+.intro {
+  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  padding: 14rem 0 7.5rem;
+  position: relative;
+  @include mobile {
+    padding: 7rem 0 3rem;
+  }
+  .text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    @include mobile {
+      text-align: left;
+    }
+    .lead {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      @include mobile {
+        font-size: 0.8rem;
+      }
+    }
+    .description {
+      margin: 0 auto 5rem;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 950px;
+      @include mobile {
+        font-size: 1.35rem;
+        margin: 0 auto 2rem;
+      }
+    }
+  }
+  .ball {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      rgba(42, 52, 255, 1) 0%,
+      rgba(8, 20, 45, 1) 100%
+    );
+    &.ball1 {
+      width: 16.75rem;
+      height: 16.75rem;
+      top: -1rem;
+      right: 30rem;
+      @include mobile {
+        top: 1rem;
+        right: -1rem;
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+    &.ball2 {
+      width: 5.25rem;
+      height: 5.25rem;
+      top: 12rem;
+      right: 48rem;
+      @include mobile {
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 9rem;
+        right: 7rem;
+      }
+    }
+    &.ball3 {
+      width: 11rem;
+      height: 11rem;
+      bottom: 6rem;
+      left: -2.5rem;
+      @include mobile {
+        width: 3.125rem;
+        height: 3.125rem;
+        bottom: -0.75rem;
+        left: auto;
+        right: 1.5rem;
+        z-index: 1;
+      }
+    }
+    &.ball4 {
+      width: 11rem;
+      height: 11rem;
+      bottom: 0;
+      right: 5rem;
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+}
+
+.works {
+  .list {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    list-style: none;
+  }
+  .item {
+    display: inline-block;
+    width: 50%;
+    position: relative;
+    vertical-align: top;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    &.visible {
+      opacity: 1;
+      img {
+        height: 28vw;
+        @include mobile {
+          height: 56vw;
+        }
+      }
+    }
+    @include mobile {
+      width: 100%;
+    }
+    a {
+      cursor: none;
+    }
+    img {
+      width: 100%;
+      vertical-align: top;
+      height: 0;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(8, 20, 45, 0) 0%,
+        rgba(8, 20, 45, 0.6) 66.93%
+      );
+    }
+    .text {
+      position: absolute;
+      bottom: 2rem;
+      left: 3rem;
+      right: 3rem;
+      max-width: 650px;
+      pointer-events: none;
+      overflow: hidden;
+      max-height: 100%;
+      @include mobile {
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+      }
+      .name {
+        font-size: 1.55rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin: 0;
+        text-transform: uppercase;
+        color: #fff;
+        @include mobile {
+          font-size: 0.95rem;
+        }
+      }
+      .tags {
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: 1.66;
+        margin: 0;
+        overflow: hidden;
+        color: #fff;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 0;
+        transition: height 0.15s linear;
+        @include mobile {
+          font-size: 0.8rem;
+          height: 1.8675rem;
+        }
+      }
+    }
+    &:hover {
+      .text {
+        .tags {
+          height: 1.8675rem;
+        }
+      }
+    }
+  }
+  .seeMore {
+    text-align: center;
+    padding: 3.5rem 0 10rem;
+    @include mobile {
+      padding: 2.8rem 0 4.5rem;
+    }
+    .more {
+      color: #fff;
+      font-family: inherit;
+      background-color: transparent;
+      text-transform: uppercase;
+      border: none;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      cursor: pointer;
+      &::before {
+        content: '';
+        display: block;
+        background-image: url('../assets/down.svg');
+        background-size: contain;
+        height: 15px;
+        width: 10px;
+        margin: 0 auto 0.5rem;
+      }
+      @include mobile {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

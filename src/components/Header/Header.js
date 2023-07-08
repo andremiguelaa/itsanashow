@@ -1,56 +1,137 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  useRef,
+} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
+import Lottie from 'react-lottie-player';
 
-import logo from 'assets/logo.svg';
-import miniLogo from 'assets/showIcon.svg';
+import { AppContext } from 'AppContext';
+import logo from 'assets/logo.json';
 import classes from './Header.module.scss';
 
-const Header = ({ setModal }) => {
+const Header = ({ transitionDuration }) => {
+  const { setModal, setTextAnimationAvailable, setCursorType, scrollElement } =
+    useContext(AppContext);
+
   const location = useLocation();
   const [page, setPage] = useState();
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [menu, setMenu] = useState(false);
+
+  const firstLoad = useRef(true);
+
   useEffect(() => {
     setPage(location.pathname);
-    setMobileMenu(false);
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    setMenu(false);
+    if (!firstLoad.current) {
+      setTextAnimationAvailable(false);
+      setTimeout(() => {
+        setDefaultHeader(true);
+        setTextAnimationAvailable(true);
+      }, transitionDuration * 0.75);
+    } else {
+      firstLoad.current = false;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, transitionDuration]);
+
+  const [defaultHeader, setDefaultHeader] = useState(true);
+
+  const listenToScroll = useCallback(() => {
+    setDefaultHeader(scrollElement.scrollTop < window.innerHeight);
+  }, [scrollElement]);
+
+  useEffect(() => {
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', listenToScroll);
+    }
+    return () => {
+      if (scrollElement) {
+        scrollElement.removeEventListener('scroll', listenToScroll);
+      }
+    };
+  }, [scrollElement, listenToScroll]);
 
   return (
     <>
-      <header className={classes.header}>
-        <Link to="/" className={classes.logoWrapper}>
-          <img className={classes.logo} src={logo} alt="logo" />
-          <img className={classes.miniLogo} src={miniLogo} alt="logo" />
-        </Link>
-        <div className={classes.buttons}>
-          <button className={classes.menu} onClick={() => setMobileMenu(true)}>
+      <header
+        className={classnames(classes.header, {
+          [classes.defaultHeader]: defaultHeader,
+        })}
+      >
+        <div className="wrapper">
+          <div className={classes.content}>
+            <Link
+              to="/"
+              onMouseEnter={() => {
+                setCursorType('bigger');
+              }}
+              onMouseLeave={() => {
+                setCursorType('default');
+              }}
+            >
+              <div className={classes.logo}>
+                <Lottie loop animationData={logo} play />
+              </div>
+            </Link>
+            <nav>
+              <Link
+                to="/work"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
+                className={classnames({ [classes.active]: page === '/work' })}
+              >
+                <span className={classes.text}>Our work</span>
+              </Link>
+              <Link
+                to="/us"
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
+                className={classnames({ [classes.active]: page === '/us' })}
+              >
+                <span className={classes.text}>Know us</span>
+              </Link>
+              <button
+                onClick={() => {
+                  setModal(true);
+                  setMenu(false);
+                }}
+                onMouseEnter={() => {
+                  setCursorType('bigger');
+                }}
+                onMouseLeave={() => {
+                  setCursorType('default');
+                }}
+              >
+                <span className={classes.text}>Contact us</span>
+              </button>
+            </nav>
+          </div>
+          <button className={classes.menuButton} onClick={() => setMenu(true)}>
             Menu
-          </button>
-          <Link
-            to="/us"
-            className={classnames(classes.us, {
-              [classes.active]: page === '/us',
-            })}
-          >
-            Know Us
-          </Link>
-          <button
-            className={classnames('cta', classes.cta, {
-              [classes.onUs]: page === '/us',
-            })}
-            onClick={() => setModal(true)}
-          >
-            Let's Talk!
+            <div />
+            <div />
+            <div />
           </button>
         </div>
       </header>
       <nav
-        className={classnames(classes.mobileMenu, {
-          [classes.open]: mobileMenu,
+        className={classnames(classes.menu, {
+          [classes.open]: menu,
         })}
       >
-        <button className={classes.close} onClick={() => setMobileMenu(false)}>
+        <button className={classes.close} onClick={() => setMenu(false)}>
           <div className={classes.in}>
             <div className={classes.closeButtonBlock}></div>
             <div className={classes.closeButtonBlock}></div>
@@ -61,31 +142,95 @@ const Header = ({ setModal }) => {
           </div>
         </button>
         <div className={classes.links}>
-          <Link
-            to="/"
-            className={classnames({
-              [classes.active]: page === '/',
-            })}
-          >
-            home
-          </Link>
-          <Link
-            to="/us"
-            className={classnames({
-              [classes.active]: page === '/us',
-            })}
-          >
-            know us
-          </Link>
-          <button
-            onClick={() => {
-              setModal(true);
-              setMobileMenu(false);
-            }}
-          >
-            contact us
-          </button>
+          <div>
+            <Link
+              to="/"
+              className={classnames(classes.link, {
+                [classes.active]: page === '/',
+              })}
+            >
+              home
+            </Link>
+          </div>
+          <div>
+            <Link
+              to="/us"
+              className={classnames(classes.link, {
+                [classes.active]: page === '/us',
+              })}
+            >
+              know us
+            </Link>
+            <Link
+              to="/work"
+              className={classnames(classes.link, {
+                [classes.active]: page === '/work',
+              })}
+            >
+              our work
+            </Link>
+            <button
+              onClick={() => {
+                setModal(true);
+                setMenu(false);
+              }}
+            >
+              contact us
+            </button>
+          </div>
         </div>
+        <div className={classes.footer}>
+          <p className={classes.slogan}>Let's get social!</p>
+          <ul>
+            <li>
+              <a
+                href="https://www.linkedin.com/company/itsanashow-studio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/itsanashow.studio/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.behance.net/ItsanashowStudio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Behance
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://vimeo.com/itsanashowstudio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Vimeo
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://dribbble.com/itsanashow_studio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Dribble
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className={classnames(classes.ball, classes.ball1)} />
+        <div className={classnames(classes.ball, classes.ball2)} />
       </nav>
     </>
   );
