@@ -7,8 +7,11 @@ import useRequest from 'utils/useRequest';
 
 import classes from './Blog.module.scss';
 
+const ARTICLES_PER_PAGE = 6;
+
 const Blog = () => {
   const { setCursorType } = useContext(AppContext);
+  const [numberOfArticles, setNumberOfArticles] = useState(ARTICLES_PER_PAGE);
   const [showTags, setShowTags] = useState(false);
   const [selectedTag, setSelectedTag] = useState();
 
@@ -32,16 +35,21 @@ const Blog = () => {
     [articlesData]
   );
 
-  const articlesToShow = useMemo(() => {
+  const filteredArticles = useMemo(() => {
+    let articles;
     if (!selectedTag) {
-      return articlesData?.data || [];
+      articles = articlesData?.data || [];
+    } else {
+      articles = articlesData?.data.filter((article) =>
+        article.attributes.Tags.data
+          .map((tag) => tag.attributes.Text)
+          .includes(selectedTag)
+      );
     }
-    return articlesData?.data.filter((article) =>
-      article.attributes.Tags.data
-        .map((tag) => tag.attributes.Text)
-        .includes(selectedTag)
-    );
+    return articles;
   }, [selectedTag, articlesData]);
+
+  const articlesToShow = filteredArticles.slice(0, numberOfArticles);
 
   return (
     <div className={classes.content}>
@@ -78,6 +86,7 @@ const Blog = () => {
                   })}
                   onClick={() => {
                     setSelectedTag(item);
+                    setNumberOfArticles(ARTICLES_PER_PAGE);
                   }}
                 >
                   {item}
@@ -92,6 +101,7 @@ const Blog = () => {
                 onClick={() => {
                   setSelectedTag();
                   setShowTags(false);
+                  setNumberOfArticles(ARTICLES_PER_PAGE);
                 }}
               >
                 Reset Filters
@@ -109,7 +119,7 @@ const Blog = () => {
                 <div
                   className={classes.imageWrapper}
                   onMouseEnter={() => {
-                    setCursorType('bigger');
+                    setCursorType('read');
                   }}
                   onMouseLeave={() => {
                     setCursorType('default');
@@ -156,11 +166,23 @@ const Blog = () => {
                     {tag.attributes.Text}
                   </span>
                 ))}
-                <div className={classes.readMore}>Read more</div>
+                <div className={classes.readMore}>
+                  <span>Read more</span>
+                </div>
               </Link>
             </li>
           ))}
         </ul>
+        {filteredArticles.length > numberOfArticles && (
+          <button
+            className={classes.seeMore}
+            onClick={() => {
+              setNumberOfArticles((prev) => prev + ARTICLES_PER_PAGE);
+            }}
+          >
+            Let me see more
+          </button>
+        )}
       </div>
     </div>
   );

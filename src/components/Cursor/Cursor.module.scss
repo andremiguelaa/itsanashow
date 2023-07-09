@@ -92,6 +92,26 @@
   }
 }
 
+.read {
+  width: 128px;
+  height: 128px;
+  background-color: #fff;
+  margin-left: -64px;
+  margin-top: -64px;
+  border-radius: 50%;
+  &:after {
+    content: 'Read Me';
+    white-space: nowrap;
+    display: block;
+    color: #2a34ff;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .video{
   width: 128px;
   height: 128px;

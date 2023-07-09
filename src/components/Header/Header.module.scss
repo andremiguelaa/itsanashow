@@ -13,7 +13,7 @@
   &.defaultHeader {
     mix-blend-mode: normal;
   }
-  &.blog {
+  &.logbook {
     mix-blend-mode: difference;
   }
   @include mobile {

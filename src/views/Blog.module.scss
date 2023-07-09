@@ -1,13 +1,21 @@
+@import 'mixins.scss';
+
 .content {
   background-color: #fff;
   padding: 14rem 0 7.5rem;
   color: #08142d;
+  @include mobile {
+    padding: 7rem 0 3rem;
+  }
 }
 
 .lead {
   text-align: center;
   text-transform: uppercase;
   font-size: 1.25rem;
+  @include mobile {
+    font-size: 0.8rem;
+  }
 }
 
 .caption {
@@ -17,12 +25,18 @@
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
+  @include mobile {
+    font-size: 1.5rem;
+    max-width: 280px;
+  }
 }
 
 .filters {
-  margin-top: 8rem;
-  margin-bottom: 4rem;
+  margin: 8rem 0 4rem;
   border-bottom: 3px solid #08142d;
+  @include mobile {
+    margin: 4rem 0 2rem;
+  }
   .toggle {
     background-color: transparent;
     border: none;
@@ -31,6 +45,7 @@
     font-weight: 700;
     padding: 0;
     cursor: pointer;
+    font-family: inherit;
     display: flex;
     align-self: center;
     &::after {
@@ -69,6 +84,7 @@
       font-size: 0.875rem;
       position: relative;
       cursor: pointer;
+      font-family: inherit;
       &:before {
         content: '';
         display: inline-block;
@@ -107,6 +123,7 @@
     border: none;
     color: #2a34ff;
     font-size: 0.8125rem;
+    font-family: inherit;
     cursor: pointer;
   }
 }
@@ -117,10 +134,17 @@
   padding: 0;
   list-style: none;
   gap: 4rem;
+  @include mobile {
+    gap: 0;
+  }
   .article {
     width: calc(50% - 2rem);
     position: relative;
     padding-bottom: 2.5rem;
+    @include mobile {
+      width: 100%;
+      margin-bottom: 4rem;
+    }
   }
   .link {
     color: inherit;
@@ -202,5 +226,41 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    &::after {
+      content: '';
+      display: inline-block;
+      background-image: url('../assets/readMore.svg');
+      background-size: contain;
+      transform: rotate(180deg);
+      height: 12px;
+      width: 18px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+.seeMore {
+  font-family: inherit;
+  display: block;
+  margin: 7rem auto 0;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  @include mobile {
+    font-size: 0.8rem;
+    margin: 0 auto;
+  }
+  &::before {
+    content: '';
+    display: block;
+    background-image: url('../assets/down.svg');
+    background-size: contain;
+    height: 15px;
+    width: 10px;
+    margin: 0 auto 0.5rem;
   }
 }
