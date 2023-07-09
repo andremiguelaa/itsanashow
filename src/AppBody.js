@@ -161,10 +161,10 @@ const AppBody = () => {
                 <Route exact path="/privacy-policy">
                   <Policy />
                 </Route>
-                <Route exact path="/blog">
+                <Route exact path="/logbook">
                   <Blog />
                 </Route>
-                <Route exact path="/blog/:slug">
+                <Route exact path="/logbook/:slug">
                   <Article />
                 </Route>
                 <Route>
