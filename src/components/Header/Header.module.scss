@@ -13,6 +13,9 @@
   &.defaultHeader {
     mix-blend-mode: normal;
   }
+  &.blog {
+    mix-blend-mode: difference;
+  }
   @include mobile {
     padding: 1rem 0;
   }

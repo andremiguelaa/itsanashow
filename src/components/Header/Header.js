@@ -58,7 +58,7 @@ const Header = ({ transitionDuration }) => {
   return (
     <>
       <header
-        className={classnames(classes.header, {
+        className={classnames(classes.header, classes[page?.split('/')[1]], {
           [classes.defaultHeader]: defaultHeader,
         })}
       >

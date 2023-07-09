@@ -12,6 +12,8 @@ import Us from 'views/Us';
 import Work from 'views/Work';
 import WorkDetail from 'views/WorkDetail';
 import Policy from 'views/Policy';
+import Blog from 'views/Blog';
+import Article from 'views/Article';
 import NoMatch from 'views/NoMatch';
 
 import classes from './AppBody.module.scss';
@@ -158,6 +160,12 @@ const AppBody = () => {
                 </Route>
                 <Route exact path="/privacy-policy">
                   <Policy />
+                </Route>
+                <Route exact path="/blog">
+                  <Blog />
+                </Route>
+                <Route exact path="/blog/:slug">
+                  <Article />
                 </Route>
                 <Route>
                   <NoMatch />
