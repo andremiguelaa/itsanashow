@@ -50,7 +50,9 @@ const Blog = () => {
         <p className={classes.caption}>Wrangling ideas, lassoing imagination</p>
         <div className={classes.filters}>
           <button
-            className={classes.toggle}
+            className={classNames(classes.toggle, {
+              [classes.visible]: showTags,
+            })}
             onClick={() => {
               setShowTags((prev) => !prev);
             }}
@@ -83,12 +85,13 @@ const Blog = () => {
               </li>
             ))}
           </ul>
-          {showTags && (
+          {showTags && selectedTag && (
             <div className={classes.resetWrapper}>
               <button
                 className={classes.reset}
                 onClick={() => {
                   setSelectedTag();
+                  setShowTags(false);
                 }}
               >
                 Reset Filters
