@@ -16,7 +16,7 @@ const Blog = () => {
   const [selectedTag, setSelectedTag] = useState();
 
   const { data: articlesData } = useRequest({
-    url: 'articles?populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BImage%5D=*',
+    url: 'articles?populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BThumbnail%5D=*',
     method: 'GET',
   });
 
@@ -25,7 +25,6 @@ const Blog = () => {
       ...new Set(
         articlesData?.data.reduce((acc, item) => {
           item.attributes.Tags.data.forEach((tag) => {
-            console.log(tag.attributes.Text);
             acc.push(tag.attributes.Text);
           });
           return acc;
@@ -127,9 +126,9 @@ const Blog = () => {
                 >
                   <img
                     className={classes.image}
-                    src={`${process.env.REACT_APP_API_URL}${article.attributes.Image.data.attributes.url}`}
+                    src={`${process.env.REACT_APP_API_URL}${article.attributes.Thumbnail.data.attributes.url}`}
                     alt={
-                      article.attributes.Image.data.attributes.alternativeText
+                      article.attributes.Thumbnail.data.attributes.alternativeText
                     }
                   />
                   <div className={classes.overlay}></div>

@@ -7,6 +7,9 @@
   @include mobile {
     padding: 7rem 0 3rem;
   }
+  :global(.wrapper){
+    max-width: 1270px;
+  }
 }
 
 .lead {
@@ -209,6 +212,7 @@
     color: #08142d80;
     font-size: 0.7rem;
     margin: 0;
+    letter-spacing: 2px;
   }
   .title {
     font-size: 1.25rem;

@@ -204,7 +204,6 @@ const Us = () => {
                   <li key={id} className={classes.teamMember}>
                     <InView
                       onChange={(InView) => {
-                        console.log(InView);
                         setTeamMemberVisibility((prev) => ({
                           ...prev,
                           [id]: InView,
