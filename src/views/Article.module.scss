@@ -3,6 +3,10 @@
 .content {
   background-color: #fff;
   color: #08142d;
+  ::selection {
+    color: #fff;
+    background: #e937aa;
+  }
   :global(.wrapper) {
     max-width: 1000px;
   }
@@ -38,6 +42,56 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 5.6rem;
+  }
+
+  .body {
+    .markdownContent {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      font-weight: 300;
+      margin-bottom: 5rem;
+      strong {
+        font-weight: 700;
+      }
+      h2 {
+        font-size: 2.2rem;
+      }
+      h3 {
+        font-size: 1.875rem;
+      }
+      ol,
+      ul {
+        margin: 2.5rem 0;
+        ::marker {
+          color: #2a34ff;
+          font-weight: 700;
+        }
+      }
+    }
+    .blockquote {
+      border-left: 10px solid #00ffe6;
+      color: #2a34ff;
+      margin: 0 0 5rem 0;
+      padding: 0.5rem 0 0 2.8rem;
+      .quote {
+        font-weight: 700;
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+      }
+      .quoteAuthor {
+        font-size: 1.5rem;
+      }
+    }
+    .image {
+      margin-bottom: 5rem;
+      img {
+        width: 100%;
+      }
+      .caption {
+        color: #08142d80;
+        font-size: 0.875rem;
+      }
+    }
   }
 
   .author {

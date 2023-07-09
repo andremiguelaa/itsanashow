@@ -12,7 +12,7 @@ const Article = () => {
   const { slug } = useParams();
 
   const { data: articleData } = useRequest({
-    url: `articles?filters%5Bslug%5D%5B%24eq%5D=${slug}&populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BImage%5D=*`,
+    url: `articles?filters%5Bslug%5D%5B%24eq%5D=${slug}&populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BImage%5D=*&populate%5BBody%5D%5Bpopulate%5D=*`,
     method: 'GET',
   });
 
@@ -54,8 +54,48 @@ const Article = () => {
               day: 'numeric',
             })}
           </p>
-          <div>
-            <Markdown content={article.attributes.Content} />
+          <div className={classes.body}>
+            {article.attributes.Body.map((component) => {
+              if (component.__component === 'content.markdown-content') {
+                return (
+                  <div
+                    className={classes.markdownContent}
+                    key={`${component.__component}-${component.id}`}
+                  >
+                    <Markdown content={component.Content} />
+                  </div>
+                );
+              }
+              if (component.__component === 'content.quote') {
+                return (
+                  <blockquote
+                    className={classes.blockquote}
+                    key={`${component.__component}-${component.id}`}
+                  >
+                    <div className={classes.quote}>{component.Quote}</div>
+                    <div className={classes.quoteAuthor}>
+                      <strong>{component.Author}</strong> - {component.Role}
+                    </div>
+                  </blockquote>
+                );
+              }
+              if (component.__component === 'content.image') {
+                return (
+                  <div
+                    className={classes.image}
+                    key={`${component.__component}-${component.id}`}
+                  >
+                    <img
+                      src={`${process.env.REACT_APP_API_URL}${component.Image.data.attributes.url}`}
+                      alt={component.Image.data.attributes.alternativeText}
+                    />
+                    <div className={classes.caption}>
+                      <Markdown content={component.Caption} />
+                    </div>
+                  </div>
+                );
+              }
+            })}
           </div>
           <div className={classes.author}>
             <img
