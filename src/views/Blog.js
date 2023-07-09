@@ -101,7 +101,7 @@ const Blog = () => {
             <li key={article.id} className={classes.article}>
               <Link
                 className={classes.link}
-                to={`/blog/${article.attributes.Slug}`}
+                to={`/logbook/${article.attributes.Slug}`}
               >
                 <div
                   className={classes.imageWrapper}
