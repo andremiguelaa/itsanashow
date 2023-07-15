@@ -172,7 +172,7 @@ const Article = () => {
                           }
                         />
                         <div className={classes.authorInfo}>
-                          Posted by
+                          Written by
                           <br />
                           <strong>{item.attributes.Author.Name}</strong>
                         </div>

@@ -88,7 +88,7 @@ const Blog = () => {
                     setNumberOfArticles(ARTICLES_PER_PAGE);
                   }}
                 >
-                  {item}
+                  <span>{item}</span>
                 </button>
               </li>
             ))}
@@ -128,7 +128,8 @@ const Blog = () => {
                     className={classes.image}
                     src={`${process.env.REACT_APP_API_URL}${article.attributes.Thumbnail.data.attributes.url}`}
                     alt={
-                      article.attributes.Thumbnail.data.attributes.alternativeText
+                      article.attributes.Thumbnail.data.attributes
+                        .alternativeText
                     }
                   />
                   <div className={classes.overlay}></div>
@@ -142,7 +143,7 @@ const Blog = () => {
                       }
                     />
                     <div className={classes.authorInfo}>
-                      Posted by
+                      Written by
                       <br />
                       <strong>{article.attributes.Author.Name}</strong>
                     </div>
