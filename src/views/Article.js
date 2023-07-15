@@ -5,6 +5,9 @@ import classnames from 'classnames';
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
+import linkedin from 'assets/linkedin.svg';
+import twitter from 'assets/twitter.svg';
+import facebook from 'assets/facebook.svg';
 
 import classes from './Article.module.scss';
 
@@ -36,7 +39,16 @@ const Article = () => {
   return (
     <>
       <div className={classnames('wrapper', classes.backLinkWrapper)}>
-        <Link to="/logbook" className={classes.backLink}>
+        <Link
+          to="/logbook"
+          className={classes.backLink}
+          onMouseEnter={() => {
+            setCursorType('bigger');
+          }}
+          onMouseLeave={() => {
+            setCursorType('default');
+          }}
+        >
           Back to logbook
         </Link>
       </div>
@@ -104,30 +116,91 @@ const Article = () => {
               return null;
             })}
           </div>
-          <div className={classes.author}>
-            <img
-              className={classes.avatar}
-              src={`${process.env.REACT_APP_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
-              alt={
-                article.attributes.Author.Avatar.data.attributes.alternativeText
-              }
-            />
-            <div className={classes.authorInfo}>
-              <div className={classes.written}>Written by</div>
-              <a
-                className={classes.name}
-                href={article.attributes.Author.LinkedIn}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {article.attributes.Author.Name}
-              </a>
-              <div className={classes.role}>
-                {article.attributes.Author.Role}
+          <div className={classes.footer}>
+            <div className={classes.authorData}>
+              <img
+                className={classes.avatar}
+                src={`${process.env.REACT_APP_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
+                alt={
+                  article.attributes.Author.Avatar.data.attributes
+                    .alternativeText
+                }
+              />
+              <div className={classes.authorInfo}>
+                <div className={classes.written}>Written by</div>
+                <a
+                  className={classes.name}
+                  href={article.attributes.Author.LinkedIn}
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={() => {
+                    setCursorType('bigger');
+                  }}
+                  onMouseLeave={() => {
+                    setCursorType('default');
+                  }}
+                >
+                  {article.attributes.Author.Name}
+                </a>
+                <div className={classes.role}>
+                  {article.attributes.Author.Role}
+                </div>
+                <div className={classes.description}>
+                  {article.attributes.Author.Description}
+                </div>
               </div>
-              <div className={classes.description}>
-                {article.attributes.Author.Description}
-              </div>
+            </div>
+            <div className={classes.share}>
+              Share:
+              <ul>
+                <li>
+                  <a
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.toString()}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    onMouseEnter={() => {
+                      setCursorType('bigger');
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType('default');
+                    }}
+                  >
+                    <img src={linkedin} alt="LinkedIn" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`http://twitter.com/share?text=${
+                      article.attributes.Title
+                    }&url=${window.location.toString()}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    onMouseEnter={() => {
+                      setCursorType('bigger');
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType('default');
+                    }}
+                  >
+                    <img src={twitter} alt="Twitter" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.toString()}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    onMouseEnter={() => {
+                      setCursorType('bigger');
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType('default');
+                    }}
+                  >
+                    <img src={facebook} alt="Facebook" />
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
