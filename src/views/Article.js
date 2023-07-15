@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import classnames from 'classnames';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
@@ -34,6 +35,11 @@ const Article = () => {
 
   return (
     <>
+      <div className={classnames('wrapper', classes.backLinkWrapper)}>
+        <Link to="/logbook" className={classes.backLink}>
+          Back to logbook
+        </Link>
+      </div>
       <div className={classes.content}>
         <img
           src={`${process.env.REACT_APP_API_URL}${article.attributes.Image.data.attributes.url}`}

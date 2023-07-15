@@ -15,6 +15,12 @@
   }
   &.logbook {
     mix-blend-mode: difference;
+    transition: opacity 1s linear;
+    transition-delay: 2s;
+    &.single {
+      pointer-events: none;
+      opacity: 0;
+    }
   }
   @include mobile {
     padding: 1rem 0;
