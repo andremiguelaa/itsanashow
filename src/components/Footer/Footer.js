@@ -151,7 +151,8 @@ const Footer = () => {
           </div>
         </div>
         <p className={classes.copyright}>
-          © Itsanashow Creative Studio, Lda 2022. All rights reserved.
+          © Itsanashow Creative Studio, Lda {new Date().getFullYear()}. All
+          rights reserved.
         </p>
       </div>
     </footer>

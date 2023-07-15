@@ -25,7 +25,7 @@ const Article = () => {
 
   const articles =
     article && articlesData
-      ? articlesData.data.filter((item) => item.id != article.id).slice(0, 3)
+      ? articlesData.data.filter((item) => item.id !== article.id).slice(0, 3)
       : [];
 
   if (!article) {
@@ -95,6 +95,7 @@ const Article = () => {
                   </div>
                 );
               }
+              return null;
             })}
           </div>
           <div className={classes.author}>
