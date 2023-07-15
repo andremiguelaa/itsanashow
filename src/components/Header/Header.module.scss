@@ -20,6 +20,8 @@
     &.single {
       pointer-events: none;
       opacity: 0;
+      width: 0;
+      overflow: hidden;
     }
   }
   @include mobile {
