@@ -67,15 +67,13 @@ const getSentence = ({ pathname, state }) => {
       );
     case '/logbook':
       return (
-        <div className={classes.sentenceWrapperWork}>
-          <strong>
-            Great things begin
-            <br />
-            with a curious mind.
-            <br />
-            🧠
-          </strong>
-        </div>
+        <strong>
+          Great things begin
+          <br />
+          with a curious mind.
+          <br />
+          🧠
+        </strong>
       );
     default:
       if (state?.origin === 'work' && pathname.includes('/work/')) {
@@ -89,13 +87,13 @@ const getSentence = ({ pathname, state }) => {
       }
       if (state?.origin === 'logbook' && pathname.includes('/logbook/')) {
         return (
-          <>
+          <strong>
             Holding our breath
             <br />
             as the story unfolds...
             <br />
             📖
-          </>
+          </strong>
         );
       }
       return (
