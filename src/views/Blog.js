@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useContext } from 'react';
+import Lottie from 'react-lottie-player';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
+import lasso from 'assets/lasso.json';
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
 
@@ -55,6 +57,11 @@ const Blog = () => {
       <div className="wrapper">
         <p className={classes.lead}>Think, create, inspire</p>
         <p className={classes.caption}>Wrangling ideas, lassoing imagination</p>
+        <div className={classes.lasso}>
+          <div className={classes.lassoContainer}>
+            <Lottie animationData={lasso} play loop />
+          </div>
+        </div>
         <div className={classes.filters}>
           <button
             className={classNames(classes.toggle, {

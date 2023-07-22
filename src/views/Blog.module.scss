@@ -28,28 +28,26 @@
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  position: relative;
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: calc(50% + 1rem);
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../assets/lasso.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    pointer-events: none;
-    @include mobile {
-      top: calc(50% + 3rem);
-    }
-  }
   @include mobile {
     font-size: 1.25rem;
     max-width: 250px;
+  }
+}
+
+.lasso {
+  position: relative;
+  pointer-events: none;
+  .lassoContainer{
+    position: absolute;
+    width: 100vw;
+    height: 33vw;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+  svg {
+    position: relative;
+    bottom: -9vw;
   }
 }
 
