@@ -113,7 +113,10 @@ const Blog = () => {
             <li key={article.id} className={classes.article}>
               <Link
                 className={classes.link}
-                to={`/logbook/${article.attributes.Slug}`}
+                to={{
+                  pathname: `/logbook/${article.attributes.Slug}`,
+                  state: { origin: 'logbook' },
+                }}
               >
                 <div
                   className={classes.imageWrapper}
