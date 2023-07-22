@@ -38,7 +38,7 @@ const WorkDetail = () => {
     loading,
     error,
   } = useRequest({
-    url: `works?filters%5BTitle%5D%5B%24eq%5D=${name}&populate=*`,
+    url: `works?filters[$or][0][Slug][$eq]=${name}&filters[$or][1][Title][$eq]=${name}&populate=*`,
     method: 'GET',
   });
 

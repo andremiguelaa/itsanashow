@@ -35,6 +35,7 @@ const Work = () => {
                 id,
                 attributes: {
                   Title,
+                  Slug,
                   Teaser: {
                     data: {
                       attributes: { url: Image },
@@ -48,6 +49,7 @@ const Work = () => {
         }) => ({
           id,
           Title,
+          Slug,
           Image,
           Tags: Tags.map(({ attributes: { Text } }) => Text),
         })
@@ -111,7 +113,7 @@ const Work = () => {
           <div ref={scrollWorksRef} style={{ position: 'absolute', top: '100vh' }} />
           <ParallaxProvider scrollContainer={scrollElement}>
             <ul className={classes.list}>
-              {works.map(({ id, Title, Image, Tags }, index) => (
+              {works.map(({ id, Title, Slug, Image, Tags }, index) => (
                 <li
                   className={classnames(classes.item, {
                     [classes.visible]: worksLimit > index,
@@ -120,7 +122,7 @@ const Work = () => {
                 >
                   <Link
                     to={{
-                      pathname: `/work/${Title}`,
+                      pathname: `/work/${Slug}`,
                       state: { origin: 'work' },
                     }}
                     onMouseEnter={() => {
