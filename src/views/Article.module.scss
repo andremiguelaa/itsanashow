@@ -119,6 +119,9 @@
           font-weight: 700;
         }
       }
+      a {
+        color: #fe00ae;
+      }
     }
     .blockquote {
       border-left: 10px solid #00ffe6;
@@ -159,6 +162,9 @@
       .caption {
         color: #08142d80;
         font-size: 0.875rem;
+        a {
+          color: #fe00ae;
+        }
         @include mobile {
           font-size: 0.7rem;
         }
