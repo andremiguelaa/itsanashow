@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useContext } from 'react';
-import Lottie from 'react-lottie-player';
 import { Link } from 'react-router-dom';
+import Lottie from 'react-lottie-player';
+import { InView } from 'react-intersection-observer';
 import classNames from 'classnames';
 
 import lasso from 'assets/lasso.json';
@@ -13,6 +14,7 @@ const ARTICLES_PER_PAGE = 6;
 
 const Blog = () => {
   const { setCursorType } = useContext(AppContext);
+  const [articleVisibility, setArticleVisibility] = useState({});
   const [numberOfArticles, setNumberOfArticles] = useState(ARTICLES_PER_PAGE);
   const [showTags, setShowTags] = useState(false);
   const [selectedTag, setSelectedTag] = useState();
@@ -116,70 +118,91 @@ const Blog = () => {
           )}
         </div>
         <ul className={classes.articles}>
-          {articlesToShow?.map((article) => (
+          {articlesToShow?.map((article, index) => (
             <li key={article.id} className={classes.article}>
-              <Link
-                className={classes.link}
-                to={{
-                  pathname: `/logbook/${article.attributes.Slug}`,
-                  state: { origin: 'logbook' },
+              <InView
+                onChange={(InView) => {
+                  setArticleVisibility((prev) => ({
+                    ...prev,
+                    [article.id]: InView,
+                  }));
                 }}
               >
-                <div
-                  className={classes.imageWrapper}
-                  onMouseEnter={() => {
-                    setCursorType('read');
-                  }}
-                  onMouseLeave={() => {
-                    setCursorType('default');
+                <Link
+                  className={classes.link}
+                  to={{
+                    pathname: `/logbook/${article.attributes.Slug}`,
+                    state: { origin: 'logbook' },
                   }}
                 >
-                  <img
-                    className={classes.image}
-                    src={`${process.env.REACT_APP_API_URL}${article.attributes.Thumbnail.data.attributes.url}`}
-                    alt={
-                      article.attributes.Thumbnail.data.attributes
-                        .alternativeText
-                    }
-                  />
-                  <div className={classes.overlay}></div>
-                  <div className={classes.author}>
-                    <img
-                      className={classes.avatar}
-                      src={`${process.env.REACT_APP_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
-                      alt={
-                        article.attributes.Author.Avatar.data.attributes
-                          .alternativeText
-                      }
-                    />
-                    <div className={classes.authorInfo}>
-                      Written by
-                      <br />
-                      <strong>{article.attributes.Author.Name}</strong>
+                  <div
+                    className={classNames(classes.linkContent, {
+                      [classes.visible]: articleVisibility[article.id],
+                    })}
+                  >
+                    <div
+                      className={classes.imageWrapper}
+                      onMouseEnter={() => {
+                        setCursorType('read');
+                      }}
+                      onMouseLeave={() => {
+                        setCursorType('default');
+                      }}
+                    >
+                      <img
+                        className={classes.image}
+                        src={`${process.env.REACT_APP_API_URL}${article.attributes.Thumbnail.data.attributes.url}`}
+                        alt={
+                          article.attributes.Thumbnail.data.attributes
+                            .alternativeText
+                        }
+                      />
+                      <div className={classes.overlay}></div>
+                      <div className={classes.author}>
+                        <img
+                          className={classes.avatar}
+                          src={`${process.env.REACT_APP_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
+                          alt={
+                            article.attributes.Author.Avatar.data.attributes
+                              .alternativeText
+                          }
+                        />
+                        <div className={classes.authorInfo}>
+                          Written by
+                          <br />
+                          <strong>{article.attributes.Author.Name}</strong>
+                        </div>
+                      </div>
                     </div>
+                    <p className={classes.date}>
+                      {new Date(article.attributes.Date).toLocaleDateString(
+                        'en-US',
+                        {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        }
+                      )}
+                    </p>
+                    <p className={classes.title}>{article.attributes.Title}</p>
+                    <p className={classes.teaser}>
+                      {article.attributes.Teaser}
+                    </p>
+                    {article.attributes.Tags.data.map((tag) => (
+                      <span className={classes.tag} key={tag.attributes.Text}>
+                        {tag.attributes.Text}
+                      </span>
+                    ))}
                   </div>
-                </div>
-                <p className={classes.date}>
-                  {new Date(article.attributes.Date).toLocaleDateString(
-                    'en-US',
-                    {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    }
-                  )}
-                </p>
-                <p className={classes.title}>{article.attributes.Title}</p>
-                <p className={classes.teaser}>{article.attributes.Teaser}</p>
-                {article.attributes.Tags.data.map((tag) => (
-                  <span className={classes.tag} key={tag.attributes.Text}>
-                    {tag.attributes.Text}
-                  </span>
-                ))}
-                <div className={classes.readMore}>
-                  <span>Read more</span>
-                </div>
-              </Link>
+                  <div
+                    className={classNames(classes.readMore, {
+                      [classes.visible]: articleVisibility[article.id],
+                    })}
+                  >
+                    <span>Read more</span>
+                  </div>
+                </Link>
+              </InView>
             </li>
           ))}
         </ul>
