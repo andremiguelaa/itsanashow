@@ -99,7 +99,7 @@ const WorkDetail = () => {
           <div className="wrapper">
             <div className={classes.content}>
               <header className={classes.header}>
-                <h1>{name}</h1>
+                <h1>{work.Title}</h1>
                 <p className={classes.subtitle}>
                   <Markdown content={work.Subtitle} />
                 </p>
