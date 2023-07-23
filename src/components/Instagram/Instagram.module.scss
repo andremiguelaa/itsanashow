@@ -122,8 +122,23 @@
     animation: arrow 1.5s linear infinite;
     margin-top: -4px;
     margin-left: 0.5rem;
+    animation: arrow 1.5s linear infinite;
   }
   @include mobile {
     font-size: 0.7rem;
+  }
+  @keyframes arrow {
+    from {
+      transform: translateX(0%);
+    }
+    20% {
+      transform: translateX(25%);
+    }
+    40% {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(0%);
+    }
   }
 }
