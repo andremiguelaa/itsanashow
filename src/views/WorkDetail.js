@@ -1,11 +1,14 @@
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useEffect, useState, useMemo, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { remark } from 'remark';
+import strip from 'strip-markdown';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
+import useMetaData from 'utils/useMetaData';
 import Markdown from 'components/Markdown/Markdown';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
 import NoMatch from 'views/NoMatch';
@@ -50,6 +53,25 @@ const WorkDetail = () => {
     url: 'works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D=*',
     method: 'GET',
   });
+
+  const [metaData, setMetaData] = useState({
+    title: undefined,
+    description: undefined,
+  });
+  useEffect(() => {
+    if (workData?.data?.[0]) {
+      remark()
+        .use(strip)
+        .process(workData.data[0].attributes.Subtitle)
+        .then((file) => {
+          setMetaData({
+            title: workData.data[0].attributes.Title,
+            description: String(file),
+          });
+        });
+    }
+  }, [workData]);
+  useMetaData(metaData);
 
   const currentIndex = useMemo(
     () =>

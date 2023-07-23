@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classnames from 'classnames';
 
 import AppContext from 'AppContext';
+import useMetaData from 'utils/useMetaData';
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
 import linkedin from 'assets/linkedin.svg';
@@ -31,6 +32,20 @@ const Article = () => {
     article && articlesData
       ? articlesData.data.filter((item) => item.id !== article.id).slice(0, 3)
       : [];
+
+  const [metaData, setMetaData] = useState({
+    title: undefined,
+    description: undefined,
+  });
+  useEffect(() => {
+    if (articleData?.data?.[0]) {
+      setMetaData({
+        title: articleData?.data?.[0].attributes.Title,
+        description: articleData?.data?.[0].attributes.Teaser,
+      });
+    }
+  }, [articleData]);
+  useMetaData(metaData);
 
   if (!article) {
     return null;
