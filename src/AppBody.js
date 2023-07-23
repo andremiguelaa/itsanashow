@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classnames from 'classnames';
 
@@ -168,22 +169,67 @@ const AppBody = () => {
             <main>
               <Switch location={location}>
                 <Route exact path="/">
-                  <Home />
+                  <>
+                    <Helmet>
+                      <title>Itsanashow Studio</title>
+                      <meta
+                        name="description"
+                        content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
+                      />
+                    </Helmet>
+                    <Home />
+                  </>
                 </Route>
                 <Route exact path="/us">
-                  <Us />
+                  <>
+                    <Helmet>
+                      <title>Itsanashow Studio | Know Us</title>
+                      <meta
+                        name="description"
+                        content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
+                      />
+                    </Helmet>
+                    <Us />
+                  </>
                 </Route>
                 <Route exact path="/work">
-                  <Work />
+                  <>
+                    <Helmet>
+                      <title>Itsanashow Studio | Our Work</title>
+                      <meta
+                        name="description"
+                        content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
+                      />
+                    </Helmet>
+                    <Work />
+                  </>
                 </Route>
                 <Route exact path="/work/:name">
                   <WorkDetail />
                 </Route>
                 <Route exact path="/privacy-policy">
-                  <Policy />
+                  <>
+                    <Helmet>
+                      <title>Itsanashow Studio | Privacy Policy</title>
+                      <meta
+                        name="description"
+                        content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
+                      />
+                    </Helmet>
+                    <Policy />
+                  </>
                 </Route>
                 <Route exact path="/logbook">
-                  <Blog />
+                  <>
+                    <Helmet>
+                      <title>Itsanashow Studio | Logbook</title>
+                      <meta
+                        name="description"
+                        content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
+                      />
+                    </Helmet>
+                    <Blog />
+                  </>
                 </Route>
                 <Route exact path="/logbook/:slug">
                   <Article />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { remark } from 'remark';
 import strip from 'strip-markdown';
 import Slider from 'react-slick';
@@ -8,7 +9,6 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
-import useMetaData from 'utils/useMetaData';
 import Markdown from 'components/Markdown/Markdown';
 import WorkTogether from 'components/WorkTogether/WorkTogether';
 import NoMatch from 'views/NoMatch';
@@ -54,10 +54,7 @@ const WorkDetail = () => {
     method: 'GET',
   });
 
-  const [metaData, setMetaData] = useState({
-    title: undefined,
-    description: undefined,
-  });
+  const [metaData, setMetaData] = useState();
   useEffect(() => {
     if (workData?.data?.[0]) {
       remark()
@@ -71,7 +68,6 @@ const WorkDetail = () => {
         });
     }
   }, [workData]);
-  useMetaData(metaData);
 
   const currentIndex = useMemo(
     () =>
@@ -101,7 +97,7 @@ const WorkDetail = () => {
     return <Error />;
   }
 
-  if (loading || loadingWorks || !workData || !worksData) {
+  if (loading || loadingWorks || !workData || !worksData || !metaData) {
     return null;
   }
 
@@ -111,6 +107,10 @@ const WorkDetail = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Itsanashow Studio | Our Work | {metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+      </Helmet>
       <article className={classes.workDetail}>
         <img
           src={`${process.env.REACT_APP_API_URL}${work.Hero.data.attributes.url}`}

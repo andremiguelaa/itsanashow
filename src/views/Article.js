@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 
 import AppContext from 'AppContext';
-import useMetaData from 'utils/useMetaData';
 import useRequest from 'utils/useRequest';
 import Markdown from 'components/Markdown/Markdown';
 import linkedin from 'assets/linkedin.svg';
@@ -33,10 +33,7 @@ const Article = () => {
       ? articlesData.data.filter((item) => item.id !== article.id).slice(0, 3)
       : [];
 
-  const [metaData, setMetaData] = useState({
-    title: undefined,
-    description: undefined,
-  });
+  const [metaData, setMetaData] = useState();
   useEffect(() => {
     if (articleData?.data?.[0]) {
       setMetaData({
@@ -45,14 +42,17 @@ const Article = () => {
       });
     }
   }, [articleData]);
-  useMetaData(metaData);
 
-  if (!article) {
+  if (!article || !metaData) {
     return null;
   }
 
   return (
     <>
+      <Helmet>
+        <title>Itsanashow Studio | Logbook | {metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+      </Helmet>
       <div className={classnames('wrapper', classes.backLinkWrapper)}>
         <Link
           to="/logbook"
