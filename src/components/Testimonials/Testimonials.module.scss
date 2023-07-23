@@ -1,13 +1,13 @@
 @import 'mixins.scss';
 
 .testimonials {
-  padding: 6rem 0 10rem;
+  padding: 6rem 0 7rem;
   background-color: #fff;
   color: #08142d;
   overflow: hidden;
   position: relative;
   @include mobile {
-    padding: 6.7rem 0 5.3rem;
+    padding: 6.7rem 0 0;
   }
   .head {
     position: absolute;

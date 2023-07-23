@@ -1,12 +1,120 @@
 @import 'mixins.scss';
 
 .instagram {
-  padding: 6rem 0 10rem;
   background-color: #fff;
   color: #08142d;
   overflow: hidden;
   position: relative;
   @include mobile {
     padding: 6.7rem 0 5.3rem;
+  }
+}
+
+.instagramContent {
+  border-top: 1px solid #08142d;
+  padding: 6rem 0 10rem;
+}
+
+header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.lead {
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  @include mobile {
+    font-size: 0.8rem;
+  }
+}
+
+.description {
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  max-width: 720px;
+  @include mobile {
+    font-size: 1.35rem;
+  }
+}
+
+.list {
+  margin: 7rem 0 0;
+  padding: 0 0 2rem 0;
+  text-align: center;
+  @include mobile {
+    margin: 3rem 0 0;
+    padding: 0 0 1rem 0;
+  }
+}
+
+.item {
+  font-size: 1rem;
+  flex-shrink: 0;
+  list-style: none;
+  width: 25rem;
+  height: 25rem;
+  padding-right: 1rem;
+  position: relative;
+  @include mobile {
+    width: 12rem;
+    height: 12rem;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.scrollStatus {
+  background-color: #fe00ae4d;
+  height: 2px;
+  width: 450px;
+  display: flex;
+  position: relative;
+  top: -0.8rem;
+  .scrollStatusBar {
+    background-color: #fe00ae;
+    height: 2px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    transition: transform 0.2s linear;
+  }
+}
+
+.linkWrapper{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.link {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: #08142d;
+  &:hover{
+    text-decoration: underline;;
+  }
+  &:after {
+    vertical-align: middle;
+    content: '';
+    display: inline-block;
+    background-image: url('../../assets/arrow.svg');
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 12px;
+    background-size: contain;
+    background-position: center;
+    animation: arrow 1.5s linear infinite;
+    margin-top: -4px;
+    margin-left: 0.5rem;
+  }
+  @include mobile {
+    font-size: 0.7rem;
   }
 }
