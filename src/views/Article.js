@@ -113,6 +113,28 @@ const Article = () => {
                   </div>
                 );
               }
+              if (component.__component === 'content.vimeo') {
+                return (
+                  <div
+                    className={classes.video}
+                    key={`${component.__component}-${component.id}`}
+                  >
+                    <iframe
+                      title="Vimeo Video"
+                      src={`https://player.vimeo.com/video/${component.Link.split(
+                        '/'
+                      ).pop()}?title=0&byline=0&portrait=0`}
+                      className={classes.vimeoVideo}
+                      frameBorder="0"
+                      allow="fullscreen;"
+                      allowFullScreen
+                    ></iframe>
+                    <div className={classes.caption}>
+                      <Markdown content={component.Caption} />
+                    </div>
+                  </div>
+                );
+              }
               return null;
             })}
           </div>

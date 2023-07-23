@@ -170,6 +170,30 @@
         }
       }
     }
+    .video {
+      margin-bottom: 5rem;
+      @include mobile {
+        margin-bottom: 2rem;
+      }
+      iframe {
+        width: calc(100% + 2rem);
+        height: 490px;
+        margin: 0 -1rem;
+        @include tablet {
+          height: 56.25vw;
+        }
+      }
+      .caption {
+        color: #08142d80;
+        font-size: 0.875rem;
+        a {
+          color: #fe00ae;
+        }
+        @include mobile {
+          font-size: 0.7rem;
+        }
+      }
+    }
   }
 
   .footer {
