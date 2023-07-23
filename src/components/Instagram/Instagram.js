@@ -37,7 +37,7 @@ const Instagram = () => {
         <section className={classes.instagram}>
           <div className="wrapper">
             <div className={classes.instagramContent}>
-              <header>
+              <header className={classes.header}>
                 <div>
                   <p className={classes.lead}>
                     <AnimatedText>Follow the fun</AnimatedText>
