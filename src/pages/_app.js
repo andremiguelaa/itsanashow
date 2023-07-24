@@ -106,7 +106,6 @@ const getSentence = ({ pathname, state }) => {
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const nodeRef = useRef(null);
   const ref = useRef();
   const [transitionPaneVisible, setTransitionPaneVisible] = useState(false);
   const [modal, setModal] = useState(false);
@@ -170,7 +169,6 @@ export default function App({ Component, pageProps }) {
         <Header transitionDuration={transitionDuration} />
         <TransitionGroup>
           <CSSTransition
-            ref={nodeRef}
             key={router.pathname}
             classNames="fade"
             timeout={transitionDuration}
