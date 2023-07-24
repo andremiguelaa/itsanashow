@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import { useIsVisible } from 'react-is-visible';
 
-import AppContext from 'AppContext';
+import AppContext from 'src/AppContext';
 
 import classes from './WorkTogether.module.scss';
 
@@ -146,20 +146,20 @@ const WorkTogether = () => {
       <ParallaxProvider scrollContainer={scrollElement}>
         <Parallax
           className={classnames(classes.ball, classes.ball1)}
-          translateY={[0, window.innerWidth >= 768 ? -100 : -50]}
+          translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
           targetElement={workTogetherSectionRef.current}
         >
           <div ref={workBall1ref} />
         </Parallax>
         <Parallax
-          translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+          translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
           targetElement={workTogetherSectionRef.current}
           className={classnames(classes.ball, classes.ball2)}
         >
           <div ref={workBall2ref} />
         </Parallax>
         <Parallax
-          translateY={[0, window.innerWidth >= 768 ? -300 : -150]}
+          translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
           targetElement={workTogetherSectionRef.current}
           className={classnames(classes.ball, classes.ball3)}
         >

@@ -1,11 +1,9 @@
 import React, { useState, useContext } from 'react';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
-import AppContext from 'AppContext';
-import useRequest from 'utils/useRequest';
-import AnimatedText from 'components/AnimatedText/AnimatedText';
+import AppContext from 'src/AppContext';
+import useRequest from 'src/utils/useRequest';
+import AnimatedText from 'src/components/AnimatedText/AnimatedText';
 
 import classes from './Instagram.module.scss';
 

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import { AppContext } from 'AppContext';
-import contacts from 'assets/contacts.jpg';
-import contactsVideo from 'assets/contacts.mp4';
+import { AppContext } from 'src/AppContext';
+import contacts from 'src/assets/contacts.jpg';
+import contactsVideo from 'src/assets/contacts.mp4';
 
 import classes from './Modal.module.scss';
 
@@ -25,7 +25,7 @@ const Modal = () => {
           </div>
         </button>
         <div className={classes.gif}>
-          <video src={contactsVideo} poster={contacts} autoPlay loop muted />
+          <video src={contactsVideo} poster={contacts.src} autoPlay loop muted />
         </div>
         <div className={classes.contentWrapper}>
           <div className={classes.content}>

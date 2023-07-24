@@ -4,27 +4,28 @@ import React, {
   useContext,
   useCallback,
   useRef,
-} from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import classnames from 'classnames';
-import Lottie from 'react-lottie-player';
+} from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import classnames from "classnames";
+import Lottie from "react-lottie-player";
 
-import { AppContext } from 'AppContext';
-import logo from 'assets/logo.json';
-import classes from './Header.module.scss';
+import { AppContext } from "src/AppContext";
+import logo from "src/assets/logo.json";
+import classes from "./Header.module.scss";
 
 const Header = ({ transitionDuration }) => {
   const { setModal, setTextAnimationAvailable, setCursorType, scrollElement } =
     useContext(AppContext);
 
-  const location = useLocation();
+  const router = useRouter();
   const [page, setPage] = useState();
   const [menu, setMenu] = useState(false);
 
   const firstLoad = useRef(true);
 
   useEffect(() => {
-    setPage(location.pathname);
+    setPage(router.pathname);
     setMenu(false);
     if (!firstLoad.current) {
       setTextAnimationAvailable(false);
@@ -36,7 +37,7 @@ const Header = ({ transitionDuration }) => {
       firstLoad.current = false;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname, transitionDuration]);
+  }, [router.pathname, transitionDuration]);
 
   const [defaultHeader, setDefaultHeader] = useState(true);
 
@@ -46,11 +47,11 @@ const Header = ({ transitionDuration }) => {
 
   useEffect(() => {
     if (scrollElement) {
-      scrollElement.addEventListener('scroll', listenToScroll);
+      scrollElement.addEventListener("scroll", listenToScroll);
     }
     return () => {
       if (scrollElement) {
-        scrollElement.removeEventListener('scroll', listenToScroll);
+        scrollElement.removeEventListener("scroll", listenToScroll);
       }
     };
   }, [scrollElement, listenToScroll]);
@@ -60,8 +61,8 @@ const Header = ({ transitionDuration }) => {
       <header
         className={classnames(
           classes.header,
-          classes[page?.split('/')[1]],
-          page?.split('/')[2] ? classes.single : undefined,
+          classes[page?.split("/")[1]],
+          page?.split("/")[2] ? classes.single : undefined,
           {
             [classes.defaultHeader]: defaultHeader,
           }
@@ -70,12 +71,12 @@ const Header = ({ transitionDuration }) => {
         <div className="wrapper">
           <div className={classes.content}>
             <Link
-              to="/"
+              href="/"
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               <div className={classes.logo}>
@@ -84,26 +85,26 @@ const Header = ({ transitionDuration }) => {
             </Link>
             <nav>
               <Link
-                to="/work"
+                href="/work"
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
-                className={classnames({ [classes.active]: page === '/work' })}
+                className={classnames({ [classes.active]: page === "/work" })}
               >
                 <span className={classes.text}>Our work</span>
               </Link>
               <Link
-                to="/us"
+                href="/us"
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
-                className={classnames({ [classes.active]: page === '/us' })}
+                className={classnames({ [classes.active]: page === "/us" })}
               >
                 <span className={classes.text}>Know us</span>
               </Link>
@@ -113,10 +114,10 @@ const Header = ({ transitionDuration }) => {
                   setMenu(false);
                 }}
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 <span className={classes.text}>Contact us</span>
@@ -149,9 +150,9 @@ const Header = ({ transitionDuration }) => {
         <div className={classes.links}>
           <div>
             <Link
-              to="/"
+              href="/"
               className={classnames(classes.link, {
-                [classes.active]: page === '/',
+                [classes.active]: page === "/",
               })}
             >
               home
@@ -159,17 +160,17 @@ const Header = ({ transitionDuration }) => {
           </div>
           <div>
             <Link
-              to="/us"
+              href="/us"
               className={classnames(classes.link, {
-                [classes.active]: page === '/us',
+                [classes.active]: page === "/us",
               })}
             >
               know us
             </Link>
             <Link
-              to="/work"
+              href="/work"
               className={classnames(classes.link, {
-                [classes.active]: page === '/work',
+                [classes.active]: page === "/work",
               })}
             >
               our work

@@ -1,14 +1,14 @@
-import React, { useState, useMemo, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import Lottie from 'react-lottie-player';
-import { InView } from 'react-intersection-observer';
-import classNames from 'classnames';
+import React, { useState, useMemo, useContext } from "react";
+import Link from "next/link";
+import Lottie from "react-lottie-player";
+import { InView } from "react-intersection-observer";
+import classNames from "classnames";
 
-import lasso from 'assets/lasso.json';
-import AppContext from 'AppContext';
-import useRequest from 'utils/useRequest';
+import lasso from "src/assets/lasso.json";
+import AppContext from "src/AppContext";
+import useRequest from "src/utils/useRequest";
 
-import classes from './Blog.module.scss';
+import classes from "./styles.module.scss";
 
 const ARTICLES_PER_PAGE = 6;
 
@@ -20,8 +20,8 @@ const Blog = () => {
   const [selectedTag, setSelectedTag] = useState();
 
   const { data: articlesData } = useRequest({
-    url: 'articles?populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BThumbnail%5D=*',
-    method: 'GET',
+    url: "articles?populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BThumbnail%5D=*",
+    method: "GET",
   });
 
   const availableTags = useMemo(
@@ -130,10 +130,7 @@ const Blog = () => {
               >
                 <Link
                   className={classes.link}
-                  to={{
-                    pathname: `/logbook/${article.attributes.Slug}`,
-                    state: { origin: 'logbook' },
-                  }}
+                  href={`/logbook/${article.attributes.Slug}`}
                 >
                   <div
                     className={classNames(classes.linkContent, {
@@ -143,15 +140,15 @@ const Blog = () => {
                     <div
                       className={classes.imageWrapper}
                       onMouseEnter={() => {
-                        setCursorType('read');
+                        setCursorType("read");
                       }}
                       onMouseLeave={() => {
-                        setCursorType('default');
+                        setCursorType("default");
                       }}
                     >
                       <img
                         className={classes.image}
-                        src={`${process.env.REACT_APP_API_URL}${article.attributes.Thumbnail.data.attributes.url}`}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${article.attributes.Thumbnail.data.attributes.url}`}
                         alt={
                           article.attributes.Thumbnail.data.attributes
                             .alternativeText
@@ -161,7 +158,7 @@ const Blog = () => {
                       <div className={classes.author}>
                         <img
                           className={classes.avatar}
-                          src={`${process.env.REACT_APP_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
+                          src={`${process.env.NEXT_PUBLIC_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
                           alt={
                             article.attributes.Author.Avatar.data.attributes
                               .alternativeText
@@ -176,11 +173,11 @@ const Blog = () => {
                     </div>
                     <p className={classes.date}>
                       {new Date(article.attributes.Date).toLocaleDateString(
-                        'en-US',
+                        "en-US",
                         {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
                         }
                       )}
                     </p>

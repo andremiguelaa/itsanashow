@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 
-import AppContext from 'AppContext';
+import AppContext from 'src/AppContext';
 
 import classes from './Footer.module.scss';
 
@@ -137,7 +137,7 @@ const Footer = () => {
               </dd>
             </dl>
             <Link
-              to="/privacy-policy"
+              href="/privacy-policy"
               className={classes.privacy}
               onMouseEnter={() => {
                 setCursorType('bigger');

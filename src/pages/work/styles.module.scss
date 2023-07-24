@@ -1,4 +1,4 @@
-@import 'mixins.scss';
+@import 'src/styles/mixins.scss';
 
 .intro {
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
@@ -208,7 +208,7 @@
       &::before {
         content: '';
         display: block;
-        background-image: url('../assets/down.svg');
+        background-image: url('../../assets/down.svg');
         background-size: contain;
         height: 15px;
         width: 10px;

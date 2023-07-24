@@ -18,7 +18,7 @@ const Error = () => {
         <p className={classes.message}>
           <strong>Please try again later!</strong> Sorry about that.
         </p>
-        <Link to="/" className={classes.link}>
+        <Link href="/" className={classes.link}>
           Take me back Home!
         </Link>
       </div>

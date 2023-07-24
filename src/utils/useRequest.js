@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
-axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}/api/`;
+axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/`;
 
 const useRequest = ({ url, method = 'GET', payload, callback = false }) => {
   const [data, setData] = useState();

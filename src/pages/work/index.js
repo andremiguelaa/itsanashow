@@ -1,14 +1,14 @@
-import React, { useMemo, useRef, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import classnames from 'classnames';
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+import React, { useMemo, useRef, useState, useContext } from "react";
+import Link from "next/link";
+import classnames from "classnames";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
-import AppContext from 'AppContext';
-import useRequest from 'utils/useRequest';
-import AnimatedText from 'components/AnimatedText/AnimatedText';
-import WorkTogether from 'components/WorkTogether/WorkTogether';
+import AppContext from "src/AppContext";
+import useRequest from "src/utils/useRequest";
+import AnimatedText from "src/components/AnimatedText/AnimatedText";
+import WorkTogether from "src/components/WorkTogether/WorkTogether";
 
-import classes from './Work.module.scss';
+import classes from "./styles.module.scss";
 
 const Work = () => {
   const { setCursorType, scrollElement } = useContext(AppContext);
@@ -21,8 +21,8 @@ const Work = () => {
   const ball4ref = useRef();
 
   const { data: worksData } = useRequest({
-    url: 'works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTags%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTeaser%5D%5Bpopulate%5D=*',
-    method: 'GET',
+    url: "works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTags%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTeaser%5D%5Bpopulate%5D=*",
+    method: "GET",
   });
 
   const works = useMemo(() => {
@@ -65,7 +65,7 @@ const Work = () => {
   return (
     <>
       <section className={classes.intro}>
-        <div className={classnames('wrapper', classes.text)}>
+        <div className={classnames("wrapper", classes.text)}>
           <p className={classes.description}>
             <AnimatedText>
               We believe we can help guide you into a world-building, engaging
@@ -76,31 +76,31 @@ const Work = () => {
             <AnimatedText delay={600}>Let the show begin!</AnimatedText>
           </p>
         </div>
-        <div ref={scrollRef} style={{ position: 'absolute', top: '100vh' }} />
+        <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
         <ParallaxProvider scrollContainer={scrollElement}>
           <Parallax
             className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, window.innerWidth >= 768 ? -100 : -50]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
             targetElement={scrollRef.current}
           >
             <div ref={ball1ref} />
           </Parallax>
           <Parallax
-            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
             targetElement={scrollRef.current}
             className={classnames(classes.ball, classes.ball2)}
           >
             <div ref={ball2ref} />
           </Parallax>
           <Parallax
-            translateY={[0, window.innerWidth >= 768 ? -300 : -150]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
             targetElement={scrollRef.current}
             className={classnames(classes.ball, classes.ball3)}
           >
             <div ref={ball3ref} />
           </Parallax>
           <Parallax
-            translateY={[0, window.innerWidth >= 768 ? -300 : -150]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
             targetElement={scrollRef.current}
             className={classnames(classes.ball, classes.ball4)}
           >
@@ -110,7 +110,10 @@ const Work = () => {
       </section>
       {works.length > 0 && (
         <section className={classes.works}>
-          <div ref={scrollWorksRef} style={{ position: 'absolute', top: '100vh' }} />
+          <div
+            ref={scrollWorksRef}
+            style={{ position: "absolute", top: "100vh" }}
+          />
           <ParallaxProvider scrollContainer={scrollElement}>
             <ul className={classes.list}>
               {works.map(({ id, Title, Slug, Image, Tags }, index) => (
@@ -121,33 +124,32 @@ const Work = () => {
                   key={id}
                 >
                   <Link
-                    to={{
-                      pathname: `/work/${Slug}`,
-                      state: { origin: 'work' },
-                    }}
+                    href={`/work/${Slug}`}
                     onMouseEnter={() => {
-                      setCursorType('view');
+                      setCursorType("view");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     <Parallax
                       translateY={[
                         0,
-                        window.innerWidth >= 768 && index % 2 === 1 ? -20 : 0,
+                        global.window?.innerWidth >= 768 && index % 2 === 1
+                          ? -20
+                          : 0,
                       ]}
                       targetElement={scrollRef.current}
                     >
                       <img
-                        src={`${process.env.REACT_APP_API_URL}${Image}`}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
                         alt={Title}
                       />
                       <div className={classes.overlay} />
                       <div className={classes.text}>
                         <p className={classes.name}>{Title}</p>
                         {Tags.length > 0 && (
-                          <p className={classes.tags}>{Tags.join(', ')}</p>
+                          <p className={classes.tags}>{Tags.join(", ")}</p>
                         )}
                       </div>
                     </Parallax>
@@ -164,10 +166,10 @@ const Work = () => {
                   setWorksLimit((prev) => prev + 6);
                 }}
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 Let me see more

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
 import { InView } from 'react-intersection-observer';
-import { AppContext } from 'AppContext';
+import { AppContext } from 'src/AppContext';
 
 import classes from './AnimatedText.module.scss';
 

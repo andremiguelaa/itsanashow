@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 import { useInView } from 'react-intersection-observer';
 
-import head from 'assets/head.json';
+import head from 'src/assets/head.json';
 
 const headFrameLimits = {
   start: 0,

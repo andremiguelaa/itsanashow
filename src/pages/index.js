@@ -1,20 +1,20 @@
-import React, { useState, useMemo, useContext, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import classnames from 'classnames';
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
-import Marquee from 'react-fast-marquee';
-import { InView } from 'react-intersection-observer';
+import React, { useState, useMemo, useContext, useRef } from "react";
+import Link from "next/link";
+import classnames from "classnames";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
+import Marquee from "react-fast-marquee";
+import { InView } from "react-intersection-observer";
 
-import AppContext from 'AppContext';
-import useRequest from 'utils/useRequest';
-import Head from 'components/Head/Head';
-import Testimonials from 'components/Testimonials/Testimonials';
-import AnimatedText from 'components/AnimatedText/AnimatedText';
+import AppContext from "src/AppContext";
+import useRequest from "src/utils/useRequest";
+import Head from "src/components/Head/Head";
+import Testimonials from "src/components/Testimonials/Testimonials";
+import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
-import video from 'assets/video.mp4';
-import videoSound from 'assets/videoFull.mp4';
+import video from "src/assets/video.mp4";
+import videoSound from "src/assets/videoFull.mp4";
 
-import classes from './Home.module.scss';
+import classes from "./styles.module.scss";
 
 const Home = () => {
   const { setCursorType, scrollElement } = useContext(AppContext);
@@ -28,8 +28,8 @@ const Home = () => {
   const [videoFull, setVideoFull] = useState(false);
 
   const { data: homepageData } = useRequest({
-    url: 'homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*',
-    method: 'GET',
+    url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
+    method: "GET",
   });
 
   const [logosVisibility, setLogosVisibility] = useState({});
@@ -112,7 +112,7 @@ const Home = () => {
   return (
     <>
       <section className={classes.intro}>
-        <div className={classnames('wrapper', classes.text)}>
+        <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
             <AnimatedText>We are Itsanashow</AnimatedText>
           </p>
@@ -123,24 +123,24 @@ const Home = () => {
             </AnimatedText>
           </p>
         </div>
-        <div ref={scrollRef} style={{ position: 'absolute', top: '100vh' }} />
+        <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
         <ParallaxProvider scrollContainer={scrollElement}>
           <Parallax
             className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, window.innerWidth >= 768 ? -100 : -50]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
             targetElement={scrollRef.current}
           >
             <div ref={ball1ref} />
           </Parallax>
           <Parallax
-            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
             targetElement={scrollRef.current}
             className={classnames(classes.ball, classes.ball2)}
           >
             <div ref={ball2ref} />
           </Parallax>
           <Parallax
-            translateY={[0, window.innerWidth >= 768 ? -300 : -150]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
             targetElement={scrollRef.current}
             className={classnames(classes.ball, classes.ball3)}
           >
@@ -153,10 +153,10 @@ const Home = () => {
           className={classes.overlay}
           onClick={() => setVideoFull(true)}
           onMouseEnter={() => {
-            setCursorType('video');
+            setCursorType("video");
           }}
           onMouseLeave={() => {
-            setCursorType('default');
+            setCursorType("default");
           }}
         >
           <p className={classes.callout}>Play our reel</p>
@@ -174,13 +174,13 @@ const Home = () => {
             className={classes.fullScreenVideo}
             onClick={() => {
               setVideoFull(false);
-              setCursorType('default');
+              setCursorType("default");
             }}
             onMouseEnter={() => {
-              setCursorType('close');
+              setCursorType("close");
             }}
             onMouseLeave={() => {
-              setCursorType('default');
+              setCursorType("default");
             }}
           >
             <video
@@ -213,16 +213,16 @@ const Home = () => {
             {portfolioHighlights.map((portfolioHighlight) => (
               <li key={portfolioHighlight.id}>
                 <Link
-                  to={`/work/${portfolioHighlight.Title}`}
+                  href={`/work/${portfolioHighlight.Title}`}
                   onMouseEnter={() => {
-                    setCursorType('view');
+                    setCursorType("view");
                   }}
                   onMouseLeave={() => {
-                    setCursorType('default');
+                    setCursorType("default");
                   }}
                 >
                   <img
-                    src={`${process.env.REACT_APP_API_URL}${portfolioHighlight.Image}`}
+                    src={`${process.env.NEXT_PUBLIC_API_URL}${portfolioHighlight.Image}`}
                     alt={portfolioHighlight.Title}
                   />
                   <div className={classes.overlay} />
@@ -230,7 +230,7 @@ const Home = () => {
                     <p className={classes.name}>{portfolioHighlight.Title}</p>
                     {portfolioHighlight.Tags.length > 0 && (
                       <p className={classes.tags}>
-                        {portfolioHighlight.Tags.join(', ')}
+                        {portfolioHighlight.Tags.join(", ")}
                       </p>
                     )}
                   </div>
@@ -244,13 +244,13 @@ const Home = () => {
         <div className="wrapper">
           <div className={classes.ctaWrapper}>
             <Link
-              to="/work"
+              href="/work"
               className={classes.cta}
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               Wanna see more?
@@ -287,13 +287,13 @@ const Home = () => {
         <div className="wrapper">
           <div className={classes.ctaWrapper}>
             <Link
-              to="/us"
+              href="/us"
               className={classes.cta}
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               Get to know us!
@@ -328,7 +328,7 @@ const Home = () => {
                   }}
                 >
                   <img
-                    src={`${process.env.REACT_APP_API_URL}${client.Logo}`}
+                    src={`${process.env.NEXT_PUBLIC_API_URL}${client.Logo}`}
                     alt={client.Name}
                     className={classnames({
                       [classes.visible]: logosVisibility[client.id],

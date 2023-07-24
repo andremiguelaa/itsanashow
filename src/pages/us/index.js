@@ -1,26 +1,24 @@
-import React, { useRef, useState, useEffect, useMemo, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import classnames from 'classnames';
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
-import Lottie from 'react-lottie-player';
-import { InView } from 'react-intersection-observer';
-import AnimatedText from 'components/AnimatedText/AnimatedText';
+import React, { useRef, useState, useEffect, useMemo, useContext } from "react";
+import Link from "next/link";
+import Slider from "react-slick";
+import classnames from "classnames";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
+import Lottie from "react-lottie-player";
+import { InView } from "react-intersection-observer";
 
-import AppContext from 'AppContext';
-import useRequest from 'utils/useRequest';
-import Markdown from 'components/Markdown/Markdown';
-import WorkTogether from 'components/WorkTogether/WorkTogether';
-import Instagram from 'components/Instagram/Instagram';
-import Testimonials from 'components/Testimonials/Testimonials';
+import AppContext from "src/AppContext";
+import useRequest from "src/utils/useRequest";
+import Markdown from "src/components/Markdown/Markdown";
+import AnimatedText from "src/components/AnimatedText/AnimatedText";
+import WorkTogether from "src/components/WorkTogether/WorkTogether";
+import Instagram from "src/components/Instagram/Instagram";
+import Testimonials from "src/components/Testimonials/Testimonials";
 
-import motion from 'assets/skills/motion.json';
-import graphics from 'assets/skills/graphics.json';
-import brand from 'assets/skills/brand.json';
+import motion from "src/assets/skills/motion.json";
+import graphics from "src/assets/skills/graphics.json";
+import brand from "src/assets/skills/brand.json";
 
-import classes from './Us.module.scss';
+import classes from "./styles.module.scss";
 
 const Us = () => {
   const { setCursorType, scrollElement } = useContext(AppContext);
@@ -39,8 +37,8 @@ const Us = () => {
   };
 
   const { data: usData } = useRequest({
-    url: 'know-us-page?populate%5BTeam%5D%5Bpopulate%5D%5Bteam_member%5D%5Bpopulate%5D=*&populate%5BGallery%5D%5Bpopulate%5D%5Bteam_photo%5D%5Bpopulate%5D=*&populate%5BTestimonials%5D%5Bpopulate%5D=*',
-    method: 'GET',
+    url: "know-us-page?populate%5BTeam%5D%5Bpopulate%5D%5Bteam_member%5D%5Bpopulate%5D=*&populate%5BGallery%5D%5Bpopulate%5D%5Bteam_photo%5D%5Bpopulate%5D=*&populate%5BTestimonials%5D%5Bpopulate%5D=*",
+    method: "GET",
   });
 
   const scrollRef = useRef();
@@ -115,19 +113,19 @@ const Us = () => {
     const what1Distance = Math.abs(
       whatItem1?.current?.getBoundingClientRect().top +
         whatItem1?.current?.offsetHeight / 2 -
-        window.innerHeight / 2
+        global.window?.innerHeight / 2
     );
     const what2Distance = Math.abs(
       whatItem2?.current?.getBoundingClientRect().top +
         whatItem2?.current?.offsetHeight / 2 -
-        window.innerHeight / 2
+        global.window?.innerHeight / 2
     );
     const what3Distance = Math.abs(
       whatItem3?.current?.getBoundingClientRect().top +
         whatItem3?.current?.offsetHeight / 2 -
-        window.innerHeight / 2
+        global.window?.innerHeight / 2
     );
-    const distanceThreshold = (window.innerHeight * 2) / 3.5;
+    const distanceThreshold = (global.window?.innerHeight * 2) / 3.5;
     setWhatCentered([
       what1Distance < distanceThreshold
         ? (distanceThreshold - what1Distance) / distanceThreshold
@@ -143,11 +141,11 @@ const Us = () => {
 
   useEffect(() => {
     if (scrollElement) {
-      scrollElement.addEventListener('scroll', listenToScroll);
+      scrollElement.addEventListener("scroll", listenToScroll);
     }
     return () => {
       if (scrollElement) {
-        scrollElement.removeEventListener('scroll', listenToScroll);
+        scrollElement.removeEventListener("scroll", listenToScroll);
       }
     };
   }, [scrollElement]);
@@ -155,7 +153,7 @@ const Us = () => {
   return (
     <>
       <section className={classes.intro}>
-        <div className={classnames('wrapper', classes.text)}>
+        <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
             <AnimatedText>Who we are</AnimatedText>
           </p>
@@ -170,24 +168,24 @@ const Us = () => {
             </AnimatedText>
           </p>
         </div>
-        <div ref={scrollRef} style={{ position: 'absolute', top: '100vh' }} />
+        <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
         <ParallaxProvider scrollContainer={scrollElement}>
           <Parallax
             className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, window.innerWidth >= 768 ? -100 : -50]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
             targetElement={scrollRef.current}
           >
             <div ref={ball1ref} />
           </Parallax>
           <Parallax
-            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
             targetElement={scrollRef.current}
             className={classnames(classes.ball, classes.ball2)}
           >
             <div ref={ball2ref} />
           </Parallax>
           <Parallax
-            translateY={[0, window.innerWidth >= 768 ? -300 : -150]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
             targetElement={scrollRef.current}
             className={classnames(classes.ball, classes.ball3)}
           >
@@ -225,7 +223,7 @@ const Us = () => {
                         <div className={classes.aside}>
                           <img
                             className={classes.image}
-                            src={`${process.env.REACT_APP_API_URL}${Image}`}
+                            src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
                             alt={Name}
                           />
                           <p className={classes.secondaryText}>
@@ -245,10 +243,10 @@ const Us = () => {
                 href="mailto:hello@itsanashow.com"
                 className={classes.cta}
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 Wanna join us?
@@ -262,16 +260,16 @@ const Us = () => {
           <div className={classes.teamPhotos}>
             <div
               onMouseEnter={() => {
-                setCursorType('drag');
+                setCursorType("drag");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
               onMouseDown={() => {
-                setCursorType('dragging');
+                setCursorType("dragging");
               }}
               onMouseUp={() => {
-                setCursorType('drag');
+                setCursorType("drag");
               }}
             >
               <Slider {...settings}>
@@ -280,7 +278,7 @@ const Us = () => {
                     <div key={id} className={classes.teamPhoto}>
                       <img
                         className={classes.image}
-                        src={`${process.env.REACT_APP_API_URL}${Image}`}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
                         alt={Title}
                       />
                     </div>
@@ -301,7 +299,7 @@ const Us = () => {
         </section>
       )}
       <section className={classes.what}>
-        <div className={classnames('wrapper', classes.text)}>
+        <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
             <AnimatedText>What we do</AnimatedText>
           </p>
@@ -358,31 +356,31 @@ const Us = () => {
           </ul>
           <div className={classes.ctaWrapper}>
             <Link
-              to="/work"
+              href="/work"
               className={classes.cta}
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               Know our work
             </Link>
           </div>
         </div>
-        <div ref={scrollWeRef} style={{ position: 'absolute', top: '50vh' }} />
+        <div ref={scrollWeRef} style={{ position: "absolute", top: "50vh" }} />
         <ParallaxProvider scrollContainer={scrollElement}>
           <Parallax
             className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
             targetElement={scrollWeRef.current}
           >
             <div ref={weBall1ref} />
           </Parallax>
           <Parallax
             className={classnames(classes.ball, classes.ball2)}
-            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
             targetElement={scrollWeRef.current}
           >
             <div ref={weBall2ref} />

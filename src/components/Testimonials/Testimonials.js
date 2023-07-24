@@ -1,15 +1,12 @@
 import React, { useState, useMemo, useContext } from 'react';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
-import AnimatedText from 'components/AnimatedText/AnimatedText';
+import AnimatedText from 'src/components/AnimatedText/AnimatedText';
 
-import AppContext from 'AppContext';
-import useRequest from 'utils/useRequest';
-import Markdown from 'components/Markdown/Markdown';
-
-import Head from 'components/Head/Head';
+import AppContext from 'src/AppContext';
+import useRequest from 'src/utils/useRequest';
+import Markdown from 'src/components/Markdown/Markdown';
+import Head from 'src/components/Head/Head';
 
 import classes from './Testimonials.module.scss';
 

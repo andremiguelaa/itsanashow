@@ -55,7 +55,7 @@ const Article = () => {
       </Helmet>
       <div className={classnames('wrapper', classes.backLinkWrapper)}>
         <Link
-          to="/logbook"
+          href="/logbook"
           className={classes.backLink}
           onMouseEnter={() => {
             setCursorType('bigger');
@@ -69,7 +69,7 @@ const Article = () => {
       </div>
       <div className={classes.content}>
         <img
-          src={`${process.env.REACT_APP_API_URL}${article.attributes.Image.data.attributes.url}`}
+          src={`${process.env.NEXT_PUBLIC_API_URL}${article.attributes.Image.data.attributes.url}`}
           alt={article.attributes.Image.data.attributes.alternativeText}
           className={classes.hero}
         />
@@ -119,7 +119,7 @@ const Article = () => {
                     key={`${component.__component}-${component.id}`}
                   >
                     <img
-                      src={`${process.env.REACT_APP_API_URL}${component.Image.data.attributes.url}`}
+                      src={`${process.env.NEXT_PUBLIC_API_URL}${component.Image.data.attributes.url}`}
                       alt={component.Image.data.attributes.alternativeText}
                     />
                     <div className={classes.caption}>
@@ -157,7 +157,7 @@ const Article = () => {
             <div className={classes.authorData}>
               <img
                 className={classes.avatar}
-                src={`${process.env.REACT_APP_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
                 alt={
                   article.attributes.Author.Avatar.data.attributes
                     .alternativeText
@@ -252,7 +252,7 @@ const Article = () => {
                 <li className={classes.article} key={item.id}>
                   <Link
                     className={classes.link}
-                    to={`/logbook/${item.attributes.Slug}`}
+                    href={`/logbook/${item.attributes.Slug}`}
                   >
                     <div
                       className={classes.imageWrapper}
@@ -265,7 +265,7 @@ const Article = () => {
                     >
                       <img
                         className={classes.image}
-                        src={`${process.env.REACT_APP_API_URL}${item.attributes.Thumbnail.data.attributes.url}`}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${item.attributes.Thumbnail.data.attributes.url}`}
                         alt={
                           item.attributes.Thumbnail.data.attributes
                             .alternativeText
@@ -275,7 +275,7 @@ const Article = () => {
                       <div className={classes.author}>
                         <img
                           className={classes.avatar}
-                          src={`${process.env.REACT_APP_API_URL}${item.attributes.Author.Avatar.data.attributes.url}`}
+                          src={`${process.env.NEXT_PUBLIC_API_URL}${item.attributes.Author.Avatar.data.attributes.url}`}
                           alt={
                             item.attributes.Author.Avatar.data.attributes
                               .alternativeText

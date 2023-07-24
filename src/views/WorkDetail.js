@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet';
 import { remark } from 'remark';
 import strip from 'strip-markdown';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import AppContext from 'AppContext';
 import useRequest from 'utils/useRequest';
@@ -113,7 +111,7 @@ const WorkDetail = () => {
       </Helmet>
       <article className={classes.workDetail}>
         <img
-          src={`${process.env.REACT_APP_API_URL}${work.Hero.data.attributes.url}`}
+          src={`${process.env.NEXT_PUBLIC_API_URL}${work.Hero.data.attributes.url}`}
           alt={work.Hero.data.attributes.alternativeText}
           className={classes.hero}
         />
@@ -141,7 +139,7 @@ const WorkDetail = () => {
           {previous && (
             <Link
               className={classes.previous}
-              to={previous}
+              href={previous}
               onMouseEnter={() => {
                 setCursorType('bigger');
               }}
@@ -155,7 +153,7 @@ const WorkDetail = () => {
           {next && (
             <Link
               className={classes.next}
-              to={next}
+              href={next}
               onMouseEnter={() => {
                 setCursorType('bigger');
               }}
@@ -190,7 +188,7 @@ const WorkDetail = () => {
                       <div className={classes.imageItem}>
                         <img
                           className={classes.image}
-                          src={`${process.env.REACT_APP_API_URL}${image.attributes.url}`}
+                          src={`${process.env.NEXT_PUBLIC_API_URL}${image.attributes.url}`}
                           alt={image.attributes.alternativeText}
                         />
                       </div>
@@ -211,7 +209,7 @@ const WorkDetail = () => {
           </section>
         )}
         <img
-          src={`${process.env.REACT_APP_API_URL}${work.BigPicture.data.attributes.url}`}
+          src={`${process.env.NEXT_PUBLIC_API_URL}${work.BigPicture.data.attributes.url}`}
           alt={work.BigPicture.data.attributes.alternativeText}
           className={classes.bigPicture}
         />
@@ -253,7 +251,7 @@ const WorkDetail = () => {
           {previous && (
             <Link
               className={classes.previous}
-              to={previous}
+              href={previous}
               onMouseEnter={() => {
                 setCursorType('bigger');
               }}
@@ -267,7 +265,7 @@ const WorkDetail = () => {
           {next && (
             <Link
               className={classes.next}
-              to={next}
+              href={next}
               onMouseEnter={() => {
                 setCursorType('bigger');
               }}

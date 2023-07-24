@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import classnames from 'classnames';
 import isTouchDevice from 'is-touch-device';
 
-import AppContext from 'AppContext';
+import AppContext from 'src/AppContext';
 
 import classes from './Cursor.module.scss';
 

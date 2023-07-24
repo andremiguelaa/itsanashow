@@ -1,4 +1,4 @@
-@import 'mixins.scss';
+@import 'src/styles/mixins.scss';
 
 .content {
   background-color: #fff;
@@ -75,7 +75,7 @@
     &::after {
       content: '';
       display: inline-block;
-      background-image: url('../assets/down.svg');
+      background-image: url('../../assets/down.svg');
       background-size: contain;
       background-repeat: no-repeat;
       height: 15px;
@@ -336,7 +336,7 @@
     &::after {
       content: '';
       display: inline-block;
-      background-image: url('../assets/readMore.svg');
+      background-image: url('../../assets/readMore.svg');
       background-size: contain;
       transform: rotate(180deg);
       height: 12px;
@@ -369,7 +369,7 @@
   &::before {
     content: '';
     display: block;
-    background-image: url('../assets/down.svg');
+    background-image: url('../../assets/down.svg');
     background-size: contain;
     height: 15px;
     width: 10px;

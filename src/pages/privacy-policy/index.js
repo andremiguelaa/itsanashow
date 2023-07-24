@@ -2,10 +2,10 @@ import React, { useContext, useRef } from 'react';
 import classnames from 'classnames';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
-import { AppContext } from 'AppContext';
-import AnimatedText from 'components/AnimatedText/AnimatedText';
+import { AppContext } from 'src/AppContext';
+import AnimatedText from 'src/components/AnimatedText/AnimatedText';
 
-import classes from './Policy.module.scss';
+import classes from './styles.module.scss';
 
 const Privacy = () => {
   const { setModal, scrollElement } = useContext(AppContext);
@@ -36,13 +36,13 @@ const Privacy = () => {
         <ParallaxProvider scrollContainer={scrollElement}>
           <Parallax
             className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, window.innerWidth >= 768 ? -100 : -50]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
             targetElement={scrollRef.current}
           >
             <div ref={ball1ref} />
           </Parallax>
           <Parallax
-            translateY={[0, window.innerWidth >= 768 ? -200 : -100]}
+            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
             targetElement={scrollRef.current}
             className={classnames(classes.ball, classes.ball2)}
           >

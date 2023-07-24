@@ -19,7 +19,7 @@ const NoMatch = () => {
           <strong>You reach the end of the internet!</strong> Joking, we just
           couldn’t find the page you are looking for. Sorry about that.
         </p>
-        <Link to="/" className={classes.link}>
+        <Link href="/" className={classes.link}>
           Take me back Home!
         </Link>
       </div>
