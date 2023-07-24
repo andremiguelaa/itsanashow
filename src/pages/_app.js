@@ -117,9 +117,9 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     setPathHistory((prev) => ({
       prev: prev?.current,
-      current: router.pathname,
+      current: router.asPath,
     }));
-  }, [router.pathname]);
+  }, [router.asPath]);
 
   useEffect(() => {
     setScrollElement(ref.current);
@@ -169,7 +169,7 @@ export default function App({ Component, pageProps }) {
         <Header transitionDuration={transitionDuration} />
         <TransitionGroup>
           <CSSTransition
-            key={router.pathname}
+            key={router.asPath}
             classNames="fade"
             timeout={transitionDuration}
             onEntering={(node) => {
