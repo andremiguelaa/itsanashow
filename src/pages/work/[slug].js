@@ -1,20 +1,19 @@
-import React, { useEffect, useState, useMemo, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { remark } from 'remark';
-import strip from 'strip-markdown';
-import Slider from 'react-slick';
+import React, { useEffect, useState, useMemo, useContext } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { remark } from "remark";
+import strip from "strip-markdown";
+import Slider from "react-slick";
 
-import AppContext from 'AppContext';
-import useRequest from 'utils/useRequest';
-import Markdown from 'components/Markdown/Markdown';
-import WorkTogether from 'components/WorkTogether/WorkTogether';
-import NoMatch from 'views/NoMatch';
-import Error from 'views/Error';
+import AppContext from "src/AppContext";
+import useRequest from "src/utils/useRequest";
+import Markdown from "src/components/Markdown/Markdown";
+import WorkTogether from "src/components/WorkTogether/WorkTogether";
+import NoMatch from "src/components/NoMatch/NoMatch";
+import Error from "src/components/Error/Error";
+import behance from "src/assets/behance.svg";
 
-import behance from 'assets/behance.svg';
-
-import classes from './WorkDetail.module.scss';
+import classes from "./WorkDetail.module.scss";
 
 const WorkDetail = () => {
   const { setCursorType } = useContext(AppContext);
@@ -32,7 +31,9 @@ const WorkDetail = () => {
     },
   };
 
-  const { name } = useParams();
+  const {
+    query: { slug: name },
+  } = useRouter();
 
   const {
     data: workData,
@@ -40,7 +41,7 @@ const WorkDetail = () => {
     error,
   } = useRequest({
     url: `works?filters[$or][0][Slug][$eq]=${name}&filters[$or][1][Title][$eq]=${name}&populate=*`,
-    method: 'GET',
+    method: "GET",
   });
 
   const {
@@ -48,8 +49,8 @@ const WorkDetail = () => {
     loading: loadingWorks,
     error: errorWorks,
   } = useRequest({
-    url: 'works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D=*',
-    method: 'GET',
+    url: "works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D=*",
+    method: "GET",
   });
 
   const [metaData, setMetaData] = useState();
@@ -70,7 +71,9 @@ const WorkDetail = () => {
   const currentIndex = useMemo(
     () =>
       worksData?.data.attributes.Works.findIndex(
-        (item) => item.work.data[0].attributes.Title === name
+        (item) =>
+          item.work.data[0].attributes.Title === name ||
+          item.work.data[0].attributes.Slug === name
       ),
     [name, worksData]
   );
@@ -78,13 +81,13 @@ const WorkDetail = () => {
   const previous =
     currentIndex > 0
       ? worksData?.data.attributes.Works[currentIndex - 1].work.data[0]
-          .attributes.Title
+          .attributes.Slug
       : undefined;
 
   const next =
     currentIndex < worksData?.data.attributes.Works.length - 1
       ? worksData?.data.attributes.Works[currentIndex + 1].work.data[0]
-          .attributes.Title
+          .attributes.Slug
       : undefined;
 
   if (!loading && workData?.data?.length === 0) {
@@ -105,10 +108,6 @@ const WorkDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Itsanashow Studio | Our Work | {metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-      </Helmet>
       <article className={classes.workDetail}>
         <img
           src={`${process.env.NEXT_PUBLIC_API_URL}${work.Hero.data.attributes.url}`}
@@ -141,10 +140,10 @@ const WorkDetail = () => {
               className={classes.previous}
               href={previous}
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               Previous
@@ -155,10 +154,10 @@ const WorkDetail = () => {
               className={classes.next}
               href={next}
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               Next
@@ -170,16 +169,16 @@ const WorkDetail = () => {
             <div className={classes.gallery}>
               <div
                 onMouseEnter={() => {
-                  setCursorType('drag');
+                  setCursorType("drag");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
                 onMouseDown={() => {
-                  setCursorType('dragging');
+                  setCursorType("dragging");
                 }}
                 onMouseUp={() => {
-                  setCursorType('drag');
+                  setCursorType("drag");
                 }}
               >
                 <Slider {...settings}>
@@ -222,7 +221,7 @@ const WorkDetail = () => {
           <iframe
             title="Vimeo Video"
             src={`https://player.vimeo.com/video/${work.VimeoVideo.split(
-              '/'
+              "/"
             ).pop()}?title=0&byline=0&portrait=0`}
             className={classes.vimeoVideo}
             frameBorder="0"
@@ -239,10 +238,10 @@ const WorkDetail = () => {
               target="_blank"
               rel="noreferrer"
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               <img src={behance} alt="behance" className={classes.logo} />
@@ -253,10 +252,10 @@ const WorkDetail = () => {
               className={classes.previous}
               href={previous}
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               Previous
@@ -267,10 +266,10 @@ const WorkDetail = () => {
               className={classes.next}
               href={next}
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               Next

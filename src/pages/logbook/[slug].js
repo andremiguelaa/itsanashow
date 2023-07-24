@@ -1,29 +1,31 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import classnames from 'classnames';
+import React, { useContext, useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import classnames from "classnames";
 
-import AppContext from 'AppContext';
-import useRequest from 'utils/useRequest';
-import Markdown from 'components/Markdown/Markdown';
-import linkedin from 'assets/linkedin.svg';
-import twitter from 'assets/twitter.svg';
-import facebook from 'assets/facebook.svg';
+import AppContext from "src/AppContext";
+import useRequest from "src/utils/useRequest";
+import Markdown from "src/components/Markdown/Markdown";
+import linkedin from "src/assets/linkedin.svg";
+import twitter from "src/assets/twitter.svg";
+import facebook from "src/assets/facebook.svg";
 
-import classes from './Article.module.scss';
+import classes from "./Article.module.scss";
 
 const Article = () => {
   const { setCursorType } = useContext(AppContext);
-  const { slug } = useParams();
+  const {
+    query: { slug },
+  } = useRouter();
 
   const { data: articleData } = useRequest({
     url: `articles?filters%5Bslug%5D%5B%24eq%5D=${slug}&populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BImage%5D=*&populate%5BBody%5D%5Bpopulate%5D=*`,
-    method: 'GET',
+    method: "GET",
   });
 
   const { data: articlesData } = useRequest({
-    url: 'articles?populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BThumbnail%5D=*',
-    method: 'GET',
+    url: "articles?populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BThumbnail%5D=*",
+    method: "GET",
   });
 
   const article = articleData?.data?.[0];
@@ -49,19 +51,15 @@ const Article = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Itsanashow Studio | Logbook | {metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-      </Helmet>
-      <div className={classnames('wrapper', classes.backLinkWrapper)}>
+      <div className={classnames("wrapper", classes.backLinkWrapper)}>
         <Link
           href="/logbook"
           className={classes.backLink}
           onMouseEnter={() => {
-            setCursorType('bigger');
+            setCursorType("bigger");
           }}
           onMouseLeave={() => {
-            setCursorType('default');
+            setCursorType("default");
           }}
         >
           Back to logbook
@@ -77,19 +75,19 @@ const Article = () => {
           <span className={classes.tags}>
             {article.attributes.Tags.data
               .map((tag) => tag.attributes.Text)
-              .join(' | ')}
+              .join(" | ")}
           </span>
           <h1 className={classes.title}>{article.attributes.Title}</h1>
           <p className={classes.date}>
-            {new Date(article.attributes.Date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
+            {new Date(article.attributes.Date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
             })}
           </p>
           <div className={classes.body}>
             {article.attributes.Body.map((component) => {
-              if (component.__component === 'content.markdown-content') {
+              if (component.__component === "content.markdown-content") {
                 return (
                   <div
                     className={classes.markdownContent}
@@ -99,7 +97,7 @@ const Article = () => {
                   </div>
                 );
               }
-              if (component.__component === 'content.quote') {
+              if (component.__component === "content.quote") {
                 return (
                   <blockquote
                     className={classes.blockquote}
@@ -112,7 +110,7 @@ const Article = () => {
                   </blockquote>
                 );
               }
-              if (component.__component === 'content.image') {
+              if (component.__component === "content.image") {
                 return (
                   <div
                     className={classes.image}
@@ -128,7 +126,7 @@ const Article = () => {
                   </div>
                 );
               }
-              if (component.__component === 'content.vimeo') {
+              if (component.__component === "content.vimeo") {
                 return (
                   <div
                     className={classes.video}
@@ -137,7 +135,7 @@ const Article = () => {
                     <iframe
                       title="Vimeo Video"
                       src={`https://player.vimeo.com/video/${component.Link.split(
-                        '/'
+                        "/"
                       ).pop()}?title=0&byline=0&portrait=0`}
                       className={classes.vimeoVideo}
                       frameBorder="0"
@@ -171,10 +169,10 @@ const Article = () => {
                   target="_blank"
                   rel="noreferrer"
                   onMouseEnter={() => {
-                    setCursorType('bigger');
+                    setCursorType("bigger");
                   }}
                   onMouseLeave={() => {
-                    setCursorType('default');
+                    setCursorType("default");
                   }}
                 >
                   {article.attributes.Author.Name}
@@ -196,10 +194,10 @@ const Article = () => {
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
-                      setCursorType('bigger');
+                      setCursorType("bigger");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     <img src={linkedin} alt="LinkedIn" />
@@ -213,10 +211,10 @@ const Article = () => {
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
-                      setCursorType('bigger');
+                      setCursorType("bigger");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     <img src={twitter} alt="Twitter" />
@@ -228,10 +226,10 @@ const Article = () => {
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
-                      setCursorType('bigger');
+                      setCursorType("bigger");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     <img src={facebook} alt="Facebook" />
@@ -257,10 +255,10 @@ const Article = () => {
                     <div
                       className={classes.imageWrapper}
                       onMouseEnter={() => {
-                        setCursorType('read');
+                        setCursorType("read");
                       }}
                       onMouseLeave={() => {
-                        setCursorType('default');
+                        setCursorType("default");
                       }}
                     >
                       <img
@@ -290,11 +288,11 @@ const Article = () => {
                     </div>
                     <p className={classes.date}>
                       {new Date(item.attributes.Date).toLocaleDateString(
-                        'en-US',
+                        "en-US",
                         {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
                         }
                       )}
                     </p>
