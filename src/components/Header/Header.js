@@ -186,7 +186,7 @@ const Header = ({ transitionDuration }) => {
           </div>
         </div>
         <div className={classes.footer}>
-          <p className={classes.slogan}>Let's get social!</p>
+          <p className={classes.slogan}>Let&apos;s get social!</p>
           <ul>
             <li>
               <a

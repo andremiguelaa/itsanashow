@@ -23,7 +23,7 @@ const getSentence = ({ pathname, state }) => {
     case "/":
       return (
         <>
-          YEAH, you're back!
+          YEAH, you&apos;re back!
           <br />
           <strong>
             Once upon a time...

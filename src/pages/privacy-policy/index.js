@@ -89,8 +89,8 @@ const Privacy = () => {
             </p>
             <p>
               If you decide to send us an email to the email address provided on
-              'Contact Us' or the 'Know Us' sections of the web page, write to
-              us or call us, you do that at your free will.
+              &apos;Contact Us&apos; or the &apos;Know Us&apos; sections of the
+              web page, write to us or call us, you do that at your free will.
             </p>
             <p>
               As a result of your contact with us, we may collect some personal
@@ -178,8 +178,8 @@ const Privacy = () => {
             <p>
               A cookie is a small file of letters and numbers that we store on
               your browser or the hard drive of your computer if you agree.
-              Cookies contain information that is transferred to your computer's
-              hard drive.
+              Cookies contain information that is transferred to your
+              computer&apos;s hard drive.
             </p>
             <p>We use the following cookies:</p>
             <p>

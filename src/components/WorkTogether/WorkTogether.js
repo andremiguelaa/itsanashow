@@ -1,45 +1,45 @@
-import React, { useRef, useState, useEffect, useContext } from 'react';
-import classnames from 'classnames';
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
-import { useIsVisible } from 'react-is-visible';
+import React, { useRef, useState, useEffect, useContext } from "react";
+import classnames from "classnames";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
+import { useIsVisible } from "react-is-visible";
 
-import AppContext from 'src/AppContext';
+import AppContext from "src/AppContext";
 
-import classes from './WorkTogether.module.scss';
+import classes from "./WorkTogether.module.scss";
 
 const alpha = [
-  '!',
-  '#',
-  '$',
-  '0',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  'A',
-  'G',
-  'T',
-  'H',
-  'Y',
-  'Z',
-  'X',
-  'W',
-  'O',
-  'K',
-  'Q',
-  'S',
+  "!",
+  "#",
+  "$",
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "A",
+  "G",
+  "T",
+  "H",
+  "Y",
+  "Z",
+  "X",
+  "W",
+  "O",
+  "K",
+  "Q",
+  "S",
 ];
 
 const wordList = [
-  'Animation',
-  'UX/UI',
-  'Branding',
-  'Storytelling',
-  'Video',
-  'Illustration',
-  'Filmmaking',
+  "Animation",
+  "UX/UI",
+  "Branding",
+  "Storytelling",
+  "Video",
+  "Illustration",
+  "Filmmaking",
 ];
 
 const WorkTogether = () => {
@@ -69,7 +69,7 @@ const WorkTogether = () => {
     let element = toAnimateWord.current;
     setAnimatingWord(true);
     const initialWord = element.innerText;
-    const mixedWord = initialWord.split('');
+    const mixedWord = initialWord.split("");
     const delay = 50;
     mixedWord.forEach((_, index) => {
       for (let i = 0; i < 5; i++) {
@@ -78,18 +78,18 @@ const WorkTogether = () => {
             classes.letter,
             classes.changing
           )}">${alpha[Math.floor(Math.random() * alpha.length)]}</span>`;
-          element.innerHTML = mixedWord.join('');
+          element.innerHTML = mixedWord.join("");
         }, delay * index + i * delay);
       }
       setTimeout(() => {
         mixedWord[index] = `<span class="${classnames(classes.letter, {
-          [classes.hidden]: !wordList[nextWordIndex].split('')[index],
+          [classes.hidden]: !wordList[nextWordIndex].split("")[index],
         })}">${
-          wordList[nextWordIndex].split('')[index]
-            ? wordList[nextWordIndex].split('')[index]
-            : '&nbsp;'
+          wordList[nextWordIndex].split("")[index]
+            ? wordList[nextWordIndex].split("")[index]
+            : "&nbsp;"
         }</span>`;
-        element.innerHTML = mixedWord.join('');
+        element.innerHTML = mixedWord.join("");
         if (index === mixedWord.length - 1) {
           setAnimatingWord(false);
         }
@@ -106,27 +106,27 @@ const WorkTogether = () => {
 
   return (
     <section className={classes.workTogether} ref={workTogetherSectionRef}>
-      <div className={classnames('wrapper', classes.text)}>
-        <p className={classes.lead}>Let's work together</p>
+      <div className={classnames("wrapper", classes.text)}>
+        <p className={classes.lead}>Let&apos;s work together</p>
         <p className={classes.description}>
-          We're always thinking about the future of{' '}
+          We&apos;re always thinking about the future of{" "}
           <span
             ref={toAnimateWord}
             className={classes.animation}
             onClick={() => animateWord()}
             onMouseEnter={() => {
-              setCursorType('none');
+              setCursorType("none");
             }}
             onMouseLeave={() => {
-              setCursorType('default');
+              setCursorType("default");
             }}
           >
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </p>
         <p className={classes.mobileText}>
-          Tell us everything about your challenge and we'll get back to you once
-          the bell rings.
+          Tell us everything about your challenge and we&apos;ll get back to you
+          once the bell rings.
         </p>
         <a
           className={classes.quote}
@@ -134,10 +134,10 @@ const WorkTogether = () => {
           target="_blank"
           rel="noreferrer"
           onMouseEnter={() => {
-            setCursorType('bigger');
+            setCursorType("bigger");
           }}
           onMouseLeave={() => {
-            setCursorType('default');
+            setCursorType("default");
           }}
         >
           <span>Request a quote</span>

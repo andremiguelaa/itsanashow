@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 
-import { AppContext } from 'src/AppContext';
-import contacts from 'src/assets/contacts.jpg';
-import contactsVideo from 'src/assets/contacts.mp4';
+import { AppContext } from "src/AppContext";
+import contacts from "src/assets/contacts.jpg";
+import contactsVideo from "src/assets/contacts.mp4";
 
-import classes from './Modal.module.scss';
+import classes from "./Modal.module.scss";
 
 const Modal = () => {
   const { modal, setModal, setCursorType } = useContext(AppContext);
 
   return (
     <div
-      className={`${classes.modalWrapper} ${modal ? classes.openModal : ''}`}
+      className={`${classes.modalWrapper} ${modal ? classes.openModal : ""}`}
     >
       <section className={classes.modal}>
         <button className={classes.close} onClick={() => setModal(false)}>
@@ -25,12 +25,18 @@ const Modal = () => {
           </div>
         </button>
         <div className={classes.gif}>
-          <video src={contactsVideo} poster={contacts.src} autoPlay loop muted />
+          <video
+            src={contactsVideo}
+            poster={contacts.src}
+            autoPlay
+            loop
+            muted
+          />
         </div>
         <div className={classes.contentWrapper}>
           <div className={classes.content}>
             <p className={classes.salute}>Hello there!</p>
-            <p className={classes.lead}>We'd love to chat!</p>
+            <p className={classes.lead}>We&apos;d love to chat!</p>
             <dl>
               <dt>General Questions</dt>
               <dd>
@@ -40,10 +46,10 @@ const Modal = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onMouseEnter={() => {
-                    setCursorType('none');
+                    setCursorType("none");
                   }}
                   onMouseLeave={() => {
-                    setCursorType('default');
+                    setCursorType("default");
                   }}
                 >
                   hello@itsanashow.com
@@ -52,8 +58,8 @@ const Modal = () => {
               <dt>New Business Inquires</dt>
               <dd>
                 <div className={classes.inquires}>
-                  Tell us everything about your challenge and we'll get back to
-                  you once the bell rings.
+                  Tell us everything about your challenge and we&apos;ll get
+                  back to you once the bell rings.
                 </div>
               </dd>
             </dl>
@@ -64,10 +70,10 @@ const Modal = () => {
                 rel="noreferrer"
                 className={classes.quote}
                 onMouseEnter={() => {
-                  setCursorType('none');
+                  setCursorType("none");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 Request a quote
@@ -81,7 +87,7 @@ const Modal = () => {
               Portugal
             </div>
             <div className={classes.footer}>
-              <p className={classes.slogan}>Let's get social!</p>
+              <p className={classes.slogan}>Let&apos;s get social!</p>
               <ul>
                 <li>
                   <a
@@ -89,10 +95,10 @@ const Modal = () => {
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
-                      setCursorType('bigger');
+                      setCursorType("bigger");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     LinkedIn
@@ -104,10 +110,10 @@ const Modal = () => {
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
-                      setCursorType('bigger');
+                      setCursorType("bigger");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     Instagram
@@ -119,10 +125,10 @@ const Modal = () => {
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
-                      setCursorType('bigger');
+                      setCursorType("bigger");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     Behance
@@ -134,10 +140,10 @@ const Modal = () => {
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
-                      setCursorType('bigger');
+                      setCursorType("bigger");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     Vimeo
@@ -149,10 +155,10 @@ const Modal = () => {
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
-                      setCursorType('bigger');
+                      setCursorType("bigger");
                     }}
                     onMouseLeave={() => {
-                      setCursorType('default');
+                      setCursorType("default");
                     }}
                   >
                     Dribble

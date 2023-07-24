@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className={classes.footer}>
       <div className="wrapper">
         <div className={classes.social}>
-          <p className={classes.lead}>Don't forget to follow us!</p>
+          <p className={classes.lead}>Don&apos;t forget to follow us!</p>
           <ul>
             <li>
               <a
@@ -132,7 +132,7 @@ const Footer = () => {
                     setCursorType('default');
                   }}
                 >
-                  Let's Talk
+                  Let&apos;s Talk
                 </a>
               </dd>
             </dl>
