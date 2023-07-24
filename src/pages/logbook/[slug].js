@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import classnames from "classnames";
 
@@ -51,6 +52,10 @@ const Article = () => {
 
   return (
     <>
+      <Head>
+        <title>Itsanashow Studio | {metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+      </Head>
       <div className={classnames("wrapper", classes.backLinkWrapper)}>
         <Link
           href="/logbook"

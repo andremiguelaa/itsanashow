@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo, useContext } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { remark } from "remark";
 import strip from "strip-markdown";
@@ -108,6 +109,10 @@ const WorkDetail = () => {
 
   return (
     <>
+      <Head>
+        <title>Itsanashow Studio | {metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+      </Head>
       <article className={classes.workDetail}>
         <img
           src={`${process.env.NEXT_PUBLIC_API_URL}${work.Hero.data.attributes.url}`}
