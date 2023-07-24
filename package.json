@@ -14,7 +14,7 @@
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "is-touch-device": "^1.0.1",
-    "marked": "^5.1.1",
+    "marked": "^4.3.0",
     "next": "13.4.12",
     "next-videos": "1.4.1",
     "react": "18.2.0",
