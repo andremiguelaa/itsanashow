@@ -175,6 +175,14 @@ const Header = ({ transitionDuration }) => {
             >
               our work
             </Link>
+            <Link
+              href="/logbook"
+              className={classnames(classes.link, {
+                [classes.active]: page === "/logbook",
+              })}
+            >
+              logbook
+            </Link>
             <button
               onClick={() => {
                 setModal(true);
