@@ -108,6 +108,18 @@ const Header = ({ transitionDuration }) => {
               >
                 <span className={classes.text}>Know us</span>
               </Link>
+              <Link
+                href="/logbook"
+                onMouseEnter={() => {
+                  setCursorType("bigger");
+                }}
+                onMouseLeave={() => {
+                  setCursorType("default");
+                }}
+                className={classnames({ [classes.active]: page === "/logbook" })}
+              >
+                <span className={classes.text}>Logbook</span>
+              </Link>
               <button
                 onClick={() => {
                   setModal(true);

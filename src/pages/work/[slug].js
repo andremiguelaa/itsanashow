@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo, useContext } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { remark } from "remark";
 import strip from "strip-markdown";
@@ -282,7 +283,13 @@ const WorkDetail = ({ prefetchedWork }) => {
                 setCursorType("default");
               }}
             >
-              <img src={behance} alt="behance" className={classes.logo} />
+              <Image
+                src={behance.src}
+                alt="behance"
+                className={classes.logo}
+                width={35}
+                height={22}
+              />
             </a>
           </p>
           {previous && (

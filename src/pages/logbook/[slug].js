@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
 
@@ -228,7 +229,12 @@ const Article = ({ prefetchedArticle }) => {
                       setCursorType("default");
                     }}
                   >
-                    <img src={linkedin} alt="LinkedIn" />
+                    <Image
+                      src={linkedin.src}
+                      alt="LinkedIn"
+                      width={32}
+                      height={32}
+                    />
                   </a>
                 </li>
                 <li>
@@ -245,7 +251,12 @@ const Article = ({ prefetchedArticle }) => {
                       setCursorType("default");
                     }}
                   >
-                    <img src={twitter} alt="Twitter" />
+                    <Image
+                      src={twitter.src}
+                      alt="Twitter"
+                      width={32}
+                      height={32}
+                    />
                   </a>
                 </li>
                 <li>
@@ -260,7 +271,12 @@ const Article = ({ prefetchedArticle }) => {
                       setCursorType("default");
                     }}
                   >
-                    <img src={facebook} alt="Facebook" />
+                    <Image
+                      src={facebook.src}
+                      alt="Facebook"
+                      width={32}
+                      height={32}
+                    />
                   </a>
                 </li>
               </ul>
