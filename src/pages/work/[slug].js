@@ -16,7 +16,28 @@ import behance from "src/assets/behance.svg";
 
 import classes from "./WorkDetail.module.scss";
 
-const WorkDetail = () => {
+export const getServerSideProps = async (context) => {
+  if (context.params.slug !== "[object Object]") {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/works?filters[$or][0][Slug][$eq]=${context.params.slug}&filters[$or][1][Title][$eq]=${context.params.slug}&populate=*`
+    );
+    const prefetchedWork = await res.json();
+    let description;
+    await remark()
+      .use(strip)
+      .process(prefetchedWork.data[0].attributes.Subtitle)
+      .then((file) => {
+        description = String(file).trim();
+      });
+
+    return {
+      props: { prefetchedWork: { ...prefetchedWork.data[0], description } },
+    };
+  }
+  return { props: { prefetchedWork: null } };
+};
+
+const WorkDetail = ({ prefetchedWork }) => {
   const { setCursorType } = useContext(AppContext);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -54,7 +75,10 @@ const WorkDetail = () => {
     method: "GET",
   });
 
-  const [metaData, setMetaData] = useState();
+  const [metaData, setMetaData] = useState({
+    title: prefetchedWork?.attributes.Title,
+    description: prefetchedWork?.description,
+  });
   useEffect(() => {
     if (workData?.data?.[0]) {
       remark()
@@ -91,6 +115,15 @@ const WorkDetail = () => {
           .attributes.Slug
       : undefined;
 
+  if (prefetchedWork && !workData) {
+    return (
+      <Head>
+        <title>{`Itsanashow Studio | ${metaData.title}`}</title>
+        <meta name="description" content={metaData.description} />
+      </Head>
+    );
+  }
+
   if (!loading && workData?.data?.length === 0) {
     return <NoMatch />;
   }
@@ -110,7 +143,7 @@ const WorkDetail = () => {
   return (
     <>
       <Head>
-        <title>Itsanashow Studio | {metaData.title}</title>
+        <title>{`Itsanashow Studio | ${metaData.title}`}</title>
         <meta name="description" content={metaData.description} />
       </Head>
       <article className={classes.workDetail}>

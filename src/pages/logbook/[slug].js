@@ -13,7 +13,18 @@ import facebook from "src/assets/facebook.svg";
 
 import classes from "./Article.module.scss";
 
-const Article = () => {
+export const getServerSideProps = async (context) => {
+  if (context.params.slug !== "[object Object]") {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/articles?filters[slug][%24eq]=${context.params.slug}&populate[Author][populate][Avatar]=*&populate[Tags]=*&populate[Image]=*&populate[Body][populate]=*`
+    );
+    const prefetchedArticle = await res.json();
+    return { props: { prefetchedArticle: prefetchedArticle.data[0] } };
+  }
+  return { props: { prefetchedArticle: null } };
+};
+
+const Article = ({ prefetchedArticle }) => {
   const { setCursorType } = useContext(AppContext);
   const {
     query: { slug },
@@ -36,7 +47,10 @@ const Article = () => {
       ? articlesData.data.filter((item) => item.id !== article.id).slice(0, 3)
       : [];
 
-  const [metaData, setMetaData] = useState();
+  const [metaData, setMetaData] = useState({
+    title: prefetchedArticle?.attributes.Title,
+    description: prefetchedArticle?.attributes.Teaser,
+  });
   useEffect(() => {
     if (articleData?.data?.[0]) {
       setMetaData({
@@ -46,6 +60,15 @@ const Article = () => {
     }
   }, [articleData]);
 
+  if (prefetchedArticle && (!article || !metaData)) {
+    return (
+      <Head>
+        <title>{`Itsanashow Studio | ${metaData.title}`}</title>
+        <meta name="description" content={metaData.description} />
+      </Head>
+    );
+  }
+
   if (!article || !metaData) {
     return null;
   }
@@ -53,7 +76,7 @@ const Article = () => {
   return (
     <>
       <Head>
-        <title>Itsanashow Studio | {metaData.title}</title>
+        <title>{`Itsanashow Studio | ${metaData.title}`}</title>
         <meta name="description" content={metaData.description} />
       </Head>
       <div className={classnames("wrapper", classes.backLinkWrapper)}>
