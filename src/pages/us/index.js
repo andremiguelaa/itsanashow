@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useMemo, useContext } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import Slider from "react-slick";
 import classnames from "classnames";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
@@ -152,6 +153,9 @@ const Us = () => {
 
   return (
     <>
+      <Head>
+        <title>Itsanashow Studio | Know Us</title>
+      </Head>
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>

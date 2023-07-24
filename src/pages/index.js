@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useContext, useRef } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import classnames from "classnames";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import Marquee from "react-fast-marquee";
@@ -7,7 +8,7 @@ import { InView } from "react-intersection-observer";
 
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
-import Head from "src/components/Head/Head";
+import DummyHead from "src/components/Head/Head";
 import Testimonials from "src/components/Testimonials/Testimonials";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
@@ -111,6 +112,9 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>Itsanashow Studio</title>
+      </Head>
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
@@ -206,7 +210,7 @@ const Home = () => {
               </AnimatedText>
             </p>
           </div>
-          <Head className={classes.head} />
+          <DummyHead className={classes.head} />
         </div>
         {portfolioHighlights.length > 0 && (
           <ul className={classes.portfolioHighlights}>

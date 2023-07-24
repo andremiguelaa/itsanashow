@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState, useContext } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import classnames from "classnames";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
@@ -64,6 +65,9 @@ const Work = () => {
 
   return (
     <>
+      <Head>
+        <title>Itsanashow Studio | Work</title>
+      </Head>
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.description}>

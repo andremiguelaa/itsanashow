@@ -1,11 +1,12 @@
-import React, { useContext, useRef } from 'react';
-import classnames from 'classnames';
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+import React, { useContext, useRef } from "react";
+import Head from "next/head";
+import classnames from "classnames";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
-import { AppContext } from 'src/AppContext';
-import AnimatedText from 'src/components/AnimatedText/AnimatedText';
+import { AppContext } from "src/AppContext";
+import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
-import classes from './styles.module.scss';
+import classes from "./styles.module.scss";
 
 const Privacy = () => {
   const { setModal, scrollElement } = useContext(AppContext);
@@ -17,8 +18,11 @@ const Privacy = () => {
 
   return (
     <>
+      <Head>
+        <title>Itsanashow Studio | Privacy Policy</title>
+      </Head>
       <section className={classes.intro}>
-        <div className={classnames('wrapper', classes.text)}>
+        <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
             <AnimatedText>Welcome to our privacy notice</AnimatedText>
           </p>
@@ -32,7 +36,7 @@ const Privacy = () => {
             </AnimatedText>
           </p>
         </div>
-        <div ref={scrollRef} style={{ position: 'absolute', top: '100vh' }} />
+        <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
         <ParallaxProvider scrollContainer={scrollElement}>
           <Parallax
             className={classnames(classes.ball, classes.ball1)}
@@ -51,7 +55,7 @@ const Privacy = () => {
         </ParallaxProvider>
       </section>
       <section className={classes.content}>
-        <div className={classnames('wrapper', classes.wrapper)}>
+        <div className={classnames("wrapper", classes.wrapper)}>
           <div className={classes.column}>
             <h1>Privacy Policy</h1>
             <p>
@@ -150,7 +154,7 @@ const Privacy = () => {
               </li>
             </ul>
             <p>
-              Please{' '}
+              Please{" "}
               <button
                 className={classes.inlineButton}
                 onClick={() => {
@@ -158,7 +162,7 @@ const Privacy = () => {
                 }}
               >
                 Contact us
-              </button>{' '}
+              </button>{" "}
               if you need details about the specific legal ground we are relying
               on to process your personal data where more than one ground has
               been set out in the table below.
