@@ -59,6 +59,10 @@ const Blog = () => {
     <>
       <Head>
         <title>Itsanashow Studio | Logbook</title>
+        <meta
+          name="description"
+          content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
+        />
       </Head>
       <div className={classes.content}>
         <div className="wrapper">

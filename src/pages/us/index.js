@@ -155,6 +155,10 @@ const Us = () => {
     <>
       <Head>
         <title>Itsanashow Studio | Know Us</title>
+        <meta
+          name="description"
+          content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
+        />
       </Head>
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
