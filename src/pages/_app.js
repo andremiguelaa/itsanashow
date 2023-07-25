@@ -125,6 +125,8 @@ export default function App({ Component, pageProps }) {
     setScrollElement(ref.current);
   }, [ref, setScrollElement]);
 
+  const pageKey = router.asPath
+
   return (
     <AppContext.Provider
       value={{
@@ -169,7 +171,7 @@ export default function App({ Component, pageProps }) {
         <Header transitionDuration={transitionDuration} />
         <TransitionGroup>
           <CSSTransition
-            key={router.asPath}
+            key={pageKey}
             classNames="fade"
             timeout={transitionDuration}
             onEntering={(node) => {
@@ -187,7 +189,7 @@ export default function App({ Component, pageProps }) {
               ref={ref}
               style={{ animationDuration: `${transitionDuration}ms` }}
             >
-              <Component {...pageProps} />
+              <Component key={pageKey} {...pageProps} />
               <Footer />
             </div>
           </CSSTransition>
