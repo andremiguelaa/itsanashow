@@ -1,8 +1,9 @@
 @import 'src/styles/mixins.scss';
 
 .backLinkWrapper {
-  position: absolute;
+  position: fixed;
   top: 3rem;
+  mix-blend-mode: difference;
   @include mobile {
     top: 1rem;
   }
@@ -10,8 +11,8 @@
     text-transform: uppercase;
     text-decoration: none;
     font-size: 1.125rem;
-    color: #2a34ff;
-    background-image: url('../../assets/arrow3.svg');
+    color: #FFF;
+    background-image: url('../../assets/menuArrow.svg');
     background-repeat: no-repeat;
     background-position: left center;
     padding-left: 32px;

@@ -79,6 +79,9 @@ const WorkDetail = ({ prefetchedWork }) => {
   const [metaData, setMetaData] = useState({
     title: prefetchedWork?.attributes.Title,
     description: prefetchedWork?.description,
+    image: prefetchedWork
+      ? prefetchedWork?.attributes.Teaser.data.attributes.url
+      : undefined,
   });
   useEffect(() => {
     if (workData?.data?.[0]) {
@@ -89,6 +92,7 @@ const WorkDetail = ({ prefetchedWork }) => {
           setMetaData({
             title: workData.data[0].attributes.Title,
             description: String(file),
+            image: workData.data[0].attributes.Teaser.data.attributes.url,
           });
         });
     }
@@ -121,6 +125,10 @@ const WorkDetail = ({ prefetchedWork }) => {
       <Head>
         <title>{`Itsanashow Studio | ${metaData.title}`}</title>
         <meta name="description" content={metaData.description} />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_API_URL}${metaData.image}`}
+        />
       </Head>
     );
   }
@@ -146,6 +154,10 @@ const WorkDetail = ({ prefetchedWork }) => {
       <Head>
         <title>{`Itsanashow Studio | ${metaData.title}`}</title>
         <meta name="description" content={metaData.description} />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_API_URL}${metaData.image}`}
+        />
       </Head>
       <article className={classes.workDetail}>
         <img

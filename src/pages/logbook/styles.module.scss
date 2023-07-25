@@ -81,10 +81,11 @@
       height: 15px;
       width: 10px;
       margin-left: 0.5rem;
+      position: relative;
+      top: 2px;
       @include mobile {
         height: 10px;
         width: 8px;
-        margin-top: 1px;
       }
     }
     &.visible {

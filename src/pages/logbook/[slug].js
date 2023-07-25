@@ -17,7 +17,7 @@ import classes from "./Article.module.scss";
 export const getServerSideProps = async (context) => {
   if (context.params.slug !== "[object Object]") {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/articles?filters[slug][%24eq]=${context.params.slug}&populate[Author][populate][Avatar]=*&populate[Tags]=*&populate[Image]=*&populate[Body][populate]=*`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/articles?filters[slug][%24eq]=${context.params.slug}&populate[Author][populate][Avatar]=*&populate[Tags]=*&populate[Thumbnail]=*&populate[Body][populate]=*`
     );
     const prefetchedArticle = await res.json();
     return { props: { prefetchedArticle: prefetchedArticle.data[0] } };
@@ -33,7 +33,7 @@ const Article = ({ prefetchedArticle }) => {
   const [slug] = useState(routerSlug);
 
   const { data: articleData } = useRequest({
-    url: `articles?filters%5Bslug%5D%5B%24eq%5D=${slug}&populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BImage%5D=*&populate%5BBody%5D%5Bpopulate%5D=*`,
+    url: `articles?filters%5Bslug%5D%5B%24eq%5D=${slug}&populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BImage%5D=*&populate%5BThumbnail%5D=*&populate%5BBody%5D%5Bpopulate%5D=*`,
     method: "GET",
   });
 
@@ -52,12 +52,14 @@ const Article = ({ prefetchedArticle }) => {
   const [metaData, setMetaData] = useState({
     title: prefetchedArticle?.attributes.Title,
     description: prefetchedArticle?.attributes.Teaser,
+    image: prefetchedArticle?.attributes.Thumbnail.data.attributes.url,
   });
   useEffect(() => {
     if (articleData?.data?.[0]) {
       setMetaData({
         title: articleData?.data?.[0].attributes.Title,
         description: articleData?.data?.[0].attributes.Teaser,
+        image: articleData?.data?.[0].attributes.Thumbnail.data.attributes.url,
       });
     }
   }, [articleData]);
@@ -67,6 +69,10 @@ const Article = ({ prefetchedArticle }) => {
       <Head>
         <title>{`Itsanashow Studio | ${metaData.title}`}</title>
         <meta name="description" content={metaData.description} />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_API_URL}${metaData.image}`}
+        />
       </Head>
     );
   }
@@ -80,6 +86,10 @@ const Article = ({ prefetchedArticle }) => {
       <Head>
         <title>{`Itsanashow Studio | ${metaData.title}`}</title>
         <meta name="description" content={metaData.description} />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_API_URL}${metaData.image}`}
+        />
       </Head>
       <div className={classnames("wrapper", classes.backLinkWrapper)}>
         <Link
