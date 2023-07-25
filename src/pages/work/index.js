@@ -66,7 +66,7 @@ const Work = () => {
   return (
     <>
       <Head>
-        <title>Itsanashow Studio | Work</title>
+        <title>Itsanashow Studio | Our Work</title>
         <meta
           name="description"
           content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
