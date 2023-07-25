@@ -41,6 +41,10 @@ export const getServerSideProps = async (context) => {
 const WorkDetail = ({ prefetchedWork }) => {
   const { setCursorType } = useContext(AppContext);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const {
+    query: { slug },
+  } = useRouter();
+  const [name] = useState(slug);
 
   const settings = {
     dots: false,
@@ -53,10 +57,6 @@ const WorkDetail = ({ prefetchedWork }) => {
       setCurrentSlide(next);
     },
   };
-
-  const {
-    query: { slug: name },
-  } = useRouter();
 
   const {
     data: workData,

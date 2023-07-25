@@ -28,8 +28,9 @@ export const getServerSideProps = async (context) => {
 const Article = ({ prefetchedArticle }) => {
   const { setCursorType } = useContext(AppContext);
   const {
-    query: { slug },
+    query: { slug: routerSlug },
   } = useRouter();
+  const [slug] = useState(routerSlug);
 
   const { data: articleData } = useRequest({
     url: `articles?filters%5Bslug%5D%5B%24eq%5D=${slug}&populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BImage%5D=*&populate%5BBody%5D%5Bpopulate%5D=*`,
