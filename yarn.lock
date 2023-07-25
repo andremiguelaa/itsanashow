@@ -65,6 +65,11 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@madeinhaus/nextjs-page-transition@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@madeinhaus/nextjs-page-transition/-/nextjs-page-transition-3.1.0.tgz#55462895a36a524fcb458693a43681fbd2f1ed6f"
+  integrity sha512-73ijhfVtz68p2JbOq6Sz3buWrsuoWtzQypCcgi8Vjy3M07pJKeiOSM2T9yzn9EEMLZ8KYvTSmZVffXsVV28Dfg==
+
 "@next/env@13.4.12":
   version "13.4.12"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.4.12.tgz#0b88115ab817f178bf9dc0c5e7b367277595b58d"

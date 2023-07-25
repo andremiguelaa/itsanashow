@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import classnames from "classnames";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { useNextCssRemovalPrevention } from "@madeinhaus/nextjs-page-transition";
 
 import AppContext from "src/AppContext";
 import Cursor from "src/components/Cursor/Cursor";
@@ -113,6 +114,7 @@ export default function App({ Component, pageProps }) {
   const [textAnimationAvailable, setTextAnimationAvailable] = useState(true);
   const [scrollElement, setScrollElement] = useState(null);
   const [pathHistory, setPathHistory] = useState();
+  useNextCssRemovalPrevention();
 
   useEffect(() => {
     setPathHistory((prev) => ({
@@ -125,7 +127,7 @@ export default function App({ Component, pageProps }) {
     setScrollElement(ref.current);
   }, [ref, setScrollElement]);
 
-  const pageKey = router.asPath
+  const pageKey = router.asPath;
 
   return (
     <AppContext.Provider
