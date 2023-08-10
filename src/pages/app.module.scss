@@ -1,4 +1,4 @@
-@import 'src/styles/mixins.scss';
+@import "src/styles/mixins.scss";
 
 .wrapper {
   position: relative;
@@ -11,7 +11,8 @@
   left: 0;
   bottom: 0;
   right: 0;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   &:global(.fade-enter) {
     animation-name: enter;
