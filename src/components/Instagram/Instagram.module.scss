@@ -6,13 +6,16 @@
   overflow: hidden;
   position: relative;
   @include mobile {
-    padding: 6.7rem 0 0;
+    padding: 4rem 0 0;
   }
 }
 
 .instagramContent {
   border-top: 1px solid #08142d;
   padding: 6rem 0 10rem;
+  @include mobile {
+    padding: 4rem 0 6.7rem;
+  }
 }
 
 .header {
