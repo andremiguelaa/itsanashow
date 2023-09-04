@@ -53,7 +53,9 @@ const Blog = () => {
     return articles;
   }, [selectedTag, articlesData]);
 
-  const articlesToShow = filteredArticles.slice(0, numberOfArticles);
+  const articlesToShow = filteredArticles
+    .slice(0, numberOfArticles)
+    .sort((a, b) => b.attributes.Date.localeCompare(a.attributes.Date));
 
   return (
     <>
