@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
+import Script from "next/script";
 import classnames from "classnames";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { useNextCssRemovalPrevention } from "@madeinhaus/nextjs-page-transition";
@@ -143,6 +144,15 @@ export default function App({ Component, pageProps }) {
       }}
     >
       <div className={classes.wrapper}>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-CK5GL0XLJS" />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-CK5GL0XLJS');
+        `}
+        </Script>
         <div
           className={classnames(classes.transitionPane, {
             [classes.visible]: transitionPaneVisible,
