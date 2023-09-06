@@ -116,7 +116,7 @@ const Home = () => {
         <title>Itsanashow Studio</title>
         <meta
           name="description"
-          content="Hello, we are itsanashow — a young but seasoned creative studio who loves to shape beautiful, meaningful stories through design, motion and storytelling."
+          content="Welcome to Itsanashow Creative Studio! We're passionate about crafting beautiful and meaningful stories through animation, design, and user experience. Discover how we help tech and software companies enhance their outreach and establish leadership in their fields."
         />
       </Head>
       <section className={classes.intro}>
