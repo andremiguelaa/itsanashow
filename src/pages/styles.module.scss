@@ -1,4 +1,4 @@
-@import 'src/styles/mixins.scss';
+@import "src/styles/mixins.scss";
 
 .intro {
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
@@ -305,7 +305,7 @@
     &::before {
       position: absolute;
       bottom: -2px;
-      content: '';
+      content: "";
       display: block;
       height: 1px;
       background-color: #fff;
@@ -319,7 +319,7 @@
     &::after {
       position: absolute;
       bottom: -2px;
-      content: '';
+      content: "";
       display: block;
       height: 1px;
       background-color: #fff;
@@ -374,7 +374,7 @@
     li {
       display: inline-block;
       &::before {
-        content: '';
+        content: "";
         display: inline-block;
         vertical-align: middle;
         width: 15px;
@@ -456,6 +456,58 @@
       &.visible {
         opacity: 1;
         transform: translateY(0) translateZ(0) scale(0.85);
+      }
+    }
+  }
+  .ctaWrapper {
+    padding: 7rem 0;
+    text-align: right;
+    overflow: hidden;
+    @include mobile {
+      padding: 3.125rem 0 4.5rem;
+    }
+  }
+  .cta {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #08142d;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    @include mobile {
+      font-size: 0.8rem;
+    }
+    &::before {
+      position: absolute;
+      bottom: -2px;
+      content: "";
+      display: block;
+      height: 1px;
+      background-color: #08142d;
+      width: 1440px;
+      right: calc(100% + 3rem);
+      @include mobile {
+        right: calc(100% + 1rem);
+        bottom: 45%;
+      }
+    }
+    &::after {
+      position: absolute;
+      bottom: -2px;
+      content: "";
+      display: block;
+      height: 1px;
+      background-color: #08142d;
+      right: 0;
+      width: 100%;
+      transform: scale(0);
+      transition: transform 0.3s linear;
+      transform-origin: 0%;
+    }
+    &:hover {
+      &::after {
+        transform: scale(1);
       }
     }
   }

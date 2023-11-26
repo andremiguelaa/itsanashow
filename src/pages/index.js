@@ -346,6 +346,22 @@ const Home = () => {
               ))}
             </ul>
           )}
+          <div className={classes.ctaWrapper}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.designrush.com/agency/profile/itsanashow-studio"
+              className={classes.cta}
+              onMouseEnter={() => {
+                setCursorType("bigger");
+              }}
+              onMouseLeave={() => {
+                setCursorType("default");
+              }}
+            >
+              View our profile on DesignRush
+            </a>
+          </div>
         </div>
       </section>
     </>
