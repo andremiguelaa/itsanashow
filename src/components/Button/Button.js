@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import Lottie from "react-lottie-player";
 
+import { AppContext } from "src/AppContext";
 import button from "src/assets/button.json";
 
 import classes from "./Button.module.scss";
@@ -13,6 +14,7 @@ const buttonFrameLimits = {
 };
 
 const Button = () => {
+  const { setPopup, setCursorType } = useContext(AppContext);
   const buttonFrame = useRef(buttonFrameLimits.start);
   const buttonTimer = useRef();
   const [buttonFrameState, setButtonFrameState] = useState(
@@ -41,20 +43,27 @@ const Button = () => {
   );
 
   return (
-    <div className={classes.buttonWrapper}>
-      <button
-        aria-label="Capabilities Deck"
-        className={classes.button}
-        onMouseEnter={() => {
-          numberChange(buttonFrameLimits.start, buttonFrameLimits.middle);
-        }}
-        onMouseLeave={() => {
-          numberChange(buttonFrameLimits.middle2, buttonFrameLimits.end);
-        }}
-      >
-        <Lottie animationData={button} goTo={buttonFrameState} />
-      </button>
-    </div>
+    <>
+      <div className={classes.buttonWrapper}>
+        <button
+          aria-label="Capabilities Deck"
+          className={classes.button}
+          onMouseEnter={() => {
+            numberChange(buttonFrameLimits.start, buttonFrameLimits.middle);
+            setCursorType("bigger");
+          }}
+          onMouseLeave={() => {
+            numberChange(buttonFrameLimits.middle2, buttonFrameLimits.end);
+            setCursorType("default");
+          }}
+          onClick={() => {
+            setPopup(true);
+          }}
+        >
+          <Lottie animationData={button} goTo={buttonFrameState} />
+        </button>
+      </div>
+    </>
   );
 };
 
