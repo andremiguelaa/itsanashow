@@ -2,7 +2,7 @@
 
 .intro {
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
-  padding: 14rem 0 11rem;
+  padding: 14rem 0 6.25rem;
   position: relative;
   @include mobile {
     padding: 7rem 0 3rem;
@@ -28,6 +28,14 @@
       @include mobile {
         font-size: 1.35rem;
         max-width: 305px;
+      }
+    }
+    .button {
+      margin-top: 9rem;
+      display: flex;
+      justify-content: flex-end;
+      @include mobile {
+        margin-top: 3rem;
       }
     }
   }

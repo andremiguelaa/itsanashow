@@ -1,0 +1,42 @@
+@import "src/styles/mixins.scss";
+
+$width: 340px;
+$height: 50px;
+
+$widthMobile: 220px;
+$heightMobile: 32px;
+
+.buttonWrapper {
+  width: $width;
+  height: $height;
+  overflow: hidden;
+  position: relative;
+  @include mobile {
+    width: $widthMobile;
+    height: $heightMobile;
+  }
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  width: 1.57 * $width;
+  height: 2.86 * $height;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include mobile {
+    width: 1.57 * $widthMobile;
+    height: 2.86 * $heightMobile;
+  }
+  path {
+    transition: fill, stroke 0.1s linear;
+  }
+  &:active {
+    path {
+      fill: rgb(254, 0, 174);
+      stroke: rgb(254, 0, 174);
+    }
+  }
+}

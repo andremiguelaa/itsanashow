@@ -9,6 +9,7 @@ import { InView } from "react-intersection-observer";
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import DummyHead from "src/components/Head/Head";
+import Button from "src/components/Button/Button";
 import Testimonials from "src/components/Testimonials/Testimonials";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
@@ -130,6 +131,9 @@ const Home = () => {
               stories through animation, design and user experience.
             </AnimatedText>
           </p>
+          <div className={classes.button}>
+            <Button />
+          </div>
         </div>
         <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
         <ParallaxProvider scrollContainer={scrollElement}>
