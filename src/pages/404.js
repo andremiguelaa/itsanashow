@@ -16,7 +16,7 @@ const Error = () => (
         <div className={classes.animation}>
           <Lottie animationData={nest} play loop />
         </div>
-        <p className={classes.oops}>Oopsie! </p>
+        <p className={classes.oops}>Oopsie!</p>
         <p className={classes.miss}>Something’s missing…</p>
         <p className={classes.message}>
           <strong>You reach the end of the internet!</strong> Joking, we just

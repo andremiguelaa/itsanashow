@@ -1,9 +1,16 @@
-import { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useCallback } from "react";
+import axios from "axios";
 
 axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/`;
 
-const useRequest = ({ url, method = 'GET', payload, callback = false }) => {
+const useRequest = ({
+  url,
+  method = "GET",
+  payload,
+  callback = false,
+  onSuccess = () => {},
+  onError = () => {},
+}) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -20,9 +27,11 @@ const useRequest = ({ url, method = 'GET', payload, callback = false }) => {
       })
         .then((response) => {
           setData(response.data);
+          onSuccess();
         })
         .catch(() => {
           setError(true);
+          onError();
         })
         .finally(() => {
           setLoading(false);
