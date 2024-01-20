@@ -1,3 +1,5 @@
+@import "src/styles/mixins.scss";
+
 .overlay {
   position: fixed;
   z-index: 100;
@@ -20,8 +22,109 @@
 
 .modal {
   width: 650px;
-  padding: 5.5rem 4.5rem;
+  padding: 4rem 4.5rem;
   background-color: #e4f9fe;
-  border-radius: 10px;
-  color: #08142D;
+  border-radius: 0.625rem;
+  color: #08142d;
+  position: relative;
+  box-sizing: border-box;
+  @include mobile {
+    width: 300px;
+    padding: 2rem 1.6rem;
+    border-radius: 0.35em;
+  }
+}
+
+.close {
+  background-image: url("../../assets/close_pink.svg");
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  @include mobile {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+  }
+}
+
+.lead {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  margin-top: 0;
+  @include mobile {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+}
+
+.mainCopy {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-top: 0;
+  @include mobile {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+}
+
+.input {
+  background-color: #fff;
+  border: none;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  height: 4rem;
+  font-size: 1.125rem;
+  padding: 0 1rem;
+  font-family: inherit;
+  @include mobile {
+    height: 2.6rem;
+    text-align: center;
+    font-size: 0.7rem;
+  }
+}
+
+.checkbox {
+  font-size: 0.75rem;
+  position: relative;
+  padding-left: 2rem;
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  @include mobile {
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.submit {
+  height: 4rem;
+  background-color: #fe00ae;
+  color: #fff;
+  font-family: inherit;
+  padding: 0 2rem;
+  font-size: 1.75rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  @include mobile {
+    display: block;
+    height: 2.6rem;
+    font-size: 1rem;
+    margin: 0 auto;
+  }
 }

@@ -18,14 +18,21 @@ const Popup = () => {
           onClick={() => {
             setPopup(false);
           }}
-        >
-          Close
-        </button>
+          className={classes.close}
+          aria-label="Close"
+        />
         <form>
-          <p>Discover our capabilities deck</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <input type="email" required placeholder="Your Email Address Here!" />
-          <label>
+          <p className={classes.lead}>Discover our capabilities deck</p>
+          <p className={classes.mainCopy}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <input
+            className={classes.input}
+            type="email"
+            required
+            placeholder="Your Email Address Here!"
+          />
+          <label className={classes.checkbox}>
             <input type="checkbox" required />
             <span>
               Yes! I accept the{" "}
@@ -36,7 +43,7 @@ const Popup = () => {
               Itsanashow Creative Studio.
             </span>
           </label>
-          <button>Let the show begin!</button>
+          <button className={classes.submit}>Let the show begin!</button>
         </form>
       </div>
     </div>
