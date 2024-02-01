@@ -144,9 +144,11 @@ const Article = ({ prefetchedArticle }) => {
                     key={`${component.__component}-${component.id}`}
                   >
                     <div className={classes.quote}>{component.Quote}</div>
-                    <div className={classes.quoteAuthor}>
-                      <strong>{component.Author}</strong> - {component.Role}
-                    </div>
+                    {component.Author && component.Role && (
+                      <div className={classes.quoteAuthor}>
+                        <strong>{component.Author}</strong> - {component.Role}
+                      </div>
+                    )}
                   </blockquote>
                 );
               }
