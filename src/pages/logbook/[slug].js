@@ -17,7 +17,7 @@ import classes from "./Article.module.scss";
 export const getServerSideProps = async (context) => {
   if (context.params.slug !== "[object Object]") {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/articles?filters[slug][%24eq]=${context.params.slug}&populate[Author][populate][Avatar]=*&populate[Tags]=*&populate[Thumbnail]=*&populate[Body][populate]=*`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/articles?filters[Slug][$eq]=${context.params.slug}`
     );
     const prefetchedArticle = await res.json();
     return { props: { prefetchedArticle: prefetchedArticle.data[0] } };
@@ -33,12 +33,12 @@ const Article = ({ prefetchedArticle }) => {
   const [slug] = useState(routerSlug);
 
   const { data: articleData } = useRequest({
-    url: `articles?filters%5Bslug%5D%5B%24eq%5D=${slug}&populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BTags%5D=*&populate%5BImage%5D=*&populate%5BThumbnail%5D=*&populate%5BBody%5D%5Bpopulate%5D=*`,
+    url: `articles?filters[Slug][$eq]=${slug}`,
     method: "GET",
   });
 
   const { data: articlesData } = useRequest({
-    url: "articles?populate%5BAuthor%5D%5Bpopulate%5D%5BAvatar%5D=*&populate%5BThumbnail%5D=*",
+    url: "articles",
     method: "GET",
   });
 
