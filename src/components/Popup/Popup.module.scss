@@ -142,7 +142,7 @@
   border-radius: 2rem;
   border: none;
   cursor: pointer;
-  transition: opacity 0.2s linear;
+  transition: all 0.2s linear;
   @include tablet {
     display: block;
     height: 2.5rem;
@@ -151,6 +151,9 @@
   }
   &[disabled] {
     opacity: 0.5;
+  }
+  &:hover {
+    background-color: #960065;
   }
 }
 
