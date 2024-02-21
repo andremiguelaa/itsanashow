@@ -14,7 +14,16 @@ const Modal = () => {
       className={`${classes.modalWrapper} ${modal ? classes.openModal : ""}`}
     >
       <section className={classes.modal}>
-        <button className={classes.close} onClick={() => setModal(false)}>
+        <button
+          className={classes.close}
+          onClick={() => setModal(false)}
+          onMouseEnter={() => {
+            setCursorType("bigger");
+          }}
+          onMouseLeave={() => {
+            setCursorType("default");
+          }}
+        >
           <div className={classes.in}>
             <div className={classes.closeButtonBlock}></div>
             <div className={classes.closeButtonBlock}></div>

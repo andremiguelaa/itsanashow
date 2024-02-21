@@ -7,7 +7,7 @@ import useRequest from "src/utils/useRequest";
 import classes from "./Popup.module.scss";
 
 const Popup = () => {
-  const { popup, setPopup } = useContext(AppContext);
+  const { popup, setPopup, setCursorType } = useContext(AppContext);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
@@ -43,6 +43,12 @@ const Popup = () => {
           className={classes.close}
           aria-label="Close"
           disabled={loading}
+          onMouseEnter={() => {
+            setCursorType("bigger");
+          }}
+          onMouseLeave={() => {
+            setCursorType("default");
+          }}
         />
         {!error && !success && (
           <form
@@ -71,8 +77,22 @@ const Popup = () => {
                   name="email"
                   required
                   placeholder="Your Email Address Here!"
+                  onMouseEnter={() => {
+                    setCursorType("bigger");
+                  }}
+                  onMouseLeave={() => {
+                    setCursorType("default");
+                  }}
                 />
-                <label className={classes.checkbox}>
+                <label
+                  className={classes.checkbox}
+                  onMouseEnter={() => {
+                    setCursorType("bigger");
+                  }}
+                  onMouseLeave={() => {
+                    setCursorType("default");
+                  }}
+                >
                   <input type="checkbox" required />
                   <span>
                     Yes! I accept the{" "}
@@ -84,7 +104,16 @@ const Popup = () => {
                   </span>
                 </label>
               </div>
-              <button className={classes.submit} disabled={loading}>
+              <button
+                className={classes.submit}
+                disabled={loading}
+                onMouseEnter={() => {
+                  setCursorType("bigger");
+                }}
+                onMouseLeave={() => {
+                  setCursorType("default");
+                }}
+              >
                 Send
               </button>
             </div>
@@ -96,6 +125,10 @@ const Popup = () => {
             <p className={classes.information}>
               Check your email box to discover our capabilities deck and all the
               magical secrets we have to show you!
+            </p>
+            <p className={classes.disclaimer}>
+              If you don't find our email in your inbox, please check your spam
+              or junk folder.
             </p>
           </div>
         )}
