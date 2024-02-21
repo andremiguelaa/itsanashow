@@ -37,7 +37,7 @@ const useRequest = ({
           setLoading(false);
         });
     },
-    [url, method]
+    [url, method, onSuccess, onError]
   );
 
   useEffect(() => {
