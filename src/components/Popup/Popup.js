@@ -127,7 +127,7 @@ const Popup = () => {
               magical secrets we have to show you!
             </p>
             <p className={classes.disclaimer}>
-              If you don't find our email in your inbox, please check your spam
+              If you don&apos;t find our email in your inbox, please check your spam
               or junk folder.
             </p>
           </div>
