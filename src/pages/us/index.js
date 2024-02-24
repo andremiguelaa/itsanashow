@@ -313,7 +313,7 @@ const Us = () => {
           </p>
           <p className={classes.description}>
             <AnimatedText delay={150}>
-              We love to give shape to beautiful and meaningful stories.
+              We shape your ideas into beautiful and meaningful stories.
             </AnimatedText>
           </p>
           <ul className={classes.list}>

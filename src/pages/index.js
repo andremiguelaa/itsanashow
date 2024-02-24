@@ -127,8 +127,8 @@ const Home = () => {
           </p>
           <p className={classes.description}>
             <AnimatedText delay={150}>
-              A creative studio who loves to shape beautiful and meaningful
-              stories through animation, design and user experience.
+              Your creative partner in shaping beautiful and meaningful stories
+              through animation, design and user experience.
             </AnimatedText>
           </p>
           <div className={classes.button}>
@@ -209,7 +209,7 @@ const Home = () => {
         <div className={classes.mainText}>
           <div className="wrapper">
             <p className={classes.lead}>
-              <AnimatedText>Meet our work</AnimatedText>
+              <AnimatedText>Check our work</AnimatedText>
             </p>
             <p className={classes.description}>
               <AnimatedText delay={150}>
@@ -269,12 +269,12 @@ const Home = () => {
             </Link>
           </div>
           <p className={classes.lead}>
-            <AnimatedText>So what we do?</AnimatedText>
+            <AnimatedText>What we do</AnimatedText>
           </p>
           <p className={classes.description}>
             <AnimatedText delay={200}>
               Fast-moving trends require rock-solid core skills. Our
-              savoir-faire is broader than you may expect!
+              savoir-faire is broader, with a proven track record.
             </AnimatedText>
           </p>
         </div>

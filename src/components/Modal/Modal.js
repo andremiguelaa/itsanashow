@@ -89,9 +89,9 @@ const Modal = () => {
               </a>
             </div>
             <div className={classes.address}>
-              Rua Bramcamp 84 3D
+              Av. António Augusto de Aguiar 27 R/C
               <br />
-              1250-052 Lisboa
+              1050-012 Lisboa
               <br />
               Portugal
             </div>

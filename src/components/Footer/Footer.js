@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import Link from "next/link";
 
-import AppContext from 'src/AppContext';
+import AppContext from "src/AppContext";
 
-import classes from './Footer.module.scss';
+import classes from "./Footer.module.scss";
 
 const Footer = () => {
   const { setCursorType } = useContext(AppContext);
@@ -19,10 +19,10 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 LinkedIn
@@ -34,10 +34,10 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 Instagram
@@ -49,10 +49,10 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 Behance
@@ -64,10 +64,10 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 Vimeo
@@ -79,10 +79,10 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
                 onMouseEnter={() => {
-                  setCursorType('bigger');
+                  setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
-                  setCursorType('default');
+                  setCursorType("default");
                 }}
               >
                 Dribble
@@ -93,9 +93,9 @@ const Footer = () => {
         <div className={classes.hr} />
         <div className={classes.contacts}>
           <div className={classes.address}>
-            Rua Braamcamp 84 3D
+            Av. António Augusto de Aguiar 27 R/C
             <br />
-            1250-052 Lisboa
+            1050-012 Lisboa
             <br />
             Portugal
           </div>
@@ -109,10 +109,10 @@ const Footer = () => {
                   href="mailto:hello@itsanashow.com"
                   className={classes.mail}
                   onMouseEnter={() => {
-                    setCursorType('bigger');
+                    setCursorType("bigger");
                   }}
                   onMouseLeave={() => {
-                    setCursorType('default');
+                    setCursorType("default");
                   }}
                 >
                   hello@itsanashow.com
@@ -126,10 +126,10 @@ const Footer = () => {
                   rel="noreferrer"
                   className={classes.survey}
                   onMouseEnter={() => {
-                    setCursorType('bigger');
+                    setCursorType("bigger");
                   }}
                   onMouseLeave={() => {
-                    setCursorType('default');
+                    setCursorType("default");
                   }}
                 >
                   Let&apos;s Talk
@@ -140,10 +140,10 @@ const Footer = () => {
               href="/privacy-policy"
               className={classes.privacy}
               onMouseEnter={() => {
-                setCursorType('bigger');
+                setCursorType("bigger");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
             >
               Privacy Policy

@@ -54,7 +54,7 @@ const Testimonials = () => {
           <Head className={classes.head} />
           <div className="wrapper">
             <p className={classes.lead}>
-              <AnimatedText>We’re so proud of this!</AnimatedText>
+              <AnimatedText>This warms our hearts</AnimatedText>
             </p>
             <p className={classes.description}>
               <AnimatedText delay={250}>
