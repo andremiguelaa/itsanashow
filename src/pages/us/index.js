@@ -325,12 +325,17 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={motion} play />
               </div>
-              <p className={classes.name}>Animation</p>
-              <p className={classes.text}>
-                Motion Graphics, 2D &amp; 3D Animation, Script Development, App
-                Tutorials, Explainer Videos, Commercials, Title sequences,
-                Manifesto videos
-              </p>
+              <p className={classes.name}>Strategy</p>
+              <div className={classes.content}>
+                <p className={classes.text}>
+                  Crafting your standout vision to make a lasting mark in your
+                  customers&apos; lives - that&apos;s our gig!
+                </p>
+                <p className={classes.tags}>
+                  Branding • Tone of Voice • Copywriting • Scriptwriting •
+                  Creative Direction
+                </p>
+              </div>
             </li>
             <li
               className={classes.item}
@@ -340,11 +345,18 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={graphics} play />
               </div>
-              <p className={classes.name}>Graphics</p>
-              <p className={classes.text}>
-                Illustration, Infographics, Iconography, UI/UX, Web Design, App
-                Design, Wireframing
-              </p>
+              <p className={classes.name}>Visuals</p>
+              <div className={classes.content}>
+                <p className={classes.text}>
+                  Designing eye-catching visuals and efficient systems that
+                  speak volumes to both your team and the wider world, all on a
+                  grand scale!
+                </p>
+                <p className={classes.tags}>
+                  Visual Identity • Graphic Design • 3D &amp; Illustration •
+                  Infographics • Photo & Video
+                </p>
+              </div>
             </li>
             <li
               className={classes.item}
@@ -354,12 +366,18 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={brand} play />
               </div>
-              <p className={classes.name}>Branding</p>
-              <p className={classes.text}>
-                Logo Design, Identity Systems, Tone of voice, Copywriting, Brand
-                Guidelines, Brand Collateral, Logo Animation, Presentation
-                Design
-              </p>
+              <p className={classes.name}>Experience</p>
+              <div className={classes.content}>
+                <p className={classes.text}>
+                  Unleashing imaginative strategies and dynamic experiences,
+                  ensuring your users interact with your vision in the real
+                  world and build positive engagement.
+                </p>
+                <p className={classes.tags}>
+                  Animation &amp; Motion Graphics • Web Design &amp; Development
+                  • UI Animation • Interactive Interfaces & AR • Campaigns
+                </p>
+              </div>
             </li>
           </ul>
           <div className={classes.ctaWrapper}>

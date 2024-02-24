@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { noop } from "lodash";
 import axios from "axios";
 
 axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/`;
@@ -8,8 +9,8 @@ const useRequest = ({
   method = "GET",
   payload,
   callback = false,
-  onSuccess = () => {},
-  onError = () => {},
+  onSuccess = noop,
+  onError = noop,
 }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
