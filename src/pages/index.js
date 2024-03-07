@@ -207,6 +207,7 @@ const Home = () => {
           }}
         >
           <video
+            preload="auto"
             className={classes.fullScreenVideoMedia}
             src={videoSound}
             ref={videoRef}
