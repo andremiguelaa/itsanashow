@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext, useRef } from "react";
+import React, { useState, useMemo, useContext, useRef, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import classnames from "classnames";
@@ -27,7 +27,17 @@ const Home = () => {
   const ball2ref = useRef();
   const ball3ref = useRef();
 
+  const videoRef = useRef();
   const [videoFull, setVideoFull] = useState(false);
+
+  useEffect(() => {
+    if (videoRef?.current && !videoFull) {
+      videoRef.current.pause();
+    }
+    if (videoRef?.current && videoFull) {
+      videoRef.current.play();
+    }
+  }, [videoFull]);
 
   const { data: homepageData } = useRequest({
     url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
@@ -181,29 +191,30 @@ const Home = () => {
           muted
           playsInline
         />
-        {videoFull && (
-          <div
-            className={classes.fullScreenVideo}
-            onClick={() => {
-              setVideoFull(false);
-              setCursorType("default");
-            }}
-            onMouseEnter={() => {
-              setCursorType("close");
-            }}
-            onMouseLeave={() => {
-              setCursorType("default");
-            }}
-          >
-            <video
-              className={classes.fullScreenVideoMedia}
-              src={videoSound}
-              autoPlay
-              loop
-              playsInline
-            />
-          </div>
-        )}
+        <div
+          className={classnames(classes.fullScreenVideo, {
+            [classes.active]: videoFull,
+          })}
+          onClick={() => {
+            setVideoFull(false);
+            setCursorType("default");
+          }}
+          onMouseEnter={() => {
+            setCursorType("close");
+          }}
+          onMouseLeave={() => {
+            setCursorType("default");
+          }}
+        >
+          <video
+            className={classes.fullScreenVideoMedia}
+            src={videoSound}
+            ref={videoRef}
+            autoPlay={videoFull}
+            loop
+            playsInline
+          />
+        </div>
       </section>
       <section className={classes.work}>
         <div className={classes.mainText}>

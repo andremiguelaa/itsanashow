@@ -291,6 +291,9 @@
   }
   & > div {
     cursor: none;
+    @media (pointer: coarse) {
+      cursor: default;
+    }
   }
   .teamPhotos {
     margin: 0;
