@@ -126,7 +126,7 @@ const Home = () => {
       </Head>
       <section className={classes.intro}>
         <div className={classes.spline}>
-          <Spline scene="https://prod.spline.design/DVwcHJOOc3jOmuuA/scene.splinecode" />
+          <Spline scene="https://prod.spline.design/7bfTUWV5XTcDwB7g/scene.splinecode" />
         </div>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
