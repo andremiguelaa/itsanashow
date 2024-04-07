@@ -138,7 +138,7 @@ const Home = () => {
           <p className={classes.description}>
             <AnimatedText delay={150}>
               Your creative partner in shaping beautiful and meaningful stories
-              through animation, design and user experience.
+              through animation, illustration, design, and user experience.
             </AnimatedText>
           </p>
           <div className={classes.button}>

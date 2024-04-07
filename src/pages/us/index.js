@@ -332,8 +332,8 @@ const Us = () => {
                   customers&apos; lives - that&apos;s our gig!
                 </p>
                 <p className={classes.tags}>
-                  Branding • Tone of Voice • Copywriting • Scriptwriting •
-                  Creative Direction
+                  Creative Direction • Branding • Scriptwriting • Tone of Voice
+                  • Copywriting
                 </p>
               </div>
             </li>
@@ -353,8 +353,8 @@ const Us = () => {
                   grand scale!
                 </p>
                 <p className={classes.tags}>
-                  Visual Identity • Graphic Design • 3D &amp; Illustration •
-                  Infographics • Photo & Video
+                  Visual Identity • Illustration • Graphic Design • Infographics
+                  • Photo &amp; Video
                 </p>
               </div>
             </li>
