@@ -143,7 +143,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className={classes.video}>
+      <section className={classes.video} hidden>
         <div
           className={classes.overlay}
           onClick={() => setVideoFull(true)}
