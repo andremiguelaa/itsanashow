@@ -93,9 +93,9 @@ const Footer = () => {
         <div className={classes.hr} />
         <div className={classes.contacts}>
           <div className={classes.address}>
-            Av. António Augusto de Aguiar 27 R/C
+            Palácio Rosa, R. Seara Nova 5
             <br />
-            1050-012 Lisboa
+            1250-002 Lisboa
             <br />
             Portugal
           </div>
