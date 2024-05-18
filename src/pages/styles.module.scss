@@ -1,5 +1,23 @@
 @import "src/styles/mixins.scss";
 
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2000;
+  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  .loadingAnimation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 100%;
+  }
+}
+
 .intro {
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 16rem 0 8.25rem;

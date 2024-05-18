@@ -5,6 +5,7 @@ import classnames from "classnames";
 import Marquee from "react-fast-marquee";
 import { InView } from "react-intersection-observer";
 import Spline from "@splinetool/react-spline";
+import Lottie from "react-lottie-player";
 
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
@@ -13,6 +14,7 @@ import Button from "src/components/Button/Button";
 import Testimonials from "src/components/Testimonials/Testimonials";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
+import loading from "src/assets/loading.json";
 import video from "src/assets/video.mp4";
 import videoSound from "src/assets/videoFull.mp4";
 
@@ -20,6 +22,7 @@ import classes from "./styles.module.scss";
 
 const Home = () => {
   const { setCursorType } = useContext(AppContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   const videoRef = useRef();
   const [videoFull, setVideoFull] = useState(false);
@@ -117,6 +120,13 @@ const Home = () => {
 
   return (
     <>
+      {isLoading && (
+        <div className={classes.loading}>
+          <div className={classes.loadingAnimation}>
+            <Lottie animationData={loading} play loop />
+          </div>
+        </div>
+      )}
       <Head>
         <title>Itsanashow Studio</title>
         <meta
@@ -126,7 +136,12 @@ const Home = () => {
       </Head>
       <section className={classes.intro}>
         <div className={classes.spline}>
-          <Spline scene="https://prod.spline.design/7bfTUWV5XTcDwB7g/scene.splinecode" />
+          <Spline
+            scene="https://prod.spline.design/7bfTUWV5XTcDwB7g/scene.splinecode"
+            onLoad={() => {
+              setIsLoading(false);
+            }}
+          />
         </div>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
