@@ -49,17 +49,9 @@
     width: 50%;
     position: relative;
     vertical-align: top;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s linear;
-    &.visible {
-      opacity: 1;
-      img {
-        height: 28vw;
-        @include mobile {
-          height: 56vw;
-        }
-      }
-    }
+    
     @include mobile {
       width: 100%;
     }
@@ -72,7 +64,10 @@
     img {
       width: 100%;
       vertical-align: top;
-      height: 0;
+      height: 28vw;
+      @include mobile {
+        height: 56vw;
+      }
     }
     .overlay {
       position: absolute;
@@ -133,36 +128,6 @@
         .tags {
           height: 1.8675rem;
         }
-      }
-    }
-  }
-  .seeMore {
-    text-align: center;
-    padding: 3.5rem 0 10rem;
-    @include mobile {
-      padding: 2.8rem 0 4.5rem;
-    }
-    .more {
-      color: #fff;
-      font-family: inherit;
-      background-color: transparent;
-      text-transform: uppercase;
-      border: none;
-      font-size: 1.25rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      cursor: pointer;
-      &::before {
-        content: '';
-        display: block;
-        background-image: url('../../assets/down.svg');
-        background-size: contain;
-        height: 15px;
-        width: 10px;
-        margin: 0 auto 0.5rem;
-      }
-      @include mobile {
-        font-size: 0.8rem;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState, useContext } from "react";
+import React, { useMemo, useRef, useContext } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import classnames from "classnames";
@@ -56,8 +56,6 @@ const Work = () => {
 
   const scrollWorksRef = useRef();
 
-  const [worksLimit, setWorksLimit] = useState(6);
-
   return (
     <>
       <Head>
@@ -90,12 +88,7 @@ const Work = () => {
           <ParallaxProvider scrollContainer={scrollElement}>
             <ul className={classes.list}>
               {works.map(({ id, Title, Slug, Image, Tags }, index) => (
-                <li
-                  className={classnames(classes.item, {
-                    [classes.visible]: worksLimit > index,
-                  })}
-                  key={id}
-                >
+                <li className={classes.item} key={id}>
                   <Link
                     href={`/work/${Slug}`}
                     onMouseEnter={() => {
@@ -131,24 +124,6 @@ const Work = () => {
               ))}
             </ul>
           </ParallaxProvider>
-          {worksLimit < works.length && (
-            <div className={classes.seeMore}>
-              <button
-                className={classes.more}
-                onClick={() => {
-                  setWorksLimit((prev) => prev + 6);
-                }}
-                onMouseEnter={() => {
-                  setCursorType("bigger");
-                }}
-                onMouseLeave={() => {
-                  setCursorType("default");
-                }}
-              >
-                Let me see more
-              </button>
-            </div>
-          )}
         </section>
       )}
       <WorkTogether />
