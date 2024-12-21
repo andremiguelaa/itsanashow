@@ -30,44 +30,6 @@
       }
     }
   }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      bottom: 5rem;
-      right: 15rem;
-      background: linear-gradient(
-        225deg,
-        rgba(42, 52, 255, 1) 0%,
-        rgba(8, 20, 45, 1) 80%
-      );
-      @include mobile {
-        bottom: 1rem;
-        right: 5rem;
-        width: 8rem;
-        height: 8rem;
-      }
-    }
-    &.ball2 {
-      width: 8.25rem;
-      height: 8.25rem;
-      bottom: 2rem;
-      right: 30rem;
-      background: linear-gradient(
-        155deg,
-        rgba(42, 52, 255, 1) 0%,
-        rgba(8, 20, 45, 1) 80%
-      );
-      @include mobile {
-        width: 3.5rem;
-        height: 3.5rem;
-        bottom: -1rem;
-        right: 12rem;
-      }
-    }
-  }
 }
 
 .content {

@@ -244,22 +244,4 @@
       }
     }
   }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(337.28deg, #2a34ff 11.54%, #fe00ae 102.75%);
-    &.ball1 {
-      width: 9rem;
-      height: 9rem;
-      top: 2rem;
-      left: -2rem;
-      z-index: -1;
-    }
-    &.ball2 {
-      width: 3.3rem;
-      height: 3.3rem;
-      top: -0.5rem;
-      left: 6.5rem;
-    }
-  }
 }

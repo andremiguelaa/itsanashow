@@ -16,11 +16,6 @@ const Work = () => {
 
   const scrollRef = useRef();
 
-  const ball1ref = useRef();
-  const ball2ref = useRef();
-  const ball3ref = useRef();
-  const ball4ref = useRef();
-
   const { data: worksData } = useRequest({
     url: "works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTags%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTeaser%5D%5Bpopulate%5D=*",
     method: "GET",
@@ -85,36 +80,6 @@ const Work = () => {
           </p>
         </div>
         <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
-        <ParallaxProvider scrollContainer={scrollElement}>
-          <Parallax
-            className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
-            targetElement={scrollRef.current}
-          >
-            <div ref={ball1ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball2)}
-          >
-            <div ref={ball2ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball3)}
-          >
-            <div ref={ball3ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball4)}
-          >
-            <div ref={ball4ref} />
-          </Parallax>
-        </ParallaxProvider>
       </section>
       {works.length > 0 && (
         <section className={classes.works}>

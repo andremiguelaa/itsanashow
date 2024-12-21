@@ -33,51 +33,6 @@
       }
     }
   }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(
-      225deg,
-      rgba(42, 52, 255, 1) 0%,
-      rgba(8, 20, 45, 1) 100%
-    );
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      top: -1rem;
-      right: 6rem;
-      @include mobile {
-        top: 1rem;
-        right: -1rem;
-        width: 8rem;
-        height: 8rem;
-      }
-    }
-    &.ball2 {
-      width: 5.25rem;
-      height: 5.25rem;
-      top: 15rem;
-      right: 23rem;
-      @include mobile {
-        width: 2.5rem;
-        height: 2.5rem;
-        top: 9rem;
-        right: 7rem;
-      }
-    }
-    &.ball3 {
-      width: 8.75rem;
-      height: 8.75rem;
-      bottom: 1rem;
-      left: 20%;
-      @include mobile {
-        width: 3.125rem;
-        height: 3.125rem;
-        bottom: 0.25rem;
-        left: 1.5rem;
-      }
-    }
-  }
 }
 
 .team {
@@ -493,38 +448,6 @@
         &::after {
           transform: scale(1);
         }
-      }
-    }
-  }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(
-      225deg,
-      rgba(42, 52, 255, 1) 0%,
-      rgba(8, 20, 45, 1) 100%
-    );
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      top: 10rem;
-      right: -2rem;
-      @include mobile {
-        width: 3.75rem;
-        height: 3.75rem;
-        right: 7rem;
-        top: 5rem;
-      }
-    }
-    &.ball2 {
-      width: 8.75rem;
-      height: 8.75rem;
-      top: 5rem;
-      right: 15rem;
-      @include mobile {
-        width: 7.5rem;
-        height: 7.5rem;
-        right: -1rem;
       }
     }
   }

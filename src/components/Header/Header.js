@@ -255,8 +255,6 @@ const Header = ({ transitionDuration }) => {
             </li>
           </ul>
         </div>
-        <div className={classnames(classes.ball, classes.ball1)} />
-        <div className={classnames(classes.ball, classes.ball2)} />
       </nav>
     </>
   );

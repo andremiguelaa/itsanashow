@@ -2,7 +2,6 @@ import React, { useState, useMemo, useContext, useRef, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import classnames from "classnames";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import Marquee from "react-fast-marquee";
 import { InView } from "react-intersection-observer";
 
@@ -19,13 +18,7 @@ import videoSound from "src/assets/videoFull.mp4";
 import classes from "./styles.module.scss";
 
 const Home = () => {
-  const { setCursorType, scrollElement } = useContext(AppContext);
-
-  const scrollRef = useRef();
-
-  const ball1ref = useRef();
-  const ball2ref = useRef();
-  const ball3ref = useRef();
+  const { setCursorType } = useContext(AppContext);
 
   const videoRef = useRef();
   const [videoFull, setVideoFull] = useState(false);
@@ -145,30 +138,7 @@ const Home = () => {
             <Button />
           </div>
         </div>
-        <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
-        <ParallaxProvider scrollContainer={scrollElement}>
-          <Parallax
-            className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
-            targetElement={scrollRef.current}
-          >
-            <div ref={ball1ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball2)}
-          >
-            <div ref={ball2ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball3)}
-          >
-            <div ref={ball3ref} />
-          </Parallax>
-        </ParallaxProvider>
+        <div style={{ position: "absolute", top: "100vh" }} />
       </section>
       <section className={classes.video}>
         <div

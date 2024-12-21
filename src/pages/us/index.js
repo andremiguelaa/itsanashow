@@ -44,10 +44,6 @@ const Us = () => {
 
   const scrollRef = useRef();
 
-  const ball1ref = useRef();
-  const ball2ref = useRef();
-  const ball3ref = useRef();
-
   const [teamMemberVisibility, setTeamMemberVisibility] = useState({});
 
   const teamMembers = useMemo(() => {
@@ -98,11 +94,6 @@ const Us = () => {
     }
     return [];
   }, [usData]);
-
-  const scrollWeRef = useRef();
-
-  const weBall1ref = useRef();
-  const weBall2ref = useRef();
 
   const whatItem1 = useRef();
   const whatItem2 = useRef();
@@ -176,30 +167,6 @@ const Us = () => {
             </AnimatedText>
           </p>
         </div>
-        <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
-        <ParallaxProvider scrollContainer={scrollElement}>
-          <Parallax
-            className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
-            targetElement={scrollRef.current}
-          >
-            <div ref={ball1ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball2)}
-          >
-            <div ref={ball2ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball3)}
-          >
-            <div ref={ball3ref} />
-          </Parallax>
-        </ParallaxProvider>
       </section>
       {teamMembers.length > 0 && (
         <section className={classes.team}>
@@ -395,23 +362,6 @@ const Us = () => {
             </Link>
           </div>
         </div>
-        <div ref={scrollWeRef} style={{ position: "absolute", top: "50vh" }} />
-        <ParallaxProvider scrollContainer={scrollElement}>
-          <Parallax
-            className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-            targetElement={scrollWeRef.current}
-          >
-            <div ref={weBall1ref} />
-          </Parallax>
-          <Parallax
-            className={classnames(classes.ball, classes.ball2)}
-            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-            targetElement={scrollWeRef.current}
-          >
-            <div ref={weBall2ref} />
-          </Parallax>
-        </ParallaxProvider>
       </section>
       <Testimonials />
       <Instagram />

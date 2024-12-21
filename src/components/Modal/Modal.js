@@ -176,7 +176,6 @@ const Modal = () => {
               </ul>
             </div>
           </div>
-          <div className={classes.ball}></div>
         </div>
       </section>
     </div>

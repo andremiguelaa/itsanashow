@@ -35,62 +35,6 @@
       }
     }
   }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(
-      225deg,
-      rgba(42, 52, 255, 1) 0%,
-      rgba(8, 20, 45, 1) 100%
-    );
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      top: -1rem;
-      right: 30rem;
-      @include mobile {
-        top: 1rem;
-        right: -1rem;
-        width: 8rem;
-        height: 8rem;
-      }
-    }
-    &.ball2 {
-      width: 5.25rem;
-      height: 5.25rem;
-      top: 12rem;
-      right: 48rem;
-      @include mobile {
-        width: 2.5rem;
-        height: 2.5rem;
-        top: 9rem;
-        right: 7rem;
-      }
-    }
-    &.ball3 {
-      width: 11rem;
-      height: 11rem;
-      bottom: 6rem;
-      left: -2.5rem;
-      @include mobile {
-        width: 3.125rem;
-        height: 3.125rem;
-        bottom: -0.75rem;
-        left: auto;
-        right: 1.5rem;
-        z-index: 1;
-      }
-    }
-    &.ball4 {
-      width: 11rem;
-      height: 11rem;
-      bottom: 0;
-      right: 5rem;
-      @include mobile {
-        display: none;
-      }
-    }
-  }
 }
 
 .works {

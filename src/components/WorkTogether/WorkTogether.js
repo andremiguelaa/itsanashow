@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import classnames from "classnames";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { useIsVisible } from "react-is-visible";
 
 import AppContext from "src/AppContext";
@@ -43,18 +42,12 @@ const wordList = [
 ];
 
 const WorkTogether = () => {
-  const { setCursorType, scrollElement } = useContext(AppContext);
+  const { setCursorType } = useContext(AppContext);
 
   const toAnimateWord = useRef();
   const isToAnimateWordVisible = useIsVisible(toAnimateWord);
   const [animatingWord, setAnimatingWord] = useState(false);
   const [nextAnimationWordIndex, setNextAnimationWordIndex] = useState(0);
-
-  const workTogetherSectionRef = useRef();
-
-  const workBall1ref = useRef();
-  const workBall2ref = useRef();
-  const workBall3ref = useRef();
 
   const animateWord = () => {
     if (animatingWord) {
@@ -105,7 +98,7 @@ const WorkTogether = () => {
   }, [isToAnimateWordVisible, toAnimateWord]);
 
   return (
-    <section className={classes.workTogether} ref={workTogetherSectionRef}>
+    <section className={classes.workTogether}>
       <div className={classnames("wrapper", classes.text)}>
         <p className={classes.lead}>Let&apos;s work together</p>
         <p className={classes.description}>
@@ -143,29 +136,6 @@ const WorkTogether = () => {
           <span>Request a quote</span>
         </a>
       </div>
-      <ParallaxProvider scrollContainer={scrollElement}>
-        <Parallax
-          className={classnames(classes.ball, classes.ball1)}
-          translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
-          targetElement={workTogetherSectionRef.current}
-        >
-          <div ref={workBall1ref} />
-        </Parallax>
-        <Parallax
-          translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-          targetElement={workTogetherSectionRef.current}
-          className={classnames(classes.ball, classes.ball2)}
-        >
-          <div ref={workBall2ref} />
-        </Parallax>
-        <Parallax
-          translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
-          targetElement={workTogetherSectionRef.current}
-          className={classnames(classes.ball, classes.ball3)}
-        >
-          <div ref={workBall3ref} />
-        </Parallax>
-      </ParallaxProvider>
     </section>
   );
 };

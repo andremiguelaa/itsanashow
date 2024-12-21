@@ -39,51 +39,6 @@
       }
     }
   }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(
-      225deg,
-      rgba(42, 52, 255, 1) 0%,
-      rgba(8, 20, 45, 1) 100%
-    );
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      top: 3rem;
-      right: -1rem;
-      @include mobile {
-        top: 1rem;
-        right: -1rem;
-        width: 8rem;
-        height: 8rem;
-      }
-    }
-    &.ball2 {
-      width: 5.25rem;
-      height: 5.25rem;
-      top: 15rem;
-      right: 23rem;
-      @include mobile {
-        width: 2.5rem;
-        height: 2.5rem;
-        top: 9rem;
-        right: 7rem;
-      }
-    }
-    &.ball3 {
-      width: 14.375rem;
-      height: 14.375rem;
-      bottom: 3rem;
-      left: -2.5rem;
-      @include mobile {
-        width: 6.25rem;
-        height: 6.25rem;
-        bottom: 0;
-        left: -1.5rem;
-      }
-    }
-  }
 }
 
 .video {

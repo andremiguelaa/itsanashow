@@ -116,45 +116,4 @@
       }
     }
   }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(125deg, #fe00ae 0%, #981ac8 100%);
-    &.ball1 {
-      width: 9.375rem;
-      height: 9.375rem;
-      top: -1rem;
-      right: 15%;
-      @include mobile {
-        width: 5.6rem;
-        height: 5.6rem;
-      }
-    }
-    &.ball2 {
-      width: 15.6rem;
-      height: 15.6rem;
-      top: 20rem;
-      left: 5%;
-      @include mobile {
-        width: 12.5rem;
-        height: 12.5rem;
-        left: auto;
-        right: -2rem;
-        top: 20rem;
-      }
-    }
-    &.ball3 {
-      width: 22.6rem;
-      height: 22.6rem;
-      bottom: -40rem;
-      right: 7.5%;
-      @include mobile {
-        width: 5.6rem;
-        height: 5.6rem;
-        bottom: -4rem;
-        right: auto;
-        left: 2em;
-      }
-    }
-  }
 }

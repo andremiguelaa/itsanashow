@@ -11,11 +11,6 @@ import classes from "./styles.module.scss";
 const Privacy = () => {
   const { setModal, scrollElement } = useContext(AppContext);
 
-  const scrollRef = useRef();
-
-  const ball1ref = useRef();
-  const ball2ref = useRef();
-
   return (
     <>
       <Head>
@@ -40,23 +35,6 @@ const Privacy = () => {
             </AnimatedText>
           </p>
         </div>
-        <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
-        <ParallaxProvider scrollContainer={scrollElement}>
-          <Parallax
-            className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
-            targetElement={scrollRef.current}
-          >
-            <div ref={ball1ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball2)}
-          >
-            <div ref={ball2ref} />
-          </Parallax>
-        </ParallaxProvider>
       </section>
       <section className={classes.content}>
         <div className={classnames("wrapper", classes.wrapper)}>
