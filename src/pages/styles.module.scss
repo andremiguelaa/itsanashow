@@ -2,7 +2,7 @@
 
 .intro {
   background-color: #000;
-  background-image: url('../assets/background.jpeg');
+  background-image: url("../assets/background.jpeg");
   background-size: cover;
   background-position: bottom center;
   padding: 18rem 0 9.5rem;
@@ -42,6 +42,42 @@
       @include mobile {
         margin-top: 3rem;
       }
+    }
+  }
+}
+
+.clients {
+  background-color: #fff;
+  color: #08142d;
+  padding: 2.5rem 0 4rem;
+  position: relative;
+  @include mobile {
+    padding: 1.2rem 0 2rem;
+  }
+  .lead {
+    margin: 0 0 1rem;
+    font-size: 1.15rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    @include mobile {
+      font-size: 0.8rem;
+    }
+  }
+  .clientsList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    li {
+      display: inline-block;
+      text-align: center;
+      margin-left: 2.8rem;
+    }
+    img {
+      height: 70px;
+      pointer-events: none;
     }
   }
 }
@@ -304,127 +340,6 @@
           height: 6px;
           margin: 0 0.75rem;
         }
-      }
-    }
-  }
-}
-
-.clients {
-  background-color: #fff;
-  color: #08142d;
-  padding: 0 0 7rem;
-  position: relative;
-  @include mobile {
-    padding: 0 0 3.25rem;
-  }
-  .lead {
-    margin: 0 0 1rem;
-    font-size: 1.15rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    @include mobile {
-      font-size: 0.8rem;
-    }
-  }
-  .description {
-    margin: 0;
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.25;
-    max-width: 850px;
-    @include mobile {
-      font-size: 1.35rem;
-    }
-  }
-  .clientsList {
-    margin: 1.25rem 0 0;
-    padding: 0;
-    list-style: none;
-    font-size: 0;
-    li {
-      display: inline-block;
-      width: 22.5%;
-      text-align: center;
-      margin-top: 3.75rem;
-      @include mobile {
-        margin-top: 1.25rem;
-        width: 47.5%;
-      }
-      & + li {
-        margin-left: 3.33%;
-        @include mobile {
-          margin-left: 5%;
-        }
-      }
-      &:nth-child(4n-3) {
-        margin-left: 0;
-      }
-      &:nth-child(2n + 1) {
-        @include mobile {
-          margin-left: 0;
-        }
-      }
-    }
-    img {
-      max-width: 100%;
-      opacity: 0;
-      transform: translateY(100px) scale(0.85);
-      transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
-      &.visible {
-        opacity: 1;
-        transform: translateY(0) translateZ(0) scale(0.85);
-      }
-    }
-  }
-  .ctaWrapper {
-    padding: 7rem 0;
-    text-align: right;
-    overflow: hidden;
-    @include mobile {
-      padding: 3.125rem 0 4.5rem;
-    }
-  }
-  .cta {
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: #08142d;
-    text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
-    @include mobile {
-      font-size: 0.8rem;
-    }
-    &::before {
-      position: absolute;
-      bottom: -2px;
-      content: "";
-      display: block;
-      height: 1px;
-      background-color: #08142d;
-      width: 1440px;
-      right: calc(100% + 3rem);
-      @include mobile {
-        right: calc(100% + 1rem);
-        bottom: 45%;
-      }
-    }
-    &::after {
-      position: absolute;
-      bottom: -2px;
-      content: "";
-      display: block;
-      height: 1px;
-      background-color: #08142d;
-      right: 0;
-      width: 100%;
-      transform: scale(0);
-      transition: transform 0.3s linear;
-      transform-origin: 0%;
-    }
-    &:hover {
-      &::after {
-        transform: scale(1);
       }
     }
   }

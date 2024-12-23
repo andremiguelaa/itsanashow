@@ -1,9 +1,9 @@
-import React, { useState, useMemo, useContext } from "react";
+import React, { useMemo, useContext } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import classnames from "classnames";
 import Marquee from "react-fast-marquee";
-import { InView } from "react-intersection-observer";
+import Slider from "react-slick";
 
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
@@ -22,7 +22,14 @@ const Home = () => {
     method: "GET",
   });
 
-  const [logosVisibility, setLogosVisibility] = useState({});
+  const logoSliderSettings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    centerMode: false,
+    variableWidth: true,
+    touchThreshold: 100,
+  };
 
   const portfolioHighlights = useMemo(() => {
     if (homepageData?.data?.attributes?.PortfolioHighlights?.length > 0) {
@@ -128,56 +135,23 @@ const Home = () => {
       <section className={classes.clients}>
         <div className="wrapper">
           <p className={classes.lead}>
-            <AnimatedText>Some happy clients and partners</AnimatedText>
+            <AnimatedText>Our Partners in Creativity</AnimatedText>
           </p>
-          <p className={classes.description}>
-            <AnimatedText delay={250}>
-              Reach goals and keep rocking is our mojo!
-            </AnimatedText>
-          </p>
-          {clients.length > 0 && (
-            <ul className={classes.clientsList}>
+        </div>
+        {clients.length > 0 && (
+          <ul className={classes.clientsList}>
+            <Slider {...logoSliderSettings}>
               {clients.map((client) => (
-                <InView
-                  as="li"
-                  key={client.id}
-                  onChange={(InView) => {
-                    if (InView) {
-                      setLogosVisibility((prev) => ({
-                        ...prev,
-                        [client.id]: true,
-                      }));
-                    }
-                  }}
-                >
+                <li key={client.id}>
                   <img
                     src={`${process.env.NEXT_PUBLIC_API_URL}${client.Logo}`}
                     alt={client.Name}
-                    className={classnames({
-                      [classes.visible]: logosVisibility[client.id],
-                    })}
                   />
-                </InView>
+                </li>
               ))}
-            </ul>
-          )}
-          <div className={classes.ctaWrapper}>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.designrush.com/agency/profile/itsanashow-studio"
-              className={classes.cta}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              View our profile on DesignRush
-            </a>
-          </div>
-        </div>
+            </Slider>
+          </ul>
+        )}
       </section>
       <section className={classes.work}>
         <div className={classes.mainText}>
