@@ -14,7 +14,7 @@ import { AppContext } from "src/AppContext";
 import logo from "src/assets/logo.json";
 import classes from "./Header.module.scss";
 
-const Header = ({ transitionDuration }) => {
+const Header = ({ transitionDuration, noDefaultHeader }) => {
   const { setModal, setTextAnimationAvailable, setCursorType, scrollElement } =
     useContext(AppContext);
 
@@ -30,7 +30,7 @@ const Header = ({ transitionDuration }) => {
     if (!firstLoad.current) {
       setTextAnimationAvailable(false);
       setTimeout(() => {
-        setDefaultHeader(true);
+        setDefaultHeader(noDefaultHeader ? false : true);
         setTextAnimationAvailable(true);
       }, transitionDuration * 0.75);
     } else {
@@ -39,11 +39,15 @@ const Header = ({ transitionDuration }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname, transitionDuration]);
 
-  const [defaultHeader, setDefaultHeader] = useState(true);
+  const [defaultHeader, setDefaultHeader] = useState(
+    noDefaultHeader ? false : true
+  );
 
   const listenToScroll = useCallback(() => {
-    setDefaultHeader(scrollElement.scrollTop < window.innerHeight);
-  }, [scrollElement]);
+    setDefaultHeader(
+      noDefaultHeader ? false : scrollElement.scrollTop < window.innerHeight
+    );
+  }, [scrollElement, noDefaultHeader]);
 
   useEffect(() => {
     if (scrollElement) {
@@ -116,7 +120,9 @@ const Header = ({ transitionDuration }) => {
                 onMouseLeave={() => {
                   setCursorType("default");
                 }}
-                className={classnames({ [classes.active]: page === "/logbook" })}
+                className={classnames({
+                  [classes.active]: page === "/logbook",
+                })}
               >
                 <span className={classes.text}>Insights</span>
               </Link>

@@ -184,7 +184,10 @@ export default function App({ Component, pageProps }) {
             {getSentence({ pathname: router.pathname, state: pathHistory })}
           </div>
         </div>
-        <Header transitionDuration={transitionDuration} />
+        <Header
+          transitionDuration={transitionDuration}
+          noDefaultHeader={router.pathname === "/privacy-policy"}
+        />
         <TransitionGroup>
           <CSSTransition
             key={pageKey}

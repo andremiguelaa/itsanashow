@@ -22,16 +22,9 @@ const Privacy = () => {
       </Head>
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
-          <p className={classes.lead}>
-            <AnimatedText>Welcome to our privacy notice</AnimatedText>
-          </p>
           <p className={classes.description}>
             <AnimatedText delay={250}>
-              We respect your privacy and are committed to protecting your
-              personal data. Itsanashow Studio Policy sets out details on how we
-              look after your personal data when you visit our site, or contact
-              us by email and tell you about your privacy rights and how the law
-              protects you.
+              We’re committed to respecting and protecting your privacy.
             </AnimatedText>
           </p>
         </div>
