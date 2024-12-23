@@ -1,7 +1,7 @@
 @import "src/styles/mixins.scss";
 
 .intro {
-  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  background-color: #08142D;
   padding: 14rem 0 10rem;
   position: relative;
   @include mobile {

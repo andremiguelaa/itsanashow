@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext, useRef, useEffect } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import classnames from "classnames";
@@ -12,25 +12,10 @@ import Button from "src/components/Button/Button";
 import Testimonials from "src/components/Testimonials/Testimonials";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
-import video from "src/assets/video.mp4";
-import videoSound from "src/assets/videoFull.mp4";
-
 import classes from "./styles.module.scss";
 
 const Home = () => {
   const { setCursorType } = useContext(AppContext);
-
-  const videoRef = useRef();
-  const [videoFull, setVideoFull] = useState(false);
-
-  useEffect(() => {
-    if (videoRef?.current && !videoFull) {
-      videoRef.current.pause();
-    }
-    if (videoRef?.current && videoFull) {
-      videoRef.current.play();
-    }
-  }, [videoFull]);
 
   const { data: homepageData } = useRequest({
     url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
@@ -125,13 +110,13 @@ const Home = () => {
       </Head>
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
-          <p className={classes.lead}>
-            <AnimatedText>We are Itsanashow</AnimatedText>
-          </p>
           <p className={classes.description}>
-            <AnimatedText delay={150}>
-              Your creative partner in shaping beautiful and meaningful stories
-              through animation, illustration, design, and user experience.
+            <AnimatedText>Crafting stories that make brands shine</AnimatedText>
+          </p>
+          <p className={classes.lead}>
+            <AnimatedText delay={300}>
+              Animation, Branding & Web Design for Visionaries who dare to stand
+              out
             </AnimatedText>
           </p>
           <div className={classes.button}>
@@ -140,51 +125,58 @@ const Home = () => {
         </div>
         <div style={{ position: "absolute", top: "100vh" }} />
       </section>
-      <section className={classes.video}>
-        <div
-          className={classes.overlay}
-          onClick={() => setVideoFull(true)}
-          onMouseEnter={() => {
-            setCursorType("video");
-          }}
-          onMouseLeave={() => {
-            setCursorType("default");
-          }}
-        >
-          <p className={classes.callout}>Play our reel</p>
-        </div>
-        <video
-          className={classes.videoMedia}
-          src={video}
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-        <div
-          className={classnames(classes.fullScreenVideo, {
-            [classes.active]: videoFull,
-          })}
-          onClick={() => {
-            setVideoFull(false);
-            setCursorType("default");
-          }}
-          onMouseEnter={() => {
-            setCursorType("close");
-          }}
-          onMouseLeave={() => {
-            setCursorType("default");
-          }}
-        >
-          <video
-            preload="auto"
-            className={classes.fullScreenVideoMedia}
-            src={videoSound}
-            ref={videoRef}
-            autoPlay={videoFull}
-            loop
-            playsInline
-          />
+      <section className={classes.clients}>
+        <div className="wrapper">
+          <p className={classes.lead}>
+            <AnimatedText>Some happy clients and partners</AnimatedText>
+          </p>
+          <p className={classes.description}>
+            <AnimatedText delay={250}>
+              Reach goals and keep rocking is our mojo!
+            </AnimatedText>
+          </p>
+          {clients.length > 0 && (
+            <ul className={classes.clientsList}>
+              {clients.map((client) => (
+                <InView
+                  as="li"
+                  key={client.id}
+                  onChange={(InView) => {
+                    if (InView) {
+                      setLogosVisibility((prev) => ({
+                        ...prev,
+                        [client.id]: true,
+                      }));
+                    }
+                  }}
+                >
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_API_URL}${client.Logo}`}
+                    alt={client.Name}
+                    className={classnames({
+                      [classes.visible]: logosVisibility[client.id],
+                    })}
+                  />
+                </InView>
+              ))}
+            </ul>
+          )}
+          <div className={classes.ctaWrapper}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.designrush.com/agency/profile/itsanashow-studio"
+              className={classes.cta}
+              onMouseEnter={() => {
+                setCursorType("bigger");
+              }}
+              onMouseLeave={() => {
+                setCursorType("default");
+              }}
+            >
+              View our profile on DesignRush
+            </a>
+          </div>
         </div>
       </section>
       <section className={classes.work}>
@@ -296,60 +288,6 @@ const Home = () => {
         </div>
       </section>
       <Testimonials />
-      <section className={classes.clients}>
-        <div className="wrapper">
-          <p className={classes.lead}>
-            <AnimatedText>Some happy clients and partners</AnimatedText>
-          </p>
-          <p className={classes.description}>
-            <AnimatedText delay={250}>
-              Reach goals and keep rocking is our mojo!
-            </AnimatedText>
-          </p>
-          {clients.length > 0 && (
-            <ul className={classes.clientsList}>
-              {clients.map((client) => (
-                <InView
-                  as="li"
-                  key={client.id}
-                  onChange={(InView) => {
-                    if (InView) {
-                      setLogosVisibility((prev) => ({
-                        ...prev,
-                        [client.id]: true,
-                      }));
-                    }
-                  }}
-                >
-                  <img
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${client.Logo}`}
-                    alt={client.Name}
-                    className={classnames({
-                      [classes.visible]: logosVisibility[client.id],
-                    })}
-                  />
-                </InView>
-              ))}
-            </ul>
-          )}
-          <div className={classes.ctaWrapper}>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.designrush.com/agency/profile/itsanashow-studio"
-              className={classes.cta}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              View our profile on DesignRush
-            </a>
-          </div>
-        </div>
-      </section>
     </>
   );
 };

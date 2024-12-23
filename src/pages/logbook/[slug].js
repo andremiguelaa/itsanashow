@@ -102,7 +102,7 @@ const Article = ({ prefetchedArticle }) => {
             setCursorType("default");
           }}
         >
-          Back to logbook
+          Back to insights
         </Link>
       </div>
       <div className={classes.content}>

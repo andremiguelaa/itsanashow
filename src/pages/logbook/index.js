@@ -60,7 +60,7 @@ const Blog = () => {
   return (
     <>
       <Head>
-        <title>Itsanashow Studio | Logbook</title>
+        <title>Itsanashow Studio | Insights</title>
         <meta
           name="description"
           content="Discover our insights on creativity, animation, storytelling, business, user experience, and more. Join us in wrangling ideas and lassoing imagination. Let's think, create, and inspire together!"

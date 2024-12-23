@@ -118,7 +118,7 @@ const Header = ({ transitionDuration }) => {
                 }}
                 className={classnames({ [classes.active]: page === "/logbook" })}
               >
-                <span className={classes.text}>Logbook</span>
+                <span className={classes.text}>Insights</span>
               </Link>
               <button
                 onClick={() => {
@@ -193,7 +193,7 @@ const Header = ({ transitionDuration }) => {
                 [classes.active]: page === "/logbook",
               })}
             >
-              logbook
+              insights
             </Link>
             <button
               onClick={() => {
