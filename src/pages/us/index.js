@@ -11,7 +11,6 @@ import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import Markdown from "src/components/Markdown/Markdown";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
-import WorkTogether from "src/components/WorkTogether/WorkTogether";
 import Instagram from "src/components/Instagram/Instagram";
 import Testimonials from "src/components/Testimonials/Testimonials";
 
@@ -365,7 +364,6 @@ const Us = () => {
       </section>
       <Testimonials />
       <Instagram />
-      <WorkTogether />
     </>
   );
 };

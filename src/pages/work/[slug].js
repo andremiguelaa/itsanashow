@@ -10,7 +10,6 @@ import Slider from "react-slick";
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import Markdown from "src/components/Markdown/Markdown";
-import WorkTogether from "src/components/WorkTogether/WorkTogether";
 import NoMatch from "src/components/NoMatch/NoMatch";
 import Error from "src/components/Error/Error";
 import behance from "src/assets/behance.svg";
@@ -334,7 +333,6 @@ const WorkDetail = ({ prefetchedWork }) => {
           )}
         </div>
       </article>
-      <WorkTogether />
     </>
   );
 };
