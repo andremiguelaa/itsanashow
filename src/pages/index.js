@@ -153,8 +153,8 @@ const Home = () => {
         )}
       </section>
       <section className={classes.work}>
-        <div className={classes.mainText}>
-          <div className="wrapper">
+        <div className="wrapper">
+          <div className={classes.mainText}>
             <p className={classes.lead}>
               <AnimatedText>Our work</AnimatedText>
             </p>
@@ -165,38 +165,38 @@ const Home = () => {
               </AnimatedText>
             </p>
           </div>
+          {portfolioHighlights.length > 0 && (
+            <ul className={classes.portfolioHighlights}>
+              {portfolioHighlights.map((portfolioHighlight) => (
+                <li key={portfolioHighlight.id}>
+                  <Link
+                    href={`/work/${portfolioHighlight.Title}`}
+                    onMouseEnter={() => {
+                      setCursorType("view");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType("default");
+                    }}
+                  >
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_API_URL}${portfolioHighlight.Image}`}
+                      alt={portfolioHighlight.Title}
+                    />
+                    <div className={classes.text}>
+                      <p className={classes.name}>{portfolioHighlight.Title}</p>
+                      {portfolioHighlight.Tags.length > 0 && (
+                        <p className={classes.tags}>
+                          {portfolioHighlight.Tags.join(", ")}
+                        </p>
+                      )}
+                      <div className={classes.arrow} />
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-        {portfolioHighlights.length > 0 && (
-          <ul className={classes.portfolioHighlights}>
-            {portfolioHighlights.map((portfolioHighlight) => (
-              <li key={portfolioHighlight.id}>
-                <Link
-                  href={`/work/${portfolioHighlight.Title}`}
-                  onMouseEnter={() => {
-                    setCursorType("view");
-                  }}
-                  onMouseLeave={() => {
-                    setCursorType("default");
-                  }}
-                >
-                  <img
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${portfolioHighlight.Image}`}
-                    alt={portfolioHighlight.Title}
-                  />
-                  <div className={classes.overlay} />
-                  <div className={classes.text}>
-                    <p className={classes.name}>{portfolioHighlight.Title}</p>
-                    {portfolioHighlight.Tags.length > 0 && (
-                      <p className={classes.tags}>
-                        {portfolioHighlight.Tags.join(", ")}
-                      </p>
-                    )}
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
       </section>
       <section className={classes.skills}>
         <div className="wrapper">
