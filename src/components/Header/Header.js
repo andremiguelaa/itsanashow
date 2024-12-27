@@ -12,10 +12,11 @@ import Lottie from "react-lottie-player";
 
 import { AppContext } from "src/AppContext";
 import logo from "src/assets/logo.json";
+import Button from "../Button/Button";
 import classes from "./Header.module.scss";
 
 const Header = ({ transitionDuration, noDefaultHeader }) => {
-  const { setModal, setTextAnimationAvailable, setCursorType, scrollElement } =
+  const { setTextAnimationAvailable, setCursorType, scrollElement } =
     useContext(AppContext);
 
   const router = useRouter();
@@ -126,20 +127,20 @@ const Header = ({ transitionDuration, noDefaultHeader }) => {
               >
                 <span className={classes.text}>Insights</span>
               </Link>
-              <button
-                onClick={() => {
-                  setModal(true);
-                  setMenu(false);
-                }}
+              <Link
+                href="/contact-us"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
                   setCursorType("default");
                 }}
+                className={classnames({
+                  [classes.active]: page === "/contact-us",
+                })}
               >
                 <span className={classes.text}>Contact us</span>
-              </button>
+              </Link>
             </nav>
           </div>
           <button className={classes.menuButton} onClick={() => setMenu(true)}>
@@ -201,14 +202,14 @@ const Header = ({ transitionDuration, noDefaultHeader }) => {
             >
               insights
             </Link>
-            <button
-              onClick={() => {
-                setModal(true);
-                setMenu(false);
-              }}
+            <Link
+              href="/contact-us"
+              className={classnames(classes.link, {
+                [classes.active]: page === "/contact-us",
+              })}
             >
               contact us
-            </button>
+            </Link>
           </div>
         </div>
         <div className={classes.footer}>

@@ -14,7 +14,7 @@ const buttonFrameLimits = {
 };
 
 const Button = () => {
-  const { setPopup, setCursorType } = useContext(AppContext);
+  const { setCursorType } = useContext(AppContext);
   const buttonFrame = useRef(buttonFrameLimits.start);
   const buttonTimer = useRef();
   const [buttonFrameState, setButtonFrameState] = useState(
@@ -56,9 +56,7 @@ const Button = () => {
             numberChange(buttonFrameLimits.middle2, buttonFrameLimits.end);
             setCursorType("default");
           }}
-          onClick={() => {
-            setPopup(true);
-          }}
+          onClick={() => {}}
         >
           <Lottie animationData={button} goTo={buttonFrameState} />
         </button>

@@ -1,16 +1,11 @@
-import React, { useContext, useRef } from "react";
+import React from "react";
 import Head from "next/head";
 import classnames from "classnames";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-
-import { AppContext } from "src/AppContext";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
 import classes from "./styles.module.scss";
 
 const Privacy = () => {
-  const { setModal, scrollElement } = useContext(AppContext);
-
   return (
     <>
       <Head>
@@ -133,7 +128,7 @@ const Privacy = () => {
               <button
                 className={classes.inlineButton}
                 onClick={() => {
-                  setModal(true);
+                  // setModal(true);
                 }}
               >
                 Contact us

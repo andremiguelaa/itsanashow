@@ -9,8 +9,6 @@ import AppContext from "src/AppContext";
 import Cursor from "src/components/Cursor/Cursor";
 import Header from "src/components/Header/Header";
 import Footer from "src/components/Footer/Footer";
-import Modal from "src/components/Modal/Modal";
-import Popup from "src/components/Popup/Popup";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -111,8 +109,6 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const ref = useRef();
   const [transitionPaneVisible, setTransitionPaneVisible] = useState(false);
-  const [modal, setModal] = useState(false);
-  const [popup, setPopup] = useState(false);
   const [cursorType, setCursorType] = useState("default");
   const [textAnimationAvailable, setTextAnimationAvailable] = useState(true);
   const [scrollElement, setScrollElement] = useState(null);
@@ -135,10 +131,6 @@ export default function App({ Component, pageProps }) {
   return (
     <AppContext.Provider
       value={{
-        modal,
-        setModal,
-        popup,
-        setPopup,
         cursorType,
         setCursorType,
         textAnimationAvailable,
@@ -214,8 +206,6 @@ export default function App({ Component, pageProps }) {
           </CSSTransition>
         </TransitionGroup>
         <Cursor />
-        <Modal />
-        <Popup />
       </div>
     </AppContext.Provider>
   );
