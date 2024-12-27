@@ -12,12 +12,10 @@ import Lottie from "react-lottie-player";
 
 import { AppContext } from "src/AppContext";
 import logo from "src/assets/logo.json";
-import Button from "../Button/Button";
 import classes from "./Header.module.scss";
 
-const Header = ({ transitionDuration, noDefaultHeader }) => {
-  const { setTextAnimationAvailable, setCursorType, scrollElement } =
-    useContext(AppContext);
+const Header = ({ noDefaultHeader }) => {
+  const { setCursorType, scrollElement } = useContext(AppContext);
 
   const router = useRouter();
   const [page, setPage] = useState();
@@ -29,16 +27,11 @@ const Header = ({ transitionDuration, noDefaultHeader }) => {
     setPage(router.pathname);
     setMenu(false);
     if (!firstLoad.current) {
-      setTextAnimationAvailable(false);
-      setTimeout(() => {
-        setDefaultHeader(noDefaultHeader ? false : true);
-        setTextAnimationAvailable(true);
-      }, transitionDuration * 0.75);
+      setDefaultHeader(noDefaultHeader ? false : true);
     } else {
       firstLoad.current = false;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.pathname, transitionDuration]);
+  }, [router.pathname, noDefaultHeader]);
 
   const [defaultHeader, setDefaultHeader] = useState(
     noDefaultHeader ? false : true
