@@ -7,7 +7,6 @@ import Slider from "react-slick";
 
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
-import DummyHead from "src/components/Head/Head";
 import Button from "src/components/Button/Button";
 import Testimonials from "src/components/Testimonials/Testimonials";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
@@ -33,7 +32,7 @@ const Home = () => {
 
   const portfolioHighlights = useMemo(() => {
     if (homepageData?.data?.attributes?.PortfolioHighlights?.length > 0) {
-      return homepageData.data.attributes.PortfolioHighlights.slice(0, 4).map(
+      return homepageData.data.attributes.PortfolioHighlights.slice(0, 3).map(
         ({
           work: {
             data: {
@@ -157,16 +156,15 @@ const Home = () => {
         <div className={classes.mainText}>
           <div className="wrapper">
             <p className={classes.lead}>
-              <AnimatedText>Check our work</AnimatedText>
+              <AnimatedText>Our work</AnimatedText>
             </p>
             <p className={classes.description}>
-              <AnimatedText delay={150}>
-                We work closely with our clients and partners crafting visual
-                solutions and collecting amazing experiences.
+              <AnimatedText delay={100}>
+                Visuals that dominate, inspire, and leave your competition
+                jealous 
               </AnimatedText>
             </p>
           </div>
-          <DummyHead className={classes.head} />
         </div>
         {portfolioHighlights.length > 0 && (
           <ul className={classes.portfolioHighlights}>
