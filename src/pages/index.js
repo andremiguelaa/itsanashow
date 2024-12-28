@@ -7,7 +7,7 @@ import Slider from "react-slick";
 
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
-import Button from "src/components/Button/Button";
+import SeeOurMagicButton from "src/components/SeeOurMagicButton/SeeOurMagicButton";
 import Testimonials from "src/components/Testimonials/Testimonials";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
@@ -126,7 +126,7 @@ const Home = () => {
             </AnimatedText>
           </p>
           <div className={classes.button}>
-            <Button />
+            <SeeOurMagicButton />
           </div>
         </div>
         <div style={{ position: "absolute", top: "100vh" }} />
