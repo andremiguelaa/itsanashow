@@ -1,0 +1,37 @@
+@import "src/styles/mixins.scss";
+
+.clients {
+  background-color: #fff;
+  color: #08142d;
+  padding: 2.5rem 0 4rem;
+  position: relative;
+  @include mobile {
+    padding: 1.2rem 0 2rem;
+  }
+  .lead {
+    margin: 0 0 1rem;
+    font-size: 1.15rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    @include mobile {
+      font-size: 0.8rem;
+    }
+  }
+  .clientsList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    li {
+      display: inline-block;
+      text-align: center;
+      margin-left: 2.8rem;
+    }
+    img {
+      height: 70px;
+      pointer-events: none;
+    }
+  }
+}

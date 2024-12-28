@@ -1,0 +1,167 @@
+@import "src/styles/mixins.scss";
+
+.work {
+  background-color: #fff;
+  color: #08142d;
+  .mainText {
+    padding: 4rem 0 14rem;
+    position: relative;
+    overflow: hidden;
+    @include tablet {
+      padding: 2rem 0 3.4rem;
+    }
+    .lead {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      @include mobile {
+        font-size: 0.8rem;
+      }
+    }
+    .description {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 1250px;
+      @include mobile {
+        font-size: 1rem;
+      }
+    }
+  }
+  .portfolioHighlights {
+    margin: 0;
+    padding: 0 6rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    @include smallDesktop {
+      padding: 0;
+    }
+    li {
+      height: 500px;
+      width: 850px;
+      @include tablet {
+        width: 100%;
+        height: 58vw;
+      }
+      &:nth-child(2n-1) {
+        align-self: flex-end;
+        .text {
+          left: -7.5rem;
+          @include smallDesktop {
+            left: -2.5rem;
+          }
+          @include tablet {
+            left: 1rem;
+            right: 1rem;
+          }
+        }
+      }
+      &:nth-child(2n) {
+        .text {
+          right: -7.5rem;
+          @include smallDesktop {
+            right: -2.5rem;
+          }
+          @include mobile {
+            left: 1rem;
+            right: 1rem;
+          }
+        }
+      }
+      & + li {
+        margin-top: 10rem;
+        @include mobile {
+          margin-top: 5rem;
+        }
+      }
+      &:last-child {
+        margin-bottom: 7.5rem;
+        @include mobile {
+          margin-bottom: 3.5rem;
+        }
+      }
+    }
+    a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: relative;
+      cursor: none;
+      @media (pointer: coarse) {
+        cursor: default;
+      }
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+      .text {
+        position: absolute;
+        bottom: 3.5rem;
+        pointer-events: none;
+        background-color: #fff;
+        color: #08142d;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 457px;
+        height: 136px;
+        border-radius: 68px;
+        box-shadow: 9px 15px 30px 0px #08142d1a;
+        padding: 0 122px 0 46px;
+        @include tablet {
+          height: 80px;
+          border-radius: 40px;
+          padding: 0 65px 0 23px;
+          bottom: 1rem;
+        }
+        @include mobile {
+          width: auto;
+        }
+        .name {
+          font-size: 1.375rem;
+          font-weight: 700;
+          line-height: 1.25;
+          margin: 0;
+          text-transform: uppercase;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          @include mobile {
+            font-size: 0.9rem;
+          }
+        }
+        .tags {
+          font-size: 0.875rem;
+          font-weight: 400;
+          line-height: 1.66;
+          margin: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          @include mobile {
+            font-size: 0.8rem;
+          }
+        }
+        .arrow {
+          border: 1px solid #08142d;
+          border-radius: 50%;
+          height: 46px;
+          width: 46px;
+          position: absolute;
+          top: 50%;
+          right: 38px;
+          transform: translate(0%, -50%);
+          @include tablet {
+            height: 30px;
+            width: 30px;
+            right: 18px;
+          }
+        }
+      }
+    }
+  }
+}
