@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import Head from "next/head";
-import Lottie from "react-lottie-player";
-import { useRouter } from "next/navigation";
+import Spline from "@splinetool/react-spline";
 import classnames from "classnames";
 
 import useRequest from "src/utils/useRequest";
@@ -15,9 +14,6 @@ import Button from "src/components/Button/Button";
 import classes from "./styles.module.scss";
 
 const Home = () => {
-  const router = useRouter();
-  const [buttonHover, setButtonHover] = useState(false);
-
   const { data: homepageData } = useRequest({
     url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
     method: "GET",
@@ -89,6 +85,9 @@ const Home = () => {
         />
       </Head>
       <section className={classes.intro}>
+        <div className={classes.spline}>
+          <Spline scene="https://prod.spline.design/pmsrRpUXfZ0l8ACX/scene.splinecode" />
+        </div>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.description}>
             <AnimatedText>Crafting stories that make brands shine</AnimatedText>

@@ -92,6 +92,9 @@
           transform: translateX(0.25rem);
         }
       }
+      &.active{
+        font-weight: 600;
+      }
     }
   }
   .menuButton {
