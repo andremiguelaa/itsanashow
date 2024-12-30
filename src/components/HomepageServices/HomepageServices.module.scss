@@ -1,111 +1,34 @@
 @import "src/styles/mixins.scss";
 
-.skills {
+.services {
   background: linear-gradient(180deg, #2a34ff -34.16%, #08142d 87.22%);
-  .ctaWrapper {
-    padding: 7rem 0;
-    text-align: right;
-    overflow: hidden;
-    @include mobile {
-      padding: 2.375rem 0 4.5rem;
-    }
-  }
-  .cta {
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
-    @include mobile {
-      font-size: 0.8rem;
-    }
-    &::before {
-      position: absolute;
-      bottom: -2px;
-      content: "";
-      display: block;
-      height: 1px;
-      background-color: #fff;
-      width: 1440px;
-      right: calc(100% + 3rem);
-      @include mobile {
-        right: calc(100% + 1rem);
-        bottom: 45%;
-      }
-    }
-    &::after {
-      position: absolute;
-      bottom: -2px;
-      content: "";
-      display: block;
-      height: 1px;
-      background-color: #fff;
-      right: 0;
-      width: 100%;
-      transform: scale(0);
-      transition: transform 0.3s linear;
-      transform-origin: 0%;
-    }
-    &:hover {
-      &::after {
-        transform: scale(1);
-      }
-    }
-  }
+  padding: 8.5rem 0 9.5rem;
   .lead {
     margin: 0 0 1rem;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 400;
     text-transform: uppercase;
-    text-align: center;
     @include mobile {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
   .description {
-    margin: 0 auto 7rem;
+    margin: 0 0 7rem;
     max-width: 1250px;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 600;
     line-height: 1.25;
-    text-align: center;
+    max-width: 620px;
     @include mobile {
-      font-size: 1.35rem;
+      font-size: 2rem;
       margin-bottom: 5rem;
     }
   }
-  .skillsList {
-    color: #2a34ff;
-    list-style: none;
-    font-size: 5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    @include mobile {
-      font-size: 2rem;
-      line-height: 1.4;
-    }
-    li {
-      display: inline-block;
-      &::before {
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        width: 15px;
-        height: 15px;
-        background-color: #2a34ff;
-        transform: rotate(45deg);
-        margin: 0 1.5rem;
-        @include mobile {
-          width: 6px;
-          height: 6px;
-          margin: 0 0.75rem;
-        }
+  .servicesList {
+    .service {
+      opacity: 0;
+      &.active {
+        opacity: 1;
       }
     }
   }

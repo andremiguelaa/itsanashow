@@ -8,7 +8,7 @@
   padding: 18rem 0 9.5rem;
   position: relative;
   @include mobile {
-    padding: 7rem 0 3rem;
+    padding: 11rem 0 4rem;
   }
   .text {
     position: relative;
@@ -20,7 +20,7 @@
       line-height: 1.25;
       max-width: 825px;
       @include mobile {
-        font-size: 3rem;
+        font-size: 2.8rem;
         max-width: 540px;
       }
     }
@@ -31,16 +31,16 @@
       max-width: 600px;
       line-height: 1.4;
       @include mobile {
-        font-size: 1.2rem;
+        font-size: 1rem;
         max-width: 360px;
       }
     }
     .button {
-      margin-top: 9rem;
+      margin-top: 5rem;
       display: flex;
       justify-content: flex-end;
       @include mobile {
-        margin-top: 3rem;
+        margin-top: 4rem;
       }
     }
   }

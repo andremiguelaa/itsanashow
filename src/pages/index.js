@@ -1,20 +1,25 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Head from "next/head";
+import Lottie from "react-lottie-player";
+import { useRouter } from "next/navigation";
 import classnames from "classnames";
 
 import useRequest from "src/utils/useRequest";
-import SeeOurMagicButton from "src/components/SeeOurMagicButton/SeeOurMagicButton";
 import HomepageClients from "src/components/HomepageClients/HomepageClients";
 import HomepageWork from "src/components/HomepageWork/HomepageWork";
 import HomepageServices from "src/components/HomepageServices/HomepageServices";
 import Testimonials from "src/components/Testimonials/Testimonials";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
+import Button from "src/components/Button/Button";
 
 import classes from "./styles.module.scss";
 
 const Home = () => {
+  const router = useRouter();
+  const [buttonHover, setButtonHover] = useState(false);
+
   const { data: homepageData } = useRequest({
-    url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BTags%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
+    url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
     method: "GET",
   });
 
@@ -41,25 +46,6 @@ const Home = () => {
           Title,
           Image,
           Tags: Tags.map(({ attributes: { Text } }) => Text),
-        })
-      );
-    }
-    return [];
-  }, [homepageData]);
-
-  const skills = useMemo(() => {
-    if (homepageData?.data?.attributes?.Tags?.length > 0) {
-      return homepageData.data.attributes.Tags.map(
-        ({
-          tag: {
-            data: {
-              id,
-              attributes: { Text },
-            },
-          },
-        }) => ({
-          id,
-          Text,
         })
       );
     }
@@ -114,14 +100,14 @@ const Home = () => {
             </AnimatedText>
           </p>
           <div className={classes.button}>
-            <SeeOurMagicButton />
+            <Button text="See Our Magic in Action" />
           </div>
         </div>
         <div style={{ position: "absolute", top: "100vh" }} />
       </section>
       <HomepageClients clients={clients} />
       <HomepageWork portfolioHighlights={portfolioHighlights} />
-      <HomepageServices skills={skills} />
+      <HomepageServices />
       <Testimonials />
     </>
   );

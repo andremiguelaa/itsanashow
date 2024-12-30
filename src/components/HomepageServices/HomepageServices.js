@@ -1,75 +1,65 @@
-import React, { useContext } from "react";
-import Link from "next/link";
-import Marquee from "react-fast-marquee";
+import React, { useState } from "react";
+import classNames from "classnames";
 
-import AppContext from "src/AppContext";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
+import animation from "src/assets/animation.gif";
 
 import classes from "./HomepageServices.module.scss";
 
-const HomepageServices = ({ skills }) => {
-  const { setCursorType } = useContext(AppContext);
+const SERVICES = [
+  {
+    title: "Animation",
+    text: "With compelling storytelling at its core, our 2D and 3D animations go beyond visuals—they bring your brand’s narrative to life with precision and creativity. From dynamic motion graphics to character-driven animations, we create striking visuals that engage your audience and leave a lasting impression.",
+    image: animation,
+  },
+  {
+    title: "Branding",
+    text: "Our holistic branding approach transforms visuals into stories that endure. From designing bold logos and defining brand guidelines to developing animation languages, we ensure every element communicates your brand’s unique identity across all media.",
+    image: animation,
+  },
+  {
+    title: "Webdesign",
+    text: "We craft responsive, SEO-optimized websites designed to captivate. With seamless UX/UI and engaging interactive features, our websites deliver intuitive user experiences on any device, boosting your brand’s online visibility.",
+    image: animation,
+  },
+];
 
+const HomepageServices = () => {
+  const [activeService, setActiveService] = useState(SERVICES[0].title);
   return (
-    <section className={classes.skills}>
+    <section className={classes.services}>
       <div className="wrapper">
-        <div className={classes.ctaWrapper}>
-          <Link
-            href="/work"
-            className={classes.cta}
-            onMouseEnter={() => {
-              setCursorType("bigger");
-            }}
-            onMouseLeave={() => {
-              setCursorType("default");
-            }}
-          >
-            Wanna see more?
-          </Link>
-        </div>
         <p className={classes.lead}>
-          <AnimatedText>What we do</AnimatedText>
+          <AnimatedText>Our Services</AnimatedText>
         </p>
         <p className={classes.description}>
-          <AnimatedText delay={200}>
-            Fast-moving trends require rock-solid core skills. Our savoir-faire
-            is broader, with a proven track record.
+          <AnimatedText delay={100}>
+            Engage your audience and amplify your voice with our...
           </AnimatedText>
         </p>
-      </div>
-      {skills.length > 0 && (
-        <>
-          <Marquee gradient={false} speed={50}>
-            <ul className={classes.skillsList}>
-              {skills.slice(0, skills.length / 2).map((skill) => (
-                <li key={skill.id}>{skill.Text}</li>
-              ))}
-            </ul>
-          </Marquee>
-          <Marquee gradient={false} speed={50} direction="right">
-            <ul className={classes.skillsList}>
-              {skills.slice(skills.length / 2).map((skill) => (
-                <li key={skill.id}>{skill.Text}</li>
-              ))}
-            </ul>
-          </Marquee>
-        </>
-      )}
-      <div className="wrapper">
-        <div className={classes.ctaWrapper}>
-          <Link
-            href="/us"
-            className={classes.cta}
-            onMouseEnter={() => {
-              setCursorType("bigger");
-            }}
-            onMouseLeave={() => {
-              setCursorType("default");
-            }}
-          >
-            Get to know us!
-          </Link>
-        </div>
+        <ul className={classes.servicesList}>
+          {SERVICES.map((service) => (
+            <li
+              key={service.title}
+              className={classNames(classes.service, {
+                [classes.active]: service.title === activeService,
+              })}
+            >
+              <h2 hidden>{service.title}</h2>
+              <img
+                src={service.image.src}
+                alt={service.title}
+                className={classes.image}
+              />
+              <p className={classes.text}>{service.text}</p>
+            </li>
+          ))}
+        </ul>
+        <nav className={classes.servicesNav}>
+          {SERVICES.map((service) => (
+            <button key={service.title}>{service.title}</button>
+          ))}
+        </nav>
       </div>
     </section>
   );

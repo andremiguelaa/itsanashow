@@ -45,7 +45,7 @@
     }
   }
   nav {
-    @include mobile {
+    @include smallDesktop {
       display: none;
     }
     button {
@@ -55,9 +55,6 @@
     }
     a {
       text-decoration: none;
-    }
-    a,
-    button {
       cursor: pointer;
       font-family: inherit;
       font-size: 1.125rem;
@@ -101,7 +98,6 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 1rem;
     border: none;
     color: transparent;
     width: 25px;
@@ -112,8 +108,15 @@
     padding: 0;
     display: none;
     cursor: pointer;
-    @include mobile {
+    @include smallDesktop {
       display: block;
+      right: 5rem;
+    }
+    @include tablet {
+      right: 2rem;
+    }
+    @include mobile {
+      right: 1rem;
     }
     div {
       background-color: #e4f9fe;

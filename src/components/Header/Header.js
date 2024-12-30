@@ -11,6 +11,7 @@ import classnames from "classnames";
 import Lottie from "react-lottie-player";
 
 import { AppContext } from "src/AppContext";
+import RequestYourQuoteButton from "src/components/RequestYourQuoteButton/RequestYourQuoteButton";
 import logo from "src/assets/logo.json";
 import classes from "./Header.module.scss";
 
@@ -134,6 +135,7 @@ const Header = ({ noDefaultHeader }) => {
               >
                 <span className={classes.text}>Contact us</span>
               </Link>
+              <RequestYourQuoteButton />
             </nav>
           </div>
           <button className={classes.menuButton} onClick={() => setMenu(true)}>

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Link from "next/link";
 
 import AppContext from "src/AppContext";
+import SeeOurMagicButton from "src/components/SeeOurMagicButton/SeeOurMagicButton";
 
 import classes from "./Footer.module.scss";
 
@@ -10,6 +11,7 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <div className="wrapper">
+        <SeeOurMagicButton />
         <div className={classes.social}>
           <p className={classes.lead}>Don&apos;t forget to follow us!</p>
           <ul>

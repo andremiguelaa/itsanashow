@@ -9,8 +9,8 @@
     padding: 1.2rem 0 2rem;
   }
   .lead {
-    margin: 0 0 1rem;
-    font-size: 1.15rem;
+    margin: 0 0 1.75rem;
+    font-size: 1.25rem;
     font-weight: 400;
     text-transform: uppercase;
     @include mobile {
@@ -27,11 +27,15 @@
     li {
       display: inline-block;
       text-align: center;
-      margin-left: 2.8rem;
+      margin-left: 2.3rem;
     }
     img {
-      height: 70px;
+      height: 60px;
       pointer-events: none;
+      opacity: 0.6;
+      @include mobile {
+        height: 55px;
+      }
     }
   }
 }
