@@ -13,6 +13,8 @@
     "@splinetool/runtime": "^1.9.54",
     "axios": "^1.7.4",
     "classnames": "^2.3.2",
+    "embla-carousel-auto-scroll": "^8.5.1",
+    "embla-carousel-react": "^8.5.1",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "is-touch-device": "^1.0.1",

@@ -17,21 +17,16 @@
       font-size: 0.8rem;
     }
   }
-  .clientsList {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size: 0;
+  .embla {
     overflow: hidden;
-    white-space: nowrap;
-    li {
-      display: inline-block;
-      text-align: center;
-      margin-left: 2.3rem;
-    }
+  }
+  .embla__container {
+    display: flex;
+  }
+  .embla__slide {
+    padding: 0 1.2rem;
     img {
       height: 60px;
-      pointer-events: none;
       opacity: 0.6;
       @include mobile {
         height: 55px;

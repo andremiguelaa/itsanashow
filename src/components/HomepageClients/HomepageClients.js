@@ -1,20 +1,20 @@
 import React from "react";
-import Slider from "react-slick";
+import useEmblaCarousel from "embla-carousel-react";
+import AutoScroll from "embla-carousel-auto-scroll";
 
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
 import classes from "./HomepageClients.module.scss";
 
-const HomepageClients = ({clients}) => {
-  const logoSliderSettings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 1,
-    centerMode: false,
-    variableWidth: true,
-    touchThreshold: 100,
-  };
-
+const HomepageClients = ({ clients }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      dragFree: true,
+      loop: true,
+      align: "start",
+    },
+    [AutoScroll({ playOnInit: true, stopOnInteraction: false, startDelay: 0 })]
+  );
   return (
     <section className={classes.clients}>
       <div className="wrapper">
@@ -23,18 +23,18 @@ const HomepageClients = ({clients}) => {
         </p>
       </div>
       {clients.length > 0 && (
-        <ul className={classes.clientsList}>
-          <Slider {...logoSliderSettings}>
+        <div ref={emblaRef} className={classes.embla}>
+          <div className={classes.embla__container}>
             {clients.map((client) => (
-              <li key={client.id}>
+              <div key={client.id} className={classes.embla__slide}>
                 <img
                   src={`${process.env.NEXT_PUBLIC_API_URL}${client.Logo}`}
                   alt={client.Name}
                 />
-              </li>
+              </div>
             ))}
-          </Slider>
-        </ul>
+          </div>
+        </div>
       )}
     </section>
   );
