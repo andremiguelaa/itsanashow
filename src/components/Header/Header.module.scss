@@ -1,4 +1,4 @@
-@import 'src/styles/mixins.scss';
+@import "src/styles/mixins.scss";
 
 .header {
   box-sizing: border-box;
@@ -48,11 +48,6 @@
     @include smallDesktop {
       display: none;
     }
-    button {
-      border: none;
-      background-color: transparent;
-      padding: 0;
-    }
     a {
       text-decoration: none;
       cursor: pointer;
@@ -68,11 +63,11 @@
         display: inline-block;
       }
       &:after {
-        content: '';
+        content: "";
         opacity: 0;
         position: absolute;
         right: -1rem;
-        background-image: url('../../assets/menuArrow.svg');
+        background-image: url("../../assets/menuArrow.svg");
         background-repeat: no-repeat;
         width: 17px;
         height: 10px;
@@ -92,9 +87,14 @@
           transform: translateX(0.25rem);
         }
       }
-      &.active{
+      &.active {
         font-weight: 600;
       }
+    }
+    .requestButton {
+      margin-left: 3rem;
+      display: inline-block;
+      vertical-align: middle;
     }
   }
   .menuButton {
@@ -144,41 +144,59 @@
   left: 0;
   bottom: 0;
   right: 0;
-  color: #08142d;
-  background: linear-gradient(179.94deg, #2a34ff 66.43%, #fe00ae 99.95%);
+  color: #fff;
+  background-color: #08142d;
   font-size: 2.25rem;
   pointer-events: none;
   transition: clip-path 0.75s cubic-bezier(0.8, 0, 0.2, 1);
-  clip-path: circle(0% at calc(100% - 2rem) 2rem);
+  display: none;
+  @include smallDesktop {
+    display: block;
+    clip-path: circle(0% at calc(100% - 5.3rem) 5.3rem);
+  }
+  @include tablet {
+    clip-path: circle(0% at calc(100% - 3.7rem) 3.7rem);
+  }
+  @include mobile {
+    clip-path: circle(0% at calc(100% - 2rem) 2rem);
+  }
   &.open {
     pointer-events: all;
     clip-path: circle(150% at 100% 0%);
   }
   &::before {
-    content: '';
+    content: "";
     position: absolute;
-    height: 50%;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    background-color: #08142d;
-    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-    opacity: 0.02;
+    top: -1600px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 1750px;
+    height: 1750px;
+    filter: blur(500px);
+    background-color: #2a34ff;
+    border-radius: 50%;
   }
   .close {
     position: fixed;
     cursor: pointer;
-    top: 2em;
-    right: 1.2rem;
-    display: block;
     width: 1.2rem;
     height: 1.2rem;
     overflow: hidden;
     border: none;
     padding: 0;
     background-color: transparent;
-    background-image: url('../../assets/closeWhite.svg');
+    background-image: url("../../assets/closeWhite.svg");
     background-size: contain;
+    top: 4.1em;
+    right: 5.3rem;
+    @include tablet {
+      top: 4.1em;
+      right: 2.3rem;
+    }
+    @include mobile {
+      top: 2em;
+      right: 1.3rem;
+    }
     &:focus {
       outline: none;
     }
@@ -189,8 +207,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    button,
     .link {
+      text-transform: uppercase;
       display: inline-block;
       width: 100%;
       outline: none;
@@ -200,44 +218,35 @@
       text-decoration: none;
       font-size: 2.8rem;
       background-color: transparent;
-      font-weight: bold;
+      font-weight: 400;
       font-family: inherit;
       padding: 0;
       color: #fff;
       transition: color 0.2s linear;
-      &:hover,
       &.active {
-        color: #00ffe6;
+        font-weight: 700;
       }
+    }
+    .requestButton {
+      margin-top: 6rem;
     }
   }
   .footer {
     position: fixed;
     bottom: 3rem;
     padding-top: 1.6rem;
-    border-top: 1px solid #fff;
     width: 90vw;
     left: 5vw;
     text-align: center;
     color: #fff;
-    .slogan {
-      margin: 0;
-      font-weight: 500;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
     ul {
       list-style: none;
       padding: 0;
       margin: 1.3rem auto 1rem;
       font-size: 0;
-      @include smallPhone {
-        max-width: 250px;
-      }
       li {
         display: inline-block;
-        margin: 0 0.4rem;
+        margin: 0 0.8rem;
         padding-bottom: 1rem;
       }
       a {

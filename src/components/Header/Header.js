@@ -13,6 +13,12 @@ import Lottie from "react-lottie-player";
 import { AppContext } from "src/AppContext";
 import RequestYourQuoteButton from "src/components/RequestYourQuoteButton/RequestYourQuoteButton";
 import logo from "src/assets/logo.json";
+import inIcon from "src/assets/social/IN.svg";
+import beIcon from "src/assets/social/Be.svg";
+import igIcon from "src/assets/social/IG.svg";
+import viIcon from "src/assets/social/VI.svg";
+import drIcon from "src/assets/social/DR.svg";
+
 import classes from "./Header.module.scss";
 
 const Header = ({ noDefaultHeader }) => {
@@ -135,7 +141,9 @@ const Header = ({ noDefaultHeader }) => {
               >
                 <span className={classes.text}>Contact us</span>
               </Link>
-              <RequestYourQuoteButton />
+              <div className={classes.requestButton}>
+                <RequestYourQuoteButton />
+              </div>
             </nav>
           </div>
           <button className={classes.menuButton} onClick={() => setMenu(true)}>
@@ -205,18 +213,21 @@ const Header = ({ noDefaultHeader }) => {
             >
               contact us
             </Link>
+            <div className={classes.requestButton}>
+              <RequestYourQuoteButton />
+            </div>
           </div>
         </div>
         <div className={classes.footer}>
-          <p className={classes.slogan}>Let&apos;s get social!</p>
           <ul>
             <li>
               <a
                 href="https://www.linkedin.com/company/itsanashow-studio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="LinkedIn"
               >
-                LinkedIn
+                <img src={inIcon.src} alt="LinkedIn" />
               </a>
             </li>
             <li>
@@ -224,8 +235,9 @@ const Header = ({ noDefaultHeader }) => {
                 href="https://www.instagram.com/itsanashow.studio/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Instagram"
               >
-                Instagram
+                <img src={igIcon.src} alt="Instagram" /> 
               </a>
             </li>
             <li>
@@ -233,8 +245,9 @@ const Header = ({ noDefaultHeader }) => {
                 href="https://www.behance.net/ItsanashowStudio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Behance"
               >
-                Behance
+                <img src={beIcon.src} alt="Behance" />
               </a>
             </li>
             <li>
@@ -242,8 +255,9 @@ const Header = ({ noDefaultHeader }) => {
                 href="https://vimeo.com/itsanashowstudio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Vimeo"
               >
-                Vimeo
+                <img src={viIcon.src} alt="Vimeo" />
               </a>
             </li>
             <li>
@@ -251,8 +265,9 @@ const Header = ({ noDefaultHeader }) => {
                 href="https://dribbble.com/itsanashow_studio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Dribble"
               >
-                Dribble
+                <img src={drIcon.src} alt="Dribble" />
               </a>
             </li>
           </ul>
