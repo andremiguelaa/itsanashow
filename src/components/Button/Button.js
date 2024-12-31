@@ -3,12 +3,11 @@ import Lottie from "react-lottie-player";
 import { useRouter } from "next/navigation";
 
 import { AppContext } from "src/AppContext";
-
 import arrow01 from "src/assets/buttons/arrow01.json";
 
 import classes from "./Button.module.scss";
 
-const Button = ({ text }) => {
+const Button = ({ text, arrow = arrow01 }) => {
   const router = useRouter();
   const lottie = useRef();
   const { setCursorType } = useContext(AppContext);
@@ -26,7 +25,7 @@ const Button = ({ text }) => {
     >
       {text}{" "}
       <div className={classes.arrow}>
-        <Lottie ref={lottie} animationData={arrow01} loop={false} />
+        <Lottie ref={lottie} animationData={arrow} loop={false} />
       </div>
     </button>
   );
