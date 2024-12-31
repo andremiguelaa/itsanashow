@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
+import Button from "src/components/Button/Button";
+import arrow from "src/assets/buttons/arrowG.json";
 import animation from "src/assets/animation.gif";
+import branding from "src/assets/branding.jpg";
+import webdesign from "src/assets/webdesign.gif";
 
 import classes from "./HomepageServices.module.scss";
 
@@ -15,12 +19,12 @@ const SERVICES = [
   {
     title: "Branding",
     text: "Our holistic branding approach transforms visuals into stories that endure. From designing bold logos and defining brand guidelines to developing animation languages, we ensure every element communicates your brand’s unique identity across all media.",
-    image: animation,
+    image: branding,
   },
   {
     title: "Webdesign",
     text: "We craft responsive, SEO-optimized websites designed to captivate. With seamless UX/UI and engaging interactive features, our websites deliver intuitive user experiences on any device, boosting your brand’s online visibility.",
-    image: animation,
+    image: webdesign,
   },
 ];
 
@@ -37,29 +41,51 @@ const HomepageServices = () => {
             Engage your audience and amplify your voice with our...
           </AnimatedText>
         </p>
-        <ul className={classes.servicesList}>
-          {SERVICES.map((service) => (
-            <li
-              key={service.title}
-              className={classNames(classes.service, {
-                [classes.active]: service.title === activeService,
-              })}
-            >
-              <h2 hidden>{service.title}</h2>
-              <img
-                src={service.image.src}
-                alt={service.title}
-                className={classes.image}
-              />
-              <p className={classes.text}>{service.text}</p>
-            </li>
-          ))}
-        </ul>
-        <nav className={classes.servicesNav}>
-          {SERVICES.map((service) => (
-            <button key={service.title}>{service.title}</button>
-          ))}
-        </nav>
+        <div className={classes.content}>
+          <ul className={classes.servicesList}>
+            {SERVICES.map((service) => (
+              <li
+                key={service.title}
+                className={classNames(classes.service, {
+                  [classes.active]: service.title === activeService,
+                })}
+              >
+                <h2 className={classes.title}>{service.title}</h2>
+                <img
+                  src={service.image.src}
+                  alt={service.title}
+                  className={classes.image}
+                />
+                <p className={classes.text}>{service.text}</p>
+              </li>
+            ))}
+          </ul>
+          <nav className={classes.servicesNav}>
+            {SERVICES.map((service) => (
+              <button
+                key={service.title}
+                className={classNames(classes.button, {
+                  [classes.active]: service.title === activeService,
+                })}
+                onClick={() => {
+                  setActiveService(service.title);
+                }}
+                onMouseEnter={() => {
+                  setActiveService(service.title);
+                }}
+              >
+                {service.title}
+              </button>
+            ))}
+          </nav>
+        </div>
+        <div className={classes.cta}>
+          <Button
+            text={<strong>Let’s Build Something Extraordinary</strong>}
+            arrow={arrow}
+            target="/contact-us"
+          />
+        </div>
       </div>
     </section>
   );
