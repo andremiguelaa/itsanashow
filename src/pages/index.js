@@ -1,8 +1,10 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useContext } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import Spline from "@splinetool/react-spline";
 import classnames from "classnames";
 
+import { AppContext } from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import HomepageClients from "src/components/HomepageClients/HomepageClients";
 import HomepageWork from "src/components/HomepageWork/HomepageWork";
@@ -11,10 +13,13 @@ import Testimonials from "src/components/Testimonials/Testimonials";
 import HomepageTeam from "src/components/HomepageTeam/HomepageTeam";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import Button from "src/components/Button/Button";
+import arrow from "src/assets/buttons/arrowB.json";
 
 import classes from "./styles.module.scss";
 
 const Home = () => {
+  const { setCursorType } = useContext(AppContext);
+
   const { data: homepageData } = useRequest({
     url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
     method: "GET",
@@ -76,6 +81,13 @@ const Home = () => {
     return [];
   }, [homepageData]);
 
+  const { data: articlesData } = useRequest({
+    url: "articles",
+    method: "GET",
+  });
+
+  const articles = articlesData?.data.slice(0, 3) || [];
+
   return (
     <>
       <Head>
@@ -110,6 +122,73 @@ const Home = () => {
       <HomepageServices />
       <Testimonials />
       <HomepageTeam />
+      {articles.length > 0 && (
+        <div className={classes.related}>
+          <div className="wrapper">
+            <p className={classes.lead}>From Our Creative Minds</p>
+            <p className={classes.caption}>Insights You’ll Love</p>
+            <ul className={classes.articles}>
+              {articles.map((item) => (
+                <li className={classes.article} key={item.id}>
+                  <Link
+                    className={classes.link}
+                    href={`/logbook/${item.attributes.Slug}`}
+                  >
+                    <div
+                      className={classes.imageWrapper}
+                      onMouseEnter={() => {
+                        setCursorType("read");
+                      }}
+                      onMouseLeave={() => {
+                        setCursorType("default");
+                      }}
+                    >
+                      <img
+                        className={classes.image}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${item.attributes.Thumbnail.data.attributes.url}`}
+                        alt={
+                          item.attributes.Thumbnail.data.attributes
+                            .alternativeText
+                        }
+                      />
+                      <div className={classes.overlay}></div>
+                      <div className={classes.author}>
+                        <img
+                          className={classes.avatar}
+                          src={`${process.env.NEXT_PUBLIC_API_URL}${item.attributes.Author.Avatar.data.attributes.url}`}
+                          alt={
+                            item.attributes.Author.Avatar.data.attributes
+                              .alternativeText
+                          }
+                        />
+                        <div className={classes.authorInfo}>
+                          Written by
+                          <br />
+                          <strong>{item.attributes.Author.Name}</strong>
+                        </div>
+                      </div>
+                    </div>
+                    <p className={classes.date}>
+                      {new Date(item.attributes.Date).toLocaleDateString(
+                        "en-US",
+                        {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )}
+                    </p>
+                    <p className={classes.title}>{item.attributes.Title}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className={classes.cta}>
+              <Button text={<strong>Dive Deeper</strong>} arrow={arrow} />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
