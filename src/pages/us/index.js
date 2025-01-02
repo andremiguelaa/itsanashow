@@ -22,7 +22,7 @@ import brand from "src/assets/skills/brand.json";
 import classes from "./styles.module.scss";
 
 const Us = () => {
-  const { setCursorType, scrollElement } = useContext(AppContext);
+  const { setCursorType } = useContext(AppContext);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const settings = {
@@ -130,15 +130,11 @@ const Us = () => {
   };
 
   useEffect(() => {
-    if (scrollElement) {
-      scrollElement.addEventListener("scroll", listenToScroll);
-    }
+    global.document.addEventListener("scroll", listenToScroll);
     return () => {
-      if (scrollElement) {
-        scrollElement.removeEventListener("scroll", listenToScroll);
-      }
+      global.document.removeEventListener("scroll", listenToScroll);
     };
-  }, [scrollElement]);
+  }, []);
 
   return (
     <>

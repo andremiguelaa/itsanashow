@@ -11,7 +11,7 @@ import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import classes from "./styles.module.scss";
 
 const Work = () => {
-  const { setCursorType, scrollElement } = useContext(AppContext);
+  const { setCursorType } = useContext(AppContext);
 
   const scrollRef = useRef();
 
@@ -179,7 +179,7 @@ const Work = () => {
             ref={scrollWorksRef}
             style={{ position: "absolute", top: "100vh" }}
           />
-          <ParallaxProvider scrollContainer={scrollElement}>
+          <ParallaxProvider>
             <ul className={classes.list}>
               {works.map(({ id, Title, Slug, Image, Categories }, index) => (
                 <li className={classes.item} key={id}>

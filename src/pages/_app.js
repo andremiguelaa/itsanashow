@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import classnames from "classnames";
 
 import AppContext from "src/AppContext";
 import Cursor from "src/components/Cursor/Cursor";
@@ -17,13 +16,7 @@ import classes from "./app.module.scss";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const ref = useRef();
   const [cursorType, setCursorType] = useState("default");
-  const [scrollElement, setScrollElement] = useState(null);
-
-  useEffect(() => {
-    setScrollElement(ref.current);
-  }, [ref, setScrollElement]);
 
   const pageKey = router.asPath;
 
@@ -32,8 +25,6 @@ export default function App({ Component, pageProps }) {
       value={{
         cursorType,
         setCursorType,
-        scrollElement,
-        setScrollElement,
       }}
     >
       <div className={classes.wrapper}>
@@ -47,10 +38,7 @@ export default function App({ Component, pageProps }) {
         `}
         </Script>
         <Header noDefaultHeader={router.pathname === "/privacy-policy"} />
-        <div
-          className={classnames(classes.content)}
-          ref={ref}
-        >
+        <div>
           <Component key={pageKey} {...pageProps} />
           <Footer />
         </div>

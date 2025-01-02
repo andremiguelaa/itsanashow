@@ -22,7 +22,7 @@ import drIcon from "src/assets/social/DR.svg";
 import classes from "./Header.module.scss";
 
 const Header = ({ noDefaultHeader }) => {
-  const { setCursorType, scrollElement } = useContext(AppContext);
+  const { setCursorType } = useContext(AppContext);
 
   const router = useRouter();
   const [page, setPage] = useState();
@@ -46,20 +46,16 @@ const Header = ({ noDefaultHeader }) => {
 
   const listenToScroll = useCallback(() => {
     setDefaultHeader(
-      noDefaultHeader ? false : scrollElement.scrollTop < window.innerHeight
+      noDefaultHeader ? false : global.document.scrollingElement.scrollTop < window.innerHeight
     );
-  }, [scrollElement, noDefaultHeader]);
+  }, [noDefaultHeader]);
 
   useEffect(() => {
-    if (scrollElement) {
-      scrollElement.addEventListener("scroll", listenToScroll);
-    }
+    global.document.addEventListener("scroll", listenToScroll);
     return () => {
-      if (scrollElement) {
-        scrollElement.removeEventListener("scroll", listenToScroll);
-      }
+      global.document.removeEventListener("scroll", listenToScroll);
     };
-  }, [scrollElement, listenToScroll]);
+  }, [listenToScroll]);
 
   return (
     <>
@@ -237,7 +233,7 @@ const Header = ({ noDefaultHeader }) => {
                 rel="noreferrer"
                 aria-label="Instagram"
               >
-                <img src={igIcon.src} alt="Instagram" /> 
+                <img src={igIcon.src} alt="Instagram" />
               </a>
             </li>
             <li>

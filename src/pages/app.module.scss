@@ -5,23 +5,6 @@
   height: 100vh;
 }
 
-.content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  &:global(.fade-enter) {
-    animation-name: enter;
-  }
-  &:global(.fade-exit) {
-    animation-name: exit;
-  }
-}
-
 @keyframes enter {
   from {
     opacity: 0;
