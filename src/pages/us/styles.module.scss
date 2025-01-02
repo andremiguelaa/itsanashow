@@ -7,14 +7,12 @@
   &::before {
     content: "";
     position: absolute;
-    top: -1600px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 1750px;
-    height: 1750px;
-    filter: blur(500px);
-    background-color: #2a34ff;
-    border-radius: 50%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/blur.svg');
+    background-repeat: no-repeat;
+    background-position: top center;
   }
   @include mobile {
     padding: 7rem 0 3rem;
