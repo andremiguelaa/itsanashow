@@ -8,6 +8,7 @@ import HomepageClients from "src/components/HomepageClients/HomepageClients";
 import HomepageWork from "src/components/HomepageWork/HomepageWork";
 import HomepageServices from "src/components/HomepageServices/HomepageServices";
 import Testimonials from "src/components/Testimonials/Testimonials";
+import HomepageTeam from "src/components/HomepageTeam/HomepageTeam";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import Button from "src/components/Button/Button";
 
@@ -108,6 +109,7 @@ const Home = () => {
       <HomepageWork portfolioHighlights={portfolioHighlights} />
       <HomepageServices />
       <Testimonials />
+      <HomepageTeam />
     </>
   );
 };

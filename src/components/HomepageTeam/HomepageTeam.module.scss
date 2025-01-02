@@ -1,0 +1,49 @@
+@import "src/styles/mixins.scss";
+
+.team {
+  background-color: #08142d;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 6.6rem 0 4.75rem;
+  @include tablet {
+    padding: 2.3rem 0 3rem;
+  }
+  .videoMedia {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .content{
+    position: relative;
+  }
+  .lead {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    @include mobile {
+      font-size: 0.8rem;
+    }
+  }
+  .description {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    max-width: 800px;
+    margin-bottom: 26rem;
+    @include mobile {
+      font-size: 1.375rem;
+      max-width: 450px;
+    }
+  }
+  .cta {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
