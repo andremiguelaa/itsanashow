@@ -103,7 +103,7 @@
     transform: translateY(-50%);
     border: none;
     color: transparent;
-    width: 25px;
+    width: 22px;
     height: 18px;
     background-color: transparent;
     font-size: 0;
@@ -127,10 +127,13 @@
       transition: width 0.2s linear;
       &:nth-child(1),
       &:nth-child(3) {
-        width: 20px;
+        width: 11px;
+      }
+      &:nth-child(1){
+        margin-left: 11px;
       }
       &:nth-child(2) {
-        width: 25px;
+        width: 22px;
         margin: 5px 0;
       }
     }

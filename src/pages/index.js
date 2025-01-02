@@ -39,7 +39,7 @@ const Home = () => {
                     attributes: { url: Image },
                   },
                 },
-                Tags: { data: Tags },
+                Categories: { data: Tags },
               },
             },
           },

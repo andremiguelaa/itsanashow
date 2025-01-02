@@ -39,7 +39,6 @@ const Work = () => {
                       attributes: { url: Image },
                     },
                   },
-                  Tags: { data: Tags },
                   Categories: { data: Categories },
                 },
               },
@@ -50,7 +49,6 @@ const Work = () => {
           Title,
           Slug,
           Image,
-          Tags: Tags.map(({ attributes: { Text } }) => Text),
           Categories: Categories.map(({ attributes: { Text } }) => Text),
         })
       );
@@ -183,7 +181,7 @@ const Work = () => {
           />
           <ParallaxProvider scrollContainer={scrollElement}>
             <ul className={classes.list}>
-              {works.map(({ id, Title, Slug, Image, Tags }, index) => (
+              {works.map(({ id, Title, Slug, Image, Categories }, index) => (
                 <li className={classes.item} key={id}>
                   <Link
                     href={`/work/${Slug}`}
@@ -210,8 +208,8 @@ const Work = () => {
                       <div className={classes.overlay} />
                       <div className={classes.text}>
                         <p className={classes.name}>{Title}</p>
-                        {Tags.length > 0 && (
-                          <p className={classes.tags}>{Tags.join(", ")}</p>
+                        {Categories.length > 0 && (
+                          <p className={classes.tags}>{Categories.join(", ")}</p>
                         )}
                       </div>
                     </Parallax>
