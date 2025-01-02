@@ -178,9 +178,11 @@
     filter: blur(500px);
     background-color: #2a34ff;
     border-radius: 50%;
+    pointer-events: none;
   }
   .close {
     position: fixed;
+    z-index: 1;
     cursor: pointer;
     width: 1.2rem;
     height: 1.2rem;
@@ -206,10 +208,11 @@
   }
   .links {
     text-align: center;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     .link {
       text-transform: uppercase;
       display: inline-block;
@@ -231,13 +234,12 @@
       }
     }
     .requestButton {
-      margin-top: 6rem;
+      margin-top: 6vh;
     }
   }
   .footer {
     position: fixed;
-    bottom: 3rem;
-    padding-top: 1.6rem;
+    bottom: 3vh;
     width: 90vw;
     left: 5vw;
     text-align: center;
