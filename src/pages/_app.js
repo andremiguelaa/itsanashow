@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 
@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
           gtag('config', 'G-CK5GL0XLJS');
         `}
         </Script>
-        <Header noDefaultHeader={router.pathname === "/privacy-policy"} />
+        <Header />
         <div>
           <Component key={pageKey} {...pageProps} />
           <Footer />

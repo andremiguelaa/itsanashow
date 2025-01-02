@@ -93,7 +93,7 @@ const Article = ({ prefetchedArticle }) => {
       </Head>
       <div className={classnames("wrapper", classes.backLinkWrapper)}>
         <Link
-          href="/logbook"
+          href="/insights"
           className={classes.backLink}
           onMouseEnter={() => {
             setCursorType("bigger");
@@ -307,7 +307,7 @@ const Article = ({ prefetchedArticle }) => {
                 <li className={classes.article} key={item.id}>
                   <Link
                     className={classes.link}
-                    href={`/logbook/${item.attributes.Slug}`}
+                    href={`/insights/${item.attributes.Slug}`}
                   >
                     <div
                       className={classes.imageWrapper}

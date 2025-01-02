@@ -132,7 +132,7 @@ const Home = () => {
                 <li className={classes.article} key={item.id}>
                   <Link
                     className={classes.link}
-                    href={`/logbook/${item.attributes.Slug}`}
+                    href={`/insights/${item.attributes.Slug}`}
                   >
                     <div
                       className={classes.imageWrapper}
@@ -184,7 +184,7 @@ const Home = () => {
               ))}
             </ul>
             <div className={classes.cta}>
-              <Button text={<strong>Dive Deeper</strong>} arrow={arrow} />
+              <Button text={<strong>Dive Deeper</strong>} arrow={arrow} target="/insights" />
             </div>
           </div>
         </div>

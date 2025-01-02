@@ -13,7 +13,8 @@
   &.defaultHeader {
     mix-blend-mode: normal;
   }
-  &.logbook {
+  &.privacy-policy,
+  &.insights {
     mix-blend-mode: difference;
     transition: opacity 1s linear;
     transition-delay: 2s;

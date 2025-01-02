@@ -143,7 +143,7 @@ const Blog = () => {
                 >
                   <Link
                     className={classes.link}
-                    href={`/logbook/${article.attributes.Slug}`}
+                    href={`/insights/${article.attributes.Slug}`}
                   >
                     <div
                       className={classNames(classes.linkContent, {
