@@ -2,7 +2,18 @@ import React, { useContext } from "react";
 import Link from "next/link";
 
 import AppContext from "src/AppContext";
-import SeeOurMagicButton from "src/components/SeeOurMagicButton/SeeOurMagicButton";
+import Button from "src/components/Button/Button";
+import DummyHead from "src/components/Head/Head";
+import DeckButton from "src/components/DeckButton/DeckButton";
+
+import arrow from "src/assets/buttons/arrowB.json";
+import arrowG from "src/assets/buttons/arrowG.json";
+import inIcon from "src/assets/social/IN.svg";
+import beIcon from "src/assets/social/Be.svg";
+import igIcon from "src/assets/social/IG.svg";
+import viIcon from "src/assets/social/VI.svg";
+import drIcon from "src/assets/social/DR.svg";
+import logo from "src/assets/logo_hor.svg";
 
 import classes from "./Footer.module.scss";
 
@@ -10,16 +21,106 @@ const Footer = () => {
   const { setCursorType } = useContext(AppContext);
   return (
     <footer className={classes.footer}>
+      <div className={classes.intro}>
+        <div className={classes.customWrapper}>
+          <p className={classes.sentence}>
+            Together, we can create marvels that drive results and steal the
+            show.
+          </p>
+        </div>
+        <div className="wrapper">
+          <div className={classes.cta}>
+            <Button
+              text={<strong>Let the fun begin!</strong>}
+              arrow={arrow}
+              target="/contact-us"
+            />
+          </div>
+        </div>
+        <DummyHead className={classes.head} />
+      </div>
       <div className="wrapper">
-        <SeeOurMagicButton />
+        <div className={classes.columns}>
+          <div>
+            <img src={logo.src} alt="itsanashow creative studio logo" />
+            <nav className={classes.nav}>
+              <ul>
+                <li>
+                  <Link
+                    href="/work"
+                    onMouseEnter={() => {
+                      setCursorType("bigger");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType("default");
+                    }}
+                  >
+                    Work
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/us"
+                    onMouseEnter={() => {
+                      setCursorType("bigger");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType("default");
+                    }}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/insights"
+                    onMouseEnter={() => {
+                      setCursorType("bigger");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType("default");
+                    }}
+                  >
+                    Insights
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact-us"
+                    onMouseEnter={() => {
+                      setCursorType("bigger");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType("default");
+                    }}
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div className={classes.rightColumn}>
+            <p className={classes.lead}>Your next big thing starts here.</p>
+            <Button
+              text={<strong className={classes.link}>Let&apos;s chat!</strong>}
+              arrow={arrowG}
+              target="/contact-us"
+            />
+            <div>
+              <DeckButton />
+            </div>
+          </div>
+        </div>
+
         <div className={classes.social}>
-          <p className={classes.lead}>Don&apos;t forget to follow us!</p>
           <ul>
             <li>
               <a
                 href="https://www.linkedin.com/company/itsanashow-studio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="LinkedIn"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
@@ -27,7 +128,7 @@ const Footer = () => {
                   setCursorType("default");
                 }}
               >
-                LinkedIn
+                <img src={inIcon.src} alt="LinkedIn" />
               </a>
             </li>
             <li>
@@ -35,6 +136,7 @@ const Footer = () => {
                 href="https://www.instagram.com/itsanashow.studio/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Instagram"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
@@ -42,7 +144,7 @@ const Footer = () => {
                   setCursorType("default");
                 }}
               >
-                Instagram
+                <img src={igIcon.src} alt="Instagram" />
               </a>
             </li>
             <li>
@@ -50,6 +152,7 @@ const Footer = () => {
                 href="https://www.behance.net/ItsanashowStudio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Behance"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
@@ -57,7 +160,7 @@ const Footer = () => {
                   setCursorType("default");
                 }}
               >
-                Behance
+                <img src={beIcon.src} alt="Behance" />
               </a>
             </li>
             <li>
@@ -65,6 +168,7 @@ const Footer = () => {
                 href="https://vimeo.com/itsanashowstudio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Vimeo"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
@@ -72,7 +176,7 @@ const Footer = () => {
                   setCursorType("default");
                 }}
               >
-                Vimeo
+                <img src={viIcon.src} alt="Vimeo" />
               </a>
             </li>
             <li>
@@ -80,6 +184,7 @@ const Footer = () => {
                 href="https://dribbble.com/itsanashow_studio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Dribble"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
@@ -87,74 +192,25 @@ const Footer = () => {
                   setCursorType("default");
                 }}
               >
-                Dribble
+                <img src={drIcon.src} alt="Dribble" />
               </a>
             </li>
           </ul>
         </div>
-        <div className={classes.hr} />
-        <div className={classes.contacts}>
-          <div className={classes.address}>
-            Palácio Rosa, R. Seara Nova 5
-            <br />
-            1250-002 Lisboa
-            <br />
-            Portugal
-          </div>
-          <div className={classes.other}>
-            <dl>
-              <dt>General Questions</dt>
-              <dd>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="mailto:hello@itsanashow.com"
-                  className={classes.mail}
-                  onMouseEnter={() => {
-                    setCursorType("bigger");
-                  }}
-                  onMouseLeave={() => {
-                    setCursorType("default");
-                  }}
-                >
-                  hello@itsanashow.com
-                </a>
-              </dd>
-              <dt>New business inquiries</dt>
-              <dd>
-                <a
-                  href="https://itsanashow.surveysparrow.com/s/contact-form/tt-05a01e"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={classes.survey}
-                  onMouseEnter={() => {
-                    setCursorType("bigger");
-                  }}
-                  onMouseLeave={() => {
-                    setCursorType("default");
-                  }}
-                >
-                  Let&apos;s Talk
-                </a>
-              </dd>
-            </dl>
-            <Link
-              href="/privacy-policy"
-              className={classes.privacy}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Privacy Policy
-            </Link>
-          </div>
-        </div>
         <p className={classes.copyright}>
-          © Itsanashow Creative Studio, Lda {new Date().getFullYear()}. All
-          rights reserved.
+          © Itsanashow Creative Studio, Lda {new Date().getFullYear()}.<br />{" "}
+          All rights reserved. |{" "}
+          <Link
+            href="/privacy-policy"
+            onMouseEnter={() => {
+              setCursorType("bigger");
+            }}
+            onMouseLeave={() => {
+              setCursorType("default");
+            }}
+          >
+            Privacy Policy
+          </Link>
         </p>
       </div>
     </footer>

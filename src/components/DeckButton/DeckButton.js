@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import Lottie from "react-lottie-player";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 import { AppContext } from "src/AppContext";
 import button from "src/assets/button.json";
 
-import classes from "./SeeOurMagicButton.module.scss";
+import classes from "./DeckButton.module.scss";
 
 const buttonFrameLimits = {
   start: 30,
@@ -14,7 +14,7 @@ const buttonFrameLimits = {
   end: 179,
 };
 
-const SeeOurMagicButton = () => {
+const DeckButton = () => {
   const router = useRouter();
   const { setCursorType } = useContext(AppContext);
   const buttonFrame = useRef(buttonFrameLimits.start);
@@ -58,7 +58,7 @@ const SeeOurMagicButton = () => {
             numberChange(buttonFrameLimits.middle2, buttonFrameLimits.end);
             setCursorType("default");
           }}
-          onClick={() => router.push("/work")}
+          onClick={() => {}}
         >
           <Lottie animationData={button} goTo={buttonFrameState} />
         </button>
@@ -67,4 +67,4 @@ const SeeOurMagicButton = () => {
   );
 };
 
-export default SeeOurMagicButton;
+export default DeckButton;
