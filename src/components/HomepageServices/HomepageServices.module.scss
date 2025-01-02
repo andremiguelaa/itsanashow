@@ -80,6 +80,10 @@
       .text {
         font-size: 1rem;
         line-height: 1.875;
+        font-weight: 500;
+        @include smallDesktop {
+          font-size: 0.875rem;
+        }
       }
       & + .service{
         @include smallDesktop {

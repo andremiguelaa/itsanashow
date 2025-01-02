@@ -1,11 +1,11 @@
 @import "src/styles/mixins.scss";
 
 .intro {
-  background-color: #08142D;
+  background-color: #08142d;
   padding: 14rem 0 10rem;
   position: relative;
-  &::before{
-    content: '';
+  &::before {
+    content: "";
     position: absolute;
     top: -1600px;
     left: 50%;
@@ -13,7 +13,7 @@
     width: 1750px;
     height: 1750px;
     filter: blur(500px);
-    background-color: #2A34FF;
+    background-color: #2a34ff;
     border-radius: 50%;
   }
   @include mobile {
@@ -33,15 +33,20 @@
     }
     .description {
       margin: 0;
-      font-size: 3.5rem;
-      font-weight: 600;
+      font-size: 1.5rem;
       line-height: 1.25;
-      max-width: 1250px;
+      max-width: 850px;
       @include mobile {
         font-size: 1.35rem;
       }
       strong {
-        font-weight: 800;
+        font-size: 4.875rem;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 1rem;
+        @include mobile {
+          font-size: 2.5rem;
+        }
       }
     }
   }
@@ -337,7 +342,7 @@
       list-style: none;
       margin: 3rem 0 0;
       padding: 0;
-      @include tablet {
+      @include smallDesktop {
         margin: 3rem 0;
       }
       @include mobile {
@@ -352,7 +357,7 @@
         &:last-child {
           border: none;
         }
-        @include tablet {
+        @include smallDesktop {
           display: block;
         }
         @include mobile {
@@ -360,7 +365,7 @@
         }
         .img {
           width: 10%;
-          @include tablet {
+          @include smallDesktop {
             width: 20%;
           }
           @include mobile {
@@ -370,8 +375,15 @@
         .name {
           margin: 0;
           box-sizing: border-box;
-          font-size: 3.75rem;
+          font-size: 3.125rem;
           font-weight: 700;
+          width: 23%;
+          @include smallDesktop {
+            width: 100%;
+            br {
+              display: none;
+            }
+          }
           @include mobile {
             font-size: 1.7rem;
           }
@@ -381,7 +393,7 @@
           padding-right: 2rem;
           padding-left: 3rem;
           width: 55%;
-          @include tablet {
+          @include smallDesktop {
             width: 100%;
             padding-right: 0;
             padding-left: 0;
@@ -391,17 +403,11 @@
           font-size: 1.75rem;
           font-weight: 400;
           line-height: 1.25;
-          @include tablet {
+          @include smallDesktop {
             width: 100%;
           }
           @include mobile {
             font-size: 0.9rem;
-          }
-        }
-        .tags {
-          font-size: 0.95rem;
-          @include mobile {
-            font-size: 0.7rem;
           }
         }
       }
@@ -411,7 +417,7 @@
       padding: 0 0 7rem;
       text-align: right;
       overflow: hidden;
-      @include tablet {
+      @include smallDesktop {
         margin: 0;
       }
       @include mobile {
@@ -426,39 +432,16 @@
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       @include mobile {
         font-size: 0.8rem;
+        justify-content: flex-end;
       }
-      &::before {
-        position: absolute;
-        bottom: -2px;
-        content: "";
-        display: block;
-        height: 1px;
-        background-color: #fff;
-        width: 1440px;
-        right: calc(100% + 3rem);
+      span {
         @include mobile {
-          right: calc(100% + 1rem);
-          bottom: 45%;
-        }
-      }
-      &::after {
-        position: absolute;
-        bottom: -2px;
-        content: "";
-        display: block;
-        height: 1px;
-        background-color: #fff;
-        right: 0;
-        width: 100%;
-        transform: scale(0);
-        transition: transform 0.3s linear;
-        transform-origin: 0%;
-      }
-      &:hover {
-        &::after {
-          transform: scale(1);
+          display: none;
         }
       }
     }

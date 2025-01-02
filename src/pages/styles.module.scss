@@ -4,6 +4,10 @@
   background-color: #161616;
   padding: 18rem 0 9.5rem;
   position: relative;
+  min-height: calc(100vh - 200px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
   @include mobile {
     padding: 11rem 0 4rem;
   }

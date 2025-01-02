@@ -3,7 +3,6 @@ import Link from "next/link";
 import Head from "next/head";
 import Slider from "react-slick";
 import classnames from "classnames";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import Lottie from "react-lottie-player";
 import { InView } from "react-intersection-observer";
 
@@ -13,7 +12,9 @@ import Markdown from "src/components/Markdown/Markdown";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import Instagram from "src/components/Instagram/Instagram";
 import Testimonials from "src/components/Testimonials/Testimonials";
+import Button from "src/components/Button/Button";
 
+import arrow from "src/assets/buttons/arrowG.json";
 import motion from "src/assets/skills/motion.json";
 import graphics from "src/assets/skills/graphics.json";
 import brand from "src/assets/skills/brand.json";
@@ -40,8 +41,6 @@ const Us = () => {
     url: "know-us-page?populate%5BTeam%5D%5Bpopulate%5D%5Bteam_member%5D%5Bpopulate%5D=*&populate%5BGallery%5D%5Bpopulate%5D%5Bteam_photo%5D%5Bpopulate%5D=*&populate%5BTestimonials%5D%5Bpopulate%5D=*",
     method: "GET",
   });
-
-  const scrollRef = useRef();
 
   const [teamMemberVisibility, setTeamMemberVisibility] = useState({});
 
@@ -144,7 +143,7 @@ const Us = () => {
   return (
     <>
       <Head>
-        <title>Itsanashow Studio | Know Us</title>
+        <title>Itsanashow Studio | About Us</title>
         <meta
           name="description"
           content='Meet the Itsanashow Creative Studio team, where we embrace challenges with creative hunger and a passion for overcoming obstacles. Our motto: "We love to give shape to beautiful and meaningful stories."'
@@ -157,13 +156,21 @@ const Us = () => {
           </p>
           <p className={classes.description}>
             <strong>
-              <AnimatedText delay={150}>Storytelling is life.</AnimatedText>
+              <AnimatedText delay={150}>
+                Your dedicated creative squad
+              </AnimatedText>
             </strong>
-            <br />
-            <AnimatedText delay={300}>
-              Embrace challenges with an open heart, creative hunger and a
-              passion for overcoming obstacles as a team.
+            <AnimatedText delay={250}>
+              Searching for a pixel-perfect partner who crafts stunning
+              narratives and makes the whole process a breeze?
             </AnimatedText>
+            <br />
+            <br />
+            <b>
+              <AnimatedText delay={250}>
+                You’ve found your perfect match!✨
+              </AnimatedText>
+            </b>
           </p>
         </div>
       </section>
@@ -275,12 +282,12 @@ const Us = () => {
       <section className={classes.what}>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
-            <AnimatedText>What we do</AnimatedText>
+            <AnimatedText>Our creative process</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={150}>
-              We shape your ideas into beautiful and meaningful stories.
-            </AnimatedText>
+            <AnimatedText delay={150}>Tailored. Collaborative.</AnimatedText>
+            <br />
+            <AnimatedText delay={250}>Impactful.</AnimatedText>
           </p>
           <ul className={classes.list}>
             <li
@@ -291,15 +298,16 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={motion} play />
               </div>
-              <p className={classes.name}>Strategy</p>
+              <p className={classes.name}>
+                Rooted in
+                <br /> Your Brand
+              </p>
               <div className={classes.content}>
                 <p className={classes.text}>
-                  Crafting your standout vision to make a lasting mark in your
-                  customers&apos; lives - that&apos;s our gig!
-                </p>
-                <p className={classes.tags}>
-                  Creative Direction • Branding • Scriptwriting • Tone of Voice
-                  • Copywriting
+                  We’re more than creators; we’re your brand partners. We
+                  uncover your brand’s essence and amplify it through impactful,
+                  on-brand design and motion that aligns perfectly with your
+                  goals.
                 </p>
               </div>
             </li>
@@ -311,16 +319,13 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={graphics} play />
               </div>
-              <p className={classes.name}>Visuals</p>
+              <p className={classes.name}>Impact with Consistency</p>
               <div className={classes.content}>
                 <p className={classes.text}>
-                  Designing eye-catching visuals and efficient systems that
-                  speak volumes to both your team and the wider world, all on a
-                  grand scale!
-                </p>
-                <p className={classes.tags}>
-                  Visual Identity • Illustration • Graphic Design • Infographics
-                  • Photo &amp; Video
+                  Our visuals and animations embody your brand’s voice,
+                  delivering cohesive designs across platforms. We create
+                  seamless experiences that build trust and strengthen your
+                  brand identity.
                 </p>
               </div>
             </li>
@@ -332,33 +337,25 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={brand} play />
               </div>
-              <p className={classes.name}>Experience</p>
+              <p className={classes.name}>Results-Driven Partnership</p>
               <div className={classes.content}>
                 <p className={classes.text}>
-                  Unleashing imaginative strategies and dynamic experiences,
-                  ensuring your users interact with your vision in the real
-                  world and build positive engagement.
-                </p>
-                <p className={classes.tags}>
-                  Animation &amp; Motion Graphics • Web Design &amp; Development
-                  • UI Animation • Interactive Interfaces & AR • Campaigns
+                  We work hand-in-hand with your team to turn ideas into
+                  impactful results. With precision and creativity, we bring
+                  your vision to life as your brand’s dedicated creative squad.
                 </p>
               </div>
             </li>
           </ul>
           <div className={classes.ctaWrapper}>
-            <Link
-              href="/work"
-              className={classes.cta}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Know our work
-            </Link>
+            <div className={classes.cta}>
+              <span>Let&apos;s work together</span>
+              <Button
+                text={<strong>Let’s Build Something Extraordinary</strong>}
+                arrow={arrow}
+                target="/contact-us"
+              />
+            </div>
           </div>
         </div>
       </section>

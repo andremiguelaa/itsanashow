@@ -51,7 +51,11 @@ const HomepageWork = ({ portfolioHighlights }) => (
         </p>
         <p className={classes.description}>
           <AnimatedText delay={100}>
-            Visuals that dominate, inspire, and leave your competition jealous 
+            Visuals that dominate, inspire,
+          </AnimatedText>
+          <br />
+          <AnimatedText delay={200}>
+            and leave your competition jealous 
           </AnimatedText>
         </p>
       </div>

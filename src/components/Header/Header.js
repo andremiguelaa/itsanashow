@@ -111,7 +111,7 @@ const Header = ({ noDefaultHeader }) => {
                 }}
                 className={classnames({ [classes.active]: page === "/us" })}
               >
-                <span className={classes.text}>Know us</span>
+                <span className={classes.text}>About us</span>
               </Link>
               <Link
                 href="/logbook"
@@ -187,7 +187,7 @@ const Header = ({ noDefaultHeader }) => {
                 [classes.active]: page === "/us",
               })}
             >
-              know us
+              about us
             </Link>
             <Link
               href="/work"

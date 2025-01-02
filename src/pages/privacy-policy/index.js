@@ -59,7 +59,7 @@ const Privacy = () => {
             </p>
             <p>
               If you decide to send us an email to the email address provided on
-              &apos;Contact Us&apos; or the &apos;Know Us&apos; sections of the
+              &apos;Contact Us&apos; or the &apos;About Us&apos; sections of the
               web page, write to us or call us, you do that at your free will.
             </p>
             <p>

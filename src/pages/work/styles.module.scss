@@ -27,21 +27,21 @@
     }
     .lead {
       margin: 0 0 1rem;
-      font-size: 1.15rem;
+      font-size: 1.125rem;
       font-weight: 400;
       text-transform: uppercase;
       @include mobile {
-        font-size: 0.8rem;
+        font-size: 0.8125rem;
       }
     }
     .description {
       margin: 0;
-      font-size: 3.5rem;
+      font-size: 4.875rem;
       font-weight: 600;
       line-height: 1.25;
-      max-width: 950px;
+      max-width: 1140px;
       @include mobile {
-        font-size: 1.35rem;
+        font-size: 2.5rem;
       }
     }
   }
@@ -62,9 +62,15 @@
       font-family: inherit;
       cursor: pointer;
       margin-right: 2rem;
+      opacity: 0.5;
+      transition: all 0.2s linear;
+      border-radius: 22px;
+      &:hover {
+        opacity: 1;
+      }
       &.selected {
+        opacity: 1;
         border: 1px solid #fff;
-        border-radius: 22px;
       }
     }
   }
