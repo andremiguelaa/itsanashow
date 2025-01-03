@@ -10,6 +10,14 @@ import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
 import classes from "./styles.module.scss";
 
+const CATEGORIES = [
+  "Branding",
+  "Explainers",
+  "Illustration",
+  "Character-driven",
+  "Interactive",
+];
+
 const Work = () => {
   const { setCursorType } = useContext(AppContext);
 
@@ -21,6 +29,7 @@ const Work = () => {
   });
 
   const [category, setCategory] = useState();
+  const [filterOpen, setFilterOpen] = useState(false);
 
   const works = useMemo(() => {
     let worksTemp = [];
@@ -84,12 +93,33 @@ const Work = () => {
           </p>
         </div>
         <div className="wrapper">
-          <div className={classes.categories}>
+          <button
+            className={classnames(classes.mobileFilter, {
+              [classes.open]: filterOpen,
+            })}
+            onClick={() => setFilterOpen((prev) => !prev)}
+            onMouseEnter={() => {
+              setCursorType("bigger");
+            }}
+            onMouseLeave={() => {
+              setCursorType("default");
+            }}
+          >
+            {category || "All"}
+          </button>
+          <div
+            className={classnames(classes.categories, {
+              [classes.open]: filterOpen,
+            })}
+          >
             <button
               className={classnames({
                 [classes.selected]: !category,
               })}
-              onClick={() => setCategory()}
+              onClick={() => {
+                setCategory();
+                setFilterOpen(false);
+              }}
               onMouseEnter={() => {
                 setCursorType("bigger");
               }}
@@ -99,76 +129,26 @@ const Work = () => {
             >
               All
             </button>
-            <button
-              className={classnames({
-                [classes.selected]: category === "Branding",
-              })}
-              onClick={() => setCategory("Branding")}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Branding
-            </button>
-            <button
-              className={classnames({
-                [classes.selected]: category === "Explainers",
-              })}
-              onClick={() => setCategory("Explainers")}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Explainers
-            </button>
-            <button
-              className={classnames({
-                [classes.selected]: category === "Illustration",
-              })}
-              onClick={() => setCategory("Illustration")}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Illustration
-            </button>
-            <button
-              className={classnames({
-                [classes.selected]: category === "Character-driven",
-              })}
-              onClick={() => setCategory("Character-driven")}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Character-driven
-            </button>
-            <button
-              className={classnames({
-                [classes.selected]: category === "Interactive",
-              })}
-              onClick={() => setCategory("Interactive")}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Interactive
-            </button>
+            {CATEGORIES.map((item) => (
+              <button
+                className={classnames({
+                  [classes.selected]: category === item,
+                })}
+                key={item}
+                onClick={() => {
+                  setCategory(item);
+                  setFilterOpen(false);
+                }}
+                onMouseEnter={() => {
+                  setCursorType("bigger");
+                }}
+                onMouseLeave={() => {
+                  setCursorType("default");
+                }}
+              >
+                {item}
+              </button>
+            ))}
           </div>
         </div>
         <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
@@ -209,7 +189,9 @@ const Work = () => {
                       <div className={classes.text}>
                         <p className={classes.name}>{Title}</p>
                         {Categories.length > 0 && (
-                          <p className={classes.tags}>{Categories.join(", ")}</p>
+                          <p className={classes.tags}>
+                            {Categories.join(", ")}
+                          </p>
                         )}
                       </div>
                     </Parallax>
