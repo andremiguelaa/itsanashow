@@ -3,9 +3,9 @@ import Lottie from "react-lottie-player";
 import { useRouter } from "next/navigation";
 
 import { AppContext } from "src/AppContext";
-import CTA01 from "src/assets/buttons/CTA01.json";
+import CTA01 from "src/assets/buttons/CTA02.json";
 
-import classes from "./RequestYourQuoteButton.module.scss";
+import classes from "./SubmitYourRequest.module.scss";
 
 const buttonFrameLimits = {
   startIn: 0,
@@ -14,7 +14,7 @@ const buttonFrameLimits = {
   endOut: 95,
 };
 
-const RequestYourQuoteButton = () => {
+const SubmitYourRequest = ({ disabled }) => {
   const router = useRouter();
   const { setCursorType } = useContext(AppContext);
 
@@ -47,6 +47,7 @@ const RequestYourQuoteButton = () => {
 
   return (
     <button
+      disabled={disabled}
       className={classes.button}
       onMouseEnter={() => {
         numberChange(buttonFrameLimits.startIn, buttonFrameLimits.endIn);
@@ -63,4 +64,4 @@ const RequestYourQuoteButton = () => {
   );
 };
 
-export default RequestYourQuoteButton;
+export default SubmitYourRequest;

@@ -1,0 +1,178 @@
+@import "src/styles/mixins.scss";
+.overlay {
+  position: fixed;
+  text-align: left;
+  z-index: 100;
+  background-color: #08142d99;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s linear;
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+.modal {
+  width: 1000px;
+  height: 630px;
+  padding: 5.8rem 4.8rem;
+  background-color: blue;
+  background-image: url("../../assets/popup_bg.png");
+  border-radius: 0.625rem;
+  color: #fff;
+  position: relative;
+  box-sizing: border-box;
+  background-position: center;
+  @include tablet {
+    width: 280px;
+    height: 430px;
+    padding: 4.8rem 1.7rem 2.75rem;
+    border-radius: 0.35em;
+  }
+}
+.close {
+  background-image: url("../../assets/closeWhite.svg");
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  background-size: cover;
+  transition: opacity 0.2s linear;
+  &[disabled] {
+    opacity: 0.5;
+  }
+}
+.lead {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  margin-top: 0;
+  @include tablet {
+    font-size: 0.7rem;
+  }
+}
+.mainCopy {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10rem;
+  @include tablet {
+    font-size: 1.3rem;
+    margin-bottom: 4rem;
+  }
+}
+.mainForm {
+  display: flex;
+  @include tablet {
+    display: block;
+  }
+}
+.inputs {
+  width: 500px;
+  @include tablet {
+    width: 100%;
+  }
+}
+.input {
+  background-color: #fff;
+  border: none;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  height: 4rem;
+  font-size: 1.125rem;
+  padding: 0 2rem;
+  font-family: inherit;
+  border-radius: 2rem;
+  @include tablet {
+    height: 2.5rem;
+    font-size: 0.7rem;
+  }
+}
+.checkbox {
+  font-size: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+  display: block;
+  margin-top: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  @include tablet {
+    font-size: 0.55rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  a {
+    color: #fff;
+  }
+}
+.submit {
+  margin-left: 1.5rem;
+  height: 4rem;
+  background-color: #fe00ae;
+  color: #fff;
+  font-family: inherit;
+  padding: 0 2rem;
+  font-size: 1.75rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  @include tablet {
+    display: block;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin-left: 0;
+  }
+  &[disabled] {
+    opacity: 0.5;
+  }
+  &:hover {
+    background-color: #960065;
+  }
+}
+.mainCopySuccess {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-top: 4.8rem;
+  margin-bottom: 18rem;
+  text-align: center;
+  @include tablet {
+    font-size: 1.3rem;
+    margin-bottom: 4rem;
+  }
+}
+.information {
+  font-size: 1.125rem;
+  width: 520px;
+  margin: 0 auto;
+  text-align: center;
+  @include tablet {
+    font-size: 0.7rem;
+    width: 100%;
+  }
+}
+.disclaimer {
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0.5;
+  @include tablet {
+    font-size: 0.7rem;
+  }
+}

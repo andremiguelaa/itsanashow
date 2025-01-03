@@ -1,0 +1,12 @@
+@import "src/styles/mixins.scss";
+
+.button {
+  border: none;
+  width: 264px;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  &[disabled] {
+    opacity: 0.5;
+  }
+}

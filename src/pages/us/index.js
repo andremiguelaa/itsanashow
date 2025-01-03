@@ -349,7 +349,7 @@ const Us = () => {
               <Button
                 text={<strong>Let’s Build Something Extraordinary</strong>}
                 arrow={arrow}
-                target="/contact-us"
+                target="/contacts"
               />
             </div>
           </div>

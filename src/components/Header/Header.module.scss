@@ -14,6 +14,7 @@
     mix-blend-mode: normal;
   }
   &.privacy-policy,
+  &.contacts,
   &.insights {
     mix-blend-mode: difference;
     transition: opacity 1s linear;

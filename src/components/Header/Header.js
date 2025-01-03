@@ -124,7 +124,7 @@ const Header = ({ noDefaultHeader }) => {
                 <span className={classes.text}>Insights</span>
               </Link>
               <Link
-                href="/contact-us"
+                href="/contacts"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
@@ -132,7 +132,7 @@ const Header = ({ noDefaultHeader }) => {
                   setCursorType("default");
                 }}
                 className={classnames({
-                  [classes.active]: page === "/contact-us",
+                  [classes.active]: page === "/contacts",
                 })}
               >
                 <span className={classes.text}>Contact us</span>
@@ -202,9 +202,9 @@ const Header = ({ noDefaultHeader }) => {
               insights
             </Link>
             <Link
-              href="/contact-us"
+              href="/contacts"
               className={classnames(classes.link, {
-                [classes.active]: page === "/contact-us",
+                [classes.active]: page === "/contacts",
               })}
             >
               contact us

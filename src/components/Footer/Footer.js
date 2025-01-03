@@ -33,7 +33,7 @@ const Footer = () => {
             <Button
               text={<strong>Let the fun begin!</strong>}
               arrow={arrow}
-              target="/contact-us"
+              target="/contacts"
             />
           </div>
         </div>
@@ -86,7 +86,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/contact-us"
+                    href="/contacts"
                     onMouseEnter={() => {
                       setCursorType("bigger");
                     }}
@@ -105,7 +105,7 @@ const Footer = () => {
             <Button
               text={<strong className={classes.link}>Let&apos;s chat!</strong>}
               arrow={arrowG}
-              target="/contact-us"
+              target="/contacts"
             />
             <div>
               <DeckButton />

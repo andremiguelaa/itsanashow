@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import Lottie from "react-lottie-player";
-import { useRouter } from "next/navigation";
 
 import { AppContext } from "src/AppContext";
+import Popup from "src/components/Popup/Popup";
+
 import button from "src/assets/button.json";
 
 import classes from "./DeckButton.module.scss";
@@ -15,7 +16,7 @@ const buttonFrameLimits = {
 };
 
 const DeckButton = () => {
-  const router = useRouter();
+  const [popup, setPopup] = useState(false);
   const { setCursorType } = useContext(AppContext);
   const buttonFrame = useRef(buttonFrameLimits.start);
   const buttonTimer = useRef();
@@ -58,11 +59,14 @@ const DeckButton = () => {
             numberChange(buttonFrameLimits.middle2, buttonFrameLimits.end);
             setCursorType("default");
           }}
-          onClick={() => {}}
+          onClick={() => {
+            setPopup(true);
+          }}
         >
           <Lottie animationData={button} goTo={buttonFrameState} />
         </button>
       </div>
+      <Popup open={popup} setOpen={setPopup} />
     </>
   );
 };
