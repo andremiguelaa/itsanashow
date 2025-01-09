@@ -34,7 +34,7 @@
       margin: 0;
       font-size: 1.5rem;
       line-height: 1.25;
-      max-width: 850px;
+      max-width: 790px;
       @include mobile {
         font-size: 1.35rem;
       }
@@ -376,7 +376,10 @@
           box-sizing: border-box;
           font-size: 3.125rem;
           font-weight: 700;
-          width: 23%;
+          width: 28%;
+          @media screen and (max-width: (1540px)) {
+            font-size: 2.5rem;
+          }
           @include smallDesktop {
             width: 100%;
             br {
@@ -391,7 +394,7 @@
           box-sizing: border-box;
           padding-right: 2rem;
           padding-left: 3rem;
-          width: 55%;
+          width: 53%;
           @include smallDesktop {
             width: 100%;
             padding-right: 0;
@@ -402,6 +405,9 @@
           font-size: 1.75rem;
           font-weight: 400;
           line-height: 1.25;
+          @media screen and (max-width: (1540px)) {
+            font-size: 1.4rem;
+          }
           @include smallDesktop {
             width: 100%;
           }
@@ -432,11 +438,10 @@
       text-decoration: none;
       position: relative;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       @include mobile {
         font-size: 0.8rem;
-        justify-content: flex-end;
       }
       span {
         @include mobile {

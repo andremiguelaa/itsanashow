@@ -345,7 +345,6 @@ const Us = () => {
           </ul>
           <div className={classes.ctaWrapper}>
             <div className={classes.cta}>
-              <span>Let&apos;s work together</span>
               <Button
                 text={<strong>Let’s Build Something Extraordinary</strong>}
                 arrow={arrow}

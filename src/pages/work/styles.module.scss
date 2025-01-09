@@ -13,9 +13,10 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../../assets/blur.svg");
+    background-image: url('../../assets/blur-min.png');
     background-repeat: no-repeat;
     background-position: top center;
+    background-size: cover;
   }
   .text {
     position: relative;
@@ -117,7 +118,7 @@
       }
       &.selected {
         opacity: 1;
-        border: 1px solid #fff;
+        border: 1.5px solid #fff;
         @include smallDesktop {
           display: none;
         }
