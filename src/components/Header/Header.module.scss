@@ -54,11 +54,11 @@
       text-decoration: none;
       cursor: pointer;
       font-family: inherit;
-      font-size: 1.125rem;
+      font-size: 0.875rem;
       font-weight: 400;
       text-transform: uppercase;
       color: #fff;
-      margin-left: 5rem;
+      margin-left: 3.125rem;
       position: relative;
       .text {
         transition: transform 0.2s linear;
@@ -94,7 +94,7 @@
       }
     }
     .requestButton {
-      margin-left: 3rem;
+      margin-left: 3.125rem;
       display: inline-block;
       vertical-align: middle;
     }
@@ -124,7 +124,7 @@
       right: 1rem;
     }
     div {
-      background-color: #e4f9fe;
+      background-color: #ffffff;
       height: 2px;
       transition: width 0.2s linear;
       &:nth-child(1),
