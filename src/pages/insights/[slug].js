@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
+import { InView } from "react-intersection-observer";
 
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
@@ -23,6 +24,68 @@ export const getServerSideProps = async (context) => {
     return { props: { prefetchedArticle: prefetchedArticle.data[0] } };
   }
   return { props: { prefetchedArticle: null } };
+};
+
+const RelatedArticle = ({ item }) => {
+  const { setCursorType } = useContext(AppContext);
+  const [visible, setVisible] = useState(false);
+  return (
+    <li
+      className={classnames(classes.article, {
+        [classes.visible]: visible,
+      })}
+    >
+      <InView
+        onChange={(InView) => {
+          setVisible(InView);
+        }}
+      >
+        <Link
+          className={classes.link}
+          href={`/insights/${item.attributes.Slug}`}
+        >
+          <div
+            className={classes.imageWrapper}
+            onMouseEnter={() => {
+              setCursorType("read");
+            }}
+            onMouseLeave={() => {
+              setCursorType("default");
+            }}
+          >
+            <img
+              className={classes.image}
+              src={`${process.env.NEXT_PUBLIC_API_URL}${item.attributes.Thumbnail.data.attributes.url}`}
+              alt={item.attributes.Thumbnail.data.attributes.alternativeText}
+            />
+            <div className={classes.overlay}></div>
+            <div className={classes.author}>
+              <img
+                className={classes.avatar}
+                src={`${process.env.NEXT_PUBLIC_API_URL}${item.attributes.Author.Avatar.data.attributes.url}`}
+                alt={
+                  item.attributes.Author.Avatar.data.attributes.alternativeText
+                }
+              />
+              <div className={classes.authorInfo}>
+                Written by
+                <br />
+                <strong>{item.attributes.Author.Name}</strong>
+              </div>
+            </div>
+          </div>
+          <p className={classes.date}>
+            {new Date(item.attributes.Date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+          <p className={classes.title}>{item.attributes.Title}</p>
+        </Link>
+      </InView>
+    </li>
+  );
 };
 
 const Article = ({ prefetchedArticle }) => {
@@ -304,58 +367,7 @@ const Article = ({ prefetchedArticle }) => {
             <p className={classes.caption}>We think you may like these</p>
             <ul className={classes.articles}>
               {articles.map((item) => (
-                <li className={classes.article} key={item.id}>
-                  <Link
-                    className={classes.link}
-                    href={`/insights/${item.attributes.Slug}`}
-                  >
-                    <div
-                      className={classes.imageWrapper}
-                      onMouseEnter={() => {
-                        setCursorType("read");
-                      }}
-                      onMouseLeave={() => {
-                        setCursorType("default");
-                      }}
-                    >
-                      <img
-                        className={classes.image}
-                        src={`${process.env.NEXT_PUBLIC_API_URL}${item.attributes.Thumbnail.data.attributes.url}`}
-                        alt={
-                          item.attributes.Thumbnail.data.attributes
-                            .alternativeText
-                        }
-                      />
-                      <div className={classes.overlay}></div>
-                      <div className={classes.author}>
-                        <img
-                          className={classes.avatar}
-                          src={`${process.env.NEXT_PUBLIC_API_URL}${item.attributes.Author.Avatar.data.attributes.url}`}
-                          alt={
-                            item.attributes.Author.Avatar.data.attributes
-                              .alternativeText
-                          }
-                        />
-                        <div className={classes.authorInfo}>
-                          Written by
-                          <br />
-                          <strong>{item.attributes.Author.Name}</strong>
-                        </div>
-                      </div>
-                    </div>
-                    <p className={classes.date}>
-                      {new Date(item.attributes.Date).toLocaleDateString(
-                        "en-US",
-                        {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        }
-                      )}
-                    </p>
-                    <p className={classes.title}>{item.attributes.Title}</p>
-                  </Link>
-                </li>
+                <RelatedArticle item={item} key={item.id} />
               ))}
             </ul>
           </div>

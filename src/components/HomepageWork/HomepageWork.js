@@ -1,6 +1,8 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useState } from "react";
 import Link from "next/link";
 import Lottie from "react-lottie-player";
+import { InView } from "react-intersection-observer";
+import classNames from "classnames";
 
 import AppContext from "src/AppContext";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
@@ -12,32 +14,45 @@ import classes from "./HomepageWork.module.scss";
 const HomepageWorkItem = ({ portfolioHighlight }) => {
   const { setCursorType } = useContext(AppContext);
   const lottie = useRef();
+  const [visible, setVisible] = useState(false);
   return (
-    <li>
-      <Link
-        href={`/work/${portfolioHighlight.Title}`}
-        onMouseEnter={() => {
-          lottie.current.goToAndPlay(0);
-          setCursorType("view");
-        }}
-        onMouseLeave={() => {
-          setCursorType("default");
+    <li
+      className={classNames(classes.workItem, {
+        [classes.visible]: visible,
+      })}
+    >
+      <InView
+        onChange={(InView) => {
+          setVisible(InView);
         }}
       >
-        <img
-          src={`${process.env.NEXT_PUBLIC_API_URL}${portfolioHighlight.Image}`}
-          alt={portfolioHighlight.Title}
-        />
-        <div className={classes.text}>
-          <p className={classes.name}>{portfolioHighlight.Title}</p>
-          {portfolioHighlight.Tags.length > 0 && (
-            <p className={classes.tags}>{portfolioHighlight.Tags.join(", ")}</p>
-          )}
-          <div className={classes.arrow}>
-            <Lottie ref={lottie} animationData={arrow} loop={false} />
+        <Link
+          href={`/work/${portfolioHighlight.Title}`}
+          onMouseEnter={() => {
+            lottie.current.goToAndPlay(0);
+            setCursorType("view");
+          }}
+          onMouseLeave={() => {
+            setCursorType("default");
+          }}
+        >
+          <img
+            src={`${process.env.NEXT_PUBLIC_API_URL}${portfolioHighlight.Image}`}
+            alt={portfolioHighlight.Title}
+          />
+          <div className={classes.text}>
+            <p className={classes.name}>{portfolioHighlight.Title}</p>
+            {portfolioHighlight.Tags.length > 0 && (
+              <p className={classes.tags}>
+                {portfolioHighlight.Tags.join(", ")}
+              </p>
+            )}
+            <div className={classes.arrow}>
+              <Lottie ref={lottie} animationData={arrow} loop={false} />
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </InView>
     </li>
   );
 };
@@ -70,7 +85,7 @@ const HomepageWork = ({ portfolioHighlights }) => (
         </ul>
       )}
       <div className={classes.cta}>
-        <Button text={<strong>Dive Deeper</strong>} arrow={arrow} />
+        <Button text="Dive Deeper" arrow={arrow} />
       </div>
     </div>
   </section>

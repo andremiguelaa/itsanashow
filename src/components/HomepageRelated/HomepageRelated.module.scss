@@ -1,0 +1,126 @@
+@import "src/styles/mixins.scss";
+
+.related {
+  background-color: #f3f3f4;
+  padding: 7.5rem 0 4rem;
+  color: #08142d;
+  @include mobile {
+    padding: 3.5rem 0 3.75rem;
+  }
+  :global(.wrapper) {
+    max-width: 1000px;
+  }
+  .lead {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    @include mobile {
+      font-size: 0.8125rem;
+      margin: 0 0 0.5rem;
+    }
+  }
+  .caption {
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0;
+    @include mobile {
+      font-size: 1.375rem;
+    }
+  }
+  .articles {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    @include mobile {
+      gap: 0;
+    }
+    .article {
+      width: calc(33.33% - 0.67rem);
+      position: relative;
+      padding-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+      transition: all 0.7s cubic-bezier(0, 0, 0.2, 1);
+      &.visible {
+        opacity: 1;
+        transform: translateY(0) translateZ(0) scale(1);
+      }
+      @include mobile {
+        width: 100%;
+      }
+    }
+    .link {
+      color: inherit;
+      text-decoration: none;
+    }
+    .imageWrapper {
+      position: relative;
+      margin-bottom: 1.5rem;
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          rgba(8, 20, 45, 0) 0%,
+          rgba(8, 20, 45, 0.6) 66.93%
+        );
+      }
+    }
+    .image {
+      width: 100%;
+      aspect-ratio: 1.755;
+      vertical-align: top;
+    }
+    .author {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      bottom: 1rem;
+      left: 1rem;
+      @include mobile {
+        bottom: 0.75rem;
+        left: 0.75rem;
+      }
+      .avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        @include mobile {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      .authorInfo {
+        font-size: 0.7rem;
+        padding-left: 0.5rem;
+        color: #fff;
+      }
+    }
+    .date {
+      text-transform: uppercase;
+      color: #08142d80;
+      font-size: 0.7rem;
+      margin: 0;
+      letter-spacing: 2px;
+      @include mobile {
+        font-size: 0.6rem;
+      }
+    }
+    .title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+    }
+  }
+  .cta {
+    text-align: center;
+  }
+}

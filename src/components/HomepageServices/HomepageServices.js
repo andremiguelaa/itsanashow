@@ -80,11 +80,7 @@ const HomepageServices = () => {
           </nav>
         </div>
         <div className={classes.cta}>
-          <Button
-            text={<strong>Let’s Build Something Extraordinary</strong>}
-            arrow={arrow}
-            target="/contacts"
-          />
+          <Button text="Let’s get started!" arrow={arrow} target="/contacts" />
         </div>
       </div>
     </section>

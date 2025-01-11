@@ -131,7 +131,7 @@ const Blog = () => {
             )}
           </div>
           <ul className={classes.articles}>
-            {articlesToShow?.map((article, index) => (
+            {articlesToShow?.map((article) => (
               <li key={article.id} className={classes.article}>
                 <InView
                   onChange={(InView) => {

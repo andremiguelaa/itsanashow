@@ -44,9 +44,16 @@
     @include smallDesktop {
       padding: 0 0 4rem;
     }
-    li {
+    .workItem {
       height: 500px;
       width: 850px;
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+      transition: all 0.7s cubic-bezier(0, 0, 0.2, 1);
+      &.visible {
+        opacity: 1;
+        transform: translateY(0) translateZ(0) scale(1);
+      }
       @include tablet {
         width: 100%;
         height: 58vw;

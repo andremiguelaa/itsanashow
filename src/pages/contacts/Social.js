@@ -115,7 +115,7 @@ const Contacts = () => {
         </a>
         <br />
         <a
-          href="https://maps.app.goo.gl/YFUkSNyktmnUn5Vf7"
+          href="https://maps.app.goo.gl/SpUB2Gny8NLuPaRa6"
           className={classes.addressLink}
           target="_blank"
           rel="noreferrer"

@@ -68,10 +68,29 @@
   padding: 5rem 0 0;
   display: flex;
   justify-content: space-between;
+  position: relative;
   @include mobile {
     padding: 3.8rem 0 0;
     flex-direction: column;
     text-align: center;
+  }
+}
+
+.top {
+  background-color: #08142d;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border-radius: 50%;
+  top: -15px;
+  border: none;
+  right: 0;
+  display: none;
+  background-image: url('../../assets/seta.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  @include mobile {
+    display: block;
   }
 }
 

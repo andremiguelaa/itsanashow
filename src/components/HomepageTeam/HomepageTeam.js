@@ -28,11 +28,7 @@ const HomepageTeam = () => (
           </AnimatedText>
         </p>
         <div className={classes.cta}>
-          <Button
-            text={<strong>Discover the squad</strong>}
-            target="/us"
-            arrow={arrow}
-          />
+          <Button text="Discover the squad" target="/us" arrow={arrow} />
         </div>
       </div>
     </div>

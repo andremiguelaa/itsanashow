@@ -63,9 +63,13 @@ const Contacts = () => {
               <p className={classes.lead}>Got a bold idea?</p>
               <p className={classes.action}>Let’s make it happen.</p>
               <p className={classes.text}>
-                Ready to transform your brand into something unforgettable?
+                <strong style={{ fontWeight: 600 }}>
+                  Ready to transform your brand into something unforgettable?
+                </strong>
                 <br />
-                Fill out the form, and we’ll get back to you in no time!
+                Give us the scoop! We want all the juicy details — don’t just
+                say “an animation”, share your vision. The more we know, the
+                faster we can jump into making magic happen! 🚀
               </p>
               <div className={classes.socialDesktop}>
                 <Social />

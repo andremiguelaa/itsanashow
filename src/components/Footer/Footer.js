@@ -5,6 +5,7 @@ import AppContext from "src/AppContext";
 import Button from "src/components/Button/Button";
 import DummyHead from "src/components/Head/Head";
 import DeckButton from "src/components/DeckButton/DeckButton";
+import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
 import arrow from "src/assets/buttons/arrowB.json";
 import arrowG from "src/assets/buttons/arrowG.json";
@@ -24,14 +25,16 @@ const Footer = () => {
       <div className={classes.intro}>
         <div className={classes.customWrapper}>
           <p className={classes.sentence}>
-            Together, we can create marvels that drive results and steal the
-            show.
+            <AnimatedText>
+              Together, we can create marvels that drive results and steal the
+              show.
+            </AnimatedText>
           </p>
         </div>
         <div className="wrapper">
           <div className={classes.cta}>
             <Button
-              text={<strong>Let the fun begin!</strong>}
+              text="Let the fun begin!"
               arrow={arrow}
               target="/contacts"
             />
@@ -41,6 +44,10 @@ const Footer = () => {
       </div>
       <div className="wrapper">
         <div className={classes.columns}>
+          <button
+            className={classes.top}
+            onClick={() => window.scrollTo(0, 0)}
+          />
           <div>
             <img src={logo.src} alt="itsanashow creative studio logo" />
             <nav className={classes.nav}>
@@ -103,7 +110,7 @@ const Footer = () => {
           <div className={classes.rightColumn}>
             <p className={classes.lead}>Your next big thing starts here.</p>
             <Button
-              text={<strong className={classes.link}>Let&apos;s chat!</strong>}
+              text={<span className={classes.link}>Let&apos;s chat!</span>}
               arrow={arrowG}
               target="/contacts"
             />
