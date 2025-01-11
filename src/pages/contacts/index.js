@@ -5,12 +5,10 @@ import classNames from "classnames";
 import useRequest from "src/utils/useRequest";
 import AppContext from "src/AppContext";
 import SubmitYourRequest from "src/components/SubmitYourRequest/SubmitYourRequest";
-
-import inIcon from "src/assets/social/IN.svg";
-import beIcon from "src/assets/social/Be.svg";
-import igIcon from "src/assets/social/IG.svg";
-import viIcon from "src/assets/social/VI.svg";
-import drIcon from "src/assets/social/DR.svg";
+import Button from "src/components/Button/Button";
+import successIcon from "src/assets/success.png";
+import errorIcon from "src/assets/error.png";
+import arrow from "src/assets/buttons/arrowB.json";
 
 import Social from "./Social";
 
@@ -18,33 +16,56 @@ import classes from "./styles.module.scss";
 
 const Contacts = () => {
   const { setCursorType } = useContext(AppContext);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const [selectChanged, setSelectChanged] = useState(false);
+  const [formData, setFormData] = useState({
+    Name: "",
+    Email: "",
+    CompanyWebsite: "",
+    EstimatedBudget: "",
+    Service: "",
+    About: "",
+    Referral: "",
+  });
 
   const { request, loading } = useRequest({
     url: "requests",
     method: "POST",
     callback: true,
     onSuccess: () => {
-      alert("Success");
+      setSuccess(true);
     },
     onError: () => {
-      alert("Error");
+      setError(true);
     },
   });
 
   const submitForm = (event) => {
     event.preventDefault();
-    let object = {};
-    const data = new FormData(event.target);
-    data.forEach((value, key) => {
-      if (object[key]) {
-        object[key] = `${object[key]}, ${value}`;
-      } else {
-        object[key] = value;
-      }
-    });
-    request({ data: object });
+    const data = {
+      ...formData,
+      Service: formData.Service.join(", "),
+      Referral: formData.Referral.join(", "),
+    };
+    request({ data });
+  };
+
+  const handleCheckboxChange = (event) => {
+    const name = event.target.name;
+    console.log(name);
+    if (event.target.checked) {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: [...prev[name], event.target.value],
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: prev[name].filter((item) => item !== event.target.value),
+      }));
+    }
   };
 
   return (
@@ -75,7 +96,64 @@ const Contacts = () => {
                 <Social />
               </div>
             </div>
-            <div className={classes.form}>
+            {success && (
+              <div className={classes.output}>
+                <img src={successIcon.src} alt="success icon" />
+                <p className={classes.title}>
+                  <strong>Success!</strong>
+                  <br />
+                  Your bold idea is in good hands.
+                </p>
+                <p className={classes.text}>
+                  <strong>Thanks for sharing your vision with us!</strong> We’ll
+                  dive in and get back to you in no time. Exciting things are on
+                  the way!
+                </p>
+                <Button
+                  text="Awesome! Take me home"
+                  target="/"
+                  arrow={arrow}
+                  reverted
+                />
+              </div>
+            )}
+            {error && (
+              <div className={classes.output}>
+                <img src={errorIcon.src} alt="error icon" />
+                <p className={classes.title}>
+                  <strong>Oops!</strong>
+                  <br />
+                  Something went wrong.
+                </p>
+                <p className={classes.textError}>
+                  Looks like the form didn’t go through. Please refresh the page
+                  and give it another go. If the problem persists, feel free to
+                  reach out to us at{" "}
+                  <a
+                    href="mailto:hello@itsanashow.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    onMouseEnter={() => {
+                      setCursorType("bigger");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType("default");
+                    }}
+                  >
+                    hello@itsanashow.com
+                  </a>
+                  .
+                </p>
+                <Button
+                  text="Give it another go"
+                  arrow={arrow}
+                  onClick={() => {
+                    setError(false);
+                  }}
+                />
+              </div>
+            )}
+            <div className={classes.form} hidden={success || error}>
               <form onSubmit={submitForm}>
                 <div className={classes.formRow}>
                   <div className={classes.formField}>
@@ -86,6 +164,12 @@ const Contacts = () => {
                       name="Name"
                       type="text"
                       placeholder="Your name..."
+                      onChange={(event) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          Name: event.target.value,
+                        }))
+                      }
                     />
                   </div>
                   <div className={classes.formField}>
@@ -96,6 +180,12 @@ const Contacts = () => {
                       name="Email"
                       type="email"
                       placeholder="Your email..."
+                      onChange={(event) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          Email: event.target.value,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -107,6 +197,12 @@ const Contacts = () => {
                       name="CompanyWebsite"
                       type="text"
                       placeholder="Enter url..."
+                      onChange={(event) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          CompanyWebsite: event.target.value,
+                        }))
+                      }
                     />
                   </div>
                   <div className={classes.formField}>
@@ -115,7 +211,13 @@ const Contacts = () => {
                       name="EstimatedBudget"
                       id="budget"
                       required
-                      onChange={() => setSelectChanged(true)}
+                      onChange={() => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          EstimatedBudget: event.target.value,
+                        }));
+                        setSelectChanged(true);
+                      }}
                       className={classNames({
                         [classes.changed]: selectChanged,
                       })}
@@ -141,6 +243,7 @@ const Contacts = () => {
                       name="Service"
                       value="Animation"
                       id="Animation"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       onMouseEnter={() => {
@@ -158,6 +261,7 @@ const Contacts = () => {
                       name="Service"
                       value="Branding"
                       id="Branding"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       onMouseEnter={() => {
@@ -175,6 +279,7 @@ const Contacts = () => {
                       name="Service"
                       value="Webdesign"
                       id="Webdesign"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       onMouseEnter={() => {
@@ -192,6 +297,7 @@ const Contacts = () => {
                       name="Service"
                       value="Illustration"
                       id="Illustration"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       onMouseEnter={() => {
@@ -209,6 +315,7 @@ const Contacts = () => {
                       name="Service"
                       value="Iconography"
                       id="Iconography"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       onMouseEnter={() => {
@@ -226,6 +333,7 @@ const Contacts = () => {
                       name="Service"
                       value="Other"
                       id="Other"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       onMouseEnter={() => {
@@ -250,7 +358,13 @@ const Contacts = () => {
                       required
                       name="About"
                       placeholder="We’re all ears! Dive deep into your project — share your vision, goals, ideas, and challenges. The more details you give us, the better we can understand your needs and tailor our approach."
-                    ></textarea>
+                      onChange={(event) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          About: event.target.value,
+                        }))
+                      }
+                    />
                   </div>
                 </div>
                 <div className={classes.formRow}>
@@ -266,6 +380,7 @@ const Contacts = () => {
                       name="Referral"
                       value="Friend Referral"
                       id="FriendReferral"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       htmlFor="FriendReferral"
@@ -283,6 +398,7 @@ const Contacts = () => {
                       name="Referral"
                       value="Instagram"
                       id="Instagram"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       htmlFor="Instagram"
@@ -300,6 +416,7 @@ const Contacts = () => {
                       name="Referral"
                       value="Google"
                       id="Google"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       htmlFor="Google"
@@ -317,6 +434,7 @@ const Contacts = () => {
                       name="Referral"
                       value="Behance"
                       id="Behance"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       htmlFor="Behance"
@@ -334,6 +452,7 @@ const Contacts = () => {
                       name="Referral"
                       value="LinkedIn"
                       id="LinkedIn"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       htmlFor="LinkedIn"
@@ -351,6 +470,7 @@ const Contacts = () => {
                       name="Referral"
                       value="Other"
                       id="OtherReferral"
+                      onChange={handleCheckboxChange}
                     />
                     <label
                       htmlFor="OtherReferral"

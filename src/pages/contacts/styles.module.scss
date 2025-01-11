@@ -22,6 +22,7 @@
 
   .header {
     width: 530px;
+    flex-shrink: 0;
     @include mobile {
       width: 100%;
       max-width: 530px;
@@ -54,6 +55,44 @@
       line-height: 1.625;
       @include mobile {
         font-size: 0.875rem;
+      }
+    }
+  }
+
+  .output {
+    text-align: center;
+    @include smallDesktop {
+      max-width: 530px;
+    }
+    @include mobile {
+      font-size: 0.875rem;
+    }
+    img {
+      @include mobile {
+        width: 72px;
+      }
+    }
+    strong {
+      font-weight: 600;
+    }
+    .title {
+      font-size: 1.875rem;
+      @include mobile {
+        font-size: 1.25rem;
+      }
+    }
+    .text {
+      max-width: 480px;
+      margin: 0 auto 5rem;
+      @include mobile {
+        margin: 0 auto 4rem;
+      }
+    }
+    .textError {
+      max-width: 480px;
+      margin: 0 auto 3.125rem;
+      a {
+        color: #fe00ae;
       }
     }
   }

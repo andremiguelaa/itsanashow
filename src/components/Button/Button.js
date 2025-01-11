@@ -7,7 +7,13 @@ import arrow01 from "src/assets/buttons/arrow01.json";
 
 import classes from "./Button.module.scss";
 
-const Button = ({ text, arrow = arrow01, target = "/work" }) => {
+const Button = ({
+  text,
+  arrow = arrow01,
+  target = "/work",
+  onClick = undefined,
+  reverted = false,
+}) => {
   const router = useRouter();
   const lottie = useRef();
   const { setCursorType } = useContext(AppContext);
@@ -21,12 +27,25 @@ const Button = ({ text, arrow = arrow01, target = "/work" }) => {
       onMouseLeave={() => {
         setCursorType("default");
       }}
-      onClick={() => router.push(target)}
+      onClick={() => {
+        if (onClick) {
+          onClick();
+          return;
+        }
+        router.push(target);
+      }}
     >
-      {text}{" "}
-      <div className={classes.arrow}>
-        <Lottie ref={lottie} animationData={arrow} loop={false} />
-      </div>
+      {reverted && (
+        <div className={classes.arrowReverted}>
+          <Lottie ref={lottie} animationData={arrow} loop={false} />
+        </div>
+      )}
+      {text}
+      {!reverted && (
+        <div className={classes.arrow}>
+          <Lottie ref={lottie} animationData={arrow} loop={false} />
+        </div>
+      )}
     </button>
   );
 };
