@@ -1,10 +1,8 @@
 import React, { useMemo, useContext } from "react";
-import Link from "next/link";
 import Head from "next/head";
 import Spline from "@splinetool/react-spline";
 import classnames from "classnames";
 
-import { AppContext } from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import HomepageClients from "src/components/HomepageClients/HomepageClients";
 import HomepageWork from "src/components/HomepageWork/HomepageWork";
@@ -14,13 +12,10 @@ import HomepageTeam from "src/components/HomepageTeam/HomepageTeam";
 import HomepageRelated from "src/components/HomepageRelated/HomepageRelated";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import Button from "src/components/Button/Button";
-import arrow from "src/assets/buttons/arrowB.json";
 
 import classes from "./styles.module.scss";
 
 const Home = () => {
-  const { setCursorType } = useContext(AppContext);
-
   const { data: homepageData } = useRequest({
     url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
     method: "GET",

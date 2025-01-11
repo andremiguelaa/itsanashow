@@ -1,11 +1,25 @@
 @import "src/styles/mixins.scss";
 
+.placeholder {
+  display: none;
+  &.scrolled {
+    display: block;
+  }
+}
+
 .team {
   background-color: #08142d;
   color: #fff;
   position: relative;
   overflow: hidden;
   padding: 6.6rem 0 4.75rem;
+  &.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
   @include tablet {
     padding: 2.3rem 0 3rem;
   }
@@ -18,7 +32,7 @@
     object-fit: cover;
     pointer-events: none;
   }
-  .content{
+  .content {
     position: relative;
   }
   .lead {

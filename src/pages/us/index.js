@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect, useMemo, useContext } from "react";
-import Link from "next/link";
 import Head from "next/head";
 import Slider from "react-slick";
 import classnames from "classnames";
