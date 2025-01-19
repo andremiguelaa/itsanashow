@@ -67,7 +67,9 @@
     @include mobile {
       font-size: 0.875rem;
     }
-    img {
+    .icon {
+      width: 120px;
+      margin: 0 auto;
       @include mobile {
         width: 72px;
       }

@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import Head from "next/head";
 import classNames from "classnames";
+import Lottie from "react-lottie-player";
 
 import useRequest from "src/utils/useRequest";
 import AppContext from "src/AppContext";
 import SubmitYourRequest from "src/components/SubmitYourRequest/SubmitYourRequest";
 import Button from "src/components/Button/Button";
-import successIcon from "src/assets/success.png";
-import errorIcon from "src/assets/error.png";
+import successIcon from "src/assets/formSuccess.json";
+import errorIcon from "src/assets/formError.json";
 import arrow from "src/assets/buttons/arrowB.json";
 
 import Social from "./Social";
@@ -98,7 +99,9 @@ const Contacts = () => {
             </div>
             {success && (
               <div className={classes.output}>
-                <img src={successIcon.src} alt="success icon" />
+                <div className={classes.icon}>
+                  <Lottie animationData={successIcon} play />
+                </div>
                 <p className={classes.title}>
                   <strong>Success!</strong>
                   <br />
@@ -119,7 +122,9 @@ const Contacts = () => {
             )}
             {error && (
               <div className={classes.output}>
-                <img src={errorIcon.src} alt="error icon" />
+                <div className={classes.icon}>
+                  <Lottie animationData={errorIcon} play />
+                </div>
                 <p className={classes.title}>
                   <strong>Oops!</strong>
                   <br />
