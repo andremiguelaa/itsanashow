@@ -99,47 +99,6 @@
       vertical-align: middle;
     }
   }
-  .menuButton {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    color: transparent;
-    width: 22px;
-    height: 18px;
-    background-color: transparent;
-    font-size: 0;
-    outline: none;
-    padding: 0;
-    display: none;
-    cursor: pointer;
-    @include smallDesktop {
-      display: block;
-      right: 5rem;
-    }
-    @include tablet {
-      right: 2rem;
-    }
-    @include mobile {
-      right: 1rem;
-    }
-    div {
-      background-color: #ffffff;
-      height: 2px;
-      transition: width 0.2s linear;
-      &:nth-child(1),
-      &:nth-child(3) {
-        width: 11px;
-      }
-      &:nth-child(1) {
-        margin-left: 11px;
-      }
-      &:nth-child(2) {
-        width: 22px;
-        margin: 5px 0;
-      }
-    }
-  }
 }
 
 .menu {
@@ -157,13 +116,13 @@
   display: none;
   @include smallDesktop {
     display: block;
-    clip-path: circle(0% at calc(100% - 5.3rem) 5.3rem);
+    clip-path: circle(0% at calc(100% - 5.7rem) 4.1rem);
   }
   @include tablet {
-    clip-path: circle(0% at calc(100% - 3.7rem) 3.7rem);
+    clip-path: circle(0% at calc(100% - 2.7rem) 4rem);
   }
   @include mobile {
-    clip-path: circle(0% at calc(100% - 2rem) 2rem);
+    clip-path: circle(0% at calc(100% - 1.7rem) 2.3rem);
   }
   &.open {
     pointer-events: all;
@@ -179,32 +138,6 @@
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
-  }
-  .close {
-    position: fixed;
-    z-index: 1;
-    cursor: pointer;
-    width: 1.2rem;
-    height: 1.2rem;
-    overflow: hidden;
-    border: none;
-    padding: 0;
-    background-color: transparent;
-    background-image: url("../../assets/closeWhite.svg");
-    background-size: contain;
-    top: 4.1em;
-    right: 5.3rem;
-    @include tablet {
-      top: 4.1em;
-      right: 2.3rem;
-    }
-    @include mobile {
-      top: 2em;
-      right: 1.3rem;
-    }
-    &:focus {
-      outline: none;
-    }
   }
   .links {
     text-align: center;

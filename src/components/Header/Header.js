@@ -19,6 +19,8 @@ import igIcon from "src/assets/social/IG.svg";
 import viIcon from "src/assets/social/VI.svg";
 import drIcon from "src/assets/social/DR.svg";
 
+import MenuButton from "./MenuButton";
+
 import classes from "./Header.module.scss";
 
 const Header = ({ noDefaultHeader }) => {
@@ -46,7 +48,9 @@ const Header = ({ noDefaultHeader }) => {
 
   const listenToScroll = useCallback(() => {
     setDefaultHeader(
-      noDefaultHeader ? false : global.document.scrollingElement.scrollTop < window.innerHeight
+      noDefaultHeader
+        ? false
+        : global.document.scrollingElement.scrollTop < window.innerHeight
     );
   }, [noDefaultHeader]);
 
@@ -142,29 +146,19 @@ const Header = ({ noDefaultHeader }) => {
               </div>
             </nav>
           </div>
-          <button className={classes.menuButton} onClick={() => setMenu(true)}>
-            Menu
-            <div />
-            <div />
-            <div />
-          </button>
         </div>
       </header>
+      <MenuButton
+        defaultHeader={defaultHeader}
+        page={page}
+        menu={menu}
+        setMenu={setMenu}
+      />
       <nav
         className={classnames(classes.menu, {
           [classes.open]: menu,
         })}
       >
-        <button className={classes.close} onClick={() => setMenu(false)}>
-          <div className={classes.in}>
-            <div className={classes.closeButtonBlock}></div>
-            <div className={classes.closeButtonBlock}></div>
-          </div>
-          <div className={classes.out}>
-            <div className={classes.closeButtonBlock}></div>
-            <div className={classes.closeButtonBlock}></div>
-          </div>
-        </button>
         <div className={classes.links}>
           <div>
             <Link
