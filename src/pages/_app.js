@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 
 import AppContext from "src/AppContext";
+import Loading from "src/components/Loading/Loading";
 import Cursor from "src/components/Cursor/Cursor";
 import Header from "src/components/Header/Header";
 import Footer from "src/components/Footer/Footer";
@@ -37,6 +38,7 @@ export default function App({ Component, pageProps }) {
           gtag('config', 'G-CK5GL0XLJS');
         `}
         </Script>
+        <Loading />
         <Header />
         <div>
           <Component key={pageKey} {...pageProps} />
