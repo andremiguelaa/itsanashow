@@ -4,15 +4,15 @@ import Lottie from "react-lottie-player";
 import { AppContext } from "src/AppContext";
 import Popup from "src/components/Popup/Popup";
 
-import button from "src/assets/button.json";
+import button from "src/assets/capabilities-right.json";
 
 import classes from "./DeckButton.module.scss";
 
 const buttonFrameLimits = {
-  start: 30,
-  middle: 70,
-  middle2: 156,
-  end: 179,
+  start: 11,
+  middle: 43,
+  middle2: 43,
+  end: 11,
 };
 
 const DeckButton = () => {

@@ -3,7 +3,7 @@ import Lottie from "react-lottie-player";
 import { useRouter } from "next/navigation";
 
 import { AppContext } from "src/AppContext";
-import CTA01 from "src/assets/buttons/CTA02.json";
+import CTA01 from "src/assets/buttons/CTA02-2.json";
 
 import classes from "./SubmitYourRequest.module.scss";
 
