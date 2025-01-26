@@ -18,19 +18,21 @@ import logo from "src/assets/logo_hor.svg";
 
 import classes from "./Footer.module.scss";
 
-const Footer = () => {
+const Footer = ({ lead = true }) => {
   const { setCursorType } = useContext(AppContext);
   return (
     <footer className={classes.footer}>
       <div className={classes.intro}>
-        <div className={classes.customWrapper}>
-          <p className={classes.sentence}>
-            <AnimatedText>
-              Together, we can create marvels that drive results and steal the
-              show.
-            </AnimatedText>
-          </p>
-        </div>
+        {lead && (
+          <div className={classes.customWrapper}>
+            <p className={classes.sentence}>
+              <AnimatedText>
+                Together, we can create marvels that drive results and steal the
+                show.
+              </AnimatedText>
+            </p>
+          </div>
+        )}
         <div className="wrapper">
           <div className={classes.cta}>
             <Button

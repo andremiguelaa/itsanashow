@@ -21,6 +21,8 @@ export default function App({ Component, pageProps }) {
 
   const pageKey = router.asPath;
 
+  const isWorkDetailPage = pageKey.startsWith("/work/");
+
   return (
     <AppContext.Provider
       value={{
@@ -42,7 +44,7 @@ export default function App({ Component, pageProps }) {
         <Header />
         <div>
           <Component key={pageKey} {...pageProps} />
-          <Footer />
+          <Footer lead={!isWorkDetailPage} />
         </div>
         <Cursor />
       </div>

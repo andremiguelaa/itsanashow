@@ -1,15 +1,19 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useMemo } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { remark } from "remark";
 import strip from "strip-markdown";
 import classNames from "classnames";
+import { shuffle } from "lodash";
 
 import { AppContext } from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import Markdown from "src/components/Markdown/Markdown";
 import NoMatch from "src/components/NoMatch/NoMatch";
 import Error from "src/components/Error/Error";
+import Button from "src/components/Button/Button";
+import arrow from "src/assets/buttons/arrowB.json";
 
 import classes from "./WorkDetail.module.scss";
 
@@ -22,7 +26,7 @@ export const getServerSideProps = async (context) => {
     let description;
     await remark()
       .use(strip)
-      .process(prefetchedWork.data[0].attributes.Subtitle)
+      .process(prefetchedWork.data[0]?.attributes.Subtitle)
       .then((file) => {
         description = String(file).trim();
       });
@@ -55,7 +59,7 @@ const WorkDetail = ({ prefetchedWork }) => {
     loading: loadingWorks,
     error: errorWorks,
   } = useRequest({
-    url: "works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D=*",
+    url: "works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTags%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTeaser%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BCategories%5D%5Bpopulate%5D=*",
     method: "GET",
   });
 
@@ -66,6 +70,7 @@ const WorkDetail = ({ prefetchedWork }) => {
       ? prefetchedWork?.attributes.Teaser.data.attributes.url
       : undefined,
   });
+
   useEffect(() => {
     setCursorType("default");
     if (workData?.data?.[0]) {
@@ -81,6 +86,24 @@ const WorkDetail = ({ prefetchedWork }) => {
         });
     }
   }, [workData, setCursorType]);
+
+  const work = useMemo(
+    () => ({
+      id: workData?.data[0].id,
+      ...workData?.data[0].attributes,
+    }),
+    [workData]
+  );
+
+  const relatedWorks = useMemo(
+    () =>
+      shuffle(
+        worksData?.data.attributes.Works.filter(
+          (item) => item.work.data[0].id !== work.id
+        )
+      ).slice(0, 3),
+    [work, worksData]
+  );
 
   if (prefetchedWork && !workData) {
     return (
@@ -106,12 +129,6 @@ const WorkDetail = ({ prefetchedWork }) => {
   if (loading || loadingWorks || !workData || !worksData || !metaData) {
     return null;
   }
-
-  const work = {
-    ...workData.data[0].attributes,
-  };
-
-  console.log(work);
 
   return (
     <>
@@ -258,6 +275,52 @@ const WorkDetail = ({ prefetchedWork }) => {
                 work.ImageGallery_3.data[1]?.attributes.alternativeText || ""
               }
             />
+          </div>
+        )}
+        <div className={classes.ready}>
+          <div className={classes.wrapper}>
+            <p className={classes.lead}>Ready to transform your brand?</p>
+          </div>
+          <div className="wrapper">
+            <div className={classes.cta}>
+              <Button
+                text="let’s work together!"
+                arrow={arrow}
+                target="/contacts"
+              />
+            </div>
+          </div>
+        </div>
+        {worksData && (
+          <div className={classes.moreArticles}>
+            <div className={classes.wrapper}>
+              <p className={classes.lead}>Are you curious for more?</p>
+            </div>
+            <div className="wrapper">
+              <ul>
+                {relatedWorks.map(({ id, work: { data: work } }) => (
+                  <li
+                    key={id}
+                    onMouseEnter={() => {
+                      setCursorType("read");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType("default");
+                    }}
+                  >
+                    <Link href={`/work/${work[0].attributes.Slug}`}>
+                      <img
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${work[0].attributes.Teaser.data.attributes.url}`}
+                        alt={
+                          work[0].attributes.Teaser.data.attributes
+                            .alternativeText
+                        }
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
       </article>

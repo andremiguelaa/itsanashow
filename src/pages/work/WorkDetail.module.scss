@@ -82,11 +82,11 @@
   vertical-align: top;
 }
 
-.quote{
+.quote {
   text-align: center;
   padding-top: 8.4rem;
   padding-bottom: 7.8rem;
-  .text{
+  .text {
     font-size: 3.4rem;
     font-weight: 600;
     line-height: 1.27;
@@ -99,17 +99,54 @@
     text-transform: uppercase;
     margin: 0;
   }
-  .role{
+  .role {
     font-size: 1rem;
     text-transform: uppercase;
     margin: 0;
   }
 }
 
-.images{
+.images {
   display: flex;
   flex-wrap: wrap;
   img {
     width: 50%;
+  }
+}
+
+.ready {
+  padding-top: 7.8rem;
+  padding-bottom: 6.25rem;
+  .lead {
+    margin: 0;
+    max-width: 560px;
+    font-size: 3.125rem;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+  .cta {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.moreArticles {
+  .lead {
+    margin: 0 0 3.5rem;
+    font-size: 1.75rem;
+  }
+  ul {
+    margin: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    li {
+      width: calc(33.33% - 1rem);
+    }
+    img {
+      width: 100%;
+    }
   }
 }
