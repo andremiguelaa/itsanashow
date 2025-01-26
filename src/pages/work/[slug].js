@@ -1,18 +1,15 @@
-import React, { useEffect, useState, useMemo, useContext } from "react";
-import Link from "next/link";
+import React, { useEffect, useState, useContext } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { remark } from "remark";
 import strip from "strip-markdown";
-import Slider from "react-slick";
+import classNames from "classnames";
 
-import AppContext from "src/AppContext";
+import { AppContext } from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import Markdown from "src/components/Markdown/Markdown";
 import NoMatch from "src/components/NoMatch/NoMatch";
 import Error from "src/components/Error/Error";
-import behance from "src/assets/behance.svg";
 
 import classes from "./WorkDetail.module.scss";
 
@@ -39,23 +36,10 @@ export const getServerSideProps = async (context) => {
 
 const WorkDetail = ({ prefetchedWork }) => {
   const { setCursorType } = useContext(AppContext);
-  const [currentSlide, setCurrentSlide] = useState(0);
   const {
     query: { slug },
   } = useRouter();
   const [name] = useState(slug);
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 1,
-    centerMode: false,
-    variableWidth: true,
-    touchThreshold: 100,
-    beforeChange: (_, next) => {
-      setCurrentSlide(next);
-    },
-  };
 
   const {
     data: workData,
@@ -83,6 +67,7 @@ const WorkDetail = ({ prefetchedWork }) => {
       : undefined,
   });
   useEffect(() => {
+    setCursorType("default");
     if (workData?.data?.[0]) {
       remark()
         .use(strip)
@@ -95,29 +80,7 @@ const WorkDetail = ({ prefetchedWork }) => {
           });
         });
     }
-  }, [workData]);
-
-  const currentIndex = useMemo(
-    () =>
-      worksData?.data.attributes.Works.findIndex(
-        (item) =>
-          item.work.data[0].attributes.Title === name ||
-          item.work.data[0].attributes.Slug === name
-      ),
-    [name, worksData]
-  );
-
-  const previous =
-    currentIndex > 0
-      ? worksData?.data.attributes.Works[currentIndex - 1].work.data[0]
-          .attributes.Slug
-      : undefined;
-
-  const next =
-    currentIndex < worksData?.data.attributes.Works.length - 1
-      ? worksData?.data.attributes.Works[currentIndex + 1].work.data[0]
-          .attributes.Slug
-      : undefined;
+  }, [workData, setCursorType]);
 
   if (prefetchedWork && !workData) {
     return (
@@ -148,6 +111,8 @@ const WorkDetail = ({ prefetchedWork }) => {
     ...workData.data[0].attributes,
   };
 
+  console.log(work);
+
   return (
     <>
       <Head>
@@ -164,107 +129,27 @@ const WorkDetail = ({ prefetchedWork }) => {
           alt={work.Hero.data.attributes.alternativeText}
           className={classes.hero}
         />
-        <div className={classes.mainContent}>
-          <div className="wrapper">
-            <div className={classes.content}>
-              <header className={classes.header}>
-                <h1>{work.Title}</h1>
-                <p className={classes.subtitle}>
-                  <Markdown content={work.Subtitle} />
-                </p>
-                {work.Tags?.data?.length > 0 && (
-                  <ul className={classes.tags}>
-                    {work.Tags.data.map((tag) => (
-                      <li key={tag.id}>{tag.attributes.Text}</li>
-                    ))}
-                  </ul>
-                )}
-              </header>
-              <div className={classes.body1}>
-                <Markdown content={work.Body1} />
-              </div>
-            </div>
+        <div className={classNames(classes.wrapper, classes.titleAndTags)}>
+          <header className={classes.header}>
+            <p className={classes.subtitle}>
+              <Markdown content={work.Subtitle} />
+            </p>
+            <h1>{work.Title}</h1>
+          </header>
+          <div className={classes.tags}>
+            {work.Tags?.data?.length > 0 && (
+              <ul className={classes.tags}>
+                {work.Tags.data.map((tag) => (
+                  <li key={tag.id}>{tag.attributes.Text}</li>
+                ))}
+              </ul>
+            )}
           </div>
-          {previous && (
-            <Link
-              className={classes.previous}
-              href={previous}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Previous
-            </Link>
-          )}
-          {next && (
-            <Link
-              className={classes.next}
-              href={next}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Next
-            </Link>
-          )}
         </div>
-        {work.ImageGallery?.data?.length > 0 && (
-          <section className={classes.gallerySection}>
-            <div className={classes.gallery}>
-              <div
-                onMouseEnter={() => {
-                  setCursorType("drag");
-                }}
-                onMouseLeave={() => {
-                  setCursorType("default");
-                }}
-                onMouseDown={() => {
-                  setCursorType("dragging");
-                }}
-                onMouseUp={() => {
-                  setCursorType("drag");
-                }}
-              >
-                <Slider {...settings}>
-                  {work.ImageGallery.data.map((image) => (
-                    <div key={image.id}>
-                      <div className={classes.imageItem}>
-                        <img
-                          className={classes.image}
-                          src={`${process.env.NEXT_PUBLIC_API_URL}${image.attributes.url}`}
-                          alt={image.attributes.alternativeText}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-            </div>
-            <div className={classes.scrollStatus}>
-              <div
-                className={classes.scrollStatusBar}
-                style={{
-                  width: `${100 / work.ImageGallery?.data?.length}%`,
-                  transform: `translateX(${currentSlide * 100}%)`,
-                }}
-              />
-            </div>
-          </section>
-        )}
-        <img
-          src={`${process.env.NEXT_PUBLIC_API_URL}${work.BigPicture.data.attributes.url}`}
-          alt={work.BigPicture.data.attributes.alternativeText}
-          className={classes.bigPicture}
-        />
-        <div className="wrapper">
-          <div className={classes.body2}>
-            <Markdown content={work.Body2} />
+        <div className={classes.wrapper}>
+          <div className={classes.body}>
+            <h1>{work.Section1Title}</h1>
+            <Markdown content={work.Section1Body} />
           </div>
         </div>
         {work.VimeoVideo && (
@@ -279,59 +164,102 @@ const WorkDetail = ({ prefetchedWork }) => {
             allowFullScreen
           ></iframe>
         )}
-        <div className={classes.behance}>
-          <p>
-            <span>Find all project details on:</span>
-            <br />
-            <a
-              href={work.BehanceLink}
-              target="_blank"
-              rel="noreferrer"
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              <Image
-                src={behance.src}
-                alt="behance"
-                className={classes.logo}
-                width={35}
-                height={22}
-              />
-            </a>
-          </p>
-          {previous && (
-            <Link
-              className={classes.previous}
-              href={previous}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Previous
-            </Link>
-          )}
-          {next && (
-            <Link
-              className={classes.next}
-              href={next}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              Next
-            </Link>
-          )}
+        {work.ImageGallery_1?.data && (
+          <div className={classes.images}>
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_1.data[0]?.attributes.url}`}
+              alt={
+                work.ImageGallery_1.data[0]?.attributes.alternativeText || ""
+              }
+            />
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_1.data[1]?.attributes.url}`}
+              alt={
+                work.ImageGallery_1.data[1]?.attributes.alternativeText || ""
+              }
+            />
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_1.data[2]?.attributes.url}`}
+              alt={
+                work.ImageGallery_1.data[2]?.attributes.alternativeText || ""
+              }
+            />
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_1.data[3]?.attributes.url}`}
+              alt={
+                work.ImageGallery_1.data[3]?.attributes.alternativeText || ""
+              }
+            />
+          </div>
+        )}
+        <div className={classes.wrapper}>
+          <div className={classes.body}>
+            <h1>{work.Section2Title}</h1>
+            <Markdown content={work.Section2Body} />
+          </div>
         </div>
+        <img
+          src={`${process.env.NEXT_PUBLIC_API_URL}${work.BigPicture.data.attributes.url}`}
+          alt={work.BigPicture.data.attributes.alternativeText}
+          className={classes.bigPicture}
+        />
+        {work.ImageGallery_2?.data && (
+          <div className={classes.images}>
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_2.data[0]?.attributes.url}`}
+              alt={
+                work.ImageGallery_2.data[0]?.attributes.alternativeText || ""
+              }
+            />
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_2.data[1]?.attributes.url}`}
+              alt={
+                work.ImageGallery_2.data[1]?.attributes.alternativeText || ""
+              }
+            />
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_2.data[2]?.attributes.url}`}
+              alt={
+                work.ImageGallery_2.data[2]?.attributes.alternativeText || ""
+              }
+            />
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_2.data[3]?.attributes.url}`}
+              alt={
+                work.ImageGallery_2.data[3]?.attributes.alternativeText || ""
+              }
+            />
+          </div>
+        )}
+        {work.Quote && (
+          <div className={classes.wrapper}>
+            <div className={classes.quote}>
+              <p className={classes.text}>&ldquo;{work.Quote.Quote}&rdquo;</p>
+              {work.Quote.Author && (
+                <p className={classes.author}>{work.Quote.Author}</p>
+              )}
+              {work.Quote.Role && (
+                <p className={classes.role}>{work.Quote.Role}</p>
+              )}
+            </div>
+          </div>
+        )}
+        {work.ImageGallery_3?.data && (
+          <div className={classes.images}>
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_3.data[0]?.attributes.url}`}
+              alt={
+                work.ImageGallery_3.data[0]?.attributes.alternativeText || ""
+              }
+            />
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_3.data[1]?.attributes.url}`}
+              alt={
+                work.ImageGallery_3.data[1]?.attributes.alternativeText || ""
+              }
+            />
+          </div>
+        )}
       </article>
     </>
   );
