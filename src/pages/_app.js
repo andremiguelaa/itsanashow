@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
+import classNames from "classnames";
 
 import AppContext from "src/AppContext";
 import Loading from "src/components/Loading/Loading";
@@ -18,6 +19,7 @@ import classes from "./app.module.scss";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [cursorType, setCursorType] = useState("default");
+  const [scrollLocked, setScrollLocked] = useState(true);
 
   const pageKey = router.asPath;
 
@@ -28,9 +30,14 @@ export default function App({ Component, pageProps }) {
       value={{
         cursorType,
         setCursorType,
+        setScrollLocked,
       }}
     >
-      <div className={classes.wrapper}>
+      <div
+        className={classNames(classes.wrapper, {
+          [classes.scrollLock]: scrollLocked,
+        })}
+      >
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-CK5GL0XLJS" />
         <Script id="google-analytics">
           {`

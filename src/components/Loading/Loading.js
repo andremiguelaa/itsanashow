@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Lottie from "react-lottie-player";
 import classNames from "classnames";
 
+import { AppContext } from "src/AppContext";
 import animation from "src/assets/intro-eye.json";
 
 import classes from "./Loading.module.scss";
@@ -17,6 +18,7 @@ const frame_interval = ANIMATION_FRAMES / total_steps;
 const Loading = () => {
   const [done, setDone] = useState();
   const [currentFrame, setCurrentFrame] = useState(0);
+  const { setScrollLocked } = useContext(AppContext);
 
   useEffect(() => {
     interval = setInterval(() => {
@@ -31,8 +33,9 @@ const Loading = () => {
     if (currentFrame >= ANIMATION_FRAMES) {
       clearInterval(interval);
       setDone(true);
+      setScrollLocked(false);
     }
-  }, [currentFrame]);
+  }, [currentFrame, setScrollLocked]);
 
   return (
     <div className={classNames(classes.loading, { [classes.done]: done })}>
