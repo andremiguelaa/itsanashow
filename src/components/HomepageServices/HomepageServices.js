@@ -37,7 +37,7 @@ const HomepageServices = () => {
           <AnimatedText>Our Services</AnimatedText>
         </p>
         <p className={classes.description}>
-          <AnimatedText delay={100}>
+          <AnimatedText delay={200}>
             Engage your audience and amplify your voice with our...
           </AnimatedText>
         </p>

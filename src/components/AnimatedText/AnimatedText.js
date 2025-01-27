@@ -40,7 +40,7 @@ const AnimatedText = ({ children, delay = 0 }) => {
             [classes.visible]: word.visible,
           })}
           style={{
-            transitionDelay: `${word.visible ? index * 50 + delay : 0}ms`,
+            transitionDelay: `${word.visible ? index * 100 + delay : 0}ms`,
           }}
           key={word.id}
         >

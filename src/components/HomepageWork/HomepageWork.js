@@ -30,7 +30,7 @@ const HomepageWorkItem = ({ portfolioHighlight }) => {
           href={`/work/${portfolioHighlight.Title}`}
           onMouseEnter={() => {
             lottie.current.goToAndPlay(0);
-            setCursorType("view");
+            setCursorType("view2");
           }}
           onMouseLeave={() => {
             setCursorType("default");
@@ -65,11 +65,11 @@ const HomepageWork = ({ portfolioHighlights }) => (
           <AnimatedText>Our work</AnimatedText>
         </p>
         <p className={classes.description}>
-          <AnimatedText delay={100}>
+          <AnimatedText delay={200}>
             Visuals that dominate, inspire,
           </AnimatedText>
           <br />
-          <AnimatedText delay={200}>
+          <AnimatedText delay={600}>
             and leave your competition jealous 
           </AnimatedText>
         </p>

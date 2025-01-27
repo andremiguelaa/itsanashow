@@ -9,7 +9,7 @@ $height: 33px;
   overflow: hidden;
   position: relative;
   display: inline-block;
-  margin-top: 2rem;
+  margin-top: 4.6rem;
   @include mobile {
     display: none;
   }
@@ -24,6 +24,7 @@ $height: 33px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
   path {
     transition: fill, stroke 0.1s linear;
   }

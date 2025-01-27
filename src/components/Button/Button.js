@@ -13,6 +13,7 @@ const Button = ({
   target = "/work",
   onClick = undefined,
   reverted = false,
+  blank = false,
 }) => {
   const router = useRouter();
   const lottie = useRef();
@@ -30,6 +31,10 @@ const Button = ({
       onClick={() => {
         if (onClick) {
           onClick();
+          return;
+        }
+        if(blank) {
+          window.open(target, "_blank");
           return;
         }
         router.push(target);

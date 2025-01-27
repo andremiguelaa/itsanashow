@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Link from "next/link";
+import classNames from "classnames";
 
 import AppContext from "src/AppContext";
 import Button from "src/components/Button/Button";
@@ -22,26 +23,28 @@ const Footer = ({ lead = true }) => {
   const { setCursorType } = useContext(AppContext);
   return (
     <footer className={classes.footer}>
-      <div className={classes.intro}>
+      <div className={classNames(classes.intro, { [classes.noLead]: !lead })}>
         {lead && (
-          <div className={classes.customWrapper}>
-            <p className={classes.sentence}>
-              <AnimatedText>
-                Together, we can create marvels that drive results and steal the
-                show.
-              </AnimatedText>
-            </p>
-          </div>
+          <>
+            <div className={classes.customWrapper}>
+              <p className={classes.sentence}>
+                <AnimatedText>
+                  Together, we can create marvels that drive results and steal
+                  the show.
+                </AnimatedText>
+              </p>
+            </div>
+            <div className="wrapper">
+              <div className={classes.cta}>
+                <Button
+                  text="Let the fun begin!"
+                  arrow={arrow}
+                  target="/contacts"
+                />
+              </div>
+            </div>
+          </>
         )}
-        <div className="wrapper">
-          <div className={classes.cta}>
-            <Button
-              text="Let the fun begin!"
-              arrow={arrow}
-              target="/contacts"
-            />
-          </div>
-        </div>
         <DummyHead className={classes.head} />
       </div>
       <div className="wrapper">

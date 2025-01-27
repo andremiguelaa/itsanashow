@@ -155,7 +155,7 @@ const WorkDetail = ({ prefetchedWork }) => {
           </header>
           <div className={classes.tags}>
             {work.Tags?.data?.length > 0 && (
-              <ul className={classes.tags}>
+              <ul className={classes.tagsList}>
                 {work.Tags.data.map((tag) => (
                   <li key={tag.id}>{tag.attributes.Text}</li>
                 ))}

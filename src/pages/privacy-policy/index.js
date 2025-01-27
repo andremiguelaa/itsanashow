@@ -18,7 +18,7 @@ const Privacy = () => {
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.description}>
-            <AnimatedText delay={250}>
+            <AnimatedText>
               We’re committed to respecting and protecting your privacy.
             </AnimatedText>
           </p>

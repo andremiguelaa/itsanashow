@@ -14,6 +14,9 @@
   overflow: hidden;
   @include mobile {
     padding: 3.75rem 0 7.2rem;
+    &.noLead{
+      padding: 0 0 7.2rem;
+    }
   }
   .customWrapper {
     max-width: 1000px;
@@ -89,6 +92,7 @@
   background-image: url('../../assets/seta.svg');
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
   @include mobile {
     display: block;
   }
@@ -140,6 +144,7 @@
 }
 
 .social {
+  margin-top: -2.375rem;
   @include mobile {
     text-align: center;
     margin-top: 5.8rem;

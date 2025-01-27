@@ -14,6 +14,7 @@ import Testimonials from "src/components/Testimonials/Testimonials";
 import Button from "src/components/Button/Button";
 
 import arrow from "src/assets/buttons/arrowG.json";
+import arrowB from "src/assets/buttons/arrowB.json";
 import motion from "src/assets/skills/motion.json";
 import graphics from "src/assets/skills/graphics.json";
 import brand from "src/assets/skills/brand.json";
@@ -151,18 +152,18 @@ const Us = () => {
           </p>
           <p className={classes.description}>
             <strong>
-              <AnimatedText delay={150}>
+              <AnimatedText delay={300}>
                 Your dedicated creative squad
               </AnimatedText>
             </strong>
-            <AnimatedText delay={250}>
+            <AnimatedText delay={700}>
               Searching for a pixel-perfect partner who crafts stunning
               narratives and makes the whole process a breeze?
             </AnimatedText>
             <br />
             <br />
             <b>
-              <AnimatedText delay={250}>
+              <AnimatedText delay={700}>
                 You’ve found your perfect match!✨
               </AnimatedText>
             </b>
@@ -213,20 +214,12 @@ const Us = () => {
               )}
             </ul>
             <div className={classes.ctaWrapper}>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="mailto:hello@itsanashow.com"
-                className={classes.cta}
-                onMouseEnter={() => {
-                  setCursorType("bigger");
-                }}
-                onMouseLeave={() => {
-                  setCursorType("default");
-                }}
-              >
-                Wanna join us?
-              </a>
+              <Button
+                text="Wanna join us?"
+                arrow={arrowB}
+                target="mailto:hello@itsanashow.com"
+                blank
+              />
             </div>
           </div>
         </section>
@@ -280,9 +273,9 @@ const Us = () => {
             <AnimatedText>Our creative process</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={150}>Tailored. Collaborative.</AnimatedText>
+            <AnimatedText delay={300}>Tailored. Collaborative.</AnimatedText>
             <br />
-            <AnimatedText delay={250}>Impactful.</AnimatedText>
+            <AnimatedText delay={500}>Impactful.</AnimatedText>
           </p>
           <ul className={classes.list}>
             <li

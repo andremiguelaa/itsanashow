@@ -172,20 +172,20 @@ const Header = ({ noDefaultHeader }) => {
           </div>
           <div>
             <Link
-              href="/us"
-              className={classnames(classes.link, {
-                [classes.active]: page === "/us",
-              })}
-            >
-              about us
-            </Link>
-            <Link
               href="/work"
               className={classnames(classes.link, {
                 [classes.active]: page === "/work",
               })}
             >
               our work
+            </Link>
+            <Link
+              href="/us"
+              className={classnames(classes.link, {
+                [classes.active]: page === "/us",
+              })}
+            >
+              about us
             </Link>
             <Link
               href="/insights"

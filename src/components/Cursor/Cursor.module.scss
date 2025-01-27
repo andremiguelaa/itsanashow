@@ -92,6 +92,26 @@
   }
 }
 
+.view2 {
+  width: 128px;
+  height: 128px;
+  background-color: #2a34ff;
+  margin-left: -64px;
+  margin-top: -64px;
+  border-radius: 50%;
+  &:after {
+    content: 'View Me';
+    white-space: nowrap;
+    display: block;
+    color: #fff;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .read {
   width: 128px;
   height: 128px;

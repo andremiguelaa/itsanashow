@@ -44,6 +44,14 @@ const MenuButton = ({ defaultHeader, page, menu, setMenu }) => {
     []
   );
 
+  useEffect(() => {
+    if (menu) {
+      numberChange(buttonFrameLimits.start, buttonFrameLimits.middle);
+    } else {
+      numberChange(buttonFrameLimits.middle2, buttonFrameLimits.end);
+    }
+  }, [menu]);
+
   return (
     <button
       className={classnames(classes.menuButton, classes[page?.split("/")[1]], {
@@ -51,11 +59,6 @@ const MenuButton = ({ defaultHeader, page, menu, setMenu }) => {
       })}
       onClick={() => {
         setMenu((prev) => !prev);
-        if (!menu) {
-          numberChange(buttonFrameLimits.start, buttonFrameLimits.middle);
-        } else {
-          numberChange(buttonFrameLimits.middle2, buttonFrameLimits.end);
-        }
       }}
       onMouseEnter={() => {
         setCursorType("bigger");
