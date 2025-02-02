@@ -87,7 +87,7 @@ const Work = () => {
             <AnimatedText>Our work</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={200}>
+            <AnimatedText delay={100}>
               Elevate your brand through powerful storytelling
             </AnimatedText>
           </p>

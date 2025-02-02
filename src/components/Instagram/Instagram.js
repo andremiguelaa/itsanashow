@@ -41,7 +41,7 @@ const Instagram = () => {
                     <AnimatedText>Follow the fun</AnimatedText>
                   </p>
                   <p className={classes.description}>
-                    <AnimatedText delay={300}>
+                    <AnimatedText delay={150}>
                       Enter the Insta-Verse
                     </AnimatedText>
                   </p>

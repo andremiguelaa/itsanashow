@@ -102,7 +102,7 @@ const Home = () => {
             <AnimatedText>Crafting stories that make brands shine</AnimatedText>
           </p>
           <p className={classes.lead}>
-            <AnimatedText delay={600}>
+            <AnimatedText delay={300}>
               Animation, Branding & Web Design for Visionaries who dare to stand
               out
             </AnimatedText>

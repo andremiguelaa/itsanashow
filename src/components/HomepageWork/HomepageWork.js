@@ -65,11 +65,11 @@ const HomepageWork = ({ portfolioHighlights }) => (
           <AnimatedText>Our work</AnimatedText>
         </p>
         <p className={classes.description}>
-          <AnimatedText delay={200}>
+          <AnimatedText delay={100}>
             Visuals that dominate, inspire,
           </AnimatedText>
           <br />
-          <AnimatedText delay={600}>
+          <AnimatedText delay={300}>
             and leave your competition jealous 
           </AnimatedText>
         </p>

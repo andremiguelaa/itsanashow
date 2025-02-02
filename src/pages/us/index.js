@@ -152,18 +152,18 @@ const Us = () => {
           </p>
           <p className={classes.description}>
             <strong>
-              <AnimatedText delay={300}>
+              <AnimatedText delay={150}>
                 Your dedicated creative squad
               </AnimatedText>
             </strong>
-            <AnimatedText delay={700}>
+            <AnimatedText delay={350}>
               Searching for a pixel-perfect partner who crafts stunning
               narratives and makes the whole process a breeze?
             </AnimatedText>
             <br />
             <br />
             <b>
-              <AnimatedText delay={2300}>
+              <AnimatedText delay={1150}>
                 You’ve found your perfect match!✨
               </AnimatedText>
             </b>
@@ -273,9 +273,9 @@ const Us = () => {
             <AnimatedText>Our creative process</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={300}>Tailored. Collaborative.</AnimatedText>
+            <AnimatedText delay={150}>Tailored. Collaborative.</AnimatedText>
             <br />
-            <AnimatedText delay={500}>Impactful.</AnimatedText>
+            <AnimatedText delay={250}>Impactful.</AnimatedText>
           </p>
           <ul className={classes.list}>
             <li

@@ -57,7 +57,7 @@ const HomepageTeam = () => {
               <AnimatedText>Meet the team</AnimatedText>
             </p>
             <p className={classes.description}>
-              <AnimatedText delay={300}>
+              <AnimatedText delay={150}>
                 Big enough to tackle any challenge, small enough to make it
                 personal
               </AnimatedText>

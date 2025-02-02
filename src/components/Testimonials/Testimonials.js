@@ -55,7 +55,7 @@ const Testimonials = () => {
               <AnimatedText>This warms our hearts</AnimatedText>
             </p>
             <p className={classes.description}>
-              <AnimatedText delay={400}>
+              <AnimatedText delay={200}>
                 What our clients &amp; partners say about us
               </AnimatedText>
             </p>
