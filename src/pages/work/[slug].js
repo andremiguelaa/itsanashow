@@ -234,7 +234,7 @@ const WorkDetail = ({ prefetchedWork }) => {
             {work.ImageGallery_3.data.map((image, index) => (
               <img
                 key={index}
-                src={image.attributes.url}
+                src={`${process.env.NEXT_PUBLIC_API_URL}${image.attributes.url}`}
                 alt={image.attributes.alternativeText}
               />
             ))}
