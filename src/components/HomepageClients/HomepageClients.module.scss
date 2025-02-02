@@ -24,9 +24,9 @@
     display: flex;
   }
   .embla__slide {
-    padding: 0 1.2rem;
+    padding: 0 2rem;
     img {
-      height: 60px;
+      height: 40px;
       opacity: 0.6;
       @include mobile {
         height: 55px;
