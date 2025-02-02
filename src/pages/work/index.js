@@ -12,10 +12,11 @@ import classes from "./styles.module.scss";
 
 const CATEGORIES = [
   "Branding",
-  "Explainers",
-  "Illustration",
+  "Animation",
   "Character-driven",
-  "Interactive",
+  "Illustration",
+  "Graphic Design",
+  "Webdesign",
 ];
 
 const Work = () => {
