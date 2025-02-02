@@ -65,7 +65,7 @@ const WorkDetail = ({ prefetchedWork }) => {
 
   const [metaData, setMetaData] = useState({
     title: prefetchedWork?.attributes.Title,
-    description: prefetchedWork?.description,
+    description: prefetchedWork?.attributes.MetaDescription || prefetchedWork?.description,
     image: prefetchedWork
       ? prefetchedWork?.attributes.Teaser.data.attributes.url
       : undefined,
@@ -80,7 +80,7 @@ const WorkDetail = ({ prefetchedWork }) => {
         .then((file) => {
           setMetaData({
             title: workData.data[0].attributes.Title,
-            description: String(file),
+            description: workData.data[0].attributes.MetaDescription || String(file),
             image: workData.data[0].attributes.Teaser.data.attributes.url,
           });
         });
