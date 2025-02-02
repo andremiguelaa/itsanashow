@@ -65,7 +65,8 @@ const WorkDetail = ({ prefetchedWork }) => {
 
   const [metaData, setMetaData] = useState({
     title: prefetchedWork?.attributes.Title,
-    description: prefetchedWork?.attributes.MetaDescription || prefetchedWork?.description,
+    description:
+      prefetchedWork?.attributes.MetaDescription || prefetchedWork?.description,
     image: prefetchedWork
       ? prefetchedWork?.attributes.Teaser.data.attributes.url
       : undefined,
@@ -80,7 +81,8 @@ const WorkDetail = ({ prefetchedWork }) => {
         .then((file) => {
           setMetaData({
             title: workData.data[0].attributes.Title,
-            description: workData.data[0].attributes.MetaDescription || String(file),
+            description:
+              workData.data[0].attributes.MetaDescription || String(file),
             image: workData.data[0].attributes.Teaser.data.attributes.url,
           });
         });
@@ -183,30 +185,13 @@ const WorkDetail = ({ prefetchedWork }) => {
         )}
         {work.ImageGallery_1?.data && (
           <div className={classes.images}>
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_1.data[0]?.attributes.url}`}
-              alt={
-                work.ImageGallery_1.data[0]?.attributes.alternativeText || ""
-              }
-            />
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_1.data[1]?.attributes.url}`}
-              alt={
-                work.ImageGallery_1.data[1]?.attributes.alternativeText || ""
-              }
-            />
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_1.data[2]?.attributes.url}`}
-              alt={
-                work.ImageGallery_1.data[2]?.attributes.alternativeText || ""
-              }
-            />
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_1.data[3]?.attributes.url}`}
-              alt={
-                work.ImageGallery_1.data[3]?.attributes.alternativeText || ""
-              }
-            />
+            {work.ImageGallery_1.data.map((image, index) => (
+              <img
+                key={index}
+                src={`${process.env.NEXT_PUBLIC_API_URL}${image.attributes.url}`}
+                alt={image.attributes.alternativeText}
+              />
+            ))}
           </div>
         )}
         <div className={classes.wrapper}>
@@ -222,30 +207,13 @@ const WorkDetail = ({ prefetchedWork }) => {
         />
         {work.ImageGallery_2?.data && (
           <div className={classes.images}>
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_2.data[0]?.attributes.url}`}
-              alt={
-                work.ImageGallery_2.data[0]?.attributes.alternativeText || ""
-              }
-            />
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_2.data[1]?.attributes.url}`}
-              alt={
-                work.ImageGallery_2.data[1]?.attributes.alternativeText || ""
-              }
-            />
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_2.data[2]?.attributes.url}`}
-              alt={
-                work.ImageGallery_2.data[2]?.attributes.alternativeText || ""
-              }
-            />
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_2.data[3]?.attributes.url}`}
-              alt={
-                work.ImageGallery_2.data[3]?.attributes.alternativeText || ""
-              }
-            />
+            {work.ImageGallery_2.data.map((image, index) => (
+              <img
+                key={index}
+                src={`${process.env.NEXT_PUBLIC_API_URL}${image.attributes.url}`}
+                alt={image.attributes.alternativeText}
+              />
+            ))}
           </div>
         )}
         {work.Quote && (
@@ -263,18 +231,13 @@ const WorkDetail = ({ prefetchedWork }) => {
         )}
         {work.ImageGallery_3?.data && (
           <div className={classes.images}>
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_3.data[0]?.attributes.url}`}
-              alt={
-                work.ImageGallery_3.data[0]?.attributes.alternativeText || ""
-              }
-            />
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${work.ImageGallery_3.data[1]?.attributes.url}`}
-              alt={
-                work.ImageGallery_3.data[1]?.attributes.alternativeText || ""
-              }
-            />
+            {work.ImageGallery_3.data.map((image, index) => (
+              <img
+                key={index}
+                src={image.attributes.url}
+                alt={image.attributes.alternativeText}
+              />
+            ))}
           </div>
         )}
         <div className={classes.ready}>
