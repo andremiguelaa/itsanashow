@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import classNames from "classnames";
+import Scrollbar from "smooth-scrollbar";
 
 import AppContext from "src/AppContext";
 import Loading from "src/components/Loading/Loading";
@@ -25,6 +26,12 @@ export default function App({ Component, pageProps }) {
 
   const isWorkDetailPage = pageKey.startsWith("/work/");
 
+  useEffect(() => {
+    if (!scrollLocked) {
+      Scrollbar.init(document.querySelector("#content"));
+    }
+  }, [scrollLocked]);
+
   return (
     <AppContext.Provider
       value={{
@@ -35,6 +42,7 @@ export default function App({ Component, pageProps }) {
       }}
     >
       <div
+        id="content"
         className={classNames(classes.wrapper, {
           [classes.scrollLock]: scrollLocked,
         })}
