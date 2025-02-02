@@ -2,9 +2,13 @@ import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
 import { InView } from 'react-intersection-observer';
 
+import { AppContext } from 'src/AppContext';
+
 import classes from './AnimatedText.module.scss';
 
 const AnimatedText = ({ children, delay = 0 }) => {
+  const { textAnimationAvailable } = useContext(AppContext);
+
   const [words, setWords] = useState(
     children.split(' ').map((word, index) => ({
       id: index,
@@ -37,7 +41,7 @@ const AnimatedText = ({ children, delay = 0 }) => {
       {words.map((word, index) => (
         <span
           className={classnames(classes.word, {
-            [classes.visible]: word.visible,
+            [classes.visible]: word.visible && textAnimationAvailable,
           })}
           style={{
             transitionDelay: `${word.visible ? index * 100 + delay : 0}ms`,

@@ -163,7 +163,7 @@ const Us = () => {
             <br />
             <br />
             <b>
-              <AnimatedText delay={700}>
+              <AnimatedText delay={2300}>
                 You’ve found your perfect match!✨
               </AnimatedText>
             </b>

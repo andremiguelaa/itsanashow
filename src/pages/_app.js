@@ -31,6 +31,7 @@ export default function App({ Component, pageProps }) {
         cursorType,
         setCursorType,
         setScrollLocked,
+        textAnimationAvailable: !scrollLocked,
       }}
     >
       <div
