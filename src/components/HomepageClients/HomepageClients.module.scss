@@ -25,11 +25,14 @@
   }
   .embla__slide {
     padding: 0 2rem;
+    @include mobile {
+      padding: 0 1.25rem;
+    }
     img {
       height: 40px;
       opacity: 0.6;
       @include mobile {
-        height: 55px;
+        height: 25px;
       }
     }
   }
