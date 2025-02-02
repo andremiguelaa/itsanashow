@@ -452,6 +452,7 @@
       width: 22.5%;
       text-align: center;
       margin-top: 3.75rem;
+      vertical-align: middle;
       @include mobile {
         margin-top: 1.25rem;
         width: 47.5%;
@@ -477,7 +478,7 @@
       transform: translateY(100px) scale(0.85);
       transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
       &.visible {
-        opacity: 1;
+        opacity: 0.6;
         transform: translateY(0) translateZ(0) scale(0.85);
       }
     }
