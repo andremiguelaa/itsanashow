@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import classNames from "classnames";
-import { ReactLenis } from "lenis/react";
 
 import AppContext from "src/AppContext";
 import Loading from "src/components/Loading/Loading";
@@ -35,30 +34,28 @@ export default function App({ Component, pageProps }) {
         textAnimationAvailable: !scrollLocked,
       }}
     >
-      <ReactLenis root>
-        <div
-          className={classNames(classes.wrapper, {
-            [classes.scrollLock]: scrollLocked,
-          })}
-        >
-          <Script src="https://www.googletagmanager.com/gtag/js?id=G-CK5GL0XLJS" />
-          <Script id="google-analytics">
-            {`
+      <div
+        className={classNames(classes.wrapper, {
+          [classes.scrollLock]: scrollLocked,
+        })}
+      >
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-CK5GL0XLJS" />
+        <Script id="google-analytics">
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-CK5GL0XLJS');
         `}
-          </Script>
-          <Loading />
-          <Header />
-          <div>
-            <Component key={pageKey} {...pageProps} />
-            <Footer lead={!isWorkDetailPage} />
-          </div>
-          <Cursor />
+        </Script>
+        <Loading />
+        <Header />
+        <div>
+          <Component key={pageKey} {...pageProps} />
+          <Footer lead={!isWorkDetailPage} />
         </div>
-      </ReactLenis>
+        <Cursor />
+      </div>
     </AppContext.Provider>
   );
 }
