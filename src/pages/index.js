@@ -326,60 +326,6 @@ const Home = () => {
         </div>
       </section>
       <Testimonials />
-      <section className={classes.clients}>
-        <div className="wrapper">
-          <p className={classes.lead}>
-            <AnimatedText>Some happy clients and partners</AnimatedText>
-          </p>
-          <p className={classes.description}>
-            <AnimatedText delay={250}>
-              Reach goals and keep rocking is our mojo!
-            </AnimatedText>
-          </p>
-          {clients.length > 0 && (
-            <ul className={classes.clientsList}>
-              {clients.map((client) => (
-                <InView
-                  as="li"
-                  key={client.id}
-                  onChange={(InView) => {
-                    if (InView) {
-                      setLogosVisibility((prev) => ({
-                        ...prev,
-                        [client.id]: true,
-                      }));
-                    }
-                  }}
-                >
-                  <img
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${client.Logo}`}
-                    alt={client.Name}
-                    className={classnames({
-                      [classes.visible]: logosVisibility[client.id],
-                    })}
-                  />
-                </InView>
-              ))}
-            </ul>
-          )}
-          <div className={classes.ctaWrapper}>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.designrush.com/agency/profile/itsanashow-studio"
-              className={classes.cta}
-              onMouseEnter={() => {
-                setCursorType("bigger");
-              }}
-              onMouseLeave={() => {
-                setCursorType("default");
-              }}
-            >
-              View our profile on DesignRush
-            </a>
-          </div>
-        </div>
-      </section>
     </>
   );
 };
