@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
 import Lottie from "react-lottie-player";
 import classNames from "classnames";
 
@@ -16,6 +17,9 @@ const total_steps = ANIMATION_DURATION / step_duration;
 const frame_interval = ANIMATION_FRAMES / total_steps;
 
 const Loading = () => {
+  const router = useRouter();
+  const pageKey = router.asPath;
+
   const [done, setDone] = useState();
   const [currentFrame, setCurrentFrame] = useState(0);
   const { setScrollLocked } = useContext(AppContext);
@@ -30,12 +34,12 @@ const Loading = () => {
   }, []);
 
   useEffect(() => {
-    if (currentFrame >= ANIMATION_FRAMES) {
+    if (currentFrame >= ANIMATION_FRAMES || pageKey !== "/") {
       clearInterval(interval);
       setDone(true);
       setScrollLocked(false);
     }
-  }, [currentFrame, setScrollLocked]);
+  }, [currentFrame, setScrollLocked, pageKey]);
 
   return (
     <div className={classNames(classes.loading, { [classes.done]: done })}>
