@@ -170,60 +170,65 @@ const Us = () => {
           </p>
         </div>
       </section>
-      {teamMembers.length > 0 && (
-        <section className={classes.team}>
-          <div className="wrapper">
-            <ul className={classes.teamMembers}>
-              {teamMembers.map(
-                ({ id, MainText, Name, Role, SecondaryText, Image }, index) => (
-                  <li key={id} className={classes.teamMember}>
-                    <InView
-                      onChange={(InView) => {
-                        setTeamMemberVisibility((prev) => ({
-                          ...prev,
-                          [id]: InView,
-                        }));
-                      }}
-                    >
-                      <div
-                        className={classnames(classes.teamMemberContent, {
-                          [classes.visible]: teamMemberVisibility[id],
-                          [classes.delayIn]: index % 2 !== 0,
-                        })}
+      <section className={classes.team}>
+        <div className="wrapper">
+          {teamMembers.length > 0 && (
+            <>
+              <ul className={classes.teamMembers}>
+                {teamMembers.map(
+                  (
+                    { id, MainText, Name, Role, SecondaryText, Image },
+                    index
+                  ) => (
+                    <li key={id} className={classes.teamMember}>
+                      <InView
+                        onChange={(InView) => {
+                          setTeamMemberVisibility((prev) => ({
+                            ...prev,
+                            [id]: InView,
+                          }));
+                        }}
                       >
-                        <p className={classes.role}>{Role}</p>
-                        <p className={classes.name}>{Name}</p>
-                        <p className={classes.mainText}>
-                          <Markdown content={MainText} />
-                        </p>
-
-                        <div className={classes.aside}>
-                          <img
-                            className={classes.image}
-                            src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
-                            alt={Name}
-                          />
-                          <p className={classes.secondaryText}>
-                            <Markdown content={SecondaryText} />
+                        <div
+                          className={classnames(classes.teamMemberContent, {
+                            [classes.visible]: teamMemberVisibility[id],
+                            [classes.delayIn]: index % 2 !== 0,
+                          })}
+                        >
+                          <p className={classes.role}>{Role}</p>
+                          <p className={classes.name}>{Name}</p>
+                          <p className={classes.mainText}>
+                            <Markdown content={MainText} />
                           </p>
+
+                          <div className={classes.aside}>
+                            <img
+                              className={classes.image}
+                              src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
+                              alt={Name}
+                            />
+                            <p className={classes.secondaryText}>
+                              <Markdown content={SecondaryText} />
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </InView>
-                  </li>
-                )
-              )}
-            </ul>
-            <div className={classes.ctaWrapper}>
-              <Button
-                text="Wanna join us?"
-                arrow={arrowB}
-                target="mailto:hello@itsanashow.com"
-                blank
-              />
-            </div>
-          </div>
-        </section>
-      )}
+                      </InView>
+                    </li>
+                  )
+                )}
+              </ul>
+              <div className={classes.ctaWrapper}>
+                <Button
+                  text="Wanna join us?"
+                  arrow={arrowB}
+                  target="mailto:hello@itsanashow.com"
+                  blank
+                />
+              </div>
+            </>
+          )}
+        </div>
+      </section>
       {teamPhotos.length > 0 && (
         <section className={classes.gallery}>
           <div className={classes.teamPhotos}>

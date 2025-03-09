@@ -7,6 +7,7 @@ import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
+import ImageComponent from "src/components/Image/Image";
 
 import classes from "./styles.module.scss";
 
@@ -154,25 +155,64 @@ const Work = () => {
         </div>
         <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
       </section>
-      {works.length > 0 && (
-        <section className={classes.works}>
-          <div
-            ref={scrollWorksRef}
-            style={{ position: "absolute", top: "100vh" }}
-          />
-          <ParallaxProvider>
-            <ul className={classes.list}>
-              {works.map(({ id, Title, Slug, Image, Categories }, index) => (
-                <li className={classes.item} key={id}>
-                  <Link
-                    href={`/work/${Slug}`}
-                    onMouseEnter={() => {
-                      setCursorType("view");
-                    }}
-                    onMouseLeave={() => {
-                      setCursorType("default");
-                    }}
-                  >
+
+      <section className={classes.works}>
+        <div
+          ref={scrollWorksRef}
+          style={{ position: "absolute", top: "100vh" }}
+        />
+        <ParallaxProvider>
+          <ul className={classes.list}>
+            {works.length > 0 ? (
+              <>
+                {works.map(({ id, Title, Slug, Image, Categories }, index) => (
+                  <li className={classes.item} key={id}>
+                    <Link
+                      href={`/work/${Slug}`}
+                      onMouseEnter={() => {
+                        setCursorType("view");
+                      }}
+                      onMouseLeave={() => {
+                        setCursorType("default");
+                      }}
+                    >
+                      <Parallax
+                        translateY={[
+                          0,
+                          global.window?.innerWidth >= 768 && index % 2 === 1
+                            ? -20
+                            : 0,
+                        ]}
+                        targetElement={scrollRef.current}
+                      >
+                        <div
+                          className={classnames(
+                            classes.imagePlaceholder,
+                            classes.imagePlaceholderLoaded
+                          )}
+                        />
+                        <ImageComponent
+                          src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
+                          alt={Title}
+                        />
+                        <div className={classes.overlay} />
+                        <div className={classes.text}>
+                          <p className={classes.name}>{Title}</p>
+                          {Categories.length > 0 && (
+                            <p className={classes.tags}>
+                              {Categories.join(", ")}
+                            </p>
+                          )}
+                        </div>
+                      </Parallax>
+                    </Link>
+                  </li>
+                ))}
+              </>
+            ) : (
+              <>
+                {[...Array(4).keys()].map((key, index) => (
+                  <li className={classes.item} key={key}>
                     <Parallax
                       translateY={[
                         0,
@@ -182,27 +222,16 @@ const Work = () => {
                       ]}
                       targetElement={scrollRef.current}
                     >
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
-                        alt={Title}
-                      />
+                      <div className={classes.imagePlaceholder} />
                       <div className={classes.overlay} />
-                      <div className={classes.text}>
-                        <p className={classes.name}>{Title}</p>
-                        {Categories.length > 0 && (
-                          <p className={classes.tags}>
-                            {Categories.join(", ")}
-                          </p>
-                        )}
-                      </div>
                     </Parallax>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </ParallaxProvider>
-        </section>
-      )}
+                  </li>
+                ))}
+              </>
+            )}
+          </ul>
+        </ParallaxProvider>
+      </section>
     </>
   );
 };
