@@ -221,7 +221,7 @@ const Us = () => {
                 <Button
                   text="Wanna join us?"
                   arrow={arrowB}
-                  target="mailto:hello@itsanashow.com"
+                  target="mailto:team@itsanashow.com"
                   blank
                 />
               </div>

@@ -3,13 +3,13 @@ import classNames from "classnames";
 
 import classes from "./Image.module.scss";
 
-const Image = ({ src, alt }) => {
+const Image = ({ src, alt, className }) => {
   const [loaded, setLoaded] = useState(false);
   return (
     <img
       src={src}
       alt={alt}
-      className={classNames(classes.image, {
+      className={classNames(className, classes.image, {
         [classes.loaded]: loaded,
       })}
       onLoad={() => {

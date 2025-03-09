@@ -13,6 +13,7 @@ import Markdown from "src/components/Markdown/Markdown";
 import NoMatch from "src/components/NoMatch/NoMatch";
 import Error from "src/components/Error/Error";
 import Button from "src/components/Button/Button";
+import ImageComponent from "src/components/Image/Image";
 import arrow from "src/assets/buttons/arrowB.json";
 
 import classes from "./WorkDetail.module.scss";
@@ -109,14 +110,19 @@ const WorkDetail = ({ prefetchedWork }) => {
 
   if (prefetchedWork && !workData) {
     return (
-      <Head>
-        <title>{`Itsanashow Studio | ${metaData.title}`}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:image"
-          content={`${process.env.NEXT_PUBLIC_API_URL}${metaData.image}`}
-        />
-      </Head>
+      <>
+        <Head>
+          <title>{`Itsanashow Studio | ${metaData.title}`}</title>
+          <meta name="description" content={metaData.description} />
+          <meta
+            property="og:image"
+            content={`${process.env.NEXT_PUBLIC_API_URL}${metaData.image}`}
+          />
+        </Head>
+        <article className={classes.workDetail}>
+          <div className={classes.imagePlaceholder}></div>
+        </article>
+      </>
     );
   }
 
@@ -129,7 +135,11 @@ const WorkDetail = ({ prefetchedWork }) => {
   }
 
   if (loading || loadingWorks || !workData || !worksData || !metaData) {
-    return null;
+    return (
+      <article className={classes.workDetail}>
+        <div className={classes.imagePlaceholder}></div>
+      </article>
+    );
   }
 
   return (
@@ -143,7 +153,7 @@ const WorkDetail = ({ prefetchedWork }) => {
         />
       </Head>
       <article className={classes.workDetail}>
-        <img
+        <ImageComponent
           src={`${process.env.NEXT_PUBLIC_API_URL}${work.Hero.data.attributes.url}`}
           alt={work.Hero.data.attributes.alternativeText}
           className={classes.hero}

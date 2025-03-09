@@ -161,7 +161,7 @@ const Footer = ({ lead = true }) => {
             </li>
             <li>
               <a
-                href="https://www.behance.net/ItsanashowStudio"
+                href="https://www.behance.net/itsanashow-studio"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Behance"
