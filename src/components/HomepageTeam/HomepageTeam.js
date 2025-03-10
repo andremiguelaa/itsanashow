@@ -4,7 +4,7 @@ import classnames from "classnames";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import Button from "src/components/Button/Button";
 import arrow from "src/assets/buttons/arrowG.json";
-import video from "src/assets/contacts.webm";
+import video from "src/assets/contacts.mp4";
 
 import classes from "./HomepageTeam.module.scss";
 
