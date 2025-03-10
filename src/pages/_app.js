@@ -26,7 +26,9 @@ export default function App({ Component, pageProps }) {
   const isWorkDetailPage = pageKey.startsWith("/work/");
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
   }, [pageKey]);
 
   return (
