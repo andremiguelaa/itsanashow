@@ -20,6 +20,9 @@
     width: 100%;
     z-index: -1;
   }
+  &.above{
+    opacity: 0;
+  }
   @include tablet {
     padding: 2.3rem 0 3rem;
   }

@@ -11,6 +11,7 @@ import classes from "./HomepageTeam.module.scss";
 const HomepageTeam = () => {
   const threshold = useRef();
   const element = useRef();
+  const [above, setAbove] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const listenToScroll = () => {
@@ -18,6 +19,12 @@ const HomepageTeam = () => {
       setScrolled(true);
     } else {
       setScrolled(false);
+    }
+    if(threshold.current.getBoundingClientRect().top < -element.current.clientHeight) {
+      setAbove(true);
+    }
+    else {
+      setAbove(false);
     }
   };
 
@@ -40,6 +47,7 @@ const HomepageTeam = () => {
       <section
         className={classnames(classes.team, {
           [classes.scrolled]: scrolled,
+          [classes.above]: above,
         })}
         ref={element}
       >
