@@ -37,9 +37,11 @@ const Contacts = () => {
     callback: true,
     onSuccess: () => {
       setSuccess(true);
+      window.scrollTo(0, 0);
     },
     onError: () => {
       setError(true);
+      window.scrollTo(0, 0);
     },
   });
 
