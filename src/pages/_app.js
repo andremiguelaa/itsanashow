@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import classNames from "classnames";
@@ -24,6 +24,10 @@ export default function App({ Component, pageProps }) {
   const pageKey = router.asPath;
 
   const isWorkDetailPage = pageKey.startsWith("/work/");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pageKey]);
 
   return (
     <AppContext.Provider
