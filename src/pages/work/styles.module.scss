@@ -1,4 +1,4 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
 
 @keyframes placeHolderShimmer {
   0% {
@@ -13,7 +13,7 @@
   background-color: #08142d;
   padding: 14rem 0 4.8rem;
   position: relative;
-  @include mobile {
+  @include mixins.mobile {
     padding: 7rem 0 3rem;
   }
   &::before {
@@ -30,7 +30,7 @@
   .text {
     position: relative;
     z-index: 1;
-    @include mobile {
+    @include mixins.mobile {
       text-align: left;
     }
     .lead {
@@ -38,7 +38,7 @@
       font-size: 1.125rem;
       font-weight: 400;
       text-transform: uppercase;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 0.8125rem;
       }
     }
@@ -48,7 +48,7 @@
       font-weight: 600;
       line-height: 1.25;
       max-width: 1140px;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 2.5rem;
       }
     }
@@ -84,7 +84,7 @@
         transform: rotate(180deg);
       }
     }
-    @include smallDesktop {
+    @include mixins.smallDesktop {
       display: block;
     }
   }
@@ -92,10 +92,10 @@
     margin-top: 4.8rem;
     position: relative;
     z-index: 1;
-    @include smallDesktop {
+    @include mixins.smallDesktop {
       margin-top: 1.5rem;
     }
-    @include smallDesktop {
+    @include mixins.smallDesktop {
       display: none;
       &.open {
         display: block;
@@ -116,7 +116,7 @@
       opacity: 0.5;
       transition: all 0.2s linear;
       border-radius: 22px;
-      @include smallDesktop {
+      @include mixins.smallDesktop {
         height: 35px;
         border-radius: 18px;
         padding: 0;
@@ -128,7 +128,7 @@
       &.selected {
         opacity: 1;
         border: 1.5px solid #fff;
-        @include smallDesktop {
+        @include mixins.smallDesktop {
           display: none;
         }
       }
@@ -151,7 +151,7 @@
     opacity: 1;
     transition: opacity 0.5s linear;
 
-    @include mobile {
+    @include mixins.mobile {
       width: 100%;
     }
     a {
@@ -165,7 +165,7 @@
       vertical-align: top;
       height: 28vw;
       position: relative;
-      @include mobile {
+      @include mixins.mobile {
         height: 56vw;
       }
     }
@@ -209,7 +209,7 @@
       pointer-events: none;
       overflow: hidden;
       max-height: 100%;
-      @include mobile {
+      @include mixins.mobile {
         bottom: 1rem;
         left: 1rem;
         right: 1rem;
@@ -221,7 +221,7 @@
         margin: 0;
         text-transform: uppercase;
         color: #fff;
-        @include mobile {
+        @include mixins.mobile {
           font-size: 0.95rem;
         }
       }
@@ -236,7 +236,7 @@
         text-overflow: ellipsis;
         height: 0;
         transition: height 0.15s linear;
-        @include mobile {
+        @include mixins.mobile {
           font-size: 0.8rem;
           height: 1.8675rem;
         }

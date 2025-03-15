@@ -1,4 +1,4 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
 
 .button {
   border: none;
@@ -11,7 +11,7 @@
   font-weight: 600;
   padding: 0;
   cursor: pointer;
-  @include mobile {
+  @include mixins.mobile {
     font-size: 0.75rem;
   }
   .arrow,

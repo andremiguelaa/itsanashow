@@ -1,4 +1,4 @@
-@import 'src/styles/mixins.scss';
+@use 'src/styles/mixins.scss';
 
 .testimonials {
   padding: 4.7rem 0 7rem;
@@ -6,7 +6,7 @@
   color: #08142d;
   overflow: hidden;
   position: relative;
-  @include mobile {
+  @include mixins.mobile {
     padding: 3.8rem 0 4rem;
   }
   .lead {
@@ -14,7 +14,7 @@
     font-size: 1.15rem;
     font-weight: 400;
     text-transform: uppercase;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 0.8rem;
       text-align: center;
     }
@@ -25,7 +25,7 @@
     font-weight: 700;
     line-height: 1.25;
     max-width: 720px;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 1.35rem;
       text-align: center;
       max-width: 270px;
@@ -36,7 +36,7 @@
     margin: 7rem 0 0;
     padding: 0 0 5rem 0;
     text-align: center;
-    @include mobile {
+    @include mixins.mobile {
       margin: 3rem 0 0;
       padding: 0 0 4rem 0;
     }
@@ -48,7 +48,7 @@
     width: 38rem;
     padding-left: 1rem;
     height: 100%;
-    @include mobile {
+    @include mixins.mobile {
       width: 17rem;
     }
     .content {
@@ -57,7 +57,7 @@
       pointer-events: none;
       height: 100%;
       box-sizing: border-box;
-      @include mobile {
+      @include mixins.mobile {
         padding: 2.66rem 1.6rem 3.5rem;
       }
     }
@@ -68,7 +68,7 @@
       line-height: 1.6;
       color: #2a34ff;
       margin: 0;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 0.8rem;
       }
     }
@@ -77,7 +77,7 @@
       font-weight: 700;
       line-height: 1.25;
       margin: 4rem 0 0;
-      @include mobile {
+      @include mixins.mobile {
         margin: 3rem 0 0;
         font-size: 0.7rem;
       }
@@ -88,7 +88,7 @@
       font-weight: 400;
       line-height: 1.4;
       margin: 0;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 0.7rem;
       }
     }

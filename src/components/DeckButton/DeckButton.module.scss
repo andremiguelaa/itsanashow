@@ -1,4 +1,4 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
 
 $width: 240px;
 $height: 33px;
@@ -10,7 +10,7 @@ $height: 33px;
   position: relative;
   display: inline-block;
   margin-top: 4.6rem;
-  @include mobile {
+  @include mixins.mobile {
     display: none;
   }
 }

@@ -1,4 +1,4 @@
-@import 'src/styles/mixins.scss';
+@use 'src/styles/mixins.scss';
 
 .content {
   position: fixed;
@@ -15,7 +15,7 @@
     width: 300px;
     height: 300px;
     margin: 0 auto;
-    @include mobile {
+    @include mixins.mobile {
       width: 200px;
       height: 200px;
     }
@@ -26,7 +26,7 @@
     font-weight: 800;
     line-height: 1.25;
     margin: 0;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 2.5rem;
     }
   }
@@ -36,7 +36,7 @@
     font-weight: 600;
     line-height: 1.25;
     margin: 0;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 2rem;
     }
   }
@@ -45,7 +45,7 @@
     line-height: 1.45;
     max-width: 700px;
     margin: 1rem auto 0;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 1rem;
       max-width: 300px;
     }
@@ -59,7 +59,7 @@
     text-decoration: none;
     position: relative;
     padding-left: 3.5rem;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 1.2rem;
       padding-left: 2.5rem;
       margin-top: 2rem;
@@ -78,7 +78,7 @@
       background-size: contain;
       background-position: center;
       animation: arrow 1.5s linear infinite;
-      @include mobile {
+      @include mixins.mobile {
         width: 25px;
         height: 16px;
         margin-top: -8px;

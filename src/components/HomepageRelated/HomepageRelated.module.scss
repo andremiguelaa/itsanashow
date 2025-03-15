@@ -1,11 +1,11 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
 
 .related {
   background-color: #f3f3f4;
   padding: 7.5rem 0 4rem;
   color: #08142d;
   position: relative;
-  @include mobile {
+  @include mixins.mobile {
     padding: 3.5rem 0 3.75rem;
   }
   :global(.wrapper) {
@@ -16,7 +16,7 @@
     text-align: center;
     margin: 0 0 1rem;
     font-size: 1.25rem;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 0.8125rem;
       margin: 0 0 0.5rem;
     }
@@ -26,7 +26,7 @@
     font-size: 2.5rem;
     text-align: center;
     margin: 0;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 1.375rem;
     }
   }
@@ -37,7 +37,7 @@
     list-style: none;
     gap: 1rem;
     margin-top: 2.5rem;
-    @include mobile {
+    @include mixins.mobile {
       gap: 0;
     }
     .article {
@@ -51,7 +51,7 @@
         opacity: 1;
         transform: translateY(0) translateZ(0) scale(1);
       }
-      @include mobile {
+      @include mixins.mobile {
         width: 100%;
       }
     }
@@ -86,7 +86,7 @@
       align-items: center;
       bottom: 1rem;
       left: 1rem;
-      @include mobile {
+      @include mixins.mobile {
         bottom: 0.75rem;
         left: 0.75rem;
       }
@@ -94,7 +94,7 @@
         width: 45px;
         height: 45px;
         border-radius: 50%;
-        @include mobile {
+        @include mixins.mobile {
           width: 30px;
           height: 30px;
         }
@@ -111,7 +111,7 @@
       font-size: 0.7rem;
       margin: 0;
       letter-spacing: 2px;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 0.6rem;
       }
     }

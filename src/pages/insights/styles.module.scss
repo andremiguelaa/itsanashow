@@ -1,10 +1,10 @@
-@import 'src/styles/mixins.scss';
+@use 'src/styles/mixins.scss';
 
 .content {
   background-color: #fff;
   padding: 14rem 0 7.5rem;
   color: #08142d;
-  @include mobile {
+  @include mixins.mobile {
     padding: 7rem 0 3rem;
   }
   :global(.wrapper) {
@@ -16,7 +16,7 @@
   text-align: center;
   text-transform: uppercase;
   font-size: 1.25rem;
-  @include mobile {
+  @include mixins.mobile {
     font-size: 0.7rem;
   }
 }
@@ -28,7 +28,7 @@
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  @include mobile {
+  @include mixins.mobile {
     font-size: 1.25rem;
     max-width: 250px;
   }
@@ -54,7 +54,7 @@
 .filters {
   margin: 8rem 0 4rem;
   border-bottom: 3px solid #08142d;
-  @include mobile {
+  @include mixins.mobile {
     margin: 4rem 0 2rem;
   }
   .toggle {
@@ -69,7 +69,7 @@
     display: flex;
     align-self: center;
     font-size: 1rem;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 0.7rem;
     }
     &::after {
@@ -83,7 +83,7 @@
       margin-left: 0.5rem;
       position: relative;
       top: 2px;
-      @include mobile {
+      @include mixins.mobile {
         height: 10px;
         width: 8px;
       }
@@ -97,7 +97,7 @@
   .tags {
     margin: 1rem 0;
     padding: 0;
-    @include mobile {
+    @include mixins.mobile {
       margin: 0.5rem 0;
     }
     &.visible {
@@ -106,7 +106,7 @@
     .tag {
       display: none;
       padding: 1rem 2rem 0 0;
-      @include mobile {
+      @include mixins.mobile {
         width: calc(50% - 1rem);
         &:nth-child(2n) {
           padding: 1rem 0 0 0;
@@ -132,7 +132,7 @@
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 0.7rem;
       }
       &:before {
@@ -145,7 +145,7 @@
         border: 1px solid #08142d;
         margin-right: 0.7rem;
         flex-shrink: 0;
-        @include mobile {
+        @include mixins.mobile {
           width: 20px;
           height: 20px;
           margin-right: 0.5rem;
@@ -164,7 +164,7 @@
             #fe00ae 0deg,
             #2a34ff 360deg
           );
-          @include mobile {
+          @include mixins.mobile {
             width: 12px;
             height: 12px;
             left: 4px;
@@ -191,7 +191,7 @@
     font-size: 0.8125rem;
     font-family: inherit;
     cursor: pointer;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 0.7rem;
     }
   }
@@ -204,14 +204,14 @@
   list-style: none;
   gap: 4rem;
   min-height: 1000px;
-  @include mobile {
+  @include mixins.mobile {
     gap: 0;
   }
   .article {
     width: calc(50% - 2rem);
     position: relative;
     padding-bottom: 2.5rem;
-    @include mobile {
+    @include mixins.mobile {
       width: 100%;
       margin-bottom: 4rem;
     }
@@ -256,7 +256,7 @@
     align-items: center;
     bottom: 1.5rem;
     left: 1.5rem;
-    @include mobile {
+    @include mixins.mobile {
       bottom: 0.75rem;
       left: 0.75rem;
     }
@@ -264,7 +264,7 @@
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      @include mobile {
+      @include mixins.mobile {
         width: 30px;
         height: 30px;
       }
@@ -281,7 +281,7 @@
     font-size: 0.7rem;
     margin: 0;
     letter-spacing: 2px;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 0.6rem;
     }
   }
@@ -289,7 +289,7 @@
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0.5rem 0;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 1rem;
       margin: 0.3rem 0;
     }
@@ -302,7 +302,7 @@
     -webkit-line-clamp: 3;
     overflow: hidden;
     margin: 0 0 1rem;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 0.7rem;
       line-height: 1.4;
     }
@@ -332,7 +332,7 @@
       opacity: 1;
       transform: translateY(0) translateZ(0) scale(1);
     }
-    @include mobile {
+    @include mixins.mobile {
       font-size: 0.8125rem;
     }
     &::after {
@@ -345,7 +345,7 @@
       width: 18px;
       margin-left: 0.5rem;
       vertical-align: middle;
-      @include mobile {
+      @include mixins.mobile {
         height: 10px;
         width: 16px;
         margin-top: -1px;
@@ -364,7 +364,7 @@
   padding: 0;
   background-color: transparent;
   cursor: pointer;
-  @include mobile {
+  @include mixins.mobile {
     font-size: 0.8rem;
     margin: 0 auto;
   }

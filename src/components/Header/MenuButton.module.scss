@@ -1,4 +1,4 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
 
 .menuButton {
   z-index: 1001;
@@ -23,14 +23,14 @@
   &.insights {
     mix-blend-mode: difference;
   }
-  @include smallDesktop {
+  @include mixins.smallDesktop {
     display: block;
     right: 5rem;
   }
-  @include tablet {
+  @include mixins.tablet {
     right: 2rem;
   }
-  @include mobile {
+  @include mixins.mobile {
     right: 1rem;
     top: 2.25rem;
   }

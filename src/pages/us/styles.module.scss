@@ -1,4 +1,4 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
 
 .intro {
   background-color: #08142d;
@@ -15,7 +15,7 @@
     background-position: top center;
     background-size: cover;
   }
-  @include mobile {
+  @include mixins.mobile {
     padding: 7rem 0 3rem;
   }
   .text {
@@ -26,7 +26,7 @@
       font-size: 1.15rem;
       font-weight: 400;
       text-transform: uppercase;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 0.8rem;
       }
     }
@@ -35,7 +35,7 @@
       font-size: 1.5rem;
       line-height: 1.25;
       max-width: 790px;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 1.35rem;
       }
       strong {
@@ -43,7 +43,7 @@
         font-weight: 600;
         display: block;
         margin-bottom: 1rem;
-        @include mobile {
+        @include mixins.mobile {
           font-size: 2.5rem;
         }
       }
@@ -56,17 +56,17 @@
   padding: 17rem 0 0;
   background-color: #fff;
   color: #08142d;
-  @include tablet {
+  @include mixins.tablet {
     padding: 10rem 0 0;
   }
-  @include mobile {
+  @include mixins.mobile {
     padding: 5rem 0 0;
   }
   .teamMembers {
     margin: 0;
     padding: 0;
     font-size: 0;
-    @include mobile {
+    @include mixins.mobile {
       max-width: 500px;
       margin: 0 auto;
     }
@@ -83,7 +83,7 @@
         transform: translateY(100px);
         transition: all 0.7s cubic-bezier(0, 0, 0.2, 1);
         transition-delay: 0;
-        @include tablet {
+        @include mixins.tablet {
           padding: 0 0 0 33%;
         }
         &.visible {
@@ -94,7 +94,7 @@
           }
         }
       }
-      @include tablet {
+      @include mixins.tablet {
         width: 100%;
       }
       .role {
@@ -105,7 +105,7 @@
         opacity: 0.5;
         text-transform: uppercase;
         margin: 0;
-        @include mobile {
+        @include mixins.mobile {
           font-size: 0.5rem;
         }
       }
@@ -115,7 +115,7 @@
         line-height: 0.8;
         text-transform: uppercase;
         margin: 1.25rem 0 1.75rem;
-        @include mobile {
+        @include mixins.mobile {
           font-size: 0.875rem;
           margin: 0.5rem 0 0.75rem;
         }
@@ -125,7 +125,7 @@
         font-size: 1.125rem;
         font-weight: 400;
         line-height: 1.33;
-        @include mobile {
+        @include mixins.mobile {
           font-size: 0.8rem;
           line-height: 1.36;
           max-width: 300px;
@@ -136,11 +136,11 @@
         top: -1rem;
         left: -4rem;
         width: 52.5%;
-        @include tablet {
+        @include mixins.tablet {
           width: 40%;
           left: -2rem;
         }
-        @include mobile {
+        @include mixins.mobile {
           left: 0;
           top: 0;
         }
@@ -148,10 +148,10 @@
           position: absolute;
           left: 2rem;
           max-width: 85%;
-          @include tablet {
+          @include mixins.tablet {
             left: -2rem;
           }
-          @include mobile {
+          @include mixins.mobile {
             width: 150px;
           }
         }
@@ -164,17 +164,17 @@
           letter-spacing: 0.875rem;
           text-transform: uppercase;
           opacity: 0.5;
-          @include tablet {
+          @include mixins.tablet {
             display: none;
           }
         }
       }
       &:nth-child(2n) {
         margin-left: 10%;
-        @include tablet {
+        @include mixins.tablet {
           margin-left: 0;
         }
-        @include mobile {
+        @include mixins.mobile {
           .teamMemberContent {
             padding: 0 33% 0 0;
           }
@@ -192,10 +192,10 @@
         margin-top: 15rem;
       }
       &:nth-child(n + 2) {
-        @include tablet {
+        @include mixins.tablet {
           margin-top: 10rem;
         }
-        @include mobile {
+        @include mixins.mobile {
           margin-top: 5rem;
         }
       }
@@ -205,7 +205,7 @@
     padding: 7rem 0;
     text-align: right;
     overflow: hidden;
-    @include mobile {
+    @include mixins.mobile {
       padding: 3.125rem 0 4.5rem;
     }
   }
@@ -217,7 +217,7 @@
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 0.8rem;
     }
     &::before {
@@ -229,7 +229,7 @@
       background-color: #08142d;
       width: 1440px;
       right: calc(100% + 3rem);
-      @include mobile {
+      @include mixins.mobile {
         right: calc(100% + 1rem);
         bottom: 45%;
       }
@@ -258,7 +258,7 @@
 .gallery {
   background-color: #fff;
   padding-bottom: 5rem;
-  @include mobile {
+  @include mixins.mobile {
     padding-bottom: 4rem;
   }
   & > div {
@@ -274,7 +274,7 @@
     font-size: 0;
     white-space: nowrap;
     text-align: center;
-    @include mobile {
+    @include mixins.mobile {
       padding: 0 0 2.375rem;
     }
     .teamPhoto {
@@ -283,7 +283,7 @@
       padding-left: 1rem;
       img {
         height: 440px;
-        @include mobile {
+        @include mixins.mobile {
           height: 190px;
         }
       }
@@ -313,7 +313,7 @@
   background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
   padding: 7rem 0 0;
   position: relative;
-  @include mobile {
+  @include mixins.mobile {
     padding: 4.8rem 0 0;
   }
   .text {
@@ -324,7 +324,7 @@
       font-size: 1.15rem;
       font-weight: 400;
       text-transform: uppercase;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 0.8rem;
       }
     }
@@ -334,7 +334,7 @@
       font-weight: 600;
       line-height: 1.25;
       max-width: 1100px;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 1.35rem;
       }
     }
@@ -342,10 +342,10 @@
       list-style: none;
       margin: 3rem 0 0;
       padding: 0;
-      @include smallDesktop {
+      @include mixins.smallDesktop {
         margin: 3rem 0;
       }
-      @include mobile {
+      @include mixins.mobile {
         margin: 0;
       }
       .item {
@@ -357,18 +357,18 @@
         &:last-child {
           border: none;
         }
-        @include smallDesktop {
+        @include mixins.smallDesktop {
           display: block;
         }
-        @include mobile {
+        @include mixins.mobile {
           padding: 4rem 0;
         }
         .img {
           width: 10%;
-          @include smallDesktop {
+          @include mixins.smallDesktop {
             width: 20%;
           }
-          @include mobile {
+          @include mixins.mobile {
             width: 70px;
           }
         }
@@ -381,13 +381,13 @@
           @media screen and (max-width: (1540px)) {
             font-size: 2.5rem;
           }
-          @include smallDesktop {
+          @include mixins.smallDesktop {
             width: 100%;
             br {
               display: none;
             }
           }
-          @include mobile {
+          @include mixins.mobile {
             font-size: 1.7rem;
           }
         }
@@ -396,7 +396,7 @@
           padding-right: 2rem;
           padding-left: 3rem;
           width: 53%;
-          @include smallDesktop {
+          @include mixins.smallDesktop {
             width: 100%;
             padding-right: 0;
             padding-left: 0;
@@ -409,10 +409,10 @@
           @media screen and (max-width: (1540px)) {
             font-size: 1.4rem;
           }
-          @include smallDesktop {
+          @include mixins.smallDesktop {
             width: 100%;
           }
-          @include mobile {
+          @include mixins.mobile {
             font-size: 0.9rem;
           }
         }
@@ -423,10 +423,10 @@
       padding: 0 0 7rem;
       text-align: right;
       overflow: hidden;
-      @include smallDesktop {
+      @include mixins.smallDesktop {
         margin: 0;
       }
-      @include mobile {
+      @include mixins.mobile {
         padding: 0 0 4.75rem;
       }
     }
@@ -441,11 +441,11 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 0.8rem;
       }
       span {
-        @include mobile {
+        @include mixins.mobile {
           display: none;
         }
       }

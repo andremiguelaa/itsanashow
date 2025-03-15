@@ -1,11 +1,11 @@
-@import 'src/styles/mixins.scss';
+@use 'src/styles/mixins.scss';
 
 .intro {
   background-color: #fff;
   color: #08142d;
   padding: 14rem 0 9rem;
   position: relative;
-  @include mobile {
+  @include mixins.mobile {
     padding: 7rem 0 3rem;
   }
   .text {
@@ -17,7 +17,7 @@
       font-weight: 600;
       line-height: 1.25;
       max-width: 760px;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 1.4rem;
       }
     }
@@ -31,21 +31,21 @@
   font-size: 1.375rem;
   line-height: 1.45;
   counter-reset: titles;
-  @include mobile {
+  @include mixins.mobile {
     font-size: 1rem;
     padding: 0 0 3rem;
   }
   .wrapper {
     display: flex;
     justify-content: space-between;
-    @include tablet {
+    @include mixins.tablet {
       flex-direction: column;
     }
   }
   .column {
     width: calc(50% - 3rem);
     flex-shrink: 0;
-    @include tablet {
+    @include mixins.tablet {
       width: 100%;
     }
   }
@@ -54,7 +54,7 @@
     font-size: 1.875rem;
     line-height: 1.05;
     text-transform: uppercase;
-    @include mobile {
+    @include mixins.mobile {
       font-size: 1.35rem;
     }
     &::before {

@@ -1,4 +1,4 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
 
 .header {
   box-sizing: border-box;
@@ -26,7 +26,7 @@
       overflow: hidden;
     }
   }
-  @include mobile {
+  @include mixins.mobile {
     padding: 1rem 0;
   }
   a,
@@ -41,13 +41,13 @@
   .logo {
     width: 60px;
     height: 60px;
-    @include mobile {
+    @include mixins.mobile {
       width: 40px;
       height: 40px;
     }
   }
   nav {
-    @include smallDesktop {
+    @include mixins.smallDesktop {
       display: none;
     }
     a {
@@ -114,14 +114,14 @@
   pointer-events: none;
   transition: clip-path 0.75s cubic-bezier(0.8, 0, 0.2, 1);
   display: none;
-  @include smallDesktop {
+  @include mixins.smallDesktop {
     display: block;
     clip-path: circle(0% at calc(100% - 5.7rem) 4.1rem);
   }
-  @include tablet {
+  @include mixins.tablet {
     clip-path: circle(0% at calc(100% - 2.7rem) 4rem);
   }
-  @include mobile {
+  @include mixins.mobile {
     clip-path: circle(0% at calc(100% - 1.7rem) 2.3rem);
   }
   &.open {

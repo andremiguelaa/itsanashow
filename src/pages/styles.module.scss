@@ -1,4 +1,4 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
 
 .intro {
   background-color: #03060E;
@@ -8,7 +8,7 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  @include mobile {
+  @include mixins.mobile {
     padding: 11rem 0 4rem;
   }
   .spline {
@@ -28,7 +28,7 @@
       font-weight: 600;
       line-height: 1.25;
       max-width: 825px;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 2.8rem;
         max-width: 540px;
       }
@@ -39,7 +39,7 @@
       font-weight: 400;
       max-width: 600px;
       line-height: 1.4;
-      @include mobile {
+      @include mixins.mobile {
         font-size: 1rem;
         max-width: 360px;
       }
@@ -49,7 +49,7 @@
       display: flex;
       justify-content: flex-end;
       pointer-events: all;
-      @include mobile {
+      @include mixins.mobile {
         margin-top: 4rem;
       }
     }

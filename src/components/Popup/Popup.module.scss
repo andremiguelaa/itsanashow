@@ -1,4 +1,5 @@
-@import "src/styles/mixins.scss";
+@use "src/styles/mixins.scss";
+
 .overlay {
   position: fixed;
   text-align: left;
@@ -30,7 +31,7 @@
   position: relative;
   box-sizing: border-box;
   background-position: center;
-  @include tablet {
+  @include mixins.tablet {
     width: 280px;
     height: 430px;
     padding: 4.8rem 1.7rem 2.75rem;
@@ -58,7 +59,7 @@
   text-transform: uppercase;
   font-size: 1.25rem;
   margin-top: 0;
-  @include tablet {
+  @include mixins.tablet {
     font-size: 0.7rem;
   }
 }
@@ -67,20 +68,20 @@
   font-weight: 600;
   margin-top: 0;
   margin-bottom: 10rem;
-  @include tablet {
+  @include mixins.tablet {
     font-size: 1.3rem;
     margin-bottom: 4rem;
   }
 }
 .mainForm {
   display: flex;
-  @include tablet {
+  @include mixins.tablet {
     display: block;
   }
 }
 .inputs {
   width: 500px;
-  @include tablet {
+  @include mixins.tablet {
     width: 100%;
   }
 }
@@ -95,7 +96,7 @@
   padding: 0 2rem;
   font-family: inherit;
   border-radius: 2rem;
-  @include tablet {
+  @include mixins.tablet {
     height: 2.5rem;
     font-size: 0.7rem;
   }
@@ -108,7 +109,7 @@
   margin-top: 2rem;
   width: 100%;
   box-sizing: border-box;
-  @include tablet {
+  @include mixins.tablet {
     font-size: 0.55rem;
     margin-top: 1rem;
     margin-bottom: 1.5rem;
@@ -134,7 +135,7 @@
   border: none;
   cursor: pointer;
   transition: all 0.2s linear;
-  @include tablet {
+  @include mixins.tablet {
     display: block;
     height: 2.5rem;
     font-size: 1rem;
@@ -153,7 +154,7 @@
   margin-top: 4.8rem;
   margin-bottom: 18rem;
   text-align: center;
-  @include tablet {
+  @include mixins.tablet {
     font-size: 1.3rem;
     margin-bottom: 4rem;
   }
@@ -163,7 +164,7 @@
   width: 520px;
   margin: 0 auto;
   text-align: center;
-  @include tablet {
+  @include mixins.tablet {
     font-size: 0.7rem;
     width: 100%;
   }
@@ -172,7 +173,7 @@
   font-size: 0.9rem;
   text-align: center;
   opacity: 0.5;
-  @include tablet {
+  @include mixins.tablet {
     font-size: 0.7rem;
   }
 }
