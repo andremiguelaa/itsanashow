@@ -1,9 +1,20 @@
 @import "src/styles/mixins.scss";
 
 .intro {
-  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
+  background-color: #08142d;
   padding: 14rem 0 10rem;
   position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/blur-min.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+  }
   @include mobile {
     padding: 7rem 0 3rem;
   }
@@ -21,66 +32,27 @@
     }
     .description {
       margin: 0;
-      font-size: 3.5rem;
-      font-weight: 600;
+      font-size: 1.5rem;
       line-height: 1.25;
-      max-width: 1250px;
+      max-width: 790px;
       @include mobile {
         font-size: 1.35rem;
       }
       strong {
-        font-weight: 800;
-      }
-    }
-  }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(
-      225deg,
-      rgba(42, 52, 255, 1) 0%,
-      rgba(8, 20, 45, 1) 100%
-    );
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      top: -1rem;
-      right: 6rem;
-      @include mobile {
-        top: 1rem;
-        right: -1rem;
-        width: 8rem;
-        height: 8rem;
-      }
-    }
-    &.ball2 {
-      width: 5.25rem;
-      height: 5.25rem;
-      top: 15rem;
-      right: 23rem;
-      @include mobile {
-        width: 2.5rem;
-        height: 2.5rem;
-        top: 9rem;
-        right: 7rem;
-      }
-    }
-    &.ball3 {
-      width: 8.75rem;
-      height: 8.75rem;
-      bottom: 1rem;
-      left: 20%;
-      @include mobile {
-        width: 3.125rem;
-        height: 3.125rem;
-        bottom: 0.25rem;
-        left: 1.5rem;
+        font-size: 4.875rem;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 1rem;
+        @include mobile {
+          font-size: 2.5rem;
+        }
       }
     }
   }
 }
 
 .team {
+  min-height: 1000px;
   padding: 17rem 0 0;
   background-color: #fff;
   color: #08142d;
@@ -370,7 +342,7 @@
       list-style: none;
       margin: 3rem 0 0;
       padding: 0;
-      @include tablet {
+      @include smallDesktop {
         margin: 3rem 0;
       }
       @include mobile {
@@ -385,7 +357,7 @@
         &:last-child {
           border: none;
         }
-        @include tablet {
+        @include smallDesktop {
           display: block;
         }
         @include mobile {
@@ -393,7 +365,7 @@
         }
         .img {
           width: 10%;
-          @include tablet {
+          @include smallDesktop {
             width: 20%;
           }
           @include mobile {
@@ -403,8 +375,18 @@
         .name {
           margin: 0;
           box-sizing: border-box;
-          font-size: 3.75rem;
+          font-size: 3.125rem;
           font-weight: 700;
+          width: 28%;
+          @media screen and (max-width: (1540px)) {
+            font-size: 2.5rem;
+          }
+          @include smallDesktop {
+            width: 100%;
+            br {
+              display: none;
+            }
+          }
           @include mobile {
             font-size: 1.7rem;
           }
@@ -413,8 +395,8 @@
           box-sizing: border-box;
           padding-right: 2rem;
           padding-left: 3rem;
-          width: 55%;
-          @include tablet {
+          width: 53%;
+          @include smallDesktop {
             width: 100%;
             padding-right: 0;
             padding-left: 0;
@@ -424,17 +406,14 @@
           font-size: 1.75rem;
           font-weight: 400;
           line-height: 1.25;
-          @include tablet {
+          @media screen and (max-width: (1540px)) {
+            font-size: 1.4rem;
+          }
+          @include smallDesktop {
             width: 100%;
           }
           @include mobile {
             font-size: 0.9rem;
-          }
-        }
-        .tags {
-          font-size: 0.95rem;
-          @include mobile {
-            font-size: 0.7rem;
           }
         }
       }
@@ -444,7 +423,7 @@
       padding: 0 0 7rem;
       text-align: right;
       overflow: hidden;
-      @include tablet {
+      @include smallDesktop {
         margin: 0;
       }
       @include mobile {
@@ -459,72 +438,16 @@
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       @include mobile {
         font-size: 0.8rem;
       }
-      &::before {
-        position: absolute;
-        bottom: -2px;
-        content: "";
-        display: block;
-        height: 1px;
-        background-color: #fff;
-        width: 1440px;
-        right: calc(100% + 3rem);
+      span {
         @include mobile {
-          right: calc(100% + 1rem);
-          bottom: 45%;
+          display: none;
         }
-      }
-      &::after {
-        position: absolute;
-        bottom: -2px;
-        content: "";
-        display: block;
-        height: 1px;
-        background-color: #fff;
-        right: 0;
-        width: 100%;
-        transform: scale(0);
-        transition: transform 0.3s linear;
-        transform-origin: 0%;
-      }
-      &:hover {
-        &::after {
-          transform: scale(1);
-        }
-      }
-    }
-  }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(
-      225deg,
-      rgba(42, 52, 255, 1) 0%,
-      rgba(8, 20, 45, 1) 100%
-    );
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      top: 10rem;
-      right: -2rem;
-      @include mobile {
-        width: 3.75rem;
-        height: 3.75rem;
-        right: 7rem;
-        top: 5rem;
-      }
-    }
-    &.ball2 {
-      width: 8.75rem;
-      height: 8.75rem;
-      top: 5rem;
-      right: 15rem;
-      @include mobile {
-        width: 7.5rem;
-        height: 7.5rem;
-        right: -1rem;
       }
     }
   }

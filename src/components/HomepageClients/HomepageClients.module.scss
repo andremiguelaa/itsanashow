@@ -1,0 +1,39 @@
+@import "src/styles/mixins.scss";
+
+.clients {
+  background-color: #fff;
+  color: #08142d;
+  padding: 2.5rem 0 4rem;
+  position: relative;
+  @include mobile {
+    padding: 1.2rem 0 2rem;
+  }
+  .lead {
+    margin: 0 0 1.75rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    @include mobile {
+      font-size: 0.8rem;
+    }
+  }
+  .embla {
+    overflow: hidden;
+  }
+  .embla__container {
+    display: flex;
+  }
+  .embla__slide {
+    padding: 0 2rem;
+    @include mobile {
+      padding: 0 1.1rem;
+    }
+    img {
+      height: 40px;
+      opacity: 0.6;
+      @include mobile {
+        height: 25px;
+      }
+    }
+  }
+}

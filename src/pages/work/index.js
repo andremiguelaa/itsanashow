@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState, useContext } from "react";
+import React, { useMemo, useRef, useContext, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import classnames from "classnames";
@@ -7,28 +7,36 @@ import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import AppContext from "src/AppContext";
 import useRequest from "src/utils/useRequest";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
-import WorkTogether from "src/components/WorkTogether/WorkTogether";
+import ImageComponent from "src/components/Image/Image";
 
 import classes from "./styles.module.scss";
 
+const CATEGORIES = [
+  "Branding",
+  "Animation",
+  "Character-driven",
+  "Illustration",
+  "Graphic Design",
+  "Webdesign",
+];
+
 const Work = () => {
-  const { setCursorType, scrollElement } = useContext(AppContext);
+  const { setCursorType } = useContext(AppContext);
 
   const scrollRef = useRef();
 
-  const ball1ref = useRef();
-  const ball2ref = useRef();
-  const ball3ref = useRef();
-  const ball4ref = useRef();
-
   const { data: worksData } = useRequest({
-    url: "works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTags%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTeaser%5D%5Bpopulate%5D=*",
+    url: "works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTags%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTeaser%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BCategories%5D%5Bpopulate%5D=*",
     method: "GET",
   });
 
+  const [category, setCategory] = useState();
+  const [filterOpen, setFilterOpen] = useState(false);
+
   const works = useMemo(() => {
+    let worksTemp = [];
     if (worksData?.data?.attributes?.Works?.length > 0) {
-      return worksData.data.attributes.Works.map(
+      worksTemp = worksData.data.attributes.Works.map(
         ({
           work: {
             data: [
@@ -42,7 +50,7 @@ const Work = () => {
                       attributes: { url: Image },
                     },
                   },
-                  Tags: { data: Tags },
+                  Categories: { data: Categories },
                 },
               },
             ],
@@ -52,16 +60,19 @@ const Work = () => {
           Title,
           Slug,
           Image,
-          Tags: Tags.map(({ attributes: { Text } }) => Text),
+          Categories: Categories.map(({ attributes: { Text } }) => Text),
         })
       );
     }
-    return [];
-  }, [worksData]);
+    if (category) {
+      worksTemp = worksTemp.filter((work) =>
+        work.Categories.includes(category)
+      );
+    }
+    return worksTemp;
+  }, [worksData, category]);
 
   const scrollWorksRef = useRef();
-
-  const [worksLimit, setWorksLimit] = useState(6);
 
   return (
     <>
@@ -74,72 +85,134 @@ const Work = () => {
       </Head>
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
+          <p className={classes.lead}>
+            <AnimatedText>Our work</AnimatedText>
+          </p>
           <p className={classes.description}>
-            <AnimatedText>
-              We believe we can help guide you into a world-building, engaging
-              narrative.
+            <AnimatedText delay={100}>
+              Elevate your brand through powerful storytelling
             </AnimatedText>
           </p>
-          <p className={classes.lead}>
-            <AnimatedText delay={600}>Let the show begin!</AnimatedText>
-          </p>
+        </div>
+        <div className="wrapper">
+          <button
+            className={classnames(classes.mobileFilter, {
+              [classes.open]: filterOpen,
+            })}
+            onClick={() => setFilterOpen((prev) => !prev)}
+            onMouseEnter={() => {
+              setCursorType("bigger");
+            }}
+            onMouseLeave={() => {
+              setCursorType("default");
+            }}
+          >
+            {category || "All"}
+          </button>
+          <div
+            className={classnames(classes.categories, {
+              [classes.open]: filterOpen,
+            })}
+          >
+            <button
+              className={classnames({
+                [classes.selected]: !category,
+              })}
+              onClick={() => {
+                setCategory();
+                setFilterOpen(false);
+              }}
+              onMouseEnter={() => {
+                setCursorType("bigger");
+              }}
+              onMouseLeave={() => {
+                setCursorType("default");
+              }}
+            >
+              All
+            </button>
+            {CATEGORIES.map((item) => (
+              <button
+                className={classnames({
+                  [classes.selected]: category === item,
+                })}
+                key={item}
+                onClick={() => {
+                  setCategory(item);
+                  setFilterOpen(false);
+                }}
+                onMouseEnter={() => {
+                  setCursorType("bigger");
+                }}
+                onMouseLeave={() => {
+                  setCursorType("default");
+                }}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
         <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
-        <ParallaxProvider scrollContainer={scrollElement}>
-          <Parallax
-            className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
-            targetElement={scrollRef.current}
-          >
-            <div ref={ball1ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball2)}
-          >
-            <div ref={ball2ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball3)}
-          >
-            <div ref={ball3ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -300 : -150]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball4)}
-          >
-            <div ref={ball4ref} />
-          </Parallax>
-        </ParallaxProvider>
       </section>
-      {works.length > 0 && (
-        <section className={classes.works}>
-          <div
-            ref={scrollWorksRef}
-            style={{ position: "absolute", top: "100vh" }}
-          />
-          <ParallaxProvider scrollContainer={scrollElement}>
-            <ul className={classes.list}>
-              {works.map(({ id, Title, Slug, Image, Tags }, index) => (
-                <li
-                  className={classnames(classes.item, {
-                    [classes.visible]: worksLimit > index,
-                  })}
-                  key={id}
-                >
-                  <Link
-                    href={`/work/${Slug}`}
-                    onMouseEnter={() => {
-                      setCursorType("view");
-                    }}
-                    onMouseLeave={() => {
-                      setCursorType("default");
-                    }}
-                  >
+
+      <section className={classes.works}>
+        <div
+          ref={scrollWorksRef}
+          style={{ position: "absolute", top: "100vh" }}
+        />
+        <ParallaxProvider>
+          <ul className={classes.list}>
+            {works.length > 0 ? (
+              <>
+                {works.map(({ id, Title, Slug, Image, Categories }, index) => (
+                  <li className={classes.item} key={id}>
+                    <Link
+                      href={`/work/${Slug}`}
+                      onMouseEnter={() => {
+                        setCursorType("view");
+                      }}
+                      onMouseLeave={() => {
+                        setCursorType("default");
+                      }}
+                    >
+                      <Parallax
+                        translateY={[
+                          0,
+                          global.window?.innerWidth >= 768 && index % 2 === 1
+                            ? -20
+                            : 0,
+                        ]}
+                        targetElement={scrollRef.current}
+                      >
+                        <div
+                          className={classnames(
+                            classes.imagePlaceholder,
+                            classes.imagePlaceholderLoaded
+                          )}
+                        />
+                        <ImageComponent
+                          src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
+                          alt={Title}
+                        />
+                        <div className={classes.overlay} />
+                        <div className={classes.text}>
+                          <p className={classes.name}>{Title}</p>
+                          {Categories.length > 0 && (
+                            <p className={classes.tags}>
+                              {Categories.join(", ")}
+                            </p>
+                          )}
+                        </div>
+                      </Parallax>
+                    </Link>
+                  </li>
+                ))}
+              </>
+            ) : (
+              <>
+                {[...Array(4).keys()].map((key, index) => (
+                  <li className={classes.item} key={key}>
                     <Parallax
                       translateY={[
                         0,
@@ -149,44 +222,16 @@ const Work = () => {
                       ]}
                       targetElement={scrollRef.current}
                     >
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_API_URL}${Image}`}
-                        alt={Title}
-                      />
+                      <div className={classes.imagePlaceholder} />
                       <div className={classes.overlay} />
-                      <div className={classes.text}>
-                        <p className={classes.name}>{Title}</p>
-                        {Tags.length > 0 && (
-                          <p className={classes.tags}>{Tags.join(", ")}</p>
-                        )}
-                      </div>
                     </Parallax>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </ParallaxProvider>
-          {worksLimit < works.length && (
-            <div className={classes.seeMore}>
-              <button
-                className={classes.more}
-                onClick={() => {
-                  setWorksLimit((prev) => prev + 6);
-                }}
-                onMouseEnter={() => {
-                  setCursorType("bigger");
-                }}
-                onMouseLeave={() => {
-                  setCursorType("default");
-                }}
-              >
-                Let me see more
-              </button>
-            </div>
-          )}
-        </section>
-      )}
-      <WorkTogether />
+                  </li>
+                ))}
+              </>
+            )}
+          </ul>
+        </ParallaxProvider>
+      </section>
     </>
   );
 };

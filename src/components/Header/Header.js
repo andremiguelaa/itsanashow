@@ -11,12 +11,20 @@ import classnames from "classnames";
 import Lottie from "react-lottie-player";
 
 import { AppContext } from "src/AppContext";
+import RequestYourQuoteButton from "src/components/RequestYourQuoteButton/RequestYourQuoteButton";
 import logo from "src/assets/logo.json";
+import inIcon from "src/assets/social/IN.svg";
+import beIcon from "src/assets/social/Be.svg";
+import igIcon from "src/assets/social/IG.svg";
+import viIcon from "src/assets/social/VI.svg";
+import drIcon from "src/assets/social/DR.svg";
+
+import MenuButton from "./MenuButton";
+
 import classes from "./Header.module.scss";
 
-const Header = ({ transitionDuration }) => {
-  const { setModal, setTextAnimationAvailable, setCursorType, scrollElement } =
-    useContext(AppContext);
+const Header = ({ noDefaultHeader }) => {
+  const { setCursorType } = useContext(AppContext);
 
   const router = useRouter();
   const [page, setPage] = useState();
@@ -28,33 +36,30 @@ const Header = ({ transitionDuration }) => {
     setPage(router.pathname);
     setMenu(false);
     if (!firstLoad.current) {
-      setTextAnimationAvailable(false);
-      setTimeout(() => {
-        setDefaultHeader(true);
-        setTextAnimationAvailable(true);
-      }, transitionDuration * 0.75);
+      setDefaultHeader(noDefaultHeader ? false : true);
     } else {
       firstLoad.current = false;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.pathname, transitionDuration]);
+  }, [router.pathname, noDefaultHeader]);
 
-  const [defaultHeader, setDefaultHeader] = useState(true);
+  const [defaultHeader, setDefaultHeader] = useState(
+    noDefaultHeader ? false : true
+  );
 
   const listenToScroll = useCallback(() => {
-    setDefaultHeader(scrollElement.scrollTop < window.innerHeight);
-  }, [scrollElement]);
+    setDefaultHeader(
+      noDefaultHeader
+        ? false
+        : global.document.scrollingElement.scrollTop < window.innerHeight
+    );
+  }, [noDefaultHeader]);
 
   useEffect(() => {
-    if (scrollElement) {
-      scrollElement.addEventListener("scroll", listenToScroll);
-    }
+    global.document.addEventListener("scroll", listenToScroll);
     return () => {
-      if (scrollElement) {
-        scrollElement.removeEventListener("scroll", listenToScroll);
-      }
+      global.document.removeEventListener("scroll", listenToScroll);
     };
-  }, [scrollElement, listenToScroll]);
+  }, [listenToScroll]);
 
   return (
     <>
@@ -106,59 +111,54 @@ const Header = ({ transitionDuration }) => {
                 }}
                 className={classnames({ [classes.active]: page === "/us" })}
               >
-                <span className={classes.text}>Know us</span>
+                <span className={classes.text}>About us</span>
               </Link>
               <Link
-                href="/logbook"
+                href="/insights"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
                   setCursorType("default");
                 }}
-                className={classnames({ [classes.active]: page === "/logbook" })}
+                className={classnames({
+                  [classes.active]: page === "/insights",
+                })}
               >
-                <span className={classes.text}>Logbook</span>
+                <span className={classes.text}>Insights</span>
               </Link>
-              <button
-                onClick={() => {
-                  setModal(true);
-                  setMenu(false);
-                }}
+              <Link
+                href="/contacts"
                 onMouseEnter={() => {
                   setCursorType("bigger");
                 }}
                 onMouseLeave={() => {
                   setCursorType("default");
                 }}
+                className={classnames({
+                  [classes.active]: page === "/contacts",
+                })}
               >
                 <span className={classes.text}>Contact us</span>
-              </button>
+              </Link>
+              <div className={classes.requestButton}>
+                <RequestYourQuoteButton />
+              </div>
             </nav>
           </div>
-          <button className={classes.menuButton} onClick={() => setMenu(true)}>
-            Menu
-            <div />
-            <div />
-            <div />
-          </button>
         </div>
       </header>
+      <MenuButton
+        defaultHeader={defaultHeader}
+        page={page}
+        menu={menu}
+        setMenu={setMenu}
+      />
       <nav
         className={classnames(classes.menu, {
           [classes.open]: menu,
         })}
       >
-        <button className={classes.close} onClick={() => setMenu(false)}>
-          <div className={classes.in}>
-            <div className={classes.closeButtonBlock}></div>
-            <div className={classes.closeButtonBlock}></div>
-          </div>
-          <div className={classes.out}>
-            <div className={classes.closeButtonBlock}></div>
-            <div className={classes.closeButtonBlock}></div>
-          </div>
-        </button>
         <div className={classes.links}>
           <div>
             <Link
@@ -172,14 +172,6 @@ const Header = ({ transitionDuration }) => {
           </div>
           <div>
             <Link
-              href="/us"
-              className={classnames(classes.link, {
-                [classes.active]: page === "/us",
-              })}
-            >
-              know us
-            </Link>
-            <Link
               href="/work"
               className={classnames(classes.link, {
                 [classes.active]: page === "/work",
@@ -188,33 +180,44 @@ const Header = ({ transitionDuration }) => {
               our work
             </Link>
             <Link
-              href="/logbook"
+              href="/us"
               className={classnames(classes.link, {
-                [classes.active]: page === "/logbook",
+                [classes.active]: page === "/us",
               })}
             >
-              logbook
+              about us
             </Link>
-            <button
-              onClick={() => {
-                setModal(true);
-                setMenu(false);
-              }}
+            <Link
+              href="/insights"
+              className={classnames(classes.link, {
+                [classes.active]: page === "/insights",
+              })}
+            >
+              insights
+            </Link>
+            <Link
+              href="/contacts"
+              className={classnames(classes.link, {
+                [classes.active]: page === "/contacts",
+              })}
             >
               contact us
-            </button>
+            </Link>
+            <div className={classes.requestButton}>
+              <RequestYourQuoteButton />
+            </div>
           </div>
         </div>
         <div className={classes.footer}>
-          <p className={classes.slogan}>Let&apos;s get social!</p>
           <ul>
             <li>
               <a
                 href="https://www.linkedin.com/company/itsanashow-studio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="LinkedIn"
               >
-                LinkedIn
+                <img src={inIcon.src} alt="LinkedIn" />
               </a>
             </li>
             <li>
@@ -222,17 +225,19 @@ const Header = ({ transitionDuration }) => {
                 href="https://www.instagram.com/itsanashow.studio/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Instagram"
               >
-                Instagram
+                <img src={igIcon.src} alt="Instagram" />
               </a>
             </li>
             <li>
               <a
-                href="https://www.behance.net/ItsanashowStudio"
+                href="https://www.behance.net/itsanashow-studio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Behance"
               >
-                Behance
+                <img src={beIcon.src} alt="Behance" />
               </a>
             </li>
             <li>
@@ -240,8 +245,9 @@ const Header = ({ transitionDuration }) => {
                 href="https://vimeo.com/itsanashowstudio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Vimeo"
               >
-                Vimeo
+                <img src={viIcon.src} alt="Vimeo" />
               </a>
             </li>
             <li>
@@ -249,14 +255,13 @@ const Header = ({ transitionDuration }) => {
                 href="https://dribbble.com/itsanashow_studio"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Dribble"
               >
-                Dribble
+                <img src={drIcon.src} alt="Dribble" />
               </a>
             </li>
           </ul>
         </div>
-        <div className={classnames(classes.ball, classes.ball1)} />
-        <div className={classnames(classes.ball, classes.ball2)} />
       </nav>
     </>
   );

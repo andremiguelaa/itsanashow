@@ -1,0 +1,46 @@
+@import "src/styles/mixins.scss";
+
+.menuButton {
+  z-index: 1001;
+  position: fixed;
+  top: 4rem;
+  transform: translateY(-50%);
+  border: none;
+  color: transparent;
+  width: 33px;
+  background-color: transparent;
+  font-size: 0;
+  outline: none;
+  padding: 0;
+  display: none;
+  cursor: pointer;
+  mix-blend-mode: difference;
+  &.defaultHeader {
+    mix-blend-mode: normal;
+  }
+  &.privacy-policy,
+  &.contacts,
+  &.insights {
+    mix-blend-mode: difference;
+  }
+  @include smallDesktop {
+    display: block;
+    right: 5rem;
+  }
+  @include tablet {
+    right: 2rem;
+  }
+  @include mobile {
+    right: 1rem;
+    top: 2.25rem;
+  }
+  .button{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4rem;
+    height: 4rem;
+    transform: translate(-50%, -50%);
+  }
+}

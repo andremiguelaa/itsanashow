@@ -1,42 +1,30 @@
 @import "src/styles/mixins.scss";
 
-$width: 340px;
-$height: 50px;
-
-$widthMobile: 220px;
-$heightMobile: 32px;
-
-.buttonWrapper {
-  width: $width;
-  height: $height;
-  overflow: hidden;
-  position: relative;
-  @include mobile {
-    width: $widthMobile;
-    height: $heightMobile;
-  }
-}
-
 .button {
-  background-color: transparent;
   border: none;
-  width: 1.57 * $width;
-  height: 2.86 * $height;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 600;
+  padding: 0;
+  cursor: pointer;
   @include mobile {
-    width: 1.57 * $widthMobile;
-    height: 2.86 * $heightMobile;
+    font-size: 0.75rem;
   }
-  path {
-    transition: fill, stroke 0.1s linear;
+  .arrow,
+  .arrowReverted {
+    display: inline-block;
+    width: 46px;
+    vertical-align: middle;
   }
-  &:active {
-    path {
-      fill: rgb(254, 0, 174);
-      stroke: rgb(254, 0, 174);
-    }
+  .arrow {
+    margin-left: 0.5rem;
+  }
+  .arrowReverted {
+    margin-right: 0.5rem;
+    transform: scaleX(-1);
   }
 }

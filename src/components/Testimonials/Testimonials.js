@@ -6,7 +6,6 @@ import AnimatedText from 'src/components/AnimatedText/AnimatedText';
 import AppContext from 'src/AppContext';
 import useRequest from 'src/utils/useRequest';
 import Markdown from 'src/components/Markdown/Markdown';
-import Head from 'src/components/Head/Head';
 
 import classes from './Testimonials.module.scss';
 
@@ -51,13 +50,12 @@ const Testimonials = () => {
     <>
       {testimonials.length > 0 && (
         <section className={classes.testimonials}>
-          <Head className={classes.head} />
           <div className="wrapper">
             <p className={classes.lead}>
               <AnimatedText>This warms our hearts</AnimatedText>
             </p>
             <p className={classes.description}>
-              <AnimatedText delay={250}>
+              <AnimatedText delay={200}>
                 What our clients &amp; partners say about us
               </AnimatedText>
             </p>

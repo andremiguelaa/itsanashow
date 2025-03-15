@@ -1,0 +1,9 @@
+@import "src/styles/mixins.scss";
+
+.button {
+  border: none;
+  width: 265px;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}

@@ -1,537 +1,56 @@
 @import "src/styles/mixins.scss";
 
 .intro {
-  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
-  padding: 14rem 0 6.25rem;
+  background-color: #03060E;
+  padding: 18rem 0 9.5rem;
   position: relative;
+  min-height: calc(100vh - 200px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
   @include mobile {
-    padding: 7rem 0 3rem;
+    padding: 11rem 0 4rem;
+  }
+  .spline {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
   }
   .text {
     position: relative;
     z-index: 1;
-    .lead {
-      margin: 0 0 1rem;
-      font-size: 1.15rem;
-      font-weight: 400;
-      text-transform: uppercase;
-      @include mobile {
-        font-size: 0.8rem;
-      }
-    }
+    pointer-events: none;
     .description {
       margin: 0;
-      font-size: 3.5rem;
+      font-size: 4.875rem;
       font-weight: 600;
       line-height: 1.25;
-      max-width: 1260px;
+      max-width: 825px;
       @include mobile {
-        font-size: 1.35rem;
-        max-width: 305px;
+        font-size: 2.8rem;
+        max-width: 540px;
+      }
+    }
+    .lead {
+      margin: 1.25rem 0 1rem;
+      font-size: 2rem;
+      font-weight: 400;
+      max-width: 600px;
+      line-height: 1.4;
+      @include mobile {
+        font-size: 1rem;
+        max-width: 360px;
       }
     }
     .button {
-      margin-top: 9rem;
+      margin-top: 5rem;
       display: flex;
       justify-content: flex-end;
-      @include mobile {
-        margin-top: 3rem;
-      }
-    }
-  }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(
-      225deg,
-      rgba(42, 52, 255, 1) 0%,
-      rgba(8, 20, 45, 1) 100%
-    );
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      top: 3rem;
-      right: -1rem;
-      @include mobile {
-        top: 1rem;
-        right: -1rem;
-        width: 8rem;
-        height: 8rem;
-      }
-    }
-    &.ball2 {
-      width: 5.25rem;
-      height: 5.25rem;
-      top: 15rem;
-      right: 23rem;
-      @include mobile {
-        width: 2.5rem;
-        height: 2.5rem;
-        top: 9rem;
-        right: 7rem;
-      }
-    }
-    &.ball3 {
-      width: 14.375rem;
-      height: 14.375rem;
-      bottom: 3rem;
-      left: -2.5rem;
-      @include mobile {
-        width: 6.25rem;
-        height: 6.25rem;
-        bottom: 0;
-        left: -1.5rem;
-      }
-    }
-  }
-}
-
-.video {
-  position: relative;
-  cursor: none;
-  @media (pointer: coarse) {
-    cursor: default;
-  }
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(8, 20, 45, 0.3);
-  }
-  .callout {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    pointer-events: none;
-    margin: 0;
-    text-align: center;
-    @include tablet {
-      font-size: 1.875rem;
-      line-height: 1;
-    }
-  }
-  .videoMedia {
-    height: 100vh;
-    width: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    @include tablet {
-      height: 56vw;
-      min-height: 280px;
-    }
-  }
-  .fullScreenVideo {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    cursor: none;
-    @media (pointer: coarse) {
-      cursor: default;
-    }
-    &.active {
-      opacity: 1;
       pointer-events: all;
-    }
-    .fullScreenVideoMedia {
-      background-color: #000;
-      height: 100vh;
-      width: 100%;
-      object-fit: contain;
-    }
-  }
-}
-
-.work {
-  .mainText {
-    padding: 7rem 0 14rem;
-    position: relative;
-    overflow: hidden;
-    @include tablet {
-      padding: 2.25rem 0 5rem;
-    }
-    .lead {
-      margin: 0 0 1rem;
-      font-size: 1.15rem;
-      font-weight: 400;
-      text-transform: uppercase;
       @include mobile {
-        font-size: 0.8rem;
-      }
-    }
-    .description {
-      margin: 0;
-      font-size: 3.5rem;
-      font-weight: 600;
-      line-height: 1.25;
-      max-width: 1250px;
-      @include mobile {
-        font-size: 1.35rem;
-      }
-    }
-    .head {
-      position: absolute;
-      bottom: -1rem;
-      width: 350px;
-      height: 250px;
-      right: 8rem;
-      @include tablet {
-        width: 125px;
-        height: 85px;
-        bottom: 0;
-        right: 1rem;
-      }
-      .svg {
-        position: absolute;
-        opacity: 0;
-        &.visible {
-          opacity: 1;
-        }
-      }
-    }
-  }
-  .portfolioHighlights {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li {
-      height: 36vw;
-      overflow: hidden;
-      display: inline-block;
-      vertical-align: top;
-      @include mobile {
-        height: 56vw;
-      }
-      &:nth-child(1),
-      &:nth-child(4) {
-        width: 36vw;
-        @include mobile {
-          width: 100%;
-        }
-      }
-      &:nth-child(2),
-      &:nth-child(3) {
-        width: calc(100% - 36vw);
-        @include mobile {
-          width: 100%;
-        }
-      }
-    }
-    a {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      position: relative;
-      cursor: none;
-      @media (pointer: coarse) {
-        cursor: default;
-      }
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          180deg,
-          rgba(8, 20, 45, 0) 0%,
-          rgba(8, 20, 45, 0.6) 66.93%
-        );
-      }
-      .text {
-        position: absolute;
-        bottom: 2rem;
-        left: 3rem;
-        right: 3rem;
-        max-width: 650px;
-        pointer-events: none;
-        @include mobile {
-          bottom: 1rem;
-          left: 1rem;
-          right: 1rem;
-        }
-        .name {
-          font-size: 1.55rem;
-          font-weight: 700;
-          line-height: 1.25;
-          margin: 0;
-          text-transform: uppercase;
-          color: #fff;
-          @include mobile {
-            font-size: 0.95rem;
-          }
-        }
-        .tags {
-          font-size: 1.125rem;
-          font-weight: 400;
-          line-height: 1.66;
-          margin: 0;
-          overflow: hidden;
-          color: #fff;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          height: 0;
-          transition: height 0.15s linear;
-          @include mobile {
-            font-size: 0.8rem;
-            height: 1.8675rem;
-          }
-        }
-      }
-      &:hover {
-        .text {
-          .tags {
-            height: 1.8675rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-.skills {
-  background: linear-gradient(180deg, #2a34ff -34.16%, #08142d 87.22%);
-  .ctaWrapper {
-    padding: 7rem 0;
-    text-align: right;
-    overflow: hidden;
-    @include mobile {
-      padding: 2.375rem 0 4.5rem;
-    }
-  }
-  .cta {
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
-    @include mobile {
-      font-size: 0.8rem;
-    }
-    &::before {
-      position: absolute;
-      bottom: -2px;
-      content: "";
-      display: block;
-      height: 1px;
-      background-color: #fff;
-      width: 1440px;
-      right: calc(100% + 3rem);
-      @include mobile {
-        right: calc(100% + 1rem);
-        bottom: 45%;
-      }
-    }
-    &::after {
-      position: absolute;
-      bottom: -2px;
-      content: "";
-      display: block;
-      height: 1px;
-      background-color: #fff;
-      right: 0;
-      width: 100%;
-      transform: scale(0);
-      transition: transform 0.3s linear;
-      transform-origin: 0%;
-    }
-    &:hover {
-      &::after {
-        transform: scale(1);
-      }
-    }
-  }
-  .lead {
-    margin: 0 0 1rem;
-    font-size: 1.15rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    text-align: center;
-    @include mobile {
-      font-size: 0.8rem;
-    }
-  }
-  .description {
-    margin: 0 auto 7rem;
-    max-width: 1250px;
-    font-size: 3.5rem;
-    font-weight: 600;
-    line-height: 1.25;
-    text-align: center;
-    @include mobile {
-      font-size: 1.35rem;
-      margin-bottom: 5rem;
-    }
-  }
-  .skillsList {
-    color: #2a34ff;
-    list-style: none;
-    font-size: 5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    @include mobile {
-      font-size: 2rem;
-      line-height: 1.4;
-    }
-    li {
-      display: inline-block;
-      &::before {
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        width: 15px;
-        height: 15px;
-        background-color: #2a34ff;
-        transform: rotate(45deg);
-        margin: 0 1.5rem;
-        @include mobile {
-          width: 6px;
-          height: 6px;
-          margin: 0 0.75rem;
-        }
-      }
-    }
-  }
-}
-
-.clients {
-  background-color: #fff;
-  color: #08142d;
-  padding: 0 0 7rem;
-  position: relative;
-  @include mobile {
-    padding: 0 0 3.25rem;
-  }
-  .lead {
-    margin: 0 0 1rem;
-    font-size: 1.15rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    @include mobile {
-      font-size: 0.8rem;
-    }
-  }
-  .description {
-    margin: 0;
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.25;
-    max-width: 850px;
-    @include mobile {
-      font-size: 1.35rem;
-    }
-  }
-  .clientsList {
-    margin: 1.25rem 0 0;
-    padding: 0;
-    list-style: none;
-    font-size: 0;
-    li {
-      display: inline-block;
-      width: 22.5%;
-      text-align: center;
-      margin-top: 3.75rem;
-      vertical-align: middle;
-      @include mobile {
-        margin-top: 1.25rem;
-        width: 47.5%;
-      }
-      & + li {
-        margin-left: 3.33%;
-        @include mobile {
-          margin-left: 5%;
-        }
-      }
-      &:nth-child(4n-3) {
-        margin-left: 0;
-      }
-      &:nth-child(2n + 1) {
-        @include mobile {
-          margin-left: 0;
-        }
-      }
-    }
-    img {
-      max-width: 100%;
-      opacity: 0;
-      transform: translateY(100px) scale(0.85);
-      transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
-      &.visible {
-        opacity: 0.6;
-        transform: translateY(0) translateZ(0) scale(0.85);
-      }
-    }
-  }
-  .ctaWrapper {
-    padding: 7rem 0;
-    text-align: right;
-    overflow: hidden;
-    @include mobile {
-      padding: 3.125rem 0 4.5rem;
-    }
-  }
-  .cta {
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: #08142d;
-    text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
-    @include mobile {
-      font-size: 0.8rem;
-    }
-    &::before {
-      position: absolute;
-      bottom: -2px;
-      content: "";
-      display: block;
-      height: 1px;
-      background-color: #08142d;
-      width: 1440px;
-      right: calc(100% + 3rem);
-      @include mobile {
-        right: calc(100% + 1rem);
-        bottom: 45%;
-      }
-    }
-    &::after {
-      position: absolute;
-      bottom: -2px;
-      content: "";
-      display: block;
-      height: 1px;
-      background-color: #08142d;
-      right: 0;
-      width: 100%;
-      transform: scale(0);
-      transition: transform 0.3s linear;
-      transform-origin: 0%;
-    }
-    &:hover {
-      &::after {
-        transform: scale(1);
+        margin-top: 4rem;
       }
     }
   }

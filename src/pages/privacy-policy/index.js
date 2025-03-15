@@ -1,21 +1,11 @@
-import React, { useContext, useRef } from "react";
+import React from "react";
 import Head from "next/head";
 import classnames from "classnames";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-
-import { AppContext } from "src/AppContext";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
 import classes from "./styles.module.scss";
 
 const Privacy = () => {
-  const { setModal, scrollElement } = useContext(AppContext);
-
-  const scrollRef = useRef();
-
-  const ball1ref = useRef();
-  const ball2ref = useRef();
-
   return (
     <>
       <Head>
@@ -27,36 +17,12 @@ const Privacy = () => {
       </Head>
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
-          <p className={classes.lead}>
-            <AnimatedText>Welcome to our privacy notice</AnimatedText>
-          </p>
           <p className={classes.description}>
-            <AnimatedText delay={250}>
-              We respect your privacy and are committed to protecting your
-              personal data. Itsanashow Studio Policy sets out details on how we
-              look after your personal data when you visit our site, or contact
-              us by email and tell you about your privacy rights and how the law
-              protects you.
+            <AnimatedText>
+              We’re committed to respecting and protecting your privacy.
             </AnimatedText>
           </p>
         </div>
-        <div ref={scrollRef} style={{ position: "absolute", top: "100vh" }} />
-        <ParallaxProvider scrollContainer={scrollElement}>
-          <Parallax
-            className={classnames(classes.ball, classes.ball1)}
-            translateY={[0, global.window?.innerWidth >= 768 ? -100 : -50]}
-            targetElement={scrollRef.current}
-          >
-            <div ref={ball1ref} />
-          </Parallax>
-          <Parallax
-            translateY={[0, global.window?.innerWidth >= 768 ? -200 : -100]}
-            targetElement={scrollRef.current}
-            className={classnames(classes.ball, classes.ball2)}
-          >
-            <div ref={ball2ref} />
-          </Parallax>
-        </ParallaxProvider>
       </section>
       <section className={classes.content}>
         <div className={classnames("wrapper", classes.wrapper)}>
@@ -93,7 +59,7 @@ const Privacy = () => {
             </p>
             <p>
               If you decide to send us an email to the email address provided on
-              &apos;Contact Us&apos; or the &apos;Know Us&apos; sections of the
+              &apos;Contact Us&apos; or the &apos;About Us&apos; sections of the
               web page, write to us or call us, you do that at your free will.
             </p>
             <p>
@@ -162,7 +128,7 @@ const Privacy = () => {
               <button
                 className={classes.inlineButton}
                 onClick={() => {
-                  setModal(true);
+                  // setModal(true);
                 }}
               >
                 Contact us

@@ -1,93 +1,136 @@
-@import 'src/styles/mixins.scss';
+@import "src/styles/mixins.scss";
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
 
 .intro {
-  background: linear-gradient(180deg, #2a34ff -47.82%, #08142d 100%);
-  padding: 14rem 0 7.5rem;
+  background-color: #08142d;
+  padding: 14rem 0 4.8rem;
   position: relative;
   @include mobile {
     padding: 7rem 0 3rem;
   }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/blur-min.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+  }
   .text {
     position: relative;
     z-index: 1;
-    text-align: center;
     @include mobile {
       text-align: left;
     }
     .lead {
-      margin: 0;
-      font-size: 1.15rem;
+      margin: 0 0 1rem;
+      font-size: 1.125rem;
       font-weight: 400;
       text-transform: uppercase;
       @include mobile {
-        font-size: 0.8rem;
+        font-size: 0.8125rem;
       }
     }
     .description {
-      margin: 0 auto 5rem;
-      font-size: 3.5rem;
+      margin: 0;
+      font-size: 4.875rem;
       font-weight: 600;
       line-height: 1.25;
-      max-width: 950px;
+      max-width: 1140px;
       @include mobile {
-        font-size: 1.35rem;
-        margin: 0 auto 2rem;
+        font-size: 2.5rem;
       }
     }
   }
-  .ball {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(
-      225deg,
-      rgba(42, 52, 255, 1) 0%,
-      rgba(8, 20, 45, 1) 100%
-    );
-    &.ball1 {
-      width: 16.75rem;
-      height: 16.75rem;
-      top: -1rem;
-      right: 30rem;
-      @include mobile {
-        top: 1rem;
-        right: -1rem;
-        width: 8rem;
-        height: 8rem;
+  .mobileFilter {
+    display: none;
+    position: relative;
+    z-index: 1;
+    height: 35px;
+    border-radius: 18px;
+    font-size: 0.75rem;
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+    padding: 0 1rem;
+    text-transform: uppercase;
+    margin-top: 2.2rem;
+    &::after {
+      position: absolute;
+      content: "";
+      width: 8px;
+      height: 4px;
+      background-image: url("../../assets/caret.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      right: -20px;
+      top: 50%;
+      margin-top: -2px;
+    }
+    &.open {
+      &::after {
+        transform: rotate(180deg);
       }
     }
-    &.ball2 {
-      width: 5.25rem;
-      height: 5.25rem;
-      top: 12rem;
-      right: 48rem;
-      @include mobile {
-        width: 2.5rem;
-        height: 2.5rem;
-        top: 9rem;
-        right: 7rem;
+    @include smallDesktop {
+      display: block;
+    }
+  }
+  .categories {
+    margin-top: 4.8rem;
+    position: relative;
+    z-index: 1;
+    @include smallDesktop {
+      margin-top: 1.5rem;
+    }
+    @include smallDesktop {
+      display: none;
+      &.open {
+        display: block;
       }
     }
-    &.ball3 {
-      width: 11rem;
-      height: 11rem;
-      bottom: 6rem;
-      left: -2.5rem;
-      @include mobile {
-        width: 3.125rem;
-        height: 3.125rem;
-        bottom: -0.75rem;
-        left: auto;
-        right: 1.5rem;
-        z-index: 1;
+    button {
+      background-color: transparent;
+      color: inherit;
+      border: none;
+      height: 44px;
+      border: 1px solid transparent;
+      font-size: 0.75rem;
+      padding: 0 1.5rem;
+      text-transform: uppercase;
+      font-family: inherit;
+      cursor: pointer;
+      margin-right: 2rem;
+      opacity: 0.5;
+      transition: all 0.2s linear;
+      border-radius: 22px;
+      @include smallDesktop {
+        height: 35px;
+        border-radius: 18px;
+        padding: 0;
+        margin-right: 1.6rem;
       }
-    }
-    &.ball4 {
-      width: 11rem;
-      height: 11rem;
-      bottom: 0;
-      right: 5rem;
-      @include mobile {
-        display: none;
+      &:hover {
+        opacity: 1;
+      }
+      &.selected {
+        opacity: 1;
+        border: 1.5px solid #fff;
+        @include smallDesktop {
+          display: none;
+        }
       }
     }
   }
@@ -105,17 +148,9 @@
     width: 50%;
     position: relative;
     vertical-align: top;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s linear;
-    &.visible {
-      opacity: 1;
-      img {
-        height: 28vw;
-        @include mobile {
-          height: 56vw;
-        }
-      }
-    }
+
     @include mobile {
       width: 100%;
     }
@@ -128,7 +163,30 @@
     img {
       width: 100%;
       vertical-align: top;
-      height: 0;
+      height: 28vw;
+      position: relative;
+      @include mobile {
+        height: 56vw;
+      }
+    }
+    .imagePlaceholder {
+      width: 100%;
+      aspect-ratio: 900/503;
+      animation-duration: 1.8s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+      background: linear-gradient(
+        to right,
+        #fafafa 8%,
+        #f4f4f4 38%,
+        #fafafa 54%
+      );
+      background-size: 1000px 640px;
+      &.imagePlaceholderLoaded{
+        position: absolute;
+      }
     }
     .overlay {
       position: absolute;
@@ -189,36 +247,6 @@
         .tags {
           height: 1.8675rem;
         }
-      }
-    }
-  }
-  .seeMore {
-    text-align: center;
-    padding: 3.5rem 0 10rem;
-    @include mobile {
-      padding: 2.8rem 0 4.5rem;
-    }
-    .more {
-      color: #fff;
-      font-family: inherit;
-      background-color: transparent;
-      text-transform: uppercase;
-      border: none;
-      font-size: 1.25rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      cursor: pointer;
-      &::before {
-        content: '';
-        display: block;
-        background-image: url('../../assets/down.svg');
-        background-size: contain;
-        height: 15px;
-        width: 10px;
-        margin: 0 auto 0.5rem;
-      }
-      @include mobile {
-        font-size: 0.8rem;
       }
     }
   }

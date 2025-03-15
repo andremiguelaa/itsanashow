@@ -6,17 +6,15 @@ import useRequest from "src/utils/useRequest";
 
 import classes from "./Popup.module.scss";
 
-const Popup = () => {
-  const { popup, setPopup, setCursorType } = useContext(AppContext);
+const Popup = ({ open, setOpen }) => {
+  const { setCursorType } = useContext(AppContext);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-
   useEffect(() => {
-    if (popup) {
+    if (open) {
       setError(false);
     }
-  }, [popup]);
-
+  }, [open]);
   const { request: submit, loading } = useRequest({
     url: "leads",
     method: "POST",
@@ -28,17 +26,16 @@ const Popup = () => {
       setSuccess(true);
     },
   });
-
   return (
     <div
       className={classnames(classes.overlay, {
-        [classes.open]: popup,
+        [classes.open]: open,
       })}
     >
       <div className={classes.modal}>
         <button
           onClick={() => {
-            setPopup(false);
+            setOpen(false);
           }}
           className={classes.close}
           aria-label="Close"
@@ -127,8 +124,8 @@ const Popup = () => {
               magical secrets we have to show you!
             </p>
             <p className={classes.disclaimer}>
-              If you don&apos;t find our email in your inbox, please check your spam
-              or junk folder.
+              If you don&apos;t find our email in your inbox, please check your
+              spam or junk folder.
             </p>
           </div>
         )}

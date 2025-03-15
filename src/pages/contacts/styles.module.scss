@@ -1,0 +1,305 @@
+@import "src/styles/mixins.scss";
+
+.contacts {
+  padding: 16.5rem 0 0;
+  background-color: #fff;
+  color: #08142d;
+  @include mobile {
+    padding: 9rem 0 0;
+  }
+
+  .content {
+    display: flex;
+    gap: 10rem;
+    @media screen and (max-width: (1350px)) {
+      gap: 5rem;
+    }
+    @include smallDesktop {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  .header {
+    width: 530px;
+    flex-shrink: 0;
+    @include mobile {
+      width: 100%;
+      max-width: 530px;
+    }
+    @include smallDesktop {
+      padding-bottom: 3.5rem;
+    }
+    .lead {
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin: 0;
+      @include mobile {
+        font-size: 1.625rem;
+      }
+    }
+
+    .action {
+      font-size: 2.8rem;
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0 0 1rem;
+      @include mobile {
+        font-size: 1.625rem;
+      }
+    }
+
+    .text {
+      font-size: 1rem;
+      line-height: 1.625;
+      @include mobile {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  .output {
+    text-align: center;
+    @include smallDesktop {
+      max-width: 530px;
+    }
+    @include mobile {
+      font-size: 0.875rem;
+    }
+    .icon {
+      width: 120px;
+      margin: 0 auto;
+      @include mobile {
+        width: 72px;
+      }
+    }
+    strong {
+      font-weight: 600;
+    }
+    .title {
+      font-size: 1.875rem;
+      @include mobile {
+        font-size: 1.25rem;
+      }
+    }
+    .text {
+      max-width: 480px;
+      margin: 0 auto 5rem;
+      @include mobile {
+        margin: 0 auto 4rem;
+      }
+    }
+    .textError {
+      max-width: 480px;
+      margin: 0 auto 3.125rem;
+      a {
+        color: #fe00ae;
+      }
+    }
+  }
+
+  .form {
+    width: 560px;
+    @include mobile {
+      width: 100%;
+      max-width: 560px;
+    }
+    .formRow {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2.8rem;
+      @include mobile {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 0;
+      }
+    }
+    .formField {
+      width: 50%;
+      @include mobile {
+        width: 100%;
+        margin-bottom: 2.375rem;
+      }
+      label {
+        font-weight: 700;
+        font-size: 0.8125rem;
+        display: block;
+        cursor: pointer;
+      }
+      input,
+      select {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #08142d;
+        font-size: 0.8125rem;
+        margin-top: 0.5rem;
+        height: 2rem;
+        padding: 0;
+        background-color: #fff;
+        font-family: inherit;
+        &::placeholder {
+          color: rgba(8, 20, 45, 0.5);
+        }
+      }
+      select {
+        color: rgba(8, 20, 45, 0.5);
+        &.changed {
+          color: #08142d;
+        }
+      }
+    }
+    .formFieldFull {
+      width: 100%;
+      @include mobile {
+        margin-bottom: 2.375rem;
+      }
+      label {
+        font-weight: 700;
+        font-size: 0.8125rem;
+        display: block;
+        cursor: pointer;
+      }
+      textarea {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #08142d;
+        font-size: 0.8125rem;
+        margin-top: 1rem;
+        height: 3.5rem;
+        min-height: 3.5rem;
+        padding: 0;
+        background-color: #fff;
+        font-family: inherit;
+        resize: vertical;
+        @include mobile {
+          min-height: 5.5rem;
+        }
+      }
+    }
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      @include mobile {
+        margin-bottom: 1.375rem;
+      }
+      legend {
+        font-size: 0.8125rem;
+        display: block;
+        padding: 0 0 1rem;
+        line-height: 1.5;
+      }
+      input {
+        display: none;
+        &:checked + label {
+          background-color: #08142d;
+          color: #fff;
+        }
+      }
+      label {
+        display: inline-block;
+        cursor: pointer;
+        width: 30%;
+        border: 1px solid #08142d;
+        height: 43px;
+        border-radius: 22px;
+        line-height: 43px;
+        text-align: center;
+        box-sizing: border-box;
+        margin-right: 5%;
+        margin-bottom: 1rem;
+        transition: all 0.2s linear;
+        font-size: 0.8125rem;
+        @include mobile {
+          width: 47.5%;
+          margin-right: 0;
+          font-size: 0.75rem;
+          height: 40px;
+          line-height: 40px;
+          border-radius: 20px;
+        }
+        &:nth-child(3n - 2) {
+          margin-right: 0%;
+        }
+        &:nth-child(4n -1) {
+          @include mobile {
+            margin-right: 5%;
+          }
+        }
+      }
+    }
+    .formSubmit {
+      text-align: center;
+      margin-top: -0.5rem;
+    }
+  }
+}
+
+.social {
+  padding-top: 8.75rem;
+  @include smallDesktop {
+    padding-top: 6.5rem;
+  }
+  .socialLead {
+    color: rgba(8, 20, 45, 0.5);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  ul {
+    mix-blend-mode: difference;
+    list-style: none;
+    padding: 1rem 0 5.5rem;
+    margin: 0;
+    li {
+      display: inline-block;
+      & + li {
+        margin-left: 1.6rem;
+      }
+    }
+    a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s linear;
+      @include mobile {
+        font-size: 0.7rem;
+      }
+      &:hover {
+        color: #fe00ae;
+      }
+    }
+  }
+  .address {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.75;
+    a {
+      color: #fe00ae;
+      text-decoration: none;
+      &.addressLink {
+        text-decoration: underline;
+        color: inherit;
+      }
+    }
+  }
+}
+
+.socialDesktop {
+  @include smallDesktop {
+    display: none;
+  }
+}
+
+.socialMobile {
+  display: none;
+  @include smallDesktop {
+    display: block;
+  }
+}
