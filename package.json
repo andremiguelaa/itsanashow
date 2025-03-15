@@ -12,7 +12,7 @@
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.9.78",
     "axios": "^1.8.3",
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.1",
     "embla-carousel-auto-scroll": "^8.5.1",
     "embla-carousel-react": "^8.5.2",
     "eslint": "9.22.0",
