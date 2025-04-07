@@ -15,7 +15,7 @@
     "classnames": "^2.5.1",
     "embla-carousel-auto-scroll": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
-    "eslint": "9.22.0",
+    "eslint": "9.24.0",
     "eslint-config-next": "15.2.2",
     "is-touch-device": "^1.0.1",
     "lodash": "^4.17.21",
