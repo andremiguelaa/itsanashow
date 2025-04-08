@@ -28,6 +28,7 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 0);
+      setCursorType("default");
     }, 100);
   }, [pageKey]);
 

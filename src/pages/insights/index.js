@@ -54,8 +54,8 @@ const Blog = () => {
   }, [selectedTag, articlesData]);
 
   const articlesToShow = filteredArticles
-    .slice(0, numberOfArticles)
-    .sort((a, b) => b.attributes.Date.localeCompare(a.attributes.Date));
+    .sort((a, b) => b.attributes.Date.localeCompare(a.attributes.Date))
+    .slice(0, numberOfArticles);
 
   return (
     <>
@@ -130,94 +130,99 @@ const Blog = () => {
               </div>
             )}
           </div>
-          <ul className={classes.articles}>
-            {articlesToShow?.map((article) => (
-              <li key={article.id} className={classes.article}>
-                <InView
-                  onChange={(InView) => {
-                    setArticleVisibility((prev) => ({
-                      ...prev,
-                      [article.id]: InView,
-                    }));
-                  }}
-                >
-                  <Link
-                    className={classes.link}
-                    href={`/insights/${article.attributes.Slug}`}
+          <div className={classes.articlesWrapper}>
+            <ul className={classes.articles}>
+              {articlesToShow?.map((article) => (
+                <li key={article.id} className={classes.article}>
+                  <InView
+                    onChange={(InView) => {
+                      setArticleVisibility((prev) => ({
+                        ...prev,
+                        [article.id]: InView,
+                      }));
+                    }}
                   >
-                    <div
-                      className={classNames(classes.linkContent, {
-                        [classes.visible]: articleVisibility[article.id],
-                      })}
+                    <Link
+                      className={classes.link}
+                      href={`/insights/${article.attributes.Slug}`}
                     >
                       <div
-                        className={classes.imageWrapper}
-                        onMouseEnter={() => {
-                          setCursorType("read");
-                        }}
-                        onMouseLeave={() => {
-                          setCursorType("default");
-                        }}
+                        className={classNames(classes.linkContent, {
+                          [classes.visible]: articleVisibility[article.id],
+                        })}
                       >
-                        <img
-                          className={classes.image}
-                          src={`${process.env.NEXT_PUBLIC_API_URL}${article.attributes.Thumbnail.data.attributes.url}`}
-                          alt={
-                            article.attributes.Thumbnail.data.attributes
-                              .alternativeText
-                          }
-                        />
-                        <div className={classes.overlay}></div>
-                        <div className={classes.author}>
+                        <div
+                          className={classes.imageWrapper}
+                          onMouseEnter={() => {
+                            setCursorType("read");
+                          }}
+                          onMouseLeave={() => {
+                            setCursorType("default");
+                          }}
+                        >
                           <img
-                            className={classes.avatar}
-                            src={`${process.env.NEXT_PUBLIC_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
+                            className={classes.image}
+                            src={`${process.env.NEXT_PUBLIC_API_URL}${article.attributes.Thumbnail.data.attributes.url}`}
                             alt={
-                              article.attributes.Author.Avatar.data.attributes
+                              article.attributes.Thumbnail.data.attributes
                                 .alternativeText
                             }
                           />
-                          <div className={classes.authorInfo}>
-                            Written by
-                            <br />
-                            <strong>{article.attributes.Author.Name}</strong>
+                          <div className={classes.overlay}></div>
+                          <div className={classes.author}>
+                            <img
+                              className={classes.avatar}
+                              src={`${process.env.NEXT_PUBLIC_API_URL}${article.attributes.Author.Avatar.data.attributes.url}`}
+                              alt={
+                                article.attributes.Author.Avatar.data.attributes
+                                  .alternativeText
+                              }
+                            />
+                            <div className={classes.authorInfo}>
+                              Written by
+                              <br />
+                              <strong>{article.attributes.Author.Name}</strong>
+                            </div>
                           </div>
                         </div>
+                        <p className={classes.date}>
+                          {new Date(article.attributes.Date).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            }
+                          )}
+                        </p>
+                        <p className={classes.title}>
+                          {article.attributes.Title}
+                        </p>
+                        <p className={classes.teaser}>
+                          {article.attributes.Teaser}
+                        </p>
+                        {article.attributes.Tags.data.map((tag) => (
+                          <span
+                            className={classes.tag}
+                            key={tag.attributes.Text}
+                          >
+                            {tag.attributes.Text}
+                          </span>
+                        ))}
                       </div>
-                      <p className={classes.date}>
-                        {new Date(article.attributes.Date).toLocaleDateString(
-                          "en-US",
-                          {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          }
-                        )}
-                      </p>
-                      <p className={classes.title}>
-                        {article.attributes.Title}
-                      </p>
-                      <p className={classes.teaser}>
-                        {article.attributes.Teaser}
-                      </p>
-                      {article.attributes.Tags.data.map((tag) => (
-                        <span className={classes.tag} key={tag.attributes.Text}>
-                          {tag.attributes.Text}
-                        </span>
-                      ))}
-                    </div>
-                    <div
-                      className={classNames(classes.readMore, {
-                        [classes.visible]: articleVisibility[article.id],
-                      })}
-                    >
-                      <span>Read more</span>
-                    </div>
-                  </Link>
-                </InView>
-              </li>
-            ))}
-          </ul>
+                      <div
+                        className={classNames(classes.readMore, {
+                          [classes.visible]: articleVisibility[article.id],
+                        })}
+                      >
+                        <span>Read more</span>
+                      </div>
+                    </Link>
+                  </InView>
+                </li>
+              ))}
+            </ul>
+          </div>
           {filteredArticles.length > numberOfArticles && (
             <button
               className={classes.seeMore}

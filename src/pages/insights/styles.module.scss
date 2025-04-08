@@ -1,4 +1,4 @@
-@use 'src/styles/mixins.scss';
+@use "src/styles/mixins.scss";
 
 .content {
   background-color: #fff;
@@ -73,9 +73,9 @@
       font-size: 0.7rem;
     }
     &::after {
-      content: '';
+      content: "";
       display: inline-block;
-      background-image: url('../../assets/down.svg');
+      background-image: url("../../assets/down.svg");
       background-size: contain;
       background-repeat: no-repeat;
       height: 15px;
@@ -136,7 +136,7 @@
         font-size: 0.7rem;
       }
       &:before {
-        content: '';
+        content: "";
         display: inline-block;
         width: 25px;
         height: 25px;
@@ -154,7 +154,7 @@
       &.selected {
         &:after {
           position: absolute;
-          content: '';
+          content: "";
           width: 15px;
           height: 15px;
           border-radius: 50%;
@@ -197,13 +197,16 @@
   }
 }
 
+.articlesWrapper {
+  min-height: 1000px;
+}
+
 .articles {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   list-style: none;
   gap: 4rem;
-  min-height: 1000px;
   @include mixins.mobile {
     gap: 0;
   }
@@ -336,9 +339,9 @@
       font-size: 0.8125rem;
     }
     &::after {
-      content: '';
+      content: "";
       display: inline-block;
-      background-image: url('../../assets/readMore.svg');
+      background-image: url("../../assets/readMore.svg");
       background-size: contain;
       transform: rotate(180deg);
       height: 12px;
@@ -369,9 +372,9 @@
     margin: 0 auto;
   }
   &::before {
-    content: '';
+    content: "";
     display: block;
-    background-image: url('../../assets/down.svg');
+    background-image: url("../../assets/down.svg");
     background-size: contain;
     height: 15px;
     width: 10px;
