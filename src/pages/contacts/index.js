@@ -77,7 +77,7 @@ const Contacts = () => {
         <title>Itsanashow Studio | Contact Us</title>
         <meta
           name="description"
-          content='Meet the Itsanashow Creative Studio team, where we embrace challenges with creative hunger and a passion for overcoming obstacles. Our motto: "We love to give shape to beautiful and meaningful stories."'
+          content="Ready to transform your brand into something unforgettable? Let’s talk animation, branding, web design, and ideas worth sharing."
         />
       </Head>
       <section className={classes.contacts}>

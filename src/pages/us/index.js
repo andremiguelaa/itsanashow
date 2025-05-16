@@ -142,7 +142,7 @@ const Us = () => {
         <title>Itsanashow Studio | About Us</title>
         <meta
           name="description"
-          content='Meet the Itsanashow Creative Studio team, where we embrace challenges with creative hunger and a passion for overcoming obstacles. Our motto: "We love to give shape to beautiful and meaningful stories."'
+          content="Your dedicated creative squad. Big enough to tackle any challenge, small enough to keep it personal. Strategy, animation, and design at heart."
         />
       </Head>
       <section className={classes.intro}>

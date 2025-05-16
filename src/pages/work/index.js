@@ -80,7 +80,7 @@ const Work = () => {
         <title>Itsanashow Studio | Our Work</title>
         <meta
           name="description"
-          content="Explore our world of animation, design, and user experience. At Itsanashow Creative Studio, we specialize in storytelling and crafting visual solutions for tech and software companies. Let the fun begin!"
+          content="Elevate your brand through powerful storytelling. Explore our work in animation, branding, and web design, and see how we bring bold ideas to life."
         />
       </Head>
       <section className={classes.intro}>

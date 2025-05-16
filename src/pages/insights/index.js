@@ -63,7 +63,7 @@ const Blog = () => {
         <title>Itsanashow Studio | Insights</title>
         <meta
           name="description"
-          content="Discover our insights on creativity, animation, storytelling, business, user experience, and more. Join us in wrangling ideas and lassoing imagination. Let's think, create, and inspire together!"
+          content="Dive into stories on creativity, animation, branding, UX, and design. We connect the dots, break a few grids, and occasionally kern our thoughts too tight."
         />
       </Head>
       <div className={classes.content}>
