@@ -1,6 +1,5 @@
 import React, { useMemo, useContext } from "react";
 import Head from "next/head";
-import Spline from "@splinetool/react-spline";
 import classnames from "classnames";
 
 import useRequest from "src/utils/useRequest";
@@ -12,6 +11,8 @@ import HomepageTeam from "src/components/HomepageTeam/HomepageTeam";
 import HomepageRelated from "src/components/HomepageRelated/HomepageRelated";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import Button from "src/components/Button/Button";
+
+import reel from "../assets/reel.webm";
 
 import classes from "./styles.module.scss";
 
@@ -94,9 +95,6 @@ const Home = () => {
         />
       </Head>
       <section className={classes.intro}>
-        <div className={classes.spline}>
-          <Spline scene="https://prod.spline.design/pmsrRpUXfZ0l8ACX/scene.splinecode" />
-        </div>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.description}>
             <AnimatedText>Crafting stories that make brands shine</AnimatedText>
@@ -111,7 +109,9 @@ const Home = () => {
             <Button text="See Our Magic in Action" />
           </div>
         </div>
-        <div style={{ position: "absolute", top: "100vh" }} />
+        <div className={classnames("wrapper", classes.video)}>
+          <video src={reel} autoPlay muted loop />
+        </div>
       </section>
       <HomepageClients clients={clients} />
       <HomepageWork portfolioHighlights={portfolioHighlights} />

@@ -3,7 +3,7 @@
 .clients {
   background-color: #fff;
   color: #08142d;
-  padding: 2.5rem 0 4rem;
+  padding: 5.5rem 0 4rem;
   position: relative;
   @include mixins.mobile {
     padding: 1.2rem 0 2rem;
@@ -11,8 +11,10 @@
   .lead {
     margin: 0 0 1.75rem;
     font-size: 1.25rem;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
+    text-align: center;
+    margin-top: 28%;
     @include mixins.mobile {
       font-size: 0.8rem;
     }
