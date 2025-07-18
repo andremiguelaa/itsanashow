@@ -110,7 +110,7 @@ const Home = () => {
           </div>
         </div>
         <div className={classnames("wrapper", classes.video)}>
-          <video src={reel} autoPlay muted loop />
+          <video src={reel} autoPlay loop muted playsInline />
         </div>
       </section>
       <HomepageClients clients={clients} />
