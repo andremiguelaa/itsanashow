@@ -14,7 +14,7 @@
   overflow: hidden;
   @include mixins.mobile {
     padding: 3.75rem 0 7.2rem;
-    &.noLead{
+    &.noLead {
       padding: 0 0 7.2rem;
     }
   }
@@ -79,22 +79,25 @@
   }
 }
 
-.top {
-  background-color: #08142d;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  border-radius: 50%;
-  top: -15px;
-  border: none;
-  right: 0;
-  display: none;
-  background-image: url('../../assets/seta.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-  @include mixins.mobile {
-    display: block;
+.topWrapper {
+  position: relative;
+  .top {
+    background-color: #08142d;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    top: -15px;
+    border: none;
+    right: 0;
+    display: none;
+    background-image: url("../../assets/seta.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    @include mixins.mobile {
+      display: block;
+    }
   }
 }
 
@@ -103,7 +106,7 @@
     margin: 2rem 0 0;
     padding: 0;
     @include mixins.mobile {
-      margin: 2.5rem 0 4.75rem;
+      margin: 2.5rem 0 1rem;
       opacity: 0.6;
     }
     li {
@@ -122,6 +125,55 @@
   }
 }
 
+.newsletterWrapper {
+  @include mixins.mobile {
+    margin: 0 auto;
+    max-width: 340px;
+  }
+  .newsletter {
+    margin: 0 0 1.4rem;
+    max-width: 427px;
+    text-align: left;
+  }
+  .form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: end;
+    @include mixins.mobile {
+      justify-content: flex-start;
+    }
+  }
+  .emailInput {
+    font-size: 0.75rem;
+    font-family: inherit;
+    height: 1.5rem;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0;
+    background-color: transparent;
+    color: #fff;
+    padding: 1rem 0 0;
+    flex-grow: 1;
+    @include mixins.mobile {
+      max-width: 350px;
+    }
+  }
+  .submit {
+    height: 2.875rem;
+    background-color: #fff;
+    color: #08142d;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-weight: 600;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 1.4rem;
+    cursor: pointer;
+  }
+}
+
 .rightColumn {
   text-align: right;
   @include mixins.mobile {
@@ -131,10 +183,9 @@
   .lead {
     font-weight: 600;
     font-size: 1.25rem;
-    margin: 0 0 3.4rem;
+    margin: 0 0 0.5rem;
     @include mixins.mobile {
       font-size: 1rem;
-      margin: 0 0 2.2rem;
     }
   }
 
@@ -144,13 +195,15 @@
 }
 
 .social {
-  margin-top: -2.375rem;
   position: relative;
-  width: 260px;
+  padding: 0.5rem 0 5.5rem;
   @include mixins.mobile {
     text-align: center;
-    margin-top: 5.8rem;
-    width: auto;
+    opacity: 0.6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    max-width: 340px;
+    padding-bottom: 2.3rem;
+    margin: 4.8rem auto 2.3rem;
   }
   ul {
     list-style: none;
@@ -182,21 +235,43 @@
 }
 
 .copyright {
-  text-align: center;
-  margin: 6rem 0 0;
+  text-align: left;
   font-size: 0.625rem;
   font-weight: 500;
   @include mixins.mobile {
     opacity: 0.6;
     margin: 2.3rem 0 0;
+    text-align: center;
   }
-  br {
-    display: none;
+  .separator {
     @include mixins.mobile {
-      display: block;
+      display: none;
     }
   }
   a {
     color: inherit;
+    display: inline-block;
+    @include mixins.mobile {
+      display: block;
+    }
+  }
+}
+
+.backToTop {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  background-color: transparent;
+  color: #fff;
+  background-image: url("../../assets/arrow_top.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 1rem;
+  cursor: pointer;
+  @include mixins.mobile {
+    display: none;
   }
 }
