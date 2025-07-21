@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
