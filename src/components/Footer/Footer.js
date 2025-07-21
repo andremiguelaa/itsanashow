@@ -130,7 +130,7 @@ const Footer = ({ lead = true }) => {
               <b>...good vibes!</b>
             </p>
             <form
-              // action="https://gmail.us18.list-manage.com/subscribe/post?u=0dbc561f892938534885b4e78&amp;id=812c8120f7&amp;f_id=00dab3e6f0"
+              action="https://itsanashow.us7.list-manage.com/subscribe/post?u=cf276ffda6d4a0a4261818720&id=1c5f3005aa&f_id=00c047e4f0"
               method="post"
               target="_blank"
               noValidate
@@ -149,7 +149,7 @@ const Footer = ({ lead = true }) => {
               >
                 <input
                   type="text"
-                  name="b_0dbc561f892938534885b4e78_812c8120f7"
+                  name="b_cf276ffda6d4a0a4261818720_1c5f3005aa"
                   tabIndex="-1"
                   value=""
                   readOnly
