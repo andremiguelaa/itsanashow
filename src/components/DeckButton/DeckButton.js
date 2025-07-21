@@ -4,7 +4,7 @@ import Lottie from "react-lottie-player";
 import { AppContext } from "src/AppContext";
 import Popup from "src/components/Popup/Popup";
 
-import button from "src/assets/capabilities-right.json";
+import button from "src/assets/capabilities-left.json";
 
 import classes from "./DeckButton.module.scss";
 

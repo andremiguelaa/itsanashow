@@ -123,5 +123,8 @@
   }
   .cta {
     text-align: center;
+    @include mixins.mobile {
+      text-align: right;
+    }
   }
 }

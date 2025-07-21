@@ -83,7 +83,10 @@ const Home = () => {
     method: "GET",
   });
 
-  const articles = articlesData?.data.slice(0, 3) || [];
+  const articles = useMemo(
+    () => articlesData?.data.sort(() => 0.5 - Math.random()).slice(0, 3) || [],
+    [articlesData]
+  );  
 
   return (
     <>
