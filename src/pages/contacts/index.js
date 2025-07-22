@@ -498,7 +498,7 @@ const Contacts = () => {
               </form>
             </div>
           </div>
-          <div className={classes.socialMobile}>
+          <div className={classes.socialMobile} id="social">
             <Social />
           </div>
         </div>

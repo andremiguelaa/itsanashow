@@ -40,7 +40,7 @@ const Header = ({ noDefaultHeader }) => {
     } else {
       firstLoad.current = false;
     }
-  }, [router.pathname, noDefaultHeader]);
+  }, [router.asPath, noDefaultHeader]);
 
   const [defaultHeader, setDefaultHeader] = useState(
     noDefaultHeader ? false : true
@@ -196,7 +196,7 @@ const Header = ({ noDefaultHeader }) => {
               insights
             </Link>
             <Link
-              href="/contacts"
+              href="/contacts#social"
               className={classnames(classes.link, {
                 [classes.active]: page === "/contacts",
               })}
