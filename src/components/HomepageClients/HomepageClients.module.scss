@@ -3,13 +3,13 @@
 .clients {
   background-color: #fff;
   color: #08142d;
-  padding: 5.5rem 0 4rem;
+  padding: 5.5rem 0 6rem;
   position: relative;
   @include mixins.mobile {
-    padding: 1.2rem 0 2rem;
+    padding: 1.2rem 0 2.5rem;
   }
   .lead {
-    margin: 0 0 2rem;
+    margin: 0 0 3.75rem;
     font-size: 1.25rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -17,6 +17,7 @@
     margin-top: 28%;
     @include mixins.mobile {
       font-size: 0.8rem;
+      margin: 28% 0 2rem;
     }
   }
   .embla {
