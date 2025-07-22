@@ -26,6 +26,9 @@ export default function App({ Component, pageProps }) {
   const isWorkDetailPage = pageKey.startsWith("/work/");
 
   useEffect(() => {
+    if(pageKey.includes("#")) {
+      return;
+    }
     setTimeout(() => {
       window.scrollTo(0, 0);
       setCursorType("default");

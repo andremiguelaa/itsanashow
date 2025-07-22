@@ -2,31 +2,31 @@
 
 .intro {
   background-color: #03060E;
-  padding: 18rem 0 9.5rem;
+  padding: 12.5rem 0 0;
   position: relative;
-  min-height: calc(100vh - 200px);
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  @include mixins.mobile {
-    padding: 11rem 0 4rem;
-  }
-  .spline {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  &::before {
+    content: "";
     position: absolute;
     top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/blur-min.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+  }
+  @include mixins.mobile {
+    padding: 6rem 0 0;
   }
   .text {
     position: relative;
     z-index: 1;
-    pointer-events: none;
     .description {
       margin: 0;
       font-size: 4.875rem;
       font-weight: 600;
-      line-height: 1.25;
+      line-height: 1.15;
       max-width: 825px;
       @include mixins.mobile {
         font-size: 2.8rem;
@@ -52,6 +52,17 @@
       @include mixins.mobile {
         margin-top: 4rem;
       }
+    }
+  }
+  .video{
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+    video{
+      pointer-events: none;
+      border-radius: 20px;
+      width: 100%;
+      margin-bottom: -28%;
     }
   }
 }

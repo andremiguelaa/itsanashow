@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
@@ -107,10 +107,14 @@ const Article = ({ prefetchedArticle }) => {
 
   const article = articleData?.data?.[0];
 
-  const articles =
-    article && articlesData
-      ? articlesData.data.filter((item) => item.id !== article.id).slice(0, 3)
-      : [];
+  const articles = useMemo(
+    () =>
+      articlesData?.data
+        .filter((item) => item.id !== article.id)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3) || [],
+    [articlesData]
+  );
 
   const [metaData, setMetaData] = useState({
     title: prefetchedArticle?.attributes.Title,
