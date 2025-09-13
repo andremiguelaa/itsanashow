@@ -1,0 +1,127 @@
+@use "src/styles/mixins.scss";
+
+.faqs {
+  background-color: #fff;
+  position: relative;
+  color: #333;
+  padding: 8.125rem 0 7.45rem;
+  @include mixins.mobile {
+    padding: 3.4rem 0 3.75rem;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  @include mixins.tablet {
+    display: block;
+  }
+}
+
+.header {
+  width: 520px;
+  @include mixins.tablet {
+    width: 100%;
+    padding-bottom: 2.9rem;
+  }
+  .lead {
+    font-size: 1.25rem;
+    margin: 0;
+    @include mixins.mobile {
+      font-size: 0.8125rem;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+  }
+  .description {
+    margin: 0;
+    strong {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      @include mixins.mobile {
+        display: block;
+        font-size: 1.375rem;
+        font-size: 1.35;
+        width: 205px;
+      }
+    }
+    .note {
+      display: block;
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      line-height: 1.25;
+      @include mixins.mobile {
+        display: none;
+      }
+    }
+  }
+  .illustration {
+    margin-top: 7.5rem;
+    margin-left: -5.25rem;
+    max-width: 100%;
+    @include mixins.tablet {
+      display: none;
+    }
+  }
+}
+
+.content {
+  width: 42%;
+  flex-shrink: 0;
+  @include mixins.tablet {
+    width: 100%;
+  }
+  dl {
+    border-bottom: 1px dashed rgba(8, 20, 45, 0.5);
+  }
+  .faq {
+    border-top: 1px dashed rgba(8, 20, 45, 0.5);
+    dt {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      font-weight: 700;
+      padding: 1.625rem 8rem 1.625rem 1rem;
+      color: #08142d80;
+      background-image: url("../../assets/plus.svg");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      transition: color 0.2s linear;
+      @include mixins.mobile {
+        font-size: 1rem;
+        line-height: 1.375;
+        padding: 1.625rem 6rem 1.625rem 1rem;
+      }
+      &:hover {
+        color: #08142d;
+      }
+    }
+    dd {
+      display: none;
+      color: #08142d;
+      font-size: 1.125rem;
+      line-height: 1.55;
+      margin: 0;
+      padding: 0.675rem 1rem 3rem;
+      @include mixins.mobile {
+        font-size: 0.875rem;
+        line-height: 1.7;
+      }
+      p {
+        margin-top: 0;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    &.open {
+      dt {
+        color: #08142d;
+        background-image: url("../../assets/faq_close.svg");
+        background-position: right 0.8rem center;
+      }
+      dd {
+        display: block;
+      }
+    }
+  }
+}

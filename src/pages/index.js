@@ -8,6 +8,7 @@ import HomepageWork from "src/components/HomepageWork/HomepageWork";
 import HomepageServices from "src/components/HomepageServices/HomepageServices";
 import Testimonials from "src/components/Testimonials/Testimonials";
 import HomepageTeam from "src/components/HomepageTeam/HomepageTeam";
+import FAQs from "src/components/FAQs/FAQs";
 import HomepageRelated from "src/components/HomepageRelated/HomepageRelated";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import Button from "src/components/Button/Button";
@@ -86,7 +87,7 @@ const Home = () => {
   const articles = useMemo(
     () => articlesData?.data.sort(() => 0.5 - Math.random()).slice(0, 3) || [],
     [articlesData]
-  );  
+  );
 
   return (
     <>
@@ -121,6 +122,7 @@ const Home = () => {
       <HomepageServices />
       <Testimonials />
       <HomepageTeam />
+      <FAQs />
       <HomepageRelated articles={articles} />
     </>
   );
