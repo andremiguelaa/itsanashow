@@ -36,7 +36,11 @@ const FAQs = () => {
   }
 
   return (
-    <section className={classes.faqs}>
+    <section
+      className={classes.faqs}
+      itemscope
+      itemtype="https://schema.org/FAQPage"
+    >
       <div className={classNames("wrapper", classes.wrapper)}>
         <div className={classes.header}>
           <p className={classes.lead}>
@@ -44,9 +48,7 @@ const FAQs = () => {
           </p>
           <p className={classes.description}>
             <strong>
-              <AnimatedText delay={50}>
-                Frequently Asked Questions
-              </AnimatedText>
+              <AnimatedText delay={50}>Frequently Asked Questions</AnimatedText>
             </strong>
             <span className={classes.note}>
               <AnimatedText delay={200}>
@@ -69,6 +71,9 @@ const FAQs = () => {
                 className={classNames(classes.faq, {
                   [classes.open]: faq.open,
                 })}
+                itemscope
+                itemprop="mainEntity"
+                itemtype="https://schema.org/Question"
               >
                 <dt
                   onClick={() => {
@@ -92,11 +97,17 @@ const FAQs = () => {
                     setCursorType("default");
                   }}
                 >
-                  {faq.question}
+                  <span itemprop="name">{faq.question}</span>
                   <div className={classes.toggleButton} />
                 </dt>
-                <dd>
-                  <Markdown content={faq.answer} />
+                <dd
+                  itemscope
+                  itemprop="acceptedAnswer"
+                  itemtype="https://schema.org/Answer"
+                >
+                  <span itemprop="text">
+                    <Markdown content={faq.answer} />
+                  </span>
                 </dd>
               </div>
             ))}
