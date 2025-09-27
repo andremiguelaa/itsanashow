@@ -19,7 +19,7 @@ import classes from "./styles.module.scss";
 
 const Home = () => {
   const { data: homepageData } = useRequest({
-    url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*",
+    url: "homepage?populate%5BPortfolioHighlights%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D=*&populate%5BClients%5D%5Bpopulate%5D%5Bclient%5D%5Bpopulate%5D=*&populate%5BFAQs%5D%5Bpopulate%5D%5Bfaq%5D%5Bpopulate%5D=*",
     method: "GET",
   });
 
@@ -79,6 +79,29 @@ const Home = () => {
     return [];
   }, [homepageData]);
 
+    const faqs = useMemo(() => {
+    if (homepageData?.data?.attributes?.FAQs?.length > 0) {
+      return homepageData.data.attributes.FAQs.map(
+        ({
+          faq: {
+            data: {
+              id,
+              attributes: {
+                Question,
+                Answer,
+              },
+            },
+          },
+        }) => ({
+          id,
+          question: Question,
+          answer: Answer,
+        })
+      );
+    }
+    return [];
+  }, [homepageData]);
+
   const { data: articlesData } = useRequest({
     url: "articles",
     method: "GET",
@@ -122,7 +145,7 @@ const Home = () => {
       <HomepageServices />
       <Testimonials />
       <HomepageTeam />
-      <FAQs />
+      <FAQs faqs={faqs} />
       <HomepageRelated articles={articles} />
     </>
   );

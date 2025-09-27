@@ -9,37 +9,28 @@ import illustration from "src/assets/faq_illustration.svg";
 
 import classes from "./FAQs.module.scss";
 
-const FAQs = () => {
+const FAQs = ({ faqs: data }) => {
   const { setCursorType } = useContext(AppContext);
   const [faqs, setFaqs] = useState();
 
-  const { data, error, loading } = useRequest({
-    url: "faqs",
-    method: "GET",
-  });
-
   useEffect(() => {
-    if (data) {
-      setFaqs(
-        data.data.map((item) => ({
-          id: item.id,
-          question: item.attributes.Question,
-          answer: item.attributes.Answer,
-          open: false,
-        }))
-      );
-    }
+    setFaqs(
+      data.map((item) => ({
+        ...item,
+        open: false,
+      }))
+    );
   }, [data]);
 
-  if (!faqs) {
+  if (data.length < 1) {
     return null;
   }
 
   return (
     <section
       className={classes.faqs}
-      itemscope
-      itemtype="https://schema.org/FAQPage"
+      itemScope
+      itemType="https://schema.org/FAQPage"
     >
       <div className={classNames("wrapper", classes.wrapper)}>
         <div className={classes.header}>
@@ -64,18 +55,19 @@ const FAQs = () => {
           />
         </div>
         <div className={classes.content}>
-          <dl>
+          <dl className={classes.faqList}>
             {faqs.map((faq) => (
               <div
                 key={faq.id}
                 className={classNames(classes.faq, {
                   [classes.open]: faq.open,
                 })}
-                itemscope
-                itemprop="mainEntity"
-                itemtype="https://schema.org/Question"
+                itemScope
+                itemProp="mainEntity"
+                itemType="https://schema.org/Question"
               >
                 <dt
+                  className={classes.faqTitle}
                   onClick={() => {
                     setFaqs((prev) => {
                       const newFaqs = prev.map((item) =>
@@ -97,15 +89,16 @@ const FAQs = () => {
                     setCursorType("default");
                   }}
                 >
-                  <span itemprop="name">{faq.question}</span>
+                  <span itemProp="name">{faq.question}</span>
                   <div className={classes.toggleButton} />
                 </dt>
                 <dd
-                  itemscope
-                  itemprop="acceptedAnswer"
-                  itemtype="https://schema.org/Answer"
+                  className={classes.faqContent}
+                  itemScope
+                  itemProp="acceptedAnswer"
+                  itemType="https://schema.org/Answer"
                 >
-                  <span itemprop="text">
+                  <span itemProp="text">
                     <Markdown content={faq.answer} />
                   </span>
                 </dd>
