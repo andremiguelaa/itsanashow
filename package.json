@@ -28,7 +28,7 @@
     "react-scroll-parallax": "^3.4.5",
     "react-slick": "^0.30.3",
     "remark": "^15.0.1",
-    "sass": "^1.85.1",
+    "sass": "^1.93.2",
     "slick-carousel": "^1.8.1",
     "strip-markdown": "^6.0.0"
   }
