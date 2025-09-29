@@ -1,6 +1,7 @@
 import React, { useContext, useState, useRef } from "react";
 import classNames from "classnames";
 import Lottie from "react-lottie-player";
+import { Collapse } from "react-collapse";
 
 import AppContext from "src/AppContext";
 import Markdown from "src/components/Markdown/Markdown";
@@ -74,9 +75,13 @@ const FAQs = ({ faq }) => {
         itemProp="acceptedAnswer"
         itemType="https://schema.org/Answer"
       >
-        <span itemProp="text">
-          <Markdown content={faq.answer} />
-        </span>
+        <Collapse isOpened={open}>
+          <div className={classes.faqInnerContent}>
+            <span itemProp="text">
+              <Markdown content={faq.answer} />
+            </span>
+          </div>
+        </Collapse>
       </dd>
     </div>
   );

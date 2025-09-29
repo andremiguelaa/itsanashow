@@ -20,7 +20,7 @@
 
 .header {
   width: 520px;
-  color: #08142D;
+  color: #08142d;
   @include mixins.tablet {
     width: 100%;
     padding-bottom: 2.9rem;
@@ -106,15 +106,21 @@
       }
     }
     .faqContent {
-      display: none;
       color: #08142d;
       font-size: 1.125rem;
       line-height: 1.55;
       margin: 0;
-      padding: 0.675rem 1rem 3rem;
       @include mixins.mobile {
         font-size: 0.875rem;
         line-height: 1.7;
+      }
+      :global(.ReactCollapse--collapse) {
+        transition: height 500ms ease-in-out;
+      }
+      .faqInnerContent {
+        padding: 0.675rem 1rem 3rem;
+        opacity: 0;
+        transition: opacity 500ms;
       }
       p {
         margin-top: 0;
@@ -133,8 +139,8 @@
           opacity: 1;
         }
       }
-      .faqContent {
-        display: block;
+      .faqInnerContent {
+        opacity: 1;
       }
     }
   }
