@@ -1,7 +1,7 @@
 @use "src/styles/mixins.scss";
 
 .intro {
-  background-color: #03060E;
+  background-color: #03060e;
   padding: 12.5rem 0 0;
   position: relative;
   box-sizing: border-box;
@@ -11,7 +11,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/blur-min.png');
+    background-image: url("../assets/blur-min.png");
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -54,15 +54,16 @@
       }
     }
   }
-  .video{
+  .video {
     margin-top: 3rem;
     position: relative;
     z-index: 1;
-    video{
+    video {
       pointer-events: none;
       border-radius: 20px;
       width: 100%;
       margin-bottom: -28%;
+      aspect-ratio: 1920/1080;
     }
   }
 }
