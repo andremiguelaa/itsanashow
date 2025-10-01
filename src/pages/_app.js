@@ -27,19 +27,12 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     if (pageKey.includes("#")) {
-      setTimeout(() => {
-        const element = document.getElementById(window.location.hash.slice(1));
-        if (element) {
-          element.scrollIntoView();
-        }
-        setCursorType("default");
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        setCursorType("default");
-      }, 100);
+      return;
     }
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      setCursorType("default");
+    }, 100);
   }, [pageKey]);
 
   return (
