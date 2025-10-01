@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
           element.scrollIntoView();
         }
         setCursorType("default");
-      }, 100);
+      }, 500);
     } else {
       setTimeout(() => {
         window.scrollTo(0, 0);
