@@ -79,14 +79,17 @@ const Home = () => {
     return [];
   }, [homepageData]);
 
-  const faqs = useMemo(() => {
+    const faqs = useMemo(() => {
     if (homepageData?.data?.attributes?.FAQs?.length > 0) {
       return homepageData.data.attributes.FAQs.map(
         ({
           faq: {
             data: {
               id,
-              attributes: { Question, Answer },
+              attributes: {
+                Question,
+                Answer,
+              },
             },
           },
         }) => ({
@@ -142,7 +145,7 @@ const Home = () => {
       <HomepageServices />
       <Testimonials />
       <HomepageTeam />
-      <FAQs faqs={faqs} aboveContentLoaded={Boolean(homepageData)} />
+      <FAQs faqs={faqs} />
       <HomepageRelated articles={articles} />
     </>
   );
