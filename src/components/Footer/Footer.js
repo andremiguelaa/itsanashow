@@ -115,6 +115,19 @@ const Footer = ({ lead = true }) => {
                     Contact
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/#faqs"
+                    onMouseEnter={() => {
+                      setCursorType("bigger");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorType("default");
+                    }}
+                  >
+                    FAQs
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>

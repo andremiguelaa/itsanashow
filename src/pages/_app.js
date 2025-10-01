@@ -26,13 +26,20 @@ export default function App({ Component, pageProps }) {
   const isWorkDetailPage = pageKey.startsWith("/work/");
 
   useEffect(() => {
-    if(pageKey.includes("#")) {
-      return;
+    if (pageKey.includes("#")) {
+      setTimeout(() => {
+        const element = document.getElementById(window.location.hash.slice(1));
+        if (element) {
+          element.scrollIntoView();
+        }
+        setCursorType("default");
+      }, 100);
+    } else {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        setCursorType("default");
+      }, 100);
     }
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-      setCursorType("default");
-    }, 100);
   }, [pageKey]);
 
   return (

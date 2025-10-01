@@ -114,6 +114,9 @@
       display: inline-block;
       & + li {
         margin-left: 3.125rem;
+        @include mixins.mobile {
+          margin-left: 1.3rem;
+        }
       }
     }
   }
