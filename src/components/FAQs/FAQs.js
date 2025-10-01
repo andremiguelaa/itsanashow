@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import React from "react";
 import classNames from "classnames";
 import Lottie from "react-lottie-player";
 
@@ -10,22 +9,16 @@ import FAQ from "./FAQ";
 
 import classes from "./FAQs.module.scss";
 
-const FAQs = ({ faqs = [], aboveContentLoaded = false }) => {
-  const router = useRouter();
-  const pageKey = router.asPath;
-
-  useEffect(() => {
-    if (pageKey.includes("#faqs") && aboveContentLoaded) {
-      document.getElementById("faqs").scrollIntoView();
-    }
-  }, [pageKey, aboveContentLoaded]);
+const FAQs = ({ faqs }) => {
+  if (faqs.length < 1) {
+    return null;
+  }
 
   return (
     <section
       className={classes.faqs}
       itemScope
       itemType="https://schema.org/FAQPage"
-      id="faqs"
     >
       <div className={classNames("wrapper", classes.wrapper)}>
         <div className={classes.header}>

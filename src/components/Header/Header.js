@@ -167,7 +167,7 @@ const Header = ({ noDefaultHeader }) => {
                 [classes.active]: page === "/",
               })}
             >
-              Home
+              home
             </Link>
           </div>
           <div>
@@ -177,7 +177,7 @@ const Header = ({ noDefaultHeader }) => {
                 [classes.active]: page === "/work",
               })}
             >
-              Our work
+              our work
             </Link>
             <Link
               href="/us"
@@ -185,7 +185,7 @@ const Header = ({ noDefaultHeader }) => {
                 [classes.active]: page === "/us",
               })}
             >
-              About us
+              about us
             </Link>
             <Link
               href="/insights"
@@ -193,7 +193,7 @@ const Header = ({ noDefaultHeader }) => {
                 [classes.active]: page === "/insights",
               })}
             >
-              Insights
+              insights
             </Link>
             <Link
               href="/contacts#social"
@@ -201,10 +201,7 @@ const Header = ({ noDefaultHeader }) => {
                 [classes.active]: page === "/contacts",
               })}
             >
-              Contact us
-            </Link>
-            <Link href="/#faqs" className={classnames(classes.link)}>
-              FAQs
+              contact us
             </Link>
             <div className={classes.requestButton}>
               <RequestYourQuoteButton />

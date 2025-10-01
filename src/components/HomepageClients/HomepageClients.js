@@ -7,7 +7,7 @@ import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import classes from "./HomepageClients.module.scss";
 
 const HomepageClients = ({ clients }) => {
-  const [emblaRef] = useEmblaCarousel(
+  const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       dragFree: true,
       loop: true,
