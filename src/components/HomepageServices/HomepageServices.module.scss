@@ -76,7 +76,6 @@
       }
       .image {
         width: 100%;
-        aspect-ratio: 700/394;
       }
       .text {
         font-size: 1rem;
@@ -86,7 +85,7 @@
           font-size: 0.875rem;
         }
       }
-      & + .service {
+      & + .service{
         @include mixins.smallDesktop {
           margin-top: 4rem;
           padding-top: 3rem;
@@ -124,7 +123,7 @@
       }
     }
   }
-  .cta {
+  .cta{
     display: flex;
     justify-content: flex-end;
     @include mixins.smallDesktop {
