@@ -48,15 +48,8 @@ const FAQs = ({ faqs }) => {
           </dl>
         </div>
       </div>
-      <div className={classes.content}>
-        <dl className={classes.faqList}>
-          {faqs.map((faq) => (
-            <FAQ faq={faq} key={faq.id} />
-          ))}
-        </dl>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default FAQs;
