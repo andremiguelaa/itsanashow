@@ -1,0 +1,147 @@
+@use "src/styles/mixins.scss";
+
+.faqs {
+  background-color: #fff;
+  position: relative;
+  color: #333;
+  padding: 8.125rem 0 7.45rem;
+  @include mixins.mobile {
+    padding: 3.4rem 0 3.75rem;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  @include mixins.tablet {
+    display: block;
+  }
+}
+
+.header {
+  width: 520px;
+  color: #08142d;
+  @include mixins.tablet {
+    width: 100%;
+    padding-bottom: 2.9rem;
+  }
+  .lead {
+    font-size: 1.25rem;
+    margin: 0;
+    @include mixins.mobile {
+      font-size: 0.8125rem;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+  }
+  .description {
+    margin: 0;
+    strong {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      @include mixins.mobile {
+        display: block;
+        font-size: 1.375rem;
+        font-size: 1.35;
+        width: 205px;
+      }
+    }
+    .note {
+      display: block;
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      line-height: 1.25;
+      @include mixins.mobile {
+        display: none;
+      }
+    }
+  }
+  .illustration {
+    margin-left: -4rem;
+    width: 450px;
+    @include mixins.tablet {
+      display: none;
+    }
+  }
+}
+
+.content {
+  width: 42%;
+  flex-shrink: 0;
+  @include mixins.tablet {
+    width: 100%;
+  }
+  .faqList {
+    border-bottom: 1px dashed rgba(8, 20, 45, 0.5);
+  }
+  .faq {
+    border-top: 1px dashed rgba(8, 20, 45, 0.5);
+    .faqTitle {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      font-weight: 700;
+      padding: 1.625rem 8rem 1.625rem 1rem;
+      color: #08142d80;
+      transition: color 0.2s linear;
+      position: relative;
+      @include mixins.mobile {
+        font-size: 1rem;
+        line-height: 1.375;
+        padding: 1.625rem 6rem 1.625rem 1rem;
+      }
+      .toggleButton {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        width: 20px;
+        transform: translateY(-50%);
+        opacity: 0.5;
+        transition: opacity 0.2s linear;
+      }
+      &:hover {
+        color: #08142d;
+        .toggleButton {
+          opacity: 1;
+        }
+      }
+    }
+    .faqContent {
+      color: #08142d;
+      font-size: 1.125rem;
+      line-height: 1.55;
+      margin: 0;
+      @include mixins.mobile {
+        font-size: 0.875rem;
+        line-height: 1.7;
+      }
+      :global(.ReactCollapse--collapse) {
+        transition: height 500ms ease-in-out;
+      }
+      .faqInnerContent {
+        padding: 0.675rem 1rem 3rem;
+        opacity: 0;
+        transition: opacity 500ms;
+      }
+      p {
+        margin-top: 0;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      a {
+        color: #fe00ae;
+      }
+    }
+    &.open {
+      .faqTitle {
+        color: #08142d;
+        .toggleButton {
+          opacity: 1;
+        }
+      }
+      .faqInnerContent {
+        opacity: 1;
+      }
+    }
+  }
+}
