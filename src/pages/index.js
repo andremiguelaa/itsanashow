@@ -138,12 +138,12 @@ const Home = () => {
           <video autoPlay loop muted playsInline>
             <source
               src={reelMobile}
-              type="video/mp4"
+              type="video/webm"
               media="(max-width: 767px)"
             ></source>
             <source
               src={reel}
-              type="video/mp4"
+              type="video/webm"
               media="(min-width: 768px)"
             ></source>
           </video>
