@@ -14,6 +14,7 @@ import AnimatedText from "src/components/AnimatedText/AnimatedText";
 import Button from "src/components/Button/Button";
 
 import reel from "../assets/reel.webm";
+import reelMobile from "../assets/reel_mobile.webm";
 
 import classes from "./styles.module.scss";
 
@@ -46,7 +47,7 @@ const Home = () => {
           Title,
           Image,
           Tags: Tags.map(({ attributes: { Text } }) => Text),
-        })
+        }),
       );
     }
     return [];
@@ -73,30 +74,27 @@ const Home = () => {
           id,
           Name,
           Logo,
-        })
+        }),
       );
     }
     return [];
   }, [homepageData]);
 
-    const faqs = useMemo(() => {
+  const faqs = useMemo(() => {
     if (homepageData?.data?.attributes?.FAQs?.length > 0) {
       return homepageData.data.attributes.FAQs.map(
         ({
           faq: {
             data: {
               id,
-              attributes: {
-                Question,
-                Answer,
-              },
+              attributes: { Question, Answer },
             },
           },
         }) => ({
           id,
           question: Question,
           answer: Answer,
-        })
+        }),
       );
     }
     return [];
@@ -109,7 +107,7 @@ const Home = () => {
 
   const articles = useMemo(
     () => articlesData?.data.sort(() => 0.5 - Math.random()).slice(0, 3) || [],
-    [articlesData]
+    [articlesData],
   );
 
   return (
@@ -137,7 +135,18 @@ const Home = () => {
           </div>
         </div>
         <div className={classnames("wrapper", classes.video)}>
-          <video src={reel} autoPlay loop muted playsInline />
+          <video autoPlay loop muted playsInline>
+            <source
+              src={reelMobile}
+              type="video/mp4"
+              media="(max-width: 767px)"
+            ></source>
+            <source
+              src={reel}
+              type="video/mp4"
+              media="(min-width: 768px)"
+            ></source>
+          </video>
         </div>
       </section>
       <HomepageClients clients={clients} />
