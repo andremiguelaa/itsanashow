@@ -40,7 +40,7 @@ const Header = ({ noDefaultHeader }) => {
     } else {
       firstLoad.current = false;
     }
-  }, [router.asPath, noDefaultHeader]);
+  }, [router.asPath, router.pathname, noDefaultHeader]);
 
   const [defaultHeader, setDefaultHeader] = useState(
     noDefaultHeader ? false : true

@@ -113,7 +113,7 @@ const Article = ({ prefetchedArticle }) => {
         .filter((item) => item.id !== article.id)
         .sort(() => 0.5 - Math.random())
         .slice(0, 3) || [],
-    [articlesData]
+    [articlesData, article.id]
   );
 
   const [metaData, setMetaData] = useState({
