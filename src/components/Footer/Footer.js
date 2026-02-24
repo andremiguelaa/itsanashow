@@ -5,7 +5,6 @@ import classNames from "classnames";
 import AppContext from "src/AppContext";
 import Button from "src/components/Button/Button";
 import DummyHead from "src/components/Head/Head";
-import DeckButton from "src/components/DeckButton/DeckButton";
 import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
 import arrow from "src/assets/buttons/arrowB.json";
@@ -168,9 +167,6 @@ const Footer = ({ lead = true }) => {
                 }}
               />
             </form>
-            <div>
-              <DeckButton />
-            </div>
           </div>
           <div className={classes.rightColumn}>
             <div className={classes.social}>
