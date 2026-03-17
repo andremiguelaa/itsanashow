@@ -21,7 +21,7 @@ import classes from "./WorkDetail.module.scss";
 export const getServerSideProps = async (context) => {
   if (context.params.slug !== "[object Object]") {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/works?filters[$or][0][Slug][$eq]=${context.params.slug}&filters[$or][1][Title][$eq]=${context.params.slug}&populate=*`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/works?filters[$or][0][Slug][$eq]=${context.params.slug}&filters[$or][1][Title][$eq]=${context.params.slug}&populate=*`,
     );
     const prefetchedWork = await res.json();
     let description;
@@ -95,17 +95,17 @@ const WorkDetail = ({ prefetchedWork }) => {
       id: workData?.data[0].id,
       ...workData?.data[0].attributes,
     }),
-    [workData]
+    [workData],
   );
 
   const relatedWorks = useMemo(
     () =>
       shuffle(
         worksData?.data.attributes.Works.filter(
-          (item) => item.work.data[0].id !== work.id
-        )
+          (item) => item.work.data[0].id !== work.id,
+        ),
       ).slice(0, 3),
-    [work, worksData]
+    [work, worksData],
   );
 
   if (prefetchedWork && !workData) {
@@ -185,7 +185,7 @@ const WorkDetail = ({ prefetchedWork }) => {
           <iframe
             title="Vimeo Video"
             src={`https://player.vimeo.com/video/${work.VimeoVideo.split(
-              "/"
+              "/",
             ).pop()}?title=0&byline=0&portrait=0`}
             className={classes.vimeoVideo}
             frameBorder="0"
@@ -252,12 +252,16 @@ const WorkDetail = ({ prefetchedWork }) => {
         )}
         <div className={classes.ready}>
           <div className={classes.wrapper}>
-            <p className={classes.lead}>Ready to transform your brand?</p>
+            <p className={classes.lead}>
+              Ready to start yours?
+              <br />
+              Your story could be next.
+            </p>
           </div>
           <div className="wrapper">
             <div className={classes.cta}>
               <Button
-                text="let’s work together!"
+                text="Let’s talk"
                 arrow={arrow}
                 target="/contacts"
               />
@@ -267,7 +271,7 @@ const WorkDetail = ({ prefetchedWork }) => {
         {worksData && (
           <div className={classes.moreArticles}>
             <div className={classes.wrapper}>
-              <p className={classes.lead}>Are you curious for more?</p>
+              <p className={classes.lead}>Keep exploring</p>
             </div>
             <div className="wrapper">
               <ul>

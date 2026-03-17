@@ -20,10 +20,12 @@ const HomepageTeam = () => {
     } else {
       setScrolled(false);
     }
-    if(threshold.current.getBoundingClientRect().top < -element.current.clientHeight) {
+    if (
+      threshold.current.getBoundingClientRect().top <
+      -element.current.clientHeight
+    ) {
       setAbove(true);
-    }
-    else {
+    } else {
       setAbove(false);
     }
   };
@@ -62,16 +64,15 @@ const HomepageTeam = () => {
         <div className="wrapper">
           <div className={classes.content}>
             <p className={classes.lead}>
-              <AnimatedText>Meet the team</AnimatedText>
+              <AnimatedText>Small studio • Wide Reach</AnimatedText>
             </p>
             <p className={classes.description}>
-              <AnimatedText delay={150}>
-                Big enough to tackle any challenge, small enough to make it
-                personal
-              </AnimatedText>
+              <AnimatedText delay={200}>The people</AnimatedText>
+              <br />
+              <AnimatedText delay={300}>behind the work.</AnimatedText>
             </p>
             <div className={classes.cta}>
-              <Button text="Discover the squad" target="/us" arrow={arrow} />
+              <Button text="Meet the team" target="/us" arrow={arrow} />
             </div>
           </div>
         </div>

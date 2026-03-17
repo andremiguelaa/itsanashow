@@ -34,7 +34,7 @@
   .sentence {
     font-size: 3.125rem;
     font-weight: 700;
-    max-width: 720px;
+    max-width: 650px;
     margin: 0 0 3rem;
     @include mixins.mobile {
       font-size: 1.875rem;
@@ -171,6 +171,13 @@
     border: none;
     border-radius: 1.4rem;
     cursor: pointer;
+  }
+
+  .basedIn {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 4.875rem 0 0;
+    text-align: left;
   }
 }
 

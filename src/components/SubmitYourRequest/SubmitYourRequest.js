@@ -3,15 +3,15 @@ import Lottie from "react-lottie-player";
 import { useRouter } from "next/navigation";
 
 import { AppContext } from "src/AppContext";
-import CTA01 from "src/assets/buttons/CTA02-2.json";
+import CTA01 from "src/assets/buttons/CTA02-3.json";
 
 import classes from "./SubmitYourRequest.module.scss";
 
 const buttonFrameLimits = {
-  startIn: 0,
-  endIn: 32,
-  startOut: 64,
-  endOut: 95,
+  startIn: 24,
+  endIn: 60,
+  startOut: 90,
+  endOut: 110,
 };
 
 const SubmitYourRequest = ({ disabled }) => {

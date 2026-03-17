@@ -33,10 +33,10 @@ const Blog = () => {
             acc.push(tag.attributes.Text);
           });
           return acc;
-        }, []) || []
+        }, []) || [],
       ),
     ],
-    [articlesData]
+    [articlesData],
   );
 
   const filteredArticles = useMemo(() => {
@@ -47,7 +47,7 @@ const Blog = () => {
       articles = articlesData?.data.filter((article) =>
         article.attributes.Tags.data
           .map((tag) => tag.attributes.Text)
-          .includes(selectedTag)
+          .includes(selectedTag),
       );
     }
     return articles;
@@ -68,9 +68,9 @@ const Blog = () => {
       </Head>
       <div className={classes.content}>
         <div className="wrapper">
-          <p className={classes.lead}>Think, create, inspire</p>
+          <p className={classes.lead}>We think out loud here</p>
           <p className={classes.caption}>
-            Wrangling ideas, lassoing imagination
+            On stories, motion and how brands connect
           </p>
           <div className={classes.lasso}>
             <div className={classes.lassoContainer}>
@@ -192,7 +192,7 @@ const Blog = () => {
                               year: "numeric",
                               month: "long",
                               day: "numeric",
-                            }
+                            },
                           )}
                         </p>
                         <p className={classes.title}>

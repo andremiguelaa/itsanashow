@@ -1,0 +1,55 @@
+@use "src/styles/mixins.scss";
+
+.social {
+  padding-top: 8.75rem;
+  @include mixins.smallDesktop {
+    padding-top: 6.5rem;
+  }
+  .socialLead {
+    color: rgba(8, 20, 45, 0.5);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  ul {
+    mix-blend-mode: difference;
+    list-style: none;
+    padding: 1rem 0 5.5rem;
+    margin: 0;
+    li {
+      display: inline-block;
+      & + li {
+        margin-left: 1.6rem;
+      }
+    }
+    a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s linear;
+      @include mixins.mobile {
+        font-size: 0.7rem;
+      }
+      &:hover {
+        color: #fe00ae;
+      }
+    }
+  }
+  .address {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.75;
+    a {
+      color: #fe00ae;
+      text-decoration: none;
+      &.addressLink {
+        text-decoration: underline;
+        color: inherit;
+      }
+    }
+  }
+}

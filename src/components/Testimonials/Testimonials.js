@@ -1,13 +1,13 @@
-import React, { useState, useMemo, useContext } from 'react';
-import Slider from 'react-slick';
+import React, { useState, useMemo, useContext } from "react";
+import Slider from "react-slick";
 
-import AnimatedText from 'src/components/AnimatedText/AnimatedText';
+import AnimatedText from "src/components/AnimatedText/AnimatedText";
 
-import AppContext from 'src/AppContext';
-import useRequest from 'src/utils/useRequest';
-import Markdown from 'src/components/Markdown/Markdown';
+import AppContext from "src/AppContext";
+import useRequest from "src/utils/useRequest";
+import Markdown from "src/components/Markdown/Markdown";
 
-import classes from './Testimonials.module.scss';
+import classes from "./Testimonials.module.scss";
 
 const Testimonials = () => {
   const { setCursorType } = useContext(AppContext);
@@ -26,8 +26,8 @@ const Testimonials = () => {
   };
 
   const { data: usData } = useRequest({
-    url: 'know-us-page?populate%5BTeam%5D%5Bpopulate%5D%5Bteam_member%5D%5Bpopulate%5D=*&populate%5BGallery%5D%5Bpopulate%5D%5Bteam_photo%5D%5Bpopulate%5D=*&populate%5BTestimonials%5D%5Bpopulate%5D=*',
-    method: 'GET',
+    url: "know-us-page?populate%5BTeam%5D%5Bpopulate%5D%5Bteam_member%5D%5Bpopulate%5D=*&populate%5BGallery%5D%5Bpopulate%5D%5Bteam_photo%5D%5Bpopulate%5D=*&populate%5BTestimonials%5D%5Bpopulate%5D=*",
+    method: "GET",
   });
 
   const testimonials = useMemo(() => {
@@ -40,7 +40,7 @@ const Testimonials = () => {
               attributes: { Name, Role, Text },
             },
           },
-        }) => ({ id, Name, Role, Text })
+        }) => ({ id, Name, Role, Text }),
       );
     }
     return [];
@@ -52,27 +52,29 @@ const Testimonials = () => {
         <section className={classes.testimonials}>
           <div className="wrapper">
             <p className={classes.lead}>
-              <AnimatedText>This warms our hearts</AnimatedText>
+              <AnimatedText>Client Impact</AnimatedText>
             </p>
             <p className={classes.description}>
-              <AnimatedText delay={200}>
-                What our clients &amp; partners say about us
+              <AnimatedText delay={100}>
+                The people
               </AnimatedText>
+              <br />
+              <AnimatedText delay={200}>behind the briefs.</AnimatedText>
             </p>
           </div>
           <div className={classes.list}>
             <div
               onMouseEnter={() => {
-                setCursorType('drag');
+                setCursorType("drag");
               }}
               onMouseLeave={() => {
-                setCursorType('default');
+                setCursorType("default");
               }}
               onMouseDown={() => {
-                setCursorType('dragging');
+                setCursorType("dragging");
               }}
               onMouseUp={() => {
-                setCursorType('drag');
+                setCursorType("drag");
               }}
             >
               <Slider {...settings}>

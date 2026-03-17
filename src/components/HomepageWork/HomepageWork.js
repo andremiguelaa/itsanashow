@@ -65,13 +65,9 @@ const HomepageWork = ({ portfolioHighlights }) => (
           <AnimatedText>Our work</AnimatedText>
         </p>
         <p className={classes.description}>
-          <AnimatedText delay={100}>
-            Visuals that dominate, inspire,
-          </AnimatedText>
+          <AnimatedText delay={100}>Shaping stories people trust,</AnimatedText>
           <br />
-          <AnimatedText delay={300}>
-            and leave your competition jealous 
-          </AnimatedText>
+          <AnimatedText delay={300}>remember and return to.</AnimatedText>
         </p>
       </div>
       {portfolioHighlights.length > 0 && (
@@ -85,7 +81,7 @@ const HomepageWork = ({ portfolioHighlights }) => (
         </ul>
       )}
       <div className={classes.cta}>
-        <Button text="Dive Deeper" arrow={arrow} />
+        <Button text="Explore Case Studies" arrow={arrow} />
       </div>
     </div>
   </section>

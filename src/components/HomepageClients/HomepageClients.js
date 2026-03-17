@@ -19,7 +19,7 @@ const HomepageClients = ({ clients }) => {
     <section className={classes.clients}>
       <div className="wrapper">
         <p className={classes.lead}>
-          <AnimatedText>Our Partners in Creativity</AnimatedText>
+          <AnimatedText>Trusted by</AnimatedText>
         </p>
       </div>
       {clients.length > 0 && (

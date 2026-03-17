@@ -64,7 +64,7 @@ const Us = () => {
               },
             },
           },
-        }) => ({ id, MainText, Name, Role, SecondaryText, Image })
+        }) => ({ id, MainText, Name, Role, SecondaryText, Image }),
       );
     }
     return [];
@@ -87,7 +87,7 @@ const Us = () => {
               },
             },
           },
-        }) => ({ id, Title, Image })
+        }) => ({ id, Title, Image }),
       );
     }
     return [];
@@ -103,17 +103,17 @@ const Us = () => {
     const what1Distance = Math.abs(
       whatItem1?.current?.getBoundingClientRect().top +
         whatItem1?.current?.offsetHeight / 2 -
-        global.window?.innerHeight / 2
+        global.window?.innerHeight / 2,
     );
     const what2Distance = Math.abs(
       whatItem2?.current?.getBoundingClientRect().top +
         whatItem2?.current?.offsetHeight / 2 -
-        global.window?.innerHeight / 2
+        global.window?.innerHeight / 2,
     );
     const what3Distance = Math.abs(
       whatItem3?.current?.getBoundingClientRect().top +
         whatItem3?.current?.offsetHeight / 2 -
-        global.window?.innerHeight / 2
+        global.window?.innerHeight / 2,
     );
     const distanceThreshold = (global.window?.innerHeight * 2) / 3.5;
     setWhatCentered([
@@ -152,21 +152,14 @@ const Us = () => {
           </p>
           <p className={classes.description}>
             <strong>
-              <AnimatedText delay={150}>
-                Your dedicated creative squad
-              </AnimatedText>
+              <AnimatedText delay={150}>Where strategy</AnimatedText>
+              <br />
+              <AnimatedText delay={250}>gets a soul.</AnimatedText>
             </strong>
-            <AnimatedText delay={350}>
-              Searching for a pixel-perfect partner who crafts stunning
-              narratives and makes the whole process a breeze?
+            <AnimatedText delay={400}>
+              If you're looking for a creative partner that starts with the
+              right questions and ends with work that lasts, welcome.
             </AnimatedText>
-            <br />
-            <br />
-            <b>
-              <AnimatedText delay={1150}>
-                You’ve found your perfect match!✨
-              </AnimatedText>
-            </b>
           </p>
         </div>
       </section>
@@ -178,7 +171,7 @@ const Us = () => {
                 {teamMembers.map(
                   (
                     { id, MainText, Name, Role, SecondaryText, Image },
-                    index
+                    index,
                   ) => (
                     <li key={id} className={classes.teamMember}>
                       <InView
@@ -214,7 +207,7 @@ const Us = () => {
                         </div>
                       </InView>
                     </li>
-                  )
+                  ),
                 )}
               </ul>
               <div className={classes.ctaWrapper}>
@@ -275,12 +268,12 @@ const Us = () => {
       <section className={classes.what}>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.lead}>
-            <AnimatedText>Our creative process</AnimatedText>
+            <AnimatedText>How we work</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={150}>Tailored. Collaborative.</AnimatedText>
+            <AnimatedText delay={150}>The thinking</AnimatedText>
             <br />
-            <AnimatedText delay={250}>Impactful.</AnimatedText>
+            <AnimatedText delay={250}>behind the making.</AnimatedText>
           </p>
           <ul className={classes.list}>
             <li
@@ -291,16 +284,13 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={motion} play />
               </div>
-              <p className={classes.name}>
-                Rooted in
-                <br /> Your Brand
-              </p>
+              <p className={classes.name}>Find the truth</p>
               <div className={classes.content}>
                 <p className={classes.text}>
-                  We’re more than creators; we’re your brand partners. We
-                  uncover your brand’s essence and amplify it through impactful,
-                  on-brand design and motion that aligns perfectly with your
-                  goals.
+                  Every brief hides a deeper communication challenge. We start
+                  with your business goals and the questions that matter most:
+                  what your audience currently believes and where they need to
+                  go next. That answer shapes everything that follows.
                 </p>
               </div>
             </li>
@@ -312,13 +302,14 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={graphics} play />
               </div>
-              <p className={classes.name}>Impact with Consistency</p>
+              <p className={classes.name}>Build the story</p>
               <div className={classes.content}>
                 <p className={classes.text}>
-                  Our visuals and animations embody your brand’s voice,
-                  delivering cohesive designs across platforms. We create
-                  seamless experiences that build trust and strengthen your
-                  brand identity.
+                  Consistency is authority. We map the story logic of your
+                  project before a single frame is designed, developing the
+                  narrative arc, the visual language, and the motion system that
+                  speaks with one voice across every platform. The making comes
+                  later. The meaning comes first.
                 </p>
               </div>
             </li>
@@ -330,12 +321,14 @@ const Us = () => {
               <div className={classes.img}>
                 <Lottie loop animationData={brand} play />
               </div>
-              <p className={classes.name}>Results-Driven Partnership</p>
+              <p className={classes.name}>Make it land</p>
               <div className={classes.content}>
                 <p className={classes.text}>
-                  We work hand-in-hand with your team to turn ideas into
-                  impactful results. With precision and creativity, we bring
-                  your vision to life as your brand’s dedicated creative squad.
+                  We work as an extension of your team, not just a vendor. Every
+                  visual decision: pacing, colour, movement, sound. Each one
+                  made in service of a clear idea. Not to impress, but to
+                  connect. This is where craft and strategy become the same
+                  thing.
                 </p>
               </div>
             </li>

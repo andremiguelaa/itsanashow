@@ -28,15 +28,15 @@ const Footer = ({ lead = true }) => {
             <div className={classes.customWrapper}>
               <p className={classes.sentence}>
                 <AnimatedText>
-                  Together, we can create marvels that drive results and steal
-                  the show.
+                  Great brands aren't built by accident. Let's be intentional
+                  together.
                 </AnimatedText>
               </p>
             </div>
             <div className="wrapper">
               <div className={classes.cta}>
                 <Button
-                  text="Let the fun begin!"
+                  text="Start a project"
                   arrow={arrow}
                   target="/contacts"
                 />
@@ -124,7 +124,7 @@ const Footer = ({ lead = true }) => {
             <p className={classes.newsletter}>
               <b>Join our newsletter if you’re looking for</b>{" "}
               <s>
-                <em>coaching, tips for success, multi level marketing</em>
+                <em>coaching, tips for success, boring corporate stuff</em>
               </s>
               <b>...good vibes!</b>
             </p>
@@ -167,6 +167,7 @@ const Footer = ({ lead = true }) => {
                 }}
               />
             </form>
+            <p className={classes.basedIn}>Based in Lisbon. Telling stories worldwide.</p>
           </div>
           <div className={classes.rightColumn}>
             <div className={classes.social}>
@@ -253,9 +254,9 @@ const Footer = ({ lead = true }) => {
                 </li>
               </ul>
             </div>
-            <p className={classes.lead}>Your next big thing starts here.</p>
+            <p className={classes.lead}>Your next big move starts here.</p>
             <Button
-              text={<span className={classes.link}>Let&apos;s chat!</span>}
+              text={<span className={classes.link}>Let&apos;s Talk!</span>}
               arrow={arrowG}
               target="/contacts"
             />

@@ -61,12 +61,12 @@ const Work = () => {
           Slug,
           Image,
           Categories: Categories.map(({ attributes: { Text } }) => Text),
-        })
+        }),
       );
     }
     if (category) {
       worksTemp = worksTemp.filter((work) =>
-        work.Categories.includes(category)
+        work.Categories.includes(category),
       );
     }
     return worksTemp;
@@ -89,9 +89,9 @@ const Work = () => {
             <AnimatedText>Our work</AnimatedText>
           </p>
           <p className={classes.description}>
-            <AnimatedText delay={100}>
-              Elevate your brand through powerful storytelling
-            </AnimatedText>
+            <AnimatedText delay={100}>The thinking shows.</AnimatedText>
+            <br />
+            <AnimatedText delay={250}>So does the craft.</AnimatedText>
           </p>
         </div>
         <div className="wrapper">
@@ -188,7 +188,7 @@ const Work = () => {
                         <div
                           className={classnames(
                             classes.imagePlaceholder,
-                            classes.imagePlaceholderLoaded
+                            classes.imagePlaceholderLoaded,
                           )}
                         />
                         <ImageComponent

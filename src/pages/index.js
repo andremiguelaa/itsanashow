@@ -122,16 +122,20 @@ const Home = () => {
       <section className={classes.intro}>
         <div className={classnames("wrapper", classes.text)}>
           <p className={classes.description}>
-            <AnimatedText>Crafting stories that make brands shine</AnimatedText>
+            <AnimatedText>
+              Every detail tells a story.
+            </AnimatedText>
+            <br />
+            <AnimatedText delay={250}>We make it right.</AnimatedText>
           </p>
           <p className={classes.lead}>
-            <AnimatedText delay={300}>
-              Animation, Branding & Web Design for Visionaries who dare to stand
-              out
+            <AnimatedText delay={450}>
+              Starting where most studios stop, with the meaning behind the
+              brief.
             </AnimatedText>
           </p>
           <div className={classes.button}>
-            <Button text="See Our Magic in Action" />
+            <Button text="Explore Case Studies" />
           </div>
         </div>
         <div className={classnames("wrapper", classes.video)}>

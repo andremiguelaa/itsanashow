@@ -76,15 +76,15 @@ const HomepageRelated = ({ articles }) => (
     {articles.length > 0 && (
       <div className={classes.related}>
         <div className="wrapper">
-          <p className={classes.lead}>From Our Creative Minds</p>
-          <p className={classes.caption}>Insights You’ll Love</p>
+          <p className={classes.lead}>We write too</p>
+          <p className={classes.caption}>The thinking behind the work</p>
           <ul className={classes.articles}>
             {articles.map((item) => (
               <HomepageRelatedItem item={item} key={item.id} />
             ))}
           </ul>
           <div className={classes.cta}>
-            <Button text="Dive Deeper" arrow={arrow} target="/insights" />
+            <Button text="Dive in" arrow={arrow} target="/insights" />
           </div>
         </div>
       </div>

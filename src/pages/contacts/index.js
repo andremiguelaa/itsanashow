@@ -7,11 +7,10 @@ import useRequest from "src/utils/useRequest";
 import AppContext from "src/AppContext";
 import SubmitYourRequest from "src/components/SubmitYourRequest/SubmitYourRequest";
 import Button from "src/components/Button/Button";
+import Social from "src/components/Social/Social";
 import successIcon from "src/assets/formSuccess.json";
 import errorIcon from "src/assets/formError.json";
 import arrow from "src/assets/buttons/arrowB.json";
-
-import Social from "./Social";
 
 import classes from "./styles.module.scss";
 
@@ -84,16 +83,19 @@ const Contacts = () => {
         <div className="wrapper">
           <div className={classes.content}>
             <div className={classes.header}>
-              <p className={classes.lead}>Got a bold idea?</p>
-              <p className={classes.action}>Let’s make it happen.</p>
+              <p className={classes.lead}>Your next chapter starts here.</p>
               <p className={classes.text}>
                 <strong style={{ fontWeight: 600 }}>
-                  Ready to transform your brand into something unforgettable?
+                  We'd love to hear about your project.
                 </strong>
+                Not just the deliverable, but the challenge behind it. The
+                audience, the goal, the story you need to tell. The more you
+                share, the more we can bring to the table from day one.
                 <br />
-                Give us the scoop! We want all the juicy details — don’t just
-                say “an animation”, share your vision. The more we know, the
-                faster we can jump into making magic happen! 🚀
+                <br />
+                <strong>
+                  Direct access to founders. Limited intake. Full dedication.
+                </strong>
               </p>
               <div className={classes.socialDesktop}>
                 <Social />
@@ -228,6 +230,7 @@ const Contacts = () => {
                       className={classNames({
                         [classes.changed]: selectChanged,
                       })}
+                      defaultValue=""
                     >
                       <option value="" disabled selected>
                         Select...
@@ -364,7 +367,7 @@ const Contacts = () => {
                       id="message"
                       required
                       name="About"
-                      placeholder="We’re all ears! Dive deep into your project — share your vision, goals, ideas, and challenges. The more details you give us, the better we can understand your needs and tailor our approach."
+                      placeholder="Tell us about your business goals and the challenges you're looking to solve."
                       onChange={(event) =>
                         setFormData((prev) => ({
                           ...prev,

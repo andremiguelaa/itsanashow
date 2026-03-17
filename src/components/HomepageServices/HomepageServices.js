@@ -12,18 +12,18 @@ import classes from "./HomepageServices.module.scss";
 
 const SERVICES = [
   {
-    title: "Animation",
-    text: "With compelling storytelling at its core, our 2D and 3D animations go beyond visuals—they bring your brand’s narrative to life with precision and creativity. From dynamic motion graphics to character-driven animations, we create striking visuals that engage your audience and leave a lasting impression.",
+    title: "Motion",
+    text: "<b>Movement without intention is just noise.</b> From brand films and broadcast identities to motion systems that scale across every touchpoint, we start with what your audience needs to feel, then work backwards through every frame, every beat and every transition, until motion and message become the same thing.",
     image: animation,
   },
   {
     title: "Branding",
-    text: "Our holistic branding approach transforms visuals into stories that endure. From designing bold logos and defining brand guidelines to developing animation languages, we ensure every element communicates your brand’s unique identity across all media.",
+    text: "<b>A brand isn't just how it looks. It's how it moves.</b> From logo and visual identity to animation languages and brand guidelines, we build systems that hold together under pressure because coherence is what turns recognition into trust.",
     image: branding,
   },
   {
-    title: "Webdesign",
-    text: "We craft responsive, SEO-optimized websites designed to captivate. With seamless UX/UI and engaging interactive features, our websites deliver intuitive user experiences on any device, boosting your brand’s online visibility.",
+    title: "Web",
+    text: "<b>Your website is the first chapter of your brand's story.</b> From UX architecture to UI animation and interaction design, we design until every interaction feels inevitable rather than just designed. No filler, no friction. Just design that does its job beautifully.",
     image: webdesign,
   },
 ];
@@ -37,9 +37,9 @@ const HomepageServices = () => {
           <AnimatedText>Our Services</AnimatedText>
         </p>
         <p className={classes.description}>
-          <AnimatedText delay={100}>
-            Engage your audience and amplify your voice with our...
-          </AnimatedText>
+          <AnimatedText delay={100}>Different outputs.</AnimatedText>
+          <br />
+          <AnimatedText delay={200}>One narrative thread.</AnimatedText>
         </p>
         <div className={classes.content}>
           <ul className={classes.servicesList}>
@@ -56,7 +56,7 @@ const HomepageServices = () => {
                   alt={service.title}
                   className={classes.image}
                 />
-                <p className={classes.text}>{service.text}</p>
+                <p className={classes.text} dangerouslySetInnerHTML={{ __html: service.text }} />
               </li>
             ))}
           </ul>
@@ -80,7 +80,7 @@ const HomepageServices = () => {
           </nav>
         </div>
         <div className={classes.cta}>
-          <Button text="Let’s get started!" arrow={arrow} target="/contacts" />
+          <Button text="Start a Project" arrow={arrow} target="/contacts" />
         </div>
       </div>
     </section>
