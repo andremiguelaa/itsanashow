@@ -157,7 +157,7 @@ const Us = () => {
               <AnimatedText delay={250}>gets a soul.</AnimatedText>
             </strong>
             <AnimatedText delay={400}>
-              If you're looking for a creative partner that starts with the
+              If you&apos;re looking for a creative partner that starts with the
               right questions and ends with work that lasts, welcome.
             </AnimatedText>
           </p>

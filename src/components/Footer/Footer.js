@@ -28,7 +28,7 @@ const Footer = ({ lead = true }) => {
             <div className={classes.customWrapper}>
               <p className={classes.sentence}>
                 <AnimatedText>
-                  Great brands aren't built by accident. Let's be intentional
+                  Great brands aren&apos;t built by accident. Let&apos;s be intentional
                   together.
                 </AnimatedText>
               </p>

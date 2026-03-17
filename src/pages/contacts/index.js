@@ -86,7 +86,7 @@ const Contacts = () => {
               <p className={classes.lead}>Your next chapter starts here.</p>
               <p className={classes.text}>
                 <strong style={{ fontWeight: 600 }}>
-                  We'd love to hear about your project.
+                  We&apos;d love to hear about your project.
                 </strong>
                 Not just the deliverable, but the challenge behind it. The
                 audience, the goal, the story you need to tell. The more you
