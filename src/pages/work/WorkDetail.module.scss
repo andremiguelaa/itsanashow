@@ -233,14 +233,14 @@
   }
   .lead {
     margin: 0;
-    max-width: 560px;
+    max-width: 660px;
     font-size: 3.125rem;
     line-height: 1.4;
     font-weight: 700;
     @include mixins.mobile {
       font-size: 1.875rem;
       padding-bottom: 3.5rem;
-      max-width: 360px;
+      max-width: 400px;
     }
   }
   .cta {

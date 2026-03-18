@@ -27,14 +27,10 @@ const FAQs = ({ faqs }) => {
           </p>
           <p className={classes.description}>
             <strong>
-              <AnimatedText delay={50}>Frequently Asked Questions</AnimatedText>
-            </strong>
-            <span className={classes.note}>
-              <AnimatedText delay={200}>
-                (a.k.a. everything you wanted to ask a creative studio but were
-                too shy to ask)
+              <AnimatedText delay={50}>
+                Good questions deserve straight answers
               </AnimatedText>
-            </span>
+            </strong>
           </p>
           <div className={classes.illustration}>
             <Lottie animationData={groovy} loop play />
