@@ -110,10 +110,10 @@ const Article = ({ prefetchedArticle }) => {
   const articles = useMemo(
     () =>
       articlesData?.data
-        .filter((item) => item.id !== article.id)
+        .filter((item) => item.id !== article?.id)
         .sort(() => 0.5 - Math.random())
         .slice(0, 3) || [],
-    [articlesData, article.id]
+    [articlesData, article?.id]
   );
 
   const [metaData, setMetaData] = useState({
