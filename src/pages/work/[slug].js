@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext, useMemo } from "react";
+import React, { useEffect, useContext, useMemo } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { remark } from "remark";
 import strip from "strip-markdown";
@@ -41,105 +40,52 @@ export const getServerSideProps = async (context) => {
 
 const WorkDetail = ({ prefetchedWork }) => {
   const { setCursorType } = useContext(AppContext);
-  const {
-    query: { slug },
-  } = useRouter();
-  const [name] = useState(slug);
-
-  const {
-    data: workData,
-    loading,
-    error,
-  } = useRequest({
-    url: `works?filters[$or][0][Slug][$eq]=${name}&filters[$or][1][Title][$eq]=${name}&populate=*`,
-    method: "GET",
-  });
 
   const {
     data: worksData,
-    loading: loadingWorks,
     error: errorWorks,
   } = useRequest({
     url: "works-page?populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTags%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BTeaser%5D%5Bpopulate%5D=*&populate%5BWorks%5D%5Bpopulate%5D%5Bwork%5D%5Bpopulate%5D%5BCategories%5D%5Bpopulate%5D=*",
     method: "GET",
   });
 
-  const [metaData, setMetaData] = useState({
-    title: prefetchedWork?.attributes.Title,
-    description:
-      prefetchedWork?.attributes.MetaDescription || prefetchedWork?.description,
-    image: prefetchedWork
-      ? prefetchedWork?.attributes.Teaser.data.attributes.url
-      : undefined,
-  });
-
   useEffect(() => {
     setCursorType("default");
-    if (workData?.data?.[0]) {
-      remark()
-        .use(strip)
-        .process(workData.data[0].attributes.Subtitle)
-        .then((file) => {
-          setMetaData({
-            title: workData.data[0].attributes.Title,
-            description:
-              workData.data[0].attributes.MetaDescription || String(file),
-            image: workData.data[0].attributes.Teaser.data.attributes.url,
-          });
-        });
-    }
-  }, [workData, setCursorType]);
+  }, [setCursorType]);
 
   const work = useMemo(
-    () => ({
-      id: workData?.data[0].id,
-      ...workData?.data[0].attributes,
-    }),
-    [workData],
+    () =>
+      prefetchedWork
+        ? { id: prefetchedWork.id, ...prefetchedWork.attributes }
+        : null,
+    [prefetchedWork],
   );
+
+  const metaData = prefetchedWork
+    ? {
+        title: prefetchedWork.attributes.Title,
+        description:
+          prefetchedWork.attributes.MetaDescription || prefetchedWork.description,
+        image: prefetchedWork.attributes.Teaser.data.attributes.url,
+      }
+    : null;
 
   const relatedWorks = useMemo(
     () =>
       shuffle(
         worksData?.data.attributes.Works.filter(
-          (item) => item.work.data[0].id !== work.id,
+          (item) => item.work.data[0].id !== work?.id,
         ),
       ).slice(0, 3),
     [work, worksData],
   );
 
-  if (prefetchedWork && !workData) {
-    return (
-      <>
-        <Head>
-          <title>{`Itsanashow Studio | ${metaData.title}`}</title>
-          <meta name="description" content={metaData.description} />
-          <meta
-            property="og:image"
-            content={`${process.env.NEXT_PUBLIC_API_URL}${metaData.image}`}
-          />
-        </Head>
-        <article className={classes.workDetail}>
-          <div className={classes.imagePlaceholder}></div>
-        </article>
-      </>
-    );
-  }
-
-  if (!loading && workData?.data?.length === 0) {
+  if (!prefetchedWork) {
     return <NoMatch />;
   }
 
-  if (error || errorWorks) {
+  if (errorWorks) {
     return <Error />;
-  }
-
-  if (loading || loadingWorks || !workData || !worksData || !metaData) {
-    return (
-      <article className={classes.workDetail}>
-        <div className={classes.imagePlaceholder}></div>
-      </article>
-    );
   }
 
   return (

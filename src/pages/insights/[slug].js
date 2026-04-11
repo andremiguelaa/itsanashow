@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect, useMemo } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import classnames from "classnames";
 import { InView } from "react-intersection-observer";
 
@@ -90,22 +89,13 @@ const RelatedArticle = ({ item }) => {
 
 const Article = ({ prefetchedArticle }) => {
   const { setCursorType } = useContext(AppContext);
-  const {
-    query: { slug: routerSlug },
-  } = useRouter();
-  const [slug] = useState(routerSlug);
-
-  const { data: articleData } = useRequest({
-    url: `articles?filters[Slug][$eq]=${slug}`,
-    method: "GET",
-  });
 
   const { data: articlesData } = useRequest({
     url: "articles",
     method: "GET",
   });
 
-  const article = articleData?.data?.[0];
+  const article = prefetchedArticle;
 
   const articles = useMemo(
     () =>
@@ -116,33 +106,13 @@ const Article = ({ prefetchedArticle }) => {
     [articlesData, article?.id]
   );
 
-  const [metaData, setMetaData] = useState({
-    title: prefetchedArticle?.attributes.Title,
-    description: prefetchedArticle?.attributes.Teaser,
-    image: prefetchedArticle?.attributes.Thumbnail.data.attributes.url,
-  });
-  useEffect(() => {
-    if (articleData?.data?.[0]) {
-      setMetaData({
-        title: articleData?.data?.[0].attributes.Title,
-        description: articleData?.data?.[0].attributes.Teaser,
-        image: articleData?.data?.[0].attributes.Thumbnail.data.attributes.url,
-      });
-    }
-  }, [articleData]);
-
-  if (prefetchedArticle && (!article || !metaData)) {
-    return (
-      <Head>
-        <title>{`Itsanashow Studio | ${metaData.title}`}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:image"
-          content={`${process.env.NEXT_PUBLIC_API_URL}${metaData.image}`}
-        />
-      </Head>
-    );
-  }
+  const metaData = article
+    ? {
+        title: article.attributes.Title,
+        description: article.attributes.Teaser,
+        image: article.attributes.Thumbnail.data.attributes.url,
+      }
+    : null;
 
   if (!article || !metaData) {
     return null;
