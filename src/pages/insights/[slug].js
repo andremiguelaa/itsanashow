@@ -269,7 +269,7 @@ const Article = ({ prefetchedArticle }) => {
               <ul>
                 <li>
                   <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.toString()}`}
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${typeof window !== "undefined" ? window.location.toString() : ""}`}
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
@@ -291,7 +291,7 @@ const Article = ({ prefetchedArticle }) => {
                   <a
                     href={`http://twitter.com/share?text=${
                       article.attributes.Title
-                    }&url=${window.location.toString()}`}
+                    }&url=${typeof window !== "undefined" ? window.location.toString() : ""}`}
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
@@ -311,7 +311,7 @@ const Article = ({ prefetchedArticle }) => {
                 </li>
                 <li>
                   <a
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.toString()}`}
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${typeof window !== "undefined" ? window.location.toString() : ""}`}
                     target="_blank"
                     rel="noreferrer"
                     onMouseEnter={() => {
