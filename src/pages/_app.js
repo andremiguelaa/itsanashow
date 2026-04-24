@@ -26,6 +26,9 @@ export default function App({ Component, pageProps }) {
   const isWorkDetailPage = pageKey.startsWith("/work/");
 
   useEffect(() => {
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "PageView");
+    }
     if (pageKey.includes("#")) {
       setTimeout(() => {
         const element = document.getElementById(window.location.hash.slice(1));
@@ -41,19 +44,6 @@ export default function App({ Component, pageProps }) {
       }, 100);
     }
   }, [pageKey]);
-
-  useEffect(() => {
-    const handleRouteChange = () => {
-      if (typeof window.fbq === "function") {
-        window.fbq("track", "PageView");
-      }
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
 
   return (
     <AppContext.Provider
