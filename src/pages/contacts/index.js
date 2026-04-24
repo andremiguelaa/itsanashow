@@ -48,8 +48,8 @@ const Contacts = () => {
     event.preventDefault();
     const data = {
       ...formData,
-      Service: formData.Service.join(", "),
-      Referral: formData.Referral.join(", "),
+      Service: formData.Service?.length > 0 ? formData.Service.join(", ") : "",
+      Referral: formData.Referral?.length > 0 ? formData.Referral.join(", ") : "",
     };
     request({ data });
   };
